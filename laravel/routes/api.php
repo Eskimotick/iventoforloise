@@ -13,16 +13,15 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
-
 //Grupo de Rotas para o painel de usuário
 Route::group([
+
     'prefix' => 'user'
+
 ], function () {
-    //rotas aqui
+
+    Route::put('{id}', 'UsuarioController@update');
+
 });
 
 //Grupo de Rotas para o painel de admin
