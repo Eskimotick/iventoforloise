@@ -13,22 +13,40 @@ use Illuminate\Http\Request;
 |
 */
 
-//Grupo de Rotas para o painel de usuário
 Route::group([
 
-    'prefix' => 'user'
+    'middleware' => 'api',
+    'prefix' => 'auth'
 
 ], function () {
 
-    Route::put('{id}', 'UsuarioController@update');
+    Route::post('login', 'AuthController@login');
+    Route::post('logout', 'AuthController@logout');
+    Route::post('refresh', 'AuthController@refresh');
+    Route::post('me', 'AuthController@me');
+
+});
+
+//Grupo de Rotas para o painel de usuário
+Route::group([
+
+  'prefix' => 'user'
+
+], function () {
+
+  Route::put('{id}', 'UsuarioController@update');
 
 });
 
 //Grupo de Rotas para o painel de admin
 Route::group([
-    'prefix' => 'admin'
+
+  'prefix' => 'admin'
+
 ], function () {
-    //rotas aqui
+
+  //rotas aqui
+  //
 });
 
 
