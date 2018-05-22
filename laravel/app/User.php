@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'ativo'
     ];
 
     /**
@@ -44,6 +44,8 @@ class User extends Authenticatable
     */
     public function getJWTCustomClaims()
     {
-      return [];
+      return [
+          'fun' => $this->role
+      ];
     }
 }
