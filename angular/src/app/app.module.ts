@@ -20,6 +20,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { CadastroComponent } from './pages/cadastro/cadastro.component';
 import { environment } from '../environments/environment';
 import { AdminUsuariosComponent } from './pages/admin/admin-usuarios/admin-usuarios.component';
+import { AdminHospedagemComponent } from './pages/admin/admin-hospedagem/admin-hospedagem.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -35,6 +36,7 @@ export function tokenGetter() {
     CadastroComponent,
     NotFoundComponent,
     AdminUsuariosComponent,
+    AdminHospedagemComponent,
   ],
   imports: [
     AppRoutingModule,

@@ -10,6 +10,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { CadastroComponent } from './pages/cadastro/cadastro.component';
 import { AdminUsuariosComponent } from './pages/admin/admin-usuarios/admin-usuarios.component';
+import { AdminHospedagemComponent } from './pages/admin/admin-usuarios/admin-usuarios.component';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
@@ -29,10 +30,14 @@ const routes: Routes = [
   {
 		path: 'cadastro',
 		component: CadastroComponent
-	}
+	},
 	{
-		path: 'adminUsuarios',
+		path: 'usuarios',
 		component: AdminUsuariosComponent
+	},
+	{
+		path: 'hospedagem',
+		component: AdminHospedagemComponent
 	}
 ];
 

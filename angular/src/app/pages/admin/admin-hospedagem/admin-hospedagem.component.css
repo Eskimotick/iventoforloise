@@ -1,0 +1,35 @@
+.card h5 {
+  font-size: 1em;
+  color: #424242;
+  text-align: center;
+}
+ .modal {
+   min-height: 70vh;
+ }
+
+ @media screen and (min-width: 993px) {
+   .modal {
+     min-height: 62vh;
+     max-width: 40vw;
+   }
+
+ }
+.modal .modal-content {
+  padding: 0;
+}
+
+.modal-close {
+  padding-top: 2vh;
+  color: #424242;
+}
+
+
+h4 {
+  font-family: 'Raleway';
+  font-size: 1.8em;
+  padding-top: 1.8vh;
+}
+
+.fabs-card-hospedagem {
+  margin-top: -7vh;
+}
