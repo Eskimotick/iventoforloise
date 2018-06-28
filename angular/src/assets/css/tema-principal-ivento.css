@@ -1,12 +1,12 @@
 body {
-  background-image: url('../assets/img/background/background-img.jpg');
+  /*background-image: url("../img/vincent-versluis-198649-unsplash.jpg");*/
+  background-image: url("../../../assets/img/background/background-img.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
   height: 100vh;
 
 }
-
 /* para visualizar melhor o que está escrito na página */
 .filtro {
   background: rgba(0,0,0,0.3);

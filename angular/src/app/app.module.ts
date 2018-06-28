@@ -12,11 +12,14 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { TooltipModule } from 'ngx-tooltip';
 
 import { AppComponent } from './app.component';
-import { NotFoundComponent } from './components/not-found/not-found.component';
-import { HomeComponent } from './components/home/home.component';
-import { LoginComponent } from './components/login/login.component';
-import { CadastroComponent } from './components/cadastro/cadastro.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { HomeComponent } from './pages/home/home.component';
+import { LoginComponent } from './pages/login/login.component';
+import { CadastroComponent } from './pages/cadastro/cadastro.component';
 import { environment } from '../environments/environment';
+import { AdminUsuariosComponent } from './pages/admin/admin-usuarios/admin-usuarios.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -25,12 +28,16 @@ export function tokenGetter() {
 @NgModule({
   declarations: [
     AppComponent, // root
+    NavbarComponent, //navbar
+    SidebarComponent, //sidebar
     HomeComponent, // home
     LoginComponent, // login
-    CadastroComponent, // cadastro
-    NotFoundComponent, // notfound page
+    CadastroComponent,
+    NotFoundComponent,
+    AdminUsuariosComponent,
   ],
   imports: [
+    AppRoutingModule,
     BrowserModule,
     HttpClientModule, // http
     FormsModule, // forms

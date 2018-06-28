@@ -1,0 +1,23 @@
+/* formatação de texto */
+#titulo-home {
+  font-family: 'Raleway';
+  font-size: 6.2em;
+  font-weight: 200;
+  color: white;
+  text-shadow: 1px 1px 6px #424242;
+  margin-bottom: 0;
+  margin-top: 20vh;
+}
+
+@media screen and (max-width: 429px) {
+  .titulo-home {
+    font-size: 5em;
+  }
+}
+
+p {
+  font-family: 'Raleway';
+  font-size: 1.4em;
+  color: white;
+  text-shadow: 3px 3px 5px #424242;
+}
