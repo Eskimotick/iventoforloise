@@ -9,7 +9,7 @@ body {
 }
 /* para visualizar melhor o que está escrito na página */
 .filtro {
-  background: rgba(0,0,0,0.3);
+  background: rgba(0,0,0,0.35);
   z-index: 2;
   height: 100vh;
 }
