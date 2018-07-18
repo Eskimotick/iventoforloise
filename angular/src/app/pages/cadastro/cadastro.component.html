@@ -37,11 +37,19 @@
                   </div>
                   <div class="row">
                     <div class="input-field col s12">
-                      <select>
+                      <mat-form-field>
+                        <mat-select placeholder="Escolha seu pacote">
+                          <mat-option *ngFor="let food of foods" [value]="pacote.value">
+                            {{pacote.viewValue}}
+                            [style.width]="'100%'"
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                      <!--select>
                         <option value="" disabled selected>Selecionar Pacote</option>
                         <option value="1">Pacote sem Hospedagem</option>
                         <option value="2">Pacote com Hospedagem</option>
-                      </select>
+                      </select-->
                     </div>
                   </div>
                   <div class="row">

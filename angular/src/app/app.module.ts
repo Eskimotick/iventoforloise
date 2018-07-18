@@ -5,6 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 
+import {MatSelectModule} from '@angular/material';
+
 import { JwtModule } from '@auth0/angular-jwt';
 import { ToastrModule } from 'ngx-toastr';
 import { NgxMaskModule } from 'ngx-mask';
@@ -56,6 +58,7 @@ export function tokenGetter() {
     NgxMaskModule.forRoot(), // https://www.npmjs.com/package/ngx-mask
     NgxPaginationModule, // https://www.npmjs.com/package/ngx-pagination
     TooltipModule, // https://www.npmjs.com/package/ngx-tooltip
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
