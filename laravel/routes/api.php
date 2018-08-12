@@ -13,41 +13,40 @@ use Illuminate\Http\Request;
 |
 */
 
+// Rotas de log-in e cadastro para visitantes.
+Route::post('login', 'API\PassportController@login');
+Route::post('register', 'API\PassportController@register');
+
+// Visitantes podem ver a listagem de usuários.
+Route::get('user/{id}', 'UserController@show');
+Route::get('user', 'UserController@index');
+
+// Grupo de rotas para usuários logados.
 Route::group([
-
-    'middleware' => 'api',
+    'middleware' => 'auth:api',
     'prefix' => 'auth'
-
-], function () {
-
-    Route::post('login', 'AuthController@login');
-    Route::post('logout', 'AuthController@logout');
-    Route::post('registro', 'UsuarioController@create');
-
+], function (){
+    Route::post('logout', 'API\PassportController@logout');
 });
 
 //Grupo de Rotas para o painel de usuário
 Route::group([
-
-  'prefix' => 'user'
-
-], function () {
-
-  Route::put('{id}', 'UsuarioController@update');
-
+    'middleware' => 'auth:api',
+    'prefix' => 'users'
+], function (){
+    Route::get('{id}', 'UserController@show');
+    Route::get('/', 'UserController@index');
+    Route::post('/', 'UserController@store');
+    Route::put('{id}', 'UserController@update');
+    Route::delete('{id}', 'UserController@delete');
 });
 
 //Grupo de Rotas para o painel de admin
 Route::group([
-
   'prefix' => 'admin'
-
 ], function () {
-
   //rotas aqui
-  
 });
-
 
 /*  Modelo de Grupo de rotas
  *  Route::group([
