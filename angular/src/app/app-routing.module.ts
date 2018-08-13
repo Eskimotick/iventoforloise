@@ -18,7 +18,7 @@ const routes: Routes = [
   { path: 'cadastro', component: CadastroComponent },
   { path: 'usuarios', component: AdminUsuariosComponent },
   { path: 'hospedagem', component: AdminHospedagemComponent },
-  { path: '**', component: NotFoundComponent },
+  { path: '**', component: NotFoundComponent }
 ];
 
 @NgModule({
