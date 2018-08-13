@@ -55,7 +55,9 @@ const routes: Routes = [
     CadastroComponent,
     AppComponent,
     NavbarComponent,
-    SidebarComponent
+    SidebarComponent,
+		AdminUsuariosComponent,
+		AdminHospedagemComponent
 
   ],
   exports: [ RouterModule ]

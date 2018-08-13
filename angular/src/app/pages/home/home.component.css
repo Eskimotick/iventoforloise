@@ -4,7 +4,7 @@
   font-size: 6.2em;
   font-weight: 200;
   color: white;
-  text-shadow: 1px 1px 6px #424242;
+  text-shadow: 2px 2px 6px #424242;
   margin-bottom: 0;
   margin-top: 20vh;
 }
@@ -14,16 +14,10 @@
     font-size: 5em;
   }
 }
-/* para visualizar melhor o que está escrito na página */
-.filtro {
-  background: rgba(0,0,0,0.3);
-  z-index: 2;
-  height: 100vh;
-}
 
 p {
   font-family: 'Raleway';
   font-size: 1.4em;
   color: white;
-  text-shadow: 3px 3px 5px #424242;
+  text-shadow: 4px 4px 6px black;
 }
