@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule } from './app.routing.module';
 
 import { JwtModule } from '@auth0/angular-jwt';
 import { ToastrModule } from 'ngx-toastr';
@@ -36,7 +36,7 @@ export function tokenGetter() {
     CadastroComponent,
     NotFoundComponent,
     AdminUsuariosComponent,
-    AdminHospedagemComponent,
+    AdminHospedagemComponent
   ],
   imports: [
     AppRoutingModule,
@@ -55,7 +55,7 @@ export function tokenGetter() {
     BrowserAnimationsModule,
     NgxMaskModule.forRoot(), // https://www.npmjs.com/package/ngx-mask
     NgxPaginationModule, // https://www.npmjs.com/package/ngx-pagination
-    TooltipModule, // https://www.npmjs.com/package/ngx-tooltip
+    TooltipModule // https://www.npmjs.com/package/ngx-tooltip
   ],
   providers: [],
   bootstrap: [AppComponent]
