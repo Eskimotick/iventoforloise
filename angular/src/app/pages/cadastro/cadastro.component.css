@@ -70,3 +70,8 @@ input:not([type]), input[type="email" i], input[type="number" i], input[type="pa
   margin-bottom: 0;
   margin-top: 0.8;
 }
+
+.mat-form-field {
+  font-weight: 300;
+  width: 100%;
+}

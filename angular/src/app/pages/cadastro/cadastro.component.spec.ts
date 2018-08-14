@@ -23,3 +23,11 @@ describe('CadastroComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
+
+import {Component} from '@angular/core';
+
+export interface Food {
+  value: string;
+  viewValue: string;
+}

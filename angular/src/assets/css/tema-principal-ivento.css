@@ -74,3 +74,10 @@ body {
 .dropdown-content li>a, .dropdown-content li>span {
   color: #37474f;
 }
+
+/* angular material */
+
+.mat-form-field {
+  font-weight: 300;
+  width: 100%;
+}
