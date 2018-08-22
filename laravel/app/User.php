@@ -3,11 +3,13 @@
 namespace App;
 
 use Auth;
+use Ramsey\Uuid\Uuid;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use Laravel\Passport\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
+use App\Notifications\ConfirmEmailNotification;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -16,7 +18,7 @@ class User extends Authenticatable
     use HasApiTokens;
 
     protected $fillable = [
-        'name', 'email', 'password', 'ativo'
+        'name', 'email', 'password', 'confirmation_code'
     ];
 
     protected $hidden = [
@@ -55,6 +57,11 @@ class User extends Authenticatable
     {
       // Deleta o usuário passado na função.
       User::destroy($user->id);
+    }
+
+    public function sendConfirmNotification (){
+        $this->confirmation_code = Uuid::uuid4();
+        $this->notify(new ConfirmEmailNotification($info));
     }
 
 }
