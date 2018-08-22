@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app.routing.module';
+import { MaterializeModule} from 'angular2-materialize';
 
 
 import { JwtModule } from '@auth0/angular-jwt';
@@ -53,6 +54,7 @@ export function tokenGetter() {
   imports: [
     AppRoutingModule,
     BrowserModule,
+    MaterializeModule,
     HttpClientModule, // http
     FormsModule, // forms
     AppRoutingModule, // rotas

@@ -21,4 +21,7 @@ body {
   .titulo-home {
     font-size: 5em;
   }
+  .container {
+    width: 90%;
+  }
 }
