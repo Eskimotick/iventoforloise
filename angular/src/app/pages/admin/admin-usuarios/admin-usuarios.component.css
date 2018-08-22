@@ -1,0 +1,9 @@
+/* navbar */
+nav .nav-admin {
+  text-shadow: none;
+  color: #f5f5f5;
+}
+
+nav .nav-admin .brand-logo, nav ul li a {
+  color: #424242;
+}

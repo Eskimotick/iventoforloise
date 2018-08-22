@@ -1,11 +1,31 @@
+
+/* navbar */
+nav .nav-admin {
+  text-shadow: none;
+  color: #f5f5f5;
+}
+
+nav .nav-admin .brand-logo, nav ul li a {
+  color: #424242;
+}
+
+/* elementos */
+
+.row-cards-hoteis {
+  margin: 2vw;
+}
+
 .card h5 {
   font-size: 1em;
   color: #424242;
   text-align: center;
 }
- .modal {
-   min-height: 70vh;
- }
+.card .card-title {
+  text-shadow: 2px 2px 6px #424242;
+}
+.modal {
+  min-height: 70vh;
+}
 
  @media screen and (min-width: 993px) {
    .modal {

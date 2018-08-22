@@ -5,7 +5,6 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app.routing.module';
 
-import {MatSelectModule} from '@angular/material';
 
 import { JwtModule } from '@auth0/angular-jwt';
 import { ToastrModule } from 'ngx-toastr';
@@ -15,14 +14,23 @@ import { TooltipModule } from 'ngx-tooltip';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+
+/* elementos admin */
+import { NavadminComponent } from './components/navadmin/navadmin.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { ContainerAdminComponent } from './components/container-admin/container-admin.component';
+
+/* páginas admin */
+import { AdminUsuariosComponent } from './pages/admin/admin-usuarios/admin-usuarios.component';
+import { AdminHospedagemComponent } from './pages/admin/admin-hospedagem/admin-hospedagem.component';
+
+/* visitante */
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { CadastroComponent } from './pages/cadastro/cadastro.component';
 import { environment } from '../environments/environment';
-import { AdminUsuariosComponent } from './pages/admin/admin-usuarios/admin-usuarios.component';
-import { AdminHospedagemComponent } from './pages/admin/admin-hospedagem/admin-hospedagem.component';
+
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -32,6 +40,8 @@ export function tokenGetter() {
   declarations: [
     AppComponent, // root
     NavbarComponent, //navbar
+    NavadminComponent, // navbar admin
+    ContainerAdminComponent , //container principal da área do admin
     SidebarComponent, //sidebar
     HomeComponent, // home
     LoginComponent, // login
