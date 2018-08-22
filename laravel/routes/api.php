@@ -17,6 +17,13 @@ use Illuminate\Http\Request;
 Route::post('login', 'API\PassportController@login');
 Route::post('register', 'API\PassportController@register');
 
+// Rotas para recuperar / redefinir senha.
+Route::post('password/email', 'Auth\ForgotPasswordController@getResetToken');
+Route::post('password/reset', 'Auth\ResetPasswordController@reset');
+
+// Rota para confirmação de email
+Route::post('confirm-mail', 'Auth\RegisterController@sendEmail')->name('confirm-mail');
+
 // Visitantes podem ver a listagem de usuários.
 Route::get('user/{id}', 'UserController@show');
 Route::get('user', 'UserController@index');

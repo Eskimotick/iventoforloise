@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use Ramsey\Uuid\Uuid;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Notifications\Auth\ConfirmEmailNotification;
 
 class RegisterController extends Controller
 {
@@ -69,4 +71,17 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
+
+    public function sendEmail(User $user)
+    {
+
+        $user->confirmation_code = Uuid::uuid4();
+
+        //send email
+        $user->notify(new ConfirmEmailNotification());
+
+        // return back()->with('status', __('auth.confirm'));
+        return 200;
+    }
+
 }

@@ -2,6 +2,7 @@
 
 namespace App\Notifications\Auth;
 
+use Ramsey\Uuid\Uuid;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -40,12 +41,13 @@ class ConfirmEmailNotification extends Notification
      */
     public function toMail($notifiable)
     {
+        // dd($notifiable);
         return (new MailMessage)
                 ->subject('Seja bem-vindo ao '.config('app.name'))
-                ->greeting('user' => $notifiable->name])
+                ->greeting(['user' => $notifiable->name])
                 ->line('A sua inscrição no '.config('app.name'). ' está quase concluída.')
                 ->line('Você só tem que verificar seu e-mail clicando no link a seguir:')
-                ->action(route('confirm', [$notifiable->confirmation_code]));
+                ->action('Confirme seu e-mail', route('confirm-mail', [$notifiable->confirmation_code]))
                 ->line('Qualquer dúvida nossa equipe está sempre a disposição!');
     }
 
