@@ -2,7 +2,14 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
+use App\Models\Admin\Pacote;
+use App\Http\Requests\Admin\StorePacoteRequest as StoreRequest;
+use App\Http\Requests\Admin\UpdatePacoteRequest as UpdateRequest;
+
+
+
 
 class PacoteController extends Controller
 {
@@ -13,7 +20,8 @@ class PacoteController extends Controller
      */
     public function index()
     {
-        //
+        $pacotes = Pacote::all();
+        return response()->success($pacotes);
     }
 
     /**
@@ -22,9 +30,12 @@ class PacoteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function storePacote(StoreRequest $request)
     {
-        //
+        $novoPacote = new Pacote;
+        $novoPacote->createPacote($request);
+        
+        return response()->success($novoPacote);
     }
 
     /**
@@ -35,7 +46,16 @@ class PacoteController extends Controller
      */
     public function show($id)
     {
-        //
+        $pacote = Pacote::find($id);
+
+        if($pacote){
+            return response()->success($pacote);
+        }
+        else{
+            return response()->error('Pacote não encontrado, verifique se o pacote existe.', 400);
+        }
+
+        
     }
 
     /**
@@ -45,9 +65,18 @@ class PacoteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function updatePacote(UpdateRequest $request, $id)
     {
-        //
+        $pacote = Pacote::find($id);
+
+        if($pacote){
+            $pacote->updatePacote($request);
+            return response()->success($pacote);
+        }
+        else{
+            return response()->error('Pacote não encontrado, verifique se o pacote existe.', 400);
+        }
+
     }
 
     /**
@@ -56,8 +85,16 @@ class PacoteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroyPacote($id)
     {
-        //
+        $destroyPacote = Pacote::find($id);
+
+        if($destroyPacote){
+            $destroyPacote->delete();
+            return response()->success('pacote deletado com sucesso!');
+        }
+        else{
+            return response()->error('Pacote não encontrado, verifique se o pacote existe.', 400);
+        }
     }
 }
