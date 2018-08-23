@@ -22,7 +22,7 @@ Route::post('password/email', 'Auth\ForgotPasswordController@getResetToken');
 Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
 // Rota para confirmação de email
-Route::post('confirm-mail', 'Auth\RegisterController@sendEmail')->name('confirm-mail');
+Route::post('confirm-mail/{id}', 'API\PassportController@register')->name('confirm-mail');
 
 // Visitantes podem ver a listagem de usuários.
 Route::get('user/{id}', 'UserController@show');
@@ -55,6 +55,7 @@ Route::group([
     Route::post('/', 'UserController@store');
     Route::put('{id}', 'UserController@update');
     Route::delete('{id}', 'UserController@delete');
+
 });
 
 //Grupo de Rotas para o painel de admin

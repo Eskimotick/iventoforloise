@@ -74,14 +74,8 @@ class RegisterController extends Controller
 
     public function sendEmail(User $user)
     {
-
-        $user->confirmation_code = Uuid::uuid4();
-
-        //send email
-        $user->notify(new ConfirmEmailNotification());
-
-        // return back()->with('status', __('auth.confirm'));
-        return 200;
+      sendConfirmNotification()
+      return response()->success($user);
     }
 
 }

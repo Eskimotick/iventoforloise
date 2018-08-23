@@ -5,10 +5,12 @@ namespace App\Http\Controllers\API;
 use DB;
 use Auth;
 use App\User;
+use Ramsey\Uuid\Uuid;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\UserRequest;
+use App\Notifications\Auth\ConfirmEmailNotification;
 
 class PassportController extends Controller
 {
@@ -30,6 +32,9 @@ class PassportController extends Controller
 	  $success['token'] = $newUser->createToken('iVento')->accessToken;
 
     $newUser->save();
+
+    $newUser->sendConfirmNotification();
+
 
     // Passa na response o token e nome do usuário, com status 200 (tudo ok).
 	  return response()->json(['success' => $success], $this->successStatus);
@@ -66,4 +71,11 @@ class PassportController extends Controller
     $success['message'] = 'Log-out efetuado com sucesso!';
     return response()->json(['success' => $success], 204);
   }
+
+  // public function sendEmail(User $user)
+  // {
+  //   sendConfirmNotification();
+  //   return response()->success($user);
+  // }
+
 }

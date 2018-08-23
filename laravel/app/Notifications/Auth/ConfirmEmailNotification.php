@@ -43,11 +43,11 @@ class ConfirmEmailNotification extends Notification
     {
         // dd($notifiable);
         return (new MailMessage)
-                ->subject('Seja bem-vindo ao '.config('app.name'))
-                ->greeting(['user' => $notifiable->name])
-                ->line('A sua inscrição no '.config('app.name'). ' está quase concluída.')
+                ->subject('Seja bem-vindo ao '.env('APP_NAME'))
+                ->greeting($notifiable->name)
+                ->line('A sua inscrição no '.env('APP_NAME'). ' está quase concluída.')
                 ->line('Você só tem que verificar seu e-mail clicando no link a seguir:')
-                ->action('Confirme seu e-mail', route('confirm-mail', [$notifiable->confirmation_code]))
+                ->action('Confirme seu e-mail', env('App_Url').'/confirm/'.$notifiable->confirmation_code)
                 ->line('Qualquer dúvida nossa equipe está sempre a disposição!');
     }
 

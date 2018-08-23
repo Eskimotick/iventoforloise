@@ -9,7 +9,7 @@ use App\Http\Requests\UserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use Laravel\Passport\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
-use App\Notifications\ConfirmEmailNotification;
+use App\Notifications\Auth\ConfirmEmailNotification;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -59,9 +59,10 @@ class User extends Authenticatable
       User::destroy($user->id);
     }
 
-    public function sendConfirmNotification (){
+    public function sendConfirmNotification(){
         $this->confirmation_code = Uuid::uuid4();
-        $this->notify(new ConfirmEmailNotification($info));
+        $this->save();
+        $this->notify(new ConfirmEmailNotification());
     }
 
 }
