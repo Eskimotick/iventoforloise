@@ -9,6 +9,7 @@ class Lote extends Model
 {
     protected $fillable = [];
 
+    // método só é chamado pela model de pacotes
     public function createLote($dados, $lote){
 
         $this->lote = $lote;
@@ -22,10 +23,19 @@ class Lote extends Model
 
     }
 
+    //método utilizado pelo admin
     public function updateLote($request){
 
         if($request->vagas){
-            $this->vagas = $request->vagas;
+
+            $resposta = $this->verificaVagas($request->vagas);
+            if(gettype($resposta) == 'string'){
+                return $resposta;
+            } 
+            else{
+                $this->vagas = $request->vagas;
+            }
+            
         }
         if($request->descricao){
             $this->descricao = $request->descricao;
@@ -39,6 +49,33 @@ class Lote extends Model
 
         $this->save();
         
+    }
+
+    public function verificaVagas($vagas){
+
+        //pega o pacote pai do lote
+        $pacote = $this->belongsTo('App\Models\Admin\Pacote', 'id')->first();
+        
+        // se o número de vagas da request for maior que 
+        if($vagas >= $pacote->vagas){
+            return 'Número de vagas deve ser menor que o número total de vagas do Pacote';
+        }
+
+        if($vagas > $this->vagas){
+            $ultimoLote = Lote::where('pacote_id', $pacote->id)->where('lote', $pacote->lotes)->first();
+            $vagas = $vagas - $this->vagas;
+            if($ultimoLote->vagas <= $vagas){
+                return 'O número de vagas disponíveis é menor que o número digitado';
+            }
+            else{
+                
+            }
+        }
+
+        if($vagas < $this->vagas){
+
+        }
+
     }
 
 }
