@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
+use App\Models\Admin\Lote;
+use App\Http\Requests\Admin\UpdateLoteRequest as UpdateRequest;
 
 class LoteController extends Controller
 {
@@ -45,9 +48,18 @@ class LoteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function updateLote(UpdateRequest $request, $id)
     {
-        //
+        $lote = Lote::find($id);
+        
+        if($lote){
+            $lote->updateLote($request);
+            return response()->success($lote);            
+        }
+        else{
+            return response()->error('Lote não encontrado, verifique se o pacote existe.', 400);
+        }
+
     }
 
     /**

@@ -40,4 +40,5 @@ class Lote extends Model
         $this->save();
         
     }
+
 }
