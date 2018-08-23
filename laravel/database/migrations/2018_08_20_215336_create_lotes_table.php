@@ -23,6 +23,10 @@ class CreateLotesTable extends Migration
             $table->string('valor')->nullable();
             $table->string('vencimento');
             $table->timestamps();
+
+            $table->foreign('pacote_id')
+                    ->references('id')->on('pacotes')
+                    ->onDelete('cascade');
         });
     }
 
