@@ -66,7 +66,7 @@ Route::group([//criar middleware para restringir acesso
     });
 
     Route::group(['prefix' => 'lotes'], function(){
-        Route::put('{id}', 'LoteController@updateLote');
+        Route::put('{id}', 'LoteController@updateLote');            //http://site.com/api/admin/lotes/id
     });
   //rotas aqui
 });
