@@ -51,9 +51,23 @@ Route::group([
 });
 
 //Grupo de Rotas para o painel de admin
-Route::group([
+Route::group([//criar middleware para restringir acesso
   'prefix' => 'admin'
 ], function () {
+
+    //Rotas de pacotes
+    Route::group(['prefix' => 'pacotes'], function(){
+
+        Route::get('/','PacoteController@index');                   //http://site.com/api/admin/pacotes/
+        Route::get('{id}','PacoteController@showPacote');           //http://site.com/api/admin/pacotes/id
+        Route::post('/', 'PacoteController@storePacote');           //http://site.com/api/admin/pacotes/
+        Route::put('{id}', 'PacoteController@updatePacote');        //http://site.com/api/admin/pacotes/id
+        Route::delete('{id}', 'PacoteController@destroyPacote');    //http://site.com/api/admin/pacotes/id
+    });
+
+    Route::group(['prefix' => 'lotes'], function(){
+        Route::put('{id}', 'LoteController@updateLote');
+    });
   //rotas aqui
 });
 
