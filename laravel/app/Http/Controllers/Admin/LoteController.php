@@ -53,7 +53,10 @@ class LoteController extends Controller
         $lote = Lote::find($id);
         
         if($lote){
-            $lote->updateLote($request);
+            $resposta = $lote->updateLote($request);
+            if($resposta){
+                return response()->error($resposta, 400);    
+            }
             return response()->success($lote);            
         }
         else{
