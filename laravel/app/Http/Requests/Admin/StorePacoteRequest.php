@@ -42,11 +42,9 @@ class StorePacoteRequest extends FormRequest
     public function messages(){
         return [
             'nome.required' => 'Digite um nome para o pacote',
-            'nome.string' => '',
             'nome.min' => 'O nome deve conter no mínimo 10 caracteres',
             'nome.max' => 'O nome deve conter no máximo 50 caracteres',
             'descricao.required' => 'Uma descrição é necessária',
-            'descricao.string' => 'A descrição precisa ser um texto',
             'descricao.min' => 'A descrição deve conter no mínimo 10 caracteres',
             'descricao.max' => 'A descrição deve conter no máximo 300 caracteres',
             'lotes.required' => 'É necessário fornecer o número de lotes do pacote',
