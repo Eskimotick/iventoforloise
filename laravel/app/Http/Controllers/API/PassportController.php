@@ -38,7 +38,7 @@ class PassportController extends Controller
 
 
     // Passa na response o token e nome do usuário, com status 200 (tudo ok).
-	  return response()->json(['success' => $success], $this->successStatus);
+	  return response()->success(['success' => $success]);
   }
 
 
@@ -47,7 +47,7 @@ class PassportController extends Controller
     //recebe o usuário do código de confirmação
     $user_confirm = User::where('confirmation_code', $request->confirmation_code)->first();
 
-    return response()->json(['User' => $user_confirm]); 
+    return response()->success(['User' => $user_confirm]); 
   }
 
   public function confirmRegister(ConfirmRegisterRequest $request)
@@ -63,7 +63,7 @@ class PassportController extends Controller
 
     $user_confirm->save();
     
-    return response()->json(['success' => $success], $this->successStatus);
+    return response()->success($success);
   }
 
   // Função de log-in.

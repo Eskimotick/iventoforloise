@@ -37,13 +37,15 @@ Route::group([
     Route::post('logout', 'API\PassportController@logout');
 });
 
-// Rotas de log-in pelo FaceBook.
+// Rotas de log-in pelo FaceBook e pelo Google.
 Route::group([
     'middleware' => 'web',
     'prefix' => 'auth'
 ], function (){
-    Route::get('login/facebook', 'FacebookController@redirectToFacebook');
-    Route::get('login/facebook/callback', 'FacebookController@handleFacebookCallback');
+    Route::get('login/facebook', 'API\FacebookController@redirectToFacebook');
+    Route::get('login/facebook/callback', 'API\FacebookController@handleFacebookCallback');
+    Route::get('login/google', 'API\GoogleController@redirectToGoogle');
+    Route::get('login/google/callback', 'API\GoogleController@handleGoogleCallback');
 });
 
 //Grupo de Rotas para o painel de usuário

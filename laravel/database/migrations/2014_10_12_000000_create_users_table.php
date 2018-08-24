@@ -25,6 +25,7 @@ class CreateUsersTable extends Migration
             $table->string('admin')->default('false');
             //table->integer('lote_id')->unsigned()->nullable();
             //table->integer('quarto_id')->unsigned()->nullable();
+            //table->integer('google_id')->unsigned()->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

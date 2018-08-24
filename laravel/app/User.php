@@ -65,4 +65,13 @@ class User extends Authenticatable
         $this->notify(new ConfirmEmailNotification());
     }
 
+    public function addNew($input)
+    {
+      $check = static::where('google_id',$input['google_id'])->first();
+      if(is_null($check))
+      {
+        return static::create($input);
+      }
+      return $check;
+    }
 }
