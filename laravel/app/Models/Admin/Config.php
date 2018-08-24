@@ -71,10 +71,13 @@ class Config extends Model
 
         // $status = 0 - evento aberto;
         // $status = 2 - evento trancado pelo admin
-        $hoje = date('Y-m-d');
-        $fim_inscricoes = explode(' ',$this->fim_inscricoes, 2)[0];            
-        
-        if($hoje >= $fim_inscricoes){
+
+        // se ainda não abriram as inscrições
+        if($this->status == 1){
+            return 'Não é possível abrir/fechar as inscrições antes da data de abertura das inscrições.';
+        }
+        // se inscrições encerradas
+        elseif($this->status == 3){
             return 'Não é mais possível abrir/fechar as inscrições pois elas já se encerraram.';
         }
         else{
