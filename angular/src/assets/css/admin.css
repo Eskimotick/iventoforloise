@@ -11,10 +11,10 @@
 }
 
 /* container */
-.container-admin {
-  width: 85%;
+.container.white.container-admin {
   margin-left: 12vw;
   height: 82vh;
+  width: 85%;
 }
 
 .titulo-pagina {
@@ -26,11 +26,11 @@
 }
 
 /* botao padrao - cinza azulado */
-.btn {
+.btn, input.btn, .btn.btn-large, .btn-floating.fab.waves-effect.waves-light {
   background-color: #607d8b;
 }
 
-.btn:hover {
+.btn:hover, input.btn:hover, .btn.btn-large:hover, .btn-floating.fab.waves-effect.waves-light:hover {
   background-color: #90a4ae;
 }
 
