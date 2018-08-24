@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Models\Admin;
-use Carbon\Carbon;
 
+use Carbon\Carbon;
+use App\Models\Admin\Config;
 use Illuminate\Database\Eloquent\Model;
 
 class Lote extends Model
@@ -34,6 +35,7 @@ class Lote extends Model
             //faz as validações das quantidades de vagas entre os lotes
             $resposta = $this->verificaVagas($request->vagas);
 
+            //verifica se a resposta é uma string, que significa que algo deu errado.
             if(gettype($resposta) == 'string'){
                 return $resposta;
             } 
@@ -62,9 +64,9 @@ class Lote extends Model
         }
         
         //se for ultimo lote o vencimento é a data final das inscrições
-        // if($this->lote == $lotesPacote){
-        //     $this->vencimento = $config->fim_inscricoes;
-        // }
+        if($this->lote == $lotesPacote){
+            $this->vencimento = Config::max('fim_inscricoes');
+        }
 
         $this->save();
         
