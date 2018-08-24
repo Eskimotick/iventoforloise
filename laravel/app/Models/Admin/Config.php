@@ -42,15 +42,7 @@ class Config extends Model
     public function updateEvento($request){
         
         if($request->inicio_evento){
-            // $hoje = date('Y-m-d');
-            // $inicio_evento = explode(' ',$request->inicio_evento, 2)[0];            
-            // if($hoje >= $inicio_evento){
-            //     return 'A data de inicio do evento deve ser uma data futura.';
-            // }
 
-            // $fim_inscricoes = explode(' ',$this->fim_inscricoes, 2)[0];
-            // if($fim_inscricoes >= $inicio_evento){
-                
             if($this->fim_inscricoes >= $request->inicio_evento){
                 return 'A data de inicio do evento deve ser após o fim das inscrições.';
             }
@@ -79,7 +71,15 @@ class Config extends Model
 
         // $status = 0 - evento aberto;
         // $status = 2 - evento trancado pelo admin
-        $this->status = $status;
-        $this->save();
+        $hoje = date('Y-m-d');
+        $fim_inscricoes = explode(' ',$this->fim_inscricoes, 2)[0];            
+        
+        if($hoje >= $fim_inscricoes){
+            return 'Não é mais possível abrir/fechar as inscrições pois elas já se encerraram.';
+        }
+        else{
+            $this->status = $status;
+            $this->save();
+        }
     }
 }

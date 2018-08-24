@@ -51,11 +51,11 @@ class UpdateConfigRequest extends FormRequest
             'status.integer' => 'O código do status é armazenado como número.',
             'status.min' => 'Código do status inválido, abaixo dos permitidos.',
             'status.max' => 'Código do status inválido, acima dos permitidos.',
-            'inicio_inscricoes.regex' => 'A data deve obedecer o seguinte formato: 2018-10-04 00:00:00',
-            'fim_inscricoes.regex' => 'A data deve obedecer o seguinte formato: 2018-10-10 23:59:59',
-            'inicio_evento.regex' => 'A data deve obedecer o seguinte formato: 2018-10-12 00:00:00',
-            'fim_evento.regex' => 'A data deve obedecer o seguinte formato: 2018-10-12 23:59:59',
-            'fim_pagamentos.regex' => 'A data deve obedecer o seguinte formato: 2018-10-31 23:59:59',
+            'inicio_inscricoes.regex' => 'A data deve obedecer o seguinte formato: ano-mes-dia hora:min:seg',
+            'fim_inscricoes.regex' => 'A data deve obedecer o seguinte formato: ano-mes-dia hora:min:seg',
+            'inicio_evento.regex' => 'A data deve obedecer o seguinte formato: ano-mes-dia hora:min:seg',
+            'fim_evento.regex' => 'A data deve obedecer o seguinte formato: ano-mes-dia hora:min:seg',
+            'fim_pagamentos.regex' => 'A data deve obedecer o seguinte formato: ano-mes-dia hora:min:seg',
         ];
     }
 }

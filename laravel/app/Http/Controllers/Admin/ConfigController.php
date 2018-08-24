@@ -53,7 +53,7 @@ class ConfigController extends Controller
         $config = Config::find(1);
                 
         $resposta = $config->updateInscricoes($request);
-        if($resposta){
+        if(gettype($resposta) == 'string'){
             return response()->error($resposta, 400);    
         }
         
@@ -66,7 +66,7 @@ class ConfigController extends Controller
         $config = Config::find(1);
         
         $resposta = $config->updateEvento($request);
-        if($resposta){
+        if(gettype($resposta) == 'string'){
             return response()->error($resposta, 400);    
         }
         
@@ -76,15 +76,19 @@ class ConfigController extends Controller
 
     public function abreInscricoes(){
         $config = Config::find(1);
-        $config->adminChangeStatus(0);
-
+        $resposta = $config->adminChangeStatus(0);
+        if(gettype($resposta) == 'string'){
+            return response()->error($resposta, 400);
+        }
         return response()->success('Evento aberto com sucesso!');
     }
 
     public function fechaInscricoes(){
         $config = Config::find(1);
-        $config->adminChangeStatus(2);
-
+        $resposta = $config->adminChangeStatus(2);
+        if(gettype($resposta) == 'string'){
+            return response()->error($resposta, 400);
+        }
         return response()->success('Evento fechado com sucesso!');
         
     }
