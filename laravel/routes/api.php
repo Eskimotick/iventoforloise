@@ -65,10 +65,17 @@ Route::group([//criar middleware para restringir acesso
         Route::delete('{id}', 'PacoteController@destroyPacote');    //http://site.com/api/admin/pacotes/id
     });
 
+    // rota de edição dos lotes
     Route::group(['prefix' => 'lotes'], function(){
         Route::put('{id}', 'LoteController@updateLote');            //http://site.com/api/admin/lotes/id
     });
-  //rotas aqui
+    
+    //rotas de atualizar configurações
+    Route::put('inscricoes', 'ConfigController@updateInscricoes');      //http://site.com/api/admin/inscricoes
+    Route::put('evento', 'ConfigController@updateEvento');              //http://site.com/api/admin/evento
+    Route::put('abreinscricoes', 'ConfigController@abreInscricoes');    //http://site.com/api/admin/abreinscricoes
+    Route::put('fechainscricoes', 'ConfigController@fechaInscricoes');  //http://site.com/api/admin/fechainscricoes
+    
 });
 
 /*  Modelo de Grupo de rotas
