@@ -52,7 +52,7 @@ class UpdatePacoteRequest extends FormRequest
             'vagas.min' => 'O número de vagas tem que ser maior que zero.',
             'lote_atual.integer' => 'O valor do lote atual deve ser um número',
             'lote_atual.min' => 'O número do lote atual tem que ser maior que zero.',
-            'lote_atual.lte' => 'O número do lote_atual não pode ser maior que o número de lotes.',
+            'lote_atual.lte' => 'O número do lote atual não pode ser maior que o número de lotes.',
         ];
     }
 }

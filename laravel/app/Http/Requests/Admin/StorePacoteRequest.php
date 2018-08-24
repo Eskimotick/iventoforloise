@@ -50,7 +50,7 @@ class StorePacoteRequest extends FormRequest
             'lotes.required' => 'É necessário fornecer o número de lotes do pacote',
             'lotes.integer' => 'A quantidade de lotes deve ser um número',
             'lotes.min' => 'O número tem que ser maior que zero.',
-            'vagas.required' => 'É necessário forncer o número de vagas total do pacote',
+            'vagas.required' => 'É necessário fornecer o número de vagas total do pacote',
             'vagas.integer' => 'A quantidade de vagas deve ser um número',
             'vagas.min' => 'O número de vagas tem que ser maior que zero.',
         ];

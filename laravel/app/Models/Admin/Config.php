@@ -78,7 +78,7 @@ class Config extends Model
         }
         // se inscrições encerradas
         elseif($this->status == 3){
-            return 'Não é mais possível abrir/fechar as inscrições pois elas já se encerraram.';
+            return 'Não é mais possível abrir/fechar as inscrições, pois já estão encerradas.';
         }
         else{
             $this->status = $status;

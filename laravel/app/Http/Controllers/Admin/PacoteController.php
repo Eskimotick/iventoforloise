@@ -44,7 +44,7 @@ class PacoteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function showPacote($id)
     {
         $pacote = Pacote::find($id);
 
