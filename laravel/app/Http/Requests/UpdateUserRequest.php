@@ -26,9 +26,9 @@ class UpdateUserRequest extends FormRequest
     public function messages()
      {
        return [
-         'name.required' => 'É necessário fornecer um nome.',
-         'name.regex' => 'O nome deve consistir apenas de caracteres alfabéticos.',
-         'name.max' => 'O nome deve ter no máximo 255 caracteres.',
+         'nickame.required' => 'É necessário fornecer um nome.',
+         'nickame.regex' => 'O nome deve consistir apenas de caracteres alfabéticos.',
+         'nickame.max' => 'O nome deve ter no máximo 255 caracteres.',
          'email.required' => 'É necessário preencher o campo de e-mail.',
          'email.email' => 'O e-mail não está no formato correto',
          'email.max' => 'O e-mail deve ter no máximo 255 caracteres.',

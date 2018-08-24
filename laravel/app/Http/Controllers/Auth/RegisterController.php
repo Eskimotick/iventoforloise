@@ -74,7 +74,7 @@ class RegisterController extends Controller
 
     public function sendEmail(User $user)
     {
-      sendConfirmNotification()
+      sendConfirmNotification();
       return response()->success($user);
     }
 

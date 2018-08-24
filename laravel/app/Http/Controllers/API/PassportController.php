@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\UserRequest;
+use App\Http\Requests\confirmRegisterRequest;
 use App\Notifications\Auth\ConfirmEmailNotification;
 
 class PassportController extends Controller
@@ -22,13 +23,13 @@ class PassportController extends Controller
     $newUser = new User;
 
     // Cria um novo usuário com nome, email e senha criptografada.
-    $newUser->name = $request->name;
+    $newUser->nickname = $request->nickname;
     $newUser->email = $request->email;
     $newUser->password = bcrypt($request->password);
 
     // $success guarda o token e o nome do usuário correspondente.
     $success['message'] = 'Usuário Cadastrado com Sucesso, '.$newUser->name.'!';
-    $success['name'] = $newUser->name;
+    $success['nickname'] = $newUser->nickname;
 	  $success['token'] = $newUser->createToken('iVento')->accessToken;
 
     $newUser->save();
@@ -38,6 +39,31 @@ class PassportController extends Controller
 
     // Passa na response o token e nome do usuário, com status 200 (tudo ok).
 	  return response()->json(['success' => $success], $this->successStatus);
+  }
+
+
+  public function fetchUser(ConfirmRegisterRequest $request)
+  {
+    //recebe o usuário do código de confirmação
+    $user_confirm = User::where('confirmation_code', $request->confirmation_code)->first();
+
+    return response()->json(['User' => $user_confirm]); 
+  }
+
+  public function confirmRegister(ConfirmRegisterRequest $request)
+  {
+    $user_confirm = User::where('confirmation_code', $request->confirmation_code)->first();
+
+    //preenche o CPF, nome e confirma o cadastro do usuário
+    $user_confirm->cpf = $request->cpf;
+    $user_confirm->nome_completo = $request->nome_completo;
+    $user_confirm->confirmed = 1; 
+
+    $success['message'] = 'Cadastro concluído com sucesso '.$user_confirm->nome_completo.'!';
+
+    $user_confirm->save();
+    
+    return response()->json(['success' => $success], $this->successStatus);
   }
 
   // Função de log-in.

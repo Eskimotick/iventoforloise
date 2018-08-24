@@ -15,15 +15,24 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->string('nickname');
             $table->string('email')->unique();
             $table->string('password');
             $table->string('confirmation_code')->nullable();
+            $table->string('cpf')->nullable();
+            $table->string('nome_completo')->nullable();
             $table->boolean('confirmed')->default(0);
             $table->string('admin')->default('false');
+            //table->integer('lote_id')->unsigned()->nullable();
+            //table->integer('quarto_id')->unsigned()->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
+
+        //Schema::table('users', function (BluePrint $table) {
+        //    $table->foreign('lote_id')->references('id')->on('lote')->onDelete('set null');
+        //    $table->foreign('quarto_id')->references('id')->on('quarto')->onDelete('set null');
+        //});
     }
 
     /**

@@ -23,8 +23,8 @@ class UserRequest extends FormRequest
   public function rules()
   {
     return [
-      'name' => 'required|regex:/^[\pL\s\-]+$/u|max:255',
-      'email' => 'required|email|max:255',
+      'nickname' => 'required|regex:/^[\pL\s\-]+$/u|max:80',
+      'email' => 'required|email|max:80',
       'password' => 'required|min:6',
       'c_password' => 'required|same:password',
     ];
@@ -34,12 +34,12 @@ class UserRequest extends FormRequest
   public function messages()
    {
      return [
-       'name.required' => 'É necessário fornecer um nome.',
-       'name.regex' => 'O nome deve consistir apenas de caracteres alfabéticos.',
-       'name.max' => 'O nome deve ter no máximo 255 caracteres.',
+       'nickname.required' => 'É necessário fornecer um nome.',
+       'nickname.regex' => 'O nome de usuário deve consistir apenas de caracteres alfabéticos.',
+       'nickname.max' => 'O nome deve ter no máximo 80 caracteres.',
        'email.required' => 'É necessário preencher o campo de e-mail.',
        'email.email' => 'O e-mail não está no formato correto',
-       'email.max' => 'O e-mail deve ter no máximo 255 caracteres.',
+       'email.max' => 'O e-mail deve ter no máximo 80 caracteres.',
        'password.required' => 'É necessário entrar com uma senha.',
        'password.min' => 'A senha deve ter no mínimo 6 caracteres.',
        'c_password.required' => 'Por favor confirme sua senha.',

@@ -23,6 +23,7 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
 // Rota para confirmação de email
 Route::post('confirm-mail/{id}', 'API\PassportController@register')->name('confirm-mail');
+Route::post('mail-confirmado', 'API\PassportController@confirmRegister');
 
 // Visitantes podem ver a listagem de usuários.
 Route::get('user/{id}', 'UserController@show');

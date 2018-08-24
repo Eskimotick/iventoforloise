@@ -18,7 +18,7 @@ class User extends Authenticatable
     use HasApiTokens;
 
     protected $fillable = [
-        'name', 'email', 'password', 'confirmation_code'
+        'nickname', 'email', 'password', 'confirmation_code', 'cpf', 'nome_completo', 'confirmd', 'admin'
     ];
 
     protected $hidden = [
@@ -28,7 +28,7 @@ class User extends Authenticatable
     // Função para criar novos usuários.
     public function createUsers(UserRequest $request)
     {
-      $this->name = $request->name;
+      $this->nickname = $request->nickname;
       $this->email = $request->email;
       $this->password = bcrypt($request->password);
 
@@ -39,9 +39,9 @@ class User extends Authenticatable
     public function updateUsers(UpdateUserRequest $request, User $user)
     {
       // Só modifica os dados que forem recebidos na request.
-      if($request->name)
+      if($request->nickname)
       {
-        $this->name = $request->name;
+        $this->nickname = $request->nickname;
       }
 
       if($request->email)
