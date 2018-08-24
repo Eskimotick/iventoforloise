@@ -45,7 +45,7 @@ class UpdateLoteRequest extends FormRequest
             'vagas.integer' => 'O número de vagas deve ser um número inteiro.',
             'vagas.min' => 'O número de vagas deve ser maior que zero.',
             'valor.regex' => 'O valor deve obedecer o seguinte formato: 10.00',
-            'vencimento.regex' => 'O vencimento deve obedecer o seguinte formato: 2018-12-24 23:59:59',
+            'vencimento.regex' => 'O vencimento deve obedecer o seguinte formato: ano-mes-dia hora:min:seg',
         ];
     }
 }
