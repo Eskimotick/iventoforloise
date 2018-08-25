@@ -27,9 +27,8 @@ nav ul li a {
   background-color: #eceff1;
 
 }
-
 .tabs .indicator {
-  background-color: black !important;
+  background-color: black;
 }
 
 /*tabelas */

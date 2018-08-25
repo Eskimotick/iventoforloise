@@ -14,7 +14,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { TooltipModule } from 'ngx-tooltip';
 
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
+
 
 /* elementos admin */
 import { NavadminComponent } from './components/navadmin/navadmin.component';
@@ -24,8 +24,11 @@ import { ContainerAdminComponent } from './components/container-admin/container-
 /* páginas admin */
 import { AdminUsuariosComponent } from './pages/admin/admin-usuarios/admin-usuarios.component';
 import { AdminHospedagemComponent } from './pages/admin/admin-hospedagem/admin-hospedagem.component';
+import { AdminConfigComponent } from './pages/admin/admin-config/admin-config.component';
 
 /* visitante */
+import { NavbarComponent } from './components/navbar/navbar.component';
+
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -49,6 +52,7 @@ export function tokenGetter() {
     CadastroComponent,
     NotFoundComponent,
     AdminUsuariosComponent,
+    AdminConfigComponent,
     AdminHospedagemComponent
   ],
   imports: [

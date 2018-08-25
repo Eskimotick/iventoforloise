@@ -1,3 +1,211 @@
-<p>
-  admin-config works!
-</p>
+<app-navadmin></app-navadmin>
+<app-sidebar></app-sidebar>
+
+<section class="conteudo-admin">
+          <div class="container white container-admin">
+            <div class="header">
+              <h2 class="titulo-pagina">Configurações</h2>
+            </div>
+
+            <div class="row tabs-row">
+              <div class="col s12">
+                <ul class="tabs" materialize="tabs">
+                  <li class="tab col l3"><a href="#inscricoes">Inscrições</a></li>
+                  <li class="tab col l2"><a href="#pacotes">Pacotes</a></li>
+                  <li class="tab col l3"><a href="#pagamentos">Pagamentos</a></li>
+                  <li class="tab col l2"><a href="#aparencias">Aparências</a></li>
+                  <li class="tab col l2"><a href="#campos">Campos</a></li>
+                </ul>
+                <div class="divider"></div>
+              </div>
+
+
+              <div id="inscricoes" class="row">
+                <div class="col s12">
+                  <div class="container">
+                    <div class="row center">
+                      <div class="col l8 offset-l2 m8 offset-m2 s12">
+                        <div class="row">
+                          <div class="card-panel card-inscricoes z-depth-3">
+                            <div class="row center">
+                              <h3 class="green-text lighten-1">Inscrições Abertas</h3>
+                              <!--<h3 class="red-text darken-4">Inscrições Fechadas</h3>-->
+                            </div>
+                            <div class="row">
+                              <div class="divider"></div>
+                              <div class="container data-hora">
+                                <div class="col l6 m6 s6 center">
+                                  <h6>Abertura:</h6>
+                                  <h5>
+                                    DD/MM/AAAA<br>
+                                    HH:MM
+                                  </h5>
+                                </div>
+                                <div class="col l6 m6 s6">
+                                  <h6>Fechamento:</h6>
+                                  <h5>
+                                    DD/MM/AAAA<br>
+                                    HH:MM
+                                  </h5>
+                                </div>
+                              </div>
+                            </div>
+                          </div><!-- fim do card -->
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row center">
+                      <div class="col l4 m6 offset-l2 s12">
+                        <!--<div class="btn btn-large btn-abrir-inscricoes">
+                          Abrir Inscrições
+
+                        </div>-->
+                        <div class="btn btn-large btn-fechar-inscricoes">
+                          Fechar Inscrições
+
+                        </div>
+                      </div>
+                      <div class="col l4 m6 s12">
+                        <div class="btn btn-large btn-agendar-inscricoes">
+                          Agendar Inscrições
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+              <div id="pacotes" class="row">
+                <div class="col s12">
+                  <div class="container">
+                    <div class="row">
+                      <div class="col l8 offset-l2 s12">
+                        <div class="card-panel card-pacote z-depth-3">
+                          <div class="row center">
+                            <h4>Criar Pacote</h4>
+                          </div>
+                          <div class="row">
+                            <div class="divider"></div>
+
+
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <ul materialize="collapsible" class="collapsible">
+                        <li>
+                          <div class="collapsible-header">
+                            Pacote sem Hospedagem
+                            <i class="material-icons">
+                                expand_more
+                            </i>
+                          </div>
+                          <div class="collapsible-body">
+                            <span>... ...</span>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="collapsible-header">
+                            Pacote com Hospedagem
+                            <i class="material-icons">
+                                expand_more
+                            </i>
+                          </div>
+                          <div class="collapsible-body">
+                            <span>... ...</span>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
+              <div id="pagamentos" class="row">
+                <div class="col s12">
+                  <div class="container">
+                    <div class="row">
+                      <div class="col l10 offset-l1 s12">
+                        <div class="card-panel card-boletos">
+                          <h4 class="center">Gerar Boletos</h4>
+
+                          <div class="row">
+                            <div class="divider"></div>
+                            <div class="input-field col s12 l10">
+                              <select materialize="material_select">
+                                <option value="" disabled selected>Selecionar Pacote</option>
+                                <option value="1">Pacote sem Hospedagem</option>
+                                <option value="2">Pacote com Hospedagem</option>
+                              </select>
+                            </div>
+                            <div class="input-field col s12 l2">
+                              <input id="vagas" type="number">
+                                <label for="vagas">Vagas:</label>
+                            </div>
+                            <div class="input-field col s12">
+                              <textarea id="descricao-boleto" class="materialize-textarea"></textarea>
+                                <label for="descricao-boleto">Descrição:</label>
+                            </div>
+                            <div class="input-field col s12 l8">
+                              <input id="valor" type="number">
+                                <label for="valor">Valor:</label>
+                            </div>
+                            <div class="input-field col s12 l4">
+                              <input  type="submit" class="btn btn-large right" value="Gerar Boleto">
+                            </div>
+
+
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <ul materialize="collapsible" class="collapsible">
+                        <li>
+                          <div class="collapsible-header">
+                            Pacote sem Hospedagem
+                            <i class="material-icons">
+                                expand_more
+                            </i>
+                          </div>
+                          <div class="collapsible-body">
+                            <span>... ...</span>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="collapsible-header">
+                            Pacote com Hospedagem
+                            <i class="material-icons">
+                                expand_more
+                            </i>
+                          </div>
+                          <div class="collapsible-body">
+                            <span>... ...</span>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+              <div id="aparencias" class="row">
+                <div class="col s12">
+                  <div class="container">
+
+                  </div>
+                </div>
+              </div>
+              <div id="campos" class="row">
+                <div class="col s12">
+                  <div class="container">
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+</section>
