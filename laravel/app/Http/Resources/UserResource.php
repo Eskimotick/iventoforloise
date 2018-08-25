@@ -11,9 +11,13 @@ class UserResource extends JsonResource
     {
       return [
         'ID' => $this->id,
-        'Nome' => $this->name,
+        'Nome' => $this->nickname,
         'e-mail' => $this->email,
+        'CPF' => $this->cpf,
+        'Nome Completo' => $this->nome_completo,
         'Admin' => $this->admin,
+        'Código de Confirmação de e-mail' => $this->confirmation_code,
+        'Código de Redefinição de Senha' => $this->password_reset_code
       ];
     }
 }

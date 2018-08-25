@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\User;
+use Ramsey\Uuid\Uuid;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
+use App\Notifications\Auth\PasswordResetNotification;
 
 class ResetPasswordController extends Controller
 {
@@ -37,9 +40,10 @@ class ResetPasswordController extends Controller
         $this->middleware('guest');
     }
 
-    public function resetPassword()
+    public function resetPassword(User $user)
     {
-
+      sendPasswordNotification();
+      return response()->success($user);
     }
 
 }

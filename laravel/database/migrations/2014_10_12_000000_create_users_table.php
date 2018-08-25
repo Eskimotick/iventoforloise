@@ -17,8 +17,12 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('nickname');
             $table->string('email')->unique();
+            $table->string('new_email')->nullable();
             $table->string('password');
             $table->string('confirmation_code')->nullable();
+            $table->string('password_reset_code')->nullable();          
+            $table->string('new_email_code')->nullable();
+            $table->string('old_email_code')->nullable();
             $table->string('cpf')->nullable();
             $table->string('nome_completo')->nullable();
             $table->boolean('confirmed')->default(0);

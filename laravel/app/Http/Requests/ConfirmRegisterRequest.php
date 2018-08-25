@@ -38,7 +38,7 @@ class ConfirmRegisterRequest extends FormRequest
             'cpf.cpf_formato' => 'O CPF precisa estar no formato xxx.xxx.xxx-xx.',
             'nome_completo.required' => 'Por favor preencha seu nome.',
             'nome_completo.regex' => 'O nome só pode conter caracteres alfabéticons, espaços e hífen.',
-            'nome_completo.max' => 'O nome deve ter no máximo 80 caracteres.',            
+            'nome_completo.max' => 'O nome deve ter no máximo 80 caracteres.',
     ];
   }
 }

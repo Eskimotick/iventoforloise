@@ -6,10 +6,17 @@ use Auth;
 use Ramsey\Uuid\Uuid;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
-use App\Http\Requests\UpdateUserRequest;
 use Laravel\Passport\HasApiTokens;
+use App\Http\Requests\UpdateUserRequest;
 use Illuminate\Notifications\Notifiable;
-use App\Notifications\Auth\ConfirmEmailNotification;
+use App\Notifications\Auth\Email\ConfirmEmailNotification;
+use App\Notifications\Auth\Email\EmailConfirmedNotification;
+use App\Notifications\Auth\Password\PasswordResetNotification;
+use App\Notifications\Auth\Password\PasswordChangedNotification;
+use App\Notifications\Auth\ChangeEmail\NewEmail\ConfirmNewEmailNotification;
+use App\Notifications\Auth\ChangeEmail\OldEmail\ConfirmOldEmailNotification;
+use App\Notifications\Auth\ChangeEmail\NewEmail\NewEmailConfirmedNotification;
+use App\Notifications\Auth\ChangeEmail\OldEmail\OldEmailConfirmedNotification;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -18,7 +25,7 @@ class User extends Authenticatable
     use HasApiTokens;
 
     protected $fillable = [
-        'nickname', 'email', 'password', 'confirmation_code', 'cpf', 'nome_completo', 'confirmd', 'admin'
+        'nickname', 'email', 'password', 'confirmation_code', 'password_reset_code', 'cpf', 'nome_completo', 'confirmd', 'admin'
     ];
 
     protected $hidden = [
@@ -59,10 +66,44 @@ class User extends Authenticatable
       User::destroy($user->id);
     }
 
-    public function sendConfirmNotification(){
-        $this->confirmation_code = Uuid::uuid4();
-        $this->save();
-        $this->notify(new ConfirmEmailNotification());
+    public function sendConfirmEmailNotification(){
+      $this->confirmation_code = Uuid::uuid4();
+      $this->save();
+      $this->notify(new ConfirmEmailNotification());
+    }
+
+    public function sendEmailConfirmedNotification(){
+      $this->notify(new EmailConfirmedNotification());
+    }
+
+    public function sendPasswordNotification(){
+      $this->password_reset_code = Uuid::uuid4();
+      $this->save();
+      $this->notify(new PasswordResetNotification());
+    }
+
+    public function sendPasswordChangedNotification(){
+      $this->notify(new PasswordChangedNotification());
+    }
+
+    public function sendConfirmNewEmailNotification(){
+      $this->new_email_code = Uuid::uuid4();
+      $this->save();
+      $this->notify(new ConfirmNewEmailNotification());
+    }
+
+    public function sendNewEmailConfirmedNotification(){
+      $this->notify(new NewEmailConfirmedNotification());
+    }
+
+    public function sendConfirmOldEmailNotification(){
+      $this->old_email_code = Uuid::uuid4();
+      $this->save();
+      $this->notify(new ConfirmOldEmailNotification());
+    }
+
+    public function sendOldEmailConfirmedNotification(){
+      $this->notify(new OldEmailConfirmedNotification());
     }
 
     public function addNew($input)
