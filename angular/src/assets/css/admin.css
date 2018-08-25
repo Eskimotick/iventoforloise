@@ -1,8 +1,6 @@
 /* admin */
 .conteudo-admin {
-  margin-left: 5vw;
   margin-top: 4vh;
-
 }
 /* formatação de texto */
 .header {
@@ -12,10 +10,23 @@
 
 /* container */
 .container.white.container-admin {
-  margin-left: 12vw;
-  height: 82vh;
-  width: 85%;
+  width: 95%;
+
 }
+@media (min-width: 992px){
+  .container.white.container-admin {
+    margin-left: 12vw;
+    height: 82vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 85%;
+  }
+  .conteudo-admin {
+    margin-left: 5vw;
+  }
+
+}
+
 
 .titulo-pagina {
   font-family: 'Raleway';
@@ -25,12 +36,19 @@
   margin-top: 0;
 }
 
+
 /* botao padrao - cinza azulado */
-.btn, input.btn, .btn.btn-large, .btn-floating.fab.waves-effect.waves-light {
+.btn, input.btn,
+.btn.btn-large,
+.btn-floating.fab.waves-effect.waves-light,
+.btn.modal-trigger {
   background-color: #607d8b;
 }
-
-.btn:hover, input.btn:hover, .btn.btn-large:hover, .btn-floating.fab.waves-effect.waves-light:hover {
+/* hover - botao padrão */
+.btn:hover, input.btn:hover,
+.btn.btn-large:hover,
+.btn-floating.fab.waves-effect.waves-light:hover,
+.btn.modal-trigger:hover {
   background-color: #90a4ae;
 }
 
@@ -41,15 +59,18 @@
 }
 
 /* cor do label dos forms */
-.input-field input:focus + label, .input-field textarea:focus + label  {
+.input-field input:focus + label,
+.input-field textarea:focus + label  {
    color: #607d8b !important;
 }
 /* cor da linha do focus dos forms */
-.row .input-field input:focus, .input-field textarea:focus {
+.row .input-field input:focus,
+.input-field textarea:focus {
    border-bottom: 1px solid #607d8b !important;
    box-shadow: 0 1px 0 0 #607d8b !important
 }
 /* dropdown - select */
-.dropdown-content li>a, .dropdown-content li>span {
+.dropdown-content li>a,
+.dropdown-content li>span {
   color: #37474f;
 }
