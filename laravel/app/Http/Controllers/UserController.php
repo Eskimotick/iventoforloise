@@ -18,7 +18,7 @@ class UserController extends Controller
     {
       // Acha o usuário passado na função
       $user = User::findOrFail($id);
-      return new UserResource($user);
+      return response()->success(new UserResource($user));
     }
 
     //Função para listar todos os usuários cadastrados.
@@ -37,12 +37,12 @@ class UserController extends Controller
       {
         $novoUser = new User;
         $novoUser->createUsers($request);
-        return new UserResource($novoUser);
+        return response()->success(new UserResource($novoUser));
       }
       // Se não for, mensagem de erro.
       else
       {
-        return response()->json(['message' => 'ERRO. Operação não autorizada.'], 403);
+        return response()->error('ERRO. Operação não autorizada.', 403);
       }
     }
 
@@ -58,12 +58,12 @@ class UserController extends Controller
       if($user_log->admin == 'true')
       {
         $user->updateUsers($request, $user);
-        return new UserResource($user);
+        return response()->success(new UserResource($user));
       }
       // Se não for, pode modificar apenas os próprios.
       else{
         $user_log->updateUsers($request, $user_log);
-        return new UserResource($user_log);
+        return response()->success(new UserResource($user_log));
       }
 
     }
@@ -80,13 +80,13 @@ class UserController extends Controller
       if($user_log->admin == 'true')
       {
         $user->deleteUsers($user);
-        return response()->json('Usuário Deletado com Sucesso!');
+        return response()->success('Usuário Deletado com Sucesso!');
       }
       // Se não for, pode deletar apenas a si mesmo.
       else
       {
         $user_log->deleteUsers($user_log);
-        return response()->json('Usuário Deletado com Sucesso!');
+        return response()->success('Usuário Deletado com Sucesso!');
       }
     }
 }

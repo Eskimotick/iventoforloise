@@ -22,11 +22,11 @@ Route::post('register', 'API\AuthController@register');
 Route::post('password/forgot', 'API\AuthController@forgotPassword');
 Route::post('password/reset', 'API\AuthController@resetPassword');
 
-// Rota para confirmação de email
+// Rota para confirmação de email.
 Route::post('mail/confirm', 'API\AuthController@register')->name('confirm-mail');
 Route::post('mail/confirmed', 'API\AuthController@confirmRegister');
 
-//Rotas para a troca de e-mail
+//Rotas para a troca de e-mail (mudar as URIs depois).
 Route::post('mail/new', 'API\AuthController@confirmNewEmail');
 Route::post('mail/new/confirm', 'API\AuthController@newEmailConfirmed');
 
