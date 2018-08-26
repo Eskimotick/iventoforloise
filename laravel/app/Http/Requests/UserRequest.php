@@ -24,7 +24,7 @@ class UserRequest extends FormRequest
   {
     return [
       'nickname' => 'required|regex:/^[\pL\s\-]+$/u|max:80',
-      'email' => 'required|email|max:80',
+      'email' => 'required|unique:users|email|max:80',
       'password' => 'required|min:6',
       'c_password' => 'required|same:password',
     ];
@@ -38,6 +38,7 @@ class UserRequest extends FormRequest
        'nickname.regex' => 'O nome de usuário deve consistir apenas de caracteres alfabéticos.',
        'nickname.max' => 'O nome deve ter no máximo 80 caracteres.',
        'email.required' => 'É necessário preencher o campo de e-mail.',
+       'email.unique' => 'Este e-mail já foi cadastrado, entre com outro.',
        'email.email' => 'O e-mail não está no formato correto',
        'email.max' => 'O e-mail deve ter no máximo 80 caracteres.',
        'password.required' => 'É necessário entrar com uma senha.',
