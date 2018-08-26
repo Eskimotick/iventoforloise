@@ -13,26 +13,33 @@ use Illuminate\Http\Request;
 |
 */
 
+// Visitantes podem ver a listagem de usuários.
+Route::get('user/{id}', 'UserController@show');
+Route::get('user', 'UserController@index');
 // Rotas de log-in e cadastro para visitantes.
 Route::post('login', 'API\AuthController@login');
 Route::post('register', 'API\AuthController@register');
 
-// Rotas para recuperar / redefinir senha.
-// Route::post('password/email', 'Auth\ForgotPasswordController@getResetToken');
-Route::post('password/forgot', 'API\AuthController@forgotPassword');
-Route::post('password/reset', 'API\AuthController@resetPassword');
+// Grupo de rotas para password.
+Route::group([
+    'prefix' => 'password'
+], function (){
+    // Rotas para recuperar / redefinir senha.
+    Route::post('/forgot', 'API\AuthController@forgotPassword');
+    Route::post('/reset', 'API\AuthController@resetPassword');
+});
 
-// Rota para confirmação de email.
-Route::post('mail/confirm', 'API\AuthController@register')->name('confirm-mail');
-Route::post('mail/confirmed', 'API\AuthController@confirmRegister');
-
-//Rotas para a troca de e-mail (mudar as URIs depois).
-Route::post('mail/new', 'API\AuthController@confirmNewEmail');
-Route::post('mail/new/confirm', 'API\AuthController@newEmailConfirmed');
-
-// Visitantes podem ver a listagem de usuários.
-Route::get('user/{id}', 'UserController@show');
-Route::get('user', 'UserController@index');
+//Grupo de rotas para funções envolvendo e-mails.
+Route::group([
+    'prefix' => 'mail'
+], function (){
+    // Rota para confirmação de email.
+    Route::post('confirm', 'API\AuthController@register')->name('confirm-mail');
+    Route::post('confirmed', 'API\AuthController@confirmRegister');
+    //Rotas para a troca de e-mail (mudar as URIs depois).
+    Route::post('new', 'API\AuthController@requestNewEmail');
+    Route::post('new/confirm', 'API\AuthController@newEmailConfirmed');
+});
 
 // Grupo de rotas para usuários logados.
 Route::group([
@@ -45,12 +52,12 @@ Route::group([
 // Rotas de log-in pelo FaceBook e pelo Google.
 Route::group([
     'middleware' => 'web',
-    'prefix' => 'auth'
+    'prefix' => 'social/login'
 ], function (){
-    Route::get('login/facebook', 'API\FacebookController@redirectToFacebook');
-    Route::get('login/facebook/callback', 'API\FacebookController@handleFacebookCallback');
-    Route::get('login/google', 'API\GoogleController@redirectToGoogle');
-    Route::get('login/google/callback', 'API\GoogleController@handleGoogleCallback');
+    Route::get('/facebook', 'API\FacebookController@redirectToFacebook');
+    Route::get('/facebook/callback', 'API\FacebookController@handleFacebookCallback');
+    Route::get('/google', 'API\GoogleController@redirectToGoogle');
+    Route::get('/google/callback', 'API\GoogleController@handleGoogleCallback');
 });
 
 //Grupo de Rotas para o painel de usuário
