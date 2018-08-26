@@ -25,6 +25,13 @@ import { ContainerAdminComponent } from './components/container-admin/container-
 import { AdminUsuariosComponent } from './pages/admin/admin-usuarios/admin-usuarios.component';
 import { AdminHospedagemComponent } from './pages/admin/admin-hospedagem/admin-hospedagem.component';
 import { AdminConfigComponent } from './pages/admin/admin-config/admin-config.component';
+import { DashboardComponent } from './pages/admin/dashboard/dashboard.component';
+
+/*usuário */
+import { NavusuarioComponent } from './components/navusuario/navusuario.component';
+import { SidebarUsuarioComponent } from './components/sidebar-usuario/sidebar-usuario.component';
+import { PainelUsuarioComponent} from './pages/user/painel-usuario/painel-usuario.component';
+
 
 /* visitante */
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -53,7 +60,11 @@ export function tokenGetter() {
     NotFoundComponent,
     AdminUsuariosComponent,
     AdminConfigComponent,
-    AdminHospedagemComponent
+    AdminHospedagemComponent,
+    DashboardComponent, //painel do Admin - mudar nome
+    SidebarUsuarioComponent, // sidebar Usuario
+    NavusuarioComponent, //Navbar Usuario
+    PainelUsuarioComponent
   ],
   imports: [
     AppRoutingModule,

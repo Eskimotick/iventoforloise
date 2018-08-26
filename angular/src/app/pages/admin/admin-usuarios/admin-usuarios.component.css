@@ -8,6 +8,13 @@ nav .nav-admin .brand-logo,
 nav ul li a {
   color: #424242;
 }
+/* formatção de texto */
+h4 {
+  font-size: 1.6em;
+  margin-bottom: 0;
+  margin-top: 0;
+  font-family: 'Raleway';
+}
 
 
 /* tabs */
@@ -37,4 +44,54 @@ table thead {
 }
 table tbody {
   padding: 2vw;
+}
+
+/* modal */
+.modal .modal-content {
+  padding: 0;
+}
+.modal .modal-content h4  {
+  padding-top: 2.5vh;
+}
+
+.modal .conteudo {
+  margin-top: 2vh;
+}
+.modal h5 {
+  font-size: 1.4em;
+  margin-top: 3vh;
+  margin-left: 2vw;
+  margin-bottom: 1vh;
+  font-weight: 500;
+}
+
+.modal .divider {
+  margin-bottom: 3vh;
+}
+
+.modal {
+  min-width: 65%;
+}
+@media (max-width: 992px){
+  .modal {
+    width: 95%;
+  }
+}
+
+/* modal dados do usuario */
+.modal #maisInformacoes {
+  min-height: 80vh;
+}
+
+.perfilUsuario img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.perfilUsuario {
+  margin-top: 4vh;
+}
+
+.perfilUsuario h6, .perfilUsuario h5 {
+  text-align: center;
 }

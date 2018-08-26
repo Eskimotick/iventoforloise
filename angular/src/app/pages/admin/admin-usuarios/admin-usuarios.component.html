@@ -31,13 +31,13 @@
                 <table class="responsive-table striped">
                   <thead>
                     <tr>
-                        <th>E-mail</th>
-                        <th>Usuário</th>
-                        <th>Nível de Usuário</th>
-                        <th>Status</th>
-                        <th>Confirmed</th>
-                        <th>Created</th>
-                        <th>Última Atualização</th>
+                        <th>E-mail:</th>
+                        <th>Usuário:</th>
+                        <th>Nível de Usuário:</th>
+                        <th>Status:</th>
+                        <th>Confirmação:</th>
+                        <th>Criado em:</th>
+                        <th>Última Atualização:</th>
                         <th></th>
                     </tr>
                   </thead>
@@ -56,7 +56,7 @@
                           Mais
                         </a>
 
-
+                        <!-- modal de mais informações/dados do usuário -->
                         <div id="maisInformacoes" class="modal" materialize="modal">
                           <div class="modal-content">
                             <div class="header">
@@ -69,9 +69,39 @@
                                 </i>
                               </div>
                             </div>
-                            <div class="container">
+                            <div class="container perfilUsuario">
                               <div class="row">
-
+                                <div class="col l5 m5 s12">
+                                  <img src="../assets/img/doge.png" class="responsive-img">
+                                  <h5>[Nome do Usuário]</h5>
+                                  <h6>Status: [Ativo]</h6>
+                                </div>
+                                <div class="col l7 m7 s12">
+                                  <table class="striped responsive-table">
+                                    <tbody>
+                                      <tr>
+                                          <th>E-mail:</th>
+                                          <td>email@gmail.com</td>
+                                      </tr>
+                                      <tr>
+                                          <th>Roles:</th>
+                                          <td>Administrador, Congressista</td>
+                                      </tr>
+                                      <tr>
+                                          <th>Confirmação:</th>
+                                          <td>Não Confirmado</td>
+                                      </tr>
+                                      <tr>
+                                          <th>Criado em:</th>
+                                          <td>DD/MM/AAAA - HH:MM</td>
+                                      </tr>
+                                      <tr>
+                                          <th>última Atualização:</th>
+                                          <td>DD/MM/AAAA - HH:MM</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </div>
                               </div>
                             </div>
                           </div>
@@ -82,9 +112,6 @@
                             <!--<a href="#!" class="modal-close waves-effect btn-flat">Cancelar</a>-->
                           </div>
                         </div>
-
-
-
                       </td>
                     </tr>
                     <tr>
@@ -99,43 +126,6 @@
                         <a class="btn modal-trigger" href="#maisInformacoes">
                           Mais
                         </a>
-
-
-                        <div id="maisInformacoes" class="modal">
-                          <div class="modal-content">
-                            <div class="header">
-                              <div class="col s10">
-                                <h4> Dados do Usuário</h4>
-                              </div>
-                              <div class="col s2">
-                                <i class="material-icons modal-close right">
-                                  close
-                                </i>
-                              </div>
-                            </div>
-                            <div class="container">
-                              <div class="row">
-                                <div class="col l5 s12">
-                                  <img src="img/doge2.jpg" class="responsive-img">
-
-                                </div>
-                                <div class="col l7 s12">
-                                  ...
-                                </div>
-                              </div>
-
-                            </div>
-                          </div>
-                          <div class="modal-footer">
-                            <div class="container">
-                              <input type="submit" class="btn" value="Salvar">
-                            </div>
-                            <!--<a href="#!" class="modal-close waves-effect btn-flat">Cancelar</a>-->
-                          </div>
-                        </div>
-
-
-
                       </td>
                     </tr>
 
