@@ -11,6 +11,11 @@
 .card-boletos, .card-pacote {
   background-color: #fafafa;
   padding-bottom: 0.1vh;
+  margin-top: 6vh;
+}
+
+.conteudo-tab {
+  margin-top: 3vh;
 }
 
 
@@ -107,4 +112,53 @@ table tbody {
 .dropdown-content li>a,
 .dropdown-content li>span {
   color: #37474f !important;
+}
+
+/* modal */
+.modal .modal-content {
+  padding: 0;
+}
+.modal .modal-content h4  {
+  padding-top: 2.5vh;
+}
+
+.modal .conteudo {
+  margin-top: 2vh;
+}
+.modal h5 {
+  font-size: 1.4em;
+  margin-top: 3vh;
+  margin-left: 2vw;
+  margin-bottom: 1vh;
+  font-weight: 500;
+}
+
+.modal .divider {
+  margin-bottom: 3vh;
+}
+
+.modal {
+  min-width: 65%;
+}
+@media (max-width: 992px){
+  .modal {
+    width: 95%;
+  }
+}
+
+#agendarInscricoes {
+  min-height: 78vh;
+}
+#agendarInscricoes .modal-content {
+  margin-bottom: 5vh;
+}
+#agendarInscricoes .modal-footer {
+  margin-top: 5vh;
+  margin-bottom: 0.5vh;
+}
+#agendarInscricoes .modal-footer .divider {
+  margin-bottom: 0.8vh;
+}
+#agendarInscricoes .btn {
+  margin-right: 0.5vw;
 }
