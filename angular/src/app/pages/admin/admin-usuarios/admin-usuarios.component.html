@@ -26,8 +26,11 @@
                   <li class="tab col l3"><a href="#confirmados">Confirmados</a></li>
                 </ul>
               </div>
-              <div id="administradores" class="col s12">
 
+              <!-- conteúdo das abas .....................................................-->
+              <!-- ABA ADMINISTRADORES .................................................-->
+              <div id="administradores" class="col s12">
+              <!-- tabela de administradores ......................................-->
                 <table class="responsive-table striped">
                   <thead>
                     <tr>
@@ -43,6 +46,7 @@
                   </thead>
 
                   <tbody>
+                    <!-- 1a linha tabela de administradores .........................-->
                     <tr>
                       <td>adm@demo.com</td>
                       <td>DemoAdmin1</td>
@@ -114,6 +118,7 @@
                         </div>
                       </td>
                     </tr>
+                    <!-- 2a linha tabela de administradores .........................-->
                     <tr>
                       <td>adm@demo.com</td>
                       <td>DemoAdmin1</td>
@@ -133,8 +138,9 @@
                 </table>
               </div>
 
-
+              <!-- ABA CONVIDADOS .....................................................................-->
               <div id="convidados" class="col s12">
+                <!-- tabela de convidados ......................................-->
                 <table class="responsive-table striped">
                   <thead>
                     <tr>
@@ -150,20 +156,100 @@
                   </thead>
 
                   <tbody>
+                    <!-- 1a linha tabela de convidados .........................-->
                     <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                      <td>adm@demo.com</td>
+                      <td>DemoAdmin1</td>
+                      <td>administrator, authenticated, congressista </td>
+                      <td>Inativo</td>
+                      <td>Não confirmado</td>
+                      <td>27/04/2018 00:00</td>
+                      <td>27/04/2018 09:54</td>
+                      <td>
+                        <a class="btn modal-trigger" href="#maisInformacoes">
+                          Mais
+                        </a>
+
+                        <!-- modal de mais informações/dados do usuário -->
+                        <div id="maisInformacoes" class="modal" materialize="modal">
+                          <div class="modal-content">
+                            <div class="header">
+                              <div class="col s10">
+                                <h4> Dados do Usuário</h4>
+                              </div>
+                              <div class="col s2">
+                                <i class="material-icons modal-close right">
+                                  close
+                                </i>
+                              </div>
+                            </div>
+                            <div class="container perfilUsuario">
+                              <div class="row">
+                                <div class="col l5 m5 s12">
+                                  <img src="../assets/img/doge.png" class="responsive-img">
+                                  <h5>[Nome do Usuário]</h5>
+                                  <h6>Status: [Ativo]</h6>
+                                </div>
+                                <div class="col l7 m7 s12">
+                                  <table class="striped responsive-table">
+                                    <tbody>
+                                      <tr>
+                                          <th>E-mail:</th>
+                                          <td>email@gmail.com</td>
+                                      </tr>
+                                      <tr>
+                                          <th>Roles:</th>
+                                          <td>Administrador, Congressista</td>
+                                      </tr>
+                                      <tr>
+                                          <th>Confirmação:</th>
+                                          <td>Não Confirmado</td>
+                                      </tr>
+                                      <tr>
+                                          <th>Criado em:</th>
+                                          <td>DD/MM/AAAA - HH:MM</td>
+                                      </tr>
+                                      <tr>
+                                          <th>última Atualização:</th>
+                                          <td>DD/MM/AAAA - HH:MM</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                            <div class="container">
+                              <input type="submit" class="btn" value="Salvar">
+                            </div>
+                            <!--<a href="#!" class="modal-close waves-effect btn-flat">Cancelar</a>-->
+                          </div>
+                        </div>
+                      </td>
                     </tr>
+                    <!-- 2a linha tabela de convidados .........................-->
+                    <tr>
+                      <td>adm@demo.com</td>
+                      <td>DemoAdmin1</td>
+                      <td>administrator, authenticated, congressista </td>
+                      <td>Inativo</td>
+                      <td>Não confirmado</td>
+                      <td>27/04/2018 00:00</td>
+                      <td>27/04/2018 09:54</td>
+                      <td>
+                        <a class="btn modal-trigger" href="#maisInformacoes">
+                          Mais
+                        </a>
+                      </td>
+                    </tr>
+
                   </tbody>
                 </table>
               </div>
+              <!-- ABA CADASTRADOS ...................................................-->
               <div id="cadastrados" class="col s12">
+                <!-- tabela de cadastrados ......................................-->
                 <table class="responsive-table striped">
                   <thead>
                     <tr>
@@ -178,20 +264,98 @@
                     </tr>
                   </thead>
                   <tbody>
+                    <!-- 1a linha tabela de cadastrados .........................-->
                     <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                      <td>adm@demo.com</td>
+                      <td>DemoAdmin1</td>
+                      <td>administrator, authenticated, congressista </td>
+                      <td>Inativo</td>
+                      <td>Não confirmado</td>
+                      <td>27/04/2018 00:00</td>
+                      <td>27/04/2018 09:54</td>
+                      <td>
+                        <a class="btn modal-trigger" href="#maisInformacoes">
+                          Mais
+                        </a>
+                        <!-- modal de mais informações/dados do usuário ....................-->
+                        <div id="maisInformacoes" class="modal" materialize="modal">
+                          <div class="modal-content">
+                            <div class="header">
+                              <div class="col s10">
+                                <h4> Dados do Usuário</h4>
+                              </div>
+                              <div class="col s2">
+                                <i class="material-icons modal-close right">
+                                  close
+                                </i>
+                              </div>
+                            </div>
+                            <div class="container perfilUsuario">
+                              <div class="row">
+                                <div class="col l5 m5 s12">
+                                  <img src="../assets/img/doge.png" class="responsive-img">
+                                  <h5>[Nome do Usuário]</h5>
+                                  <h6>Status: [Ativo]</h6>
+                                </div>
+                                <div class="col l7 m7 s12">
+                                  <table class="striped responsive-table">
+                                    <tbody>
+                                      <tr>
+                                          <th>E-mail:</th>
+                                          <td>email@gmail.com</td>
+                                      </tr>
+                                      <tr>
+                                          <th>Roles:</th>
+                                          <td>Administrador, Congressista</td>
+                                      </tr>
+                                      <tr>
+                                          <th>Confirmação:</th>
+                                          <td>Não Confirmado</td>
+                                      </tr>
+                                      <tr>
+                                          <th>Criado em:</th>
+                                          <td>DD/MM/AAAA - HH:MM</td>
+                                      </tr>
+                                      <tr>
+                                          <th>última Atualização:</th>
+                                          <td>DD/MM/AAAA - HH:MM</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                            <div class="container">
+                              <input type="submit" class="btn" value="Salvar">
+                            </div>
+                            <!--<a href="#!" class="modal-close waves-effect btn-flat">Cancelar</a>-->
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                    <!-- 2a linha tabela de cadastrados .........................-->
+                    <tr>
+                      <td>adm@demo.com</td>
+                      <td>DemoAdmin1</td>
+                      <td>administrator, authenticated, congressista </td>
+                      <td>Inativo</td>
+                      <td>Não confirmado</td>
+                      <td>27/04/2018 00:00</td>
+                      <td>27/04/2018 09:54</td>
+                      <td>
+                        <a class="btn modal-trigger" href="#maisInformacoes">
+                          Mais
+                        </a>
+                      </td>
                     </tr>
                   </tbody>
                 </table>
               </div>
+              <!-- ABA CONFIRMADOS .............................................................-->
               <div id="confirmados" class="col s12">
+                <!-- tabela de confirmados ........................................-->
                 <table class="responsive-table striped">
                   <thead>
                     <tr>
@@ -206,22 +370,96 @@
                     </tr>
                   </thead>
                   <tbody>
+                    <!-- 1a linha tabela de confirmados .......................................-->
                     <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                      <td>adm@demo.com</td>
+                      <td>DemoAdmin1</td>
+                      <td>administrator, authenticated, congressista </td>
+                      <td>Inativo</td>
+                      <td>Não confirmado</td>
+                      <td>27/04/2018 00:00</td>
+                      <td>27/04/2018 09:54</td>
+                      <td>
+                        <a class="btn modal-trigger" href="#maisInformacoes">
+                          Mais
+                        </a>
+                      </td>
+                    </tr>
+                    <!-- 2a linha tabela de confirmados .......................................-->
+                    <tr>
+                      <td>adm@demo.com</td>
+                      <td>DemoAdmin1</td>
+                      <td>administrator, authenticated, congressista </td>
+                      <td>Inativo</td>
+                      <td>Não confirmado</td>
+                      <td>27/04/2018 00:00</td>
+                      <td>27/04/2018 09:54</td>
+                      <td>
+                        <a class="btn modal-trigger" href="#maisInformacoes">
+                          Mais
+                        </a>
+                      </td>
                     </tr>
                   </tbody>
                 </table>
+
+                <!-- modal de mais informações/dados do usuário (ainda precisa ajustar).....................-->
+                <div id="maisInformacoes" class="modal" materialize="modal">
+                  <div class="modal-content">
+                    <div class="header">
+                      <div class="col s10">
+                        <h4> Dados do Usuário</h4>
+                      </div>
+                      <div class="col s2">
+                        <i class="material-icons modal-close right">
+                          close
+                        </i>
+                      </div>
+                    </div>
+                    <div class="container perfilUsuario">
+                      <div class="row">
+                        <div class="col l5 m5 s12">
+                          <img src="../assets/img/doge.png" class="responsive-img">
+                          <h5>[Nome do Usuário]</h5>
+                          <h6>Status: [Ativo]</h6>
+                        </div>
+                        <div class="col l7 m7 s12">
+                          <table class="striped responsive-table">
+                            <tbody>
+                              <tr>
+                                  <th>E-mail:</th>
+                                  <td>email@gmail.com</td>
+                              </tr>
+                              <tr>
+                                  <th>Roles:</th>
+                                  <td>Administrador, Congressista</td>
+                              </tr>
+                              <tr>
+                                  <th>Confirmação:</th>
+                                  <td>Não Confirmado</td>
+                              </tr>
+                              <tr>
+                                  <th>Criado em:</th>
+                                  <td>DD/MM/AAAA - HH:MM</td>
+                              </tr>
+                              <tr>
+                                  <th>última Atualização:</th>
+                                  <td>DD/MM/AAAA - HH:MM</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <div class="container">
+                      <input type="submit" class="btn" value="Salvar">
+                    </div>
+                    <!--<a href="#!" class="modal-close waves-effect btn-flat">Cancelar</a>-->
+                  </div>
+                </div>
               </div>
             </div>
-
-
-
         </div>
       </section>
