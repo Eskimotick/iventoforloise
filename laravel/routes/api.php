@@ -29,6 +29,8 @@ Route::group([
     Route::post('/reset', 'API\AuthController@resetPassword');
 });
 
+Route::post('/resend', 'API\AuthController@resendConfirmation');
+
 //Grupo de rotas para funções envolvendo e-mails.
 Route::group([
     'prefix' => 'mail'
