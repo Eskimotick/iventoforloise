@@ -22,18 +22,18 @@ use App\Notifications\Auth\Password\PasswordChangedNotification;
 
 class AuthController extends Controller
 {
-  // Função de log-in.
+  //Função de log-in.
   public function login()
   {
     /* attempt() pega o user do BD cujo campo 'email' corresponde ao email passado na request.
     Retorna true se a senha desse user no BD corresponder à senha passada na request */
     if (Auth::attempt(['email' => request('email'), 'password' => request('password')])){
-      // Autentica o user encontrado e o guarda em $user.
+      //Autentica o user encontrado e o guarda em $user.
       $user = Auth::user();
-      // Cria um token para $user.
+      //Cria um token para $user.
       $success['message'] = 'Log-in efetuado com sucesso, '.$user->name.'!';
       $success['token'] = $user->createToken('iVento')->accessToken;
-      // Retorna o token, com status 200 (tudo ok).
+      //Retorna o token, com status 200 (tudo ok).
       return response()->success(['success' => $success]);
     }
     else
@@ -41,30 +41,30 @@ class AuthController extends Controller
       return response()->error('Falha de autenticação', 401);
     }
   }
-  // Função de logout.
+  //Função de logout.
   public function logout()
   {
-    // Pega o token do usuário logado.
+    //Pega o token do usuário logado.
     $accessToken = Auth::user()->token();
-    // Altera a coluna "revoked" para true no BD, salvando que o token foi invalidado.
+    //Altera a coluna "revoked" para true no BD, salvando que o token foi invalidado.
     DB::table('oauth_refresh_tokens')->where('access_token_id', $accessToken->id)->update(['revoked' => true]);
-    // Revoga o token armazenado.
+    //Revoga o token armazenado.
     $accessToken->revoke();
     $success['message'] = 'Log-out efetuado com sucesso!';
     return response()->success($success);
   }
 
-  // Função para o cadastro de novos usuários.
+  //Função para o cadastro de novos usuários.
   public function register(UserRequest $request)
   {
     $newUser = new User;
 
-    // Cria um novo usuário com nome, email e senha criptografada.
+    //Cria um novo usuário com nome, email e senha criptografada.
     $newUser->nickname = $request->nickname;
     $newUser->email = $request->email;
     $newUser->password = bcrypt($request->password);
 
-    // $success guarda o token e o nome do usuário correspondente.
+    //$success guarda o token e o nome do usuário correspondente.
     $success['message'] = 'Usuário Cadastrado com Sucesso!';
     $success['nickname'] = $newUser->nickname;
 	  $success['token'] = $newUser->createToken('iVento')->accessToken;
@@ -73,8 +73,30 @@ class AuthController extends Controller
 
     $newUser->sendConfirmEmailNotification();
 
-    // Passa na response o token e nome do usuário, com status 200 (tudo ok).
+    //Passa na response o token e nome do usuário, com status 200 (tudo ok).
 	  return response()->success($success);
+  }
+
+  //Função para enviar o e-mail de confirmação de cadastro novamente.
+  public function resendConfirmation(Request $request)
+  {
+    //Pega o usuário que está passando o e-mail.
+    $user = User::where('email', $request->email)->first();
+    //Se o e-mail for válido...
+    if($user)
+    {
+      //Envia uma nova notificação para o e-mail passado.
+      $user->sendConfirmEmailNotification();
+      //Mensagem de e-mail enviado.
+      $success['message'] = 'Mensagem enviada para '.$user->email.'. Confira seu e-mail!';
+      return response()->success($success);
+    }
+    else
+    {
+      //Mensagem de e-mail inválido.
+      $failure['message'] = 'E-mail inválido, tente novamente.';
+      return response()->error($failure);
+    }
   }
 
   public function fetchUser(ConfirmRegisterRequest $request)
@@ -237,7 +259,5 @@ class AuthController extends Controller
       $failure['message'] = 'Códigos inválidos, tente novamente.';
       return response()->error($failure);
     }
-    }
   }
-
 }
