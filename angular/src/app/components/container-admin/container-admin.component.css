@@ -1,0 +1,52 @@
+/* admin */
+.conteudo-admin {
+  margin-left: 5vw;
+  margin-top: 4vh;
+
+}
+
+.titulo-pagina {
+  font-family: 'Raleway';
+  font-size: 1.8em;
+  padding-top: 2vh;
+  padding-left: 2vw;
+  margin-top: 0;
+}
+
+/* container */
+.container-admin {
+  width: 80%;
+  margin-left: 12vw;
+  height: 82vh;
+}
+
+
+
+/* botao padrao - cinza azulado */
+.btn {
+  background-color: #607d8b;
+}
+
+.btn:hover {
+  background-color: #90a4ae;
+}
+
+/* padrao de inputs - cinza azulado */
+.input-field i.material-icons.prefix.active{
+  color: #607d8b;
+
+}
+
+/* cor do label dos forms */
+.input-field input:focus + label, .input-field textarea:focus + label  {
+   color: #607d8b !important;
+}
+/* cor da linha do focus dos forms */
+.row .input-field input:focus, .input-field textarea:focus {
+   border-bottom: 1px solid #607d8b !important;
+   box-shadow: 0 1px 0 0 #607d8b !important
+}
+/* dropdown - select */
+.dropdown-content li>a, .dropdown-content li>span {
+  color: #37474f;
+}

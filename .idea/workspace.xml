@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ea42ffad-4e4b-4978-95bc-a602c74e281a" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/iVento.iml" afterPath="$PROJECT_DIR$/.idea/iVento.iml" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change beforePath="$PROJECT_DIR$/laravel/.env.example" afterPath="$PROJECT_DIR$/laravel/.env.example" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -19,16 +15,59 @@
     <pharConfigPath>$PROJECT_DIR$/laravel/composer.json</pharConfigPath>
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="357">
-                <caret line="21" column="11" lean-forward="true" selection-start-line="21" selection-start-column="11" selection-end-line="21" selection-end-column="11" />
-                <folding />
-              </first_editor>
-              <second_editor />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="Pacote.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/laravel/app/Models/Admin/Pacote.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1711">
+              <caret line="4" column="4" lean-forward="false" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+              <folding>
+                <element signature="e#36#62#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ConfigController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/laravel/app/Http/Controllers/Admin/ConfigController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1139">
+              <caret line="5" column="4" lean-forward="true" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="4" />
+              <folding>
+                <element signature="e#41#69#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PacoteController.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/laravel/app/Http/Controllers/Admin/PacoteController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="397">
+              <caret line="97" column="9" lean-forward="true" selection-start-line="97" selection-start-column="9" selection-end-line="97" selection-end-column="9" />
+              <folding>
+                <element signature="e#41#69#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LoteController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/laravel/app/Http/Controllers/Admin/LoteController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-663">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UpdatePacoteRequest.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/laravel/app/Http/Requests/Admin/UpdatePacoteRequest.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-198">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -56,6 +95,9 @@
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="PhpServers">
+    <servers />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true">
     <include_path>
@@ -133,10 +175,9 @@
     </include_path>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="744" />
+    <option name="x" value="676" />
+    <option name="width" value="697" />
+    <option name="height" value="735" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -155,6 +196,7 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -167,11 +209,46 @@
               <item name="iVento" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="laravel" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
+            <path>
+              <item name="iVento" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iVento" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="laravel" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="iVento" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iVento" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="laravel" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Http" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="iVento" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iVento" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="laravel" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Http" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Controllers" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="iVento" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iVento" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="laravel" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Http" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Controllers" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Admin" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="iVento" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iVento" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="laravel" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="database" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -214,30 +291,41 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5868000" />
+    <option name="totallyTimeSpent" value="10972000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14275256" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23718888" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14275256" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -251,11 +339,399 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/laravel/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="21" lean-forward="true" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/.env.example">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="33" column="14" lean-forward="true" selection-start-line="33" selection-start-column="14" selection-end-line="33" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="357">
+            <caret line="21" column="11" lean-forward="true" selection-start-line="21" selection-start-column="11" selection-end-line="21" selection-end-column="11" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../ivento4.0/app/Notifications/Auth/ConfirmEmail.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="233">
+          <caret line="44" column="81" lean-forward="false" selection-start-line="44" selection-start-column="81" selection-end-line="44" selection-end-column="110" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../ivento4.0/app/Notifications/PagamentoCreditoNotification.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="431">
+          <caret line="48" column="90" lean-forward="false" selection-start-line="48" selection-start-column="90" selection-end-line="48" selection-end-column="90" />
+          <folding>
+            <element signature="e#37#66#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../ivento4.0/resources/views/admin/users/tab/confirmados.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="20" column="61" lean-forward="false" selection-start-line="20" selection-start-column="61" selection-end-line="20" selection-end-column="61" />
+          <folding>
+            <marker date="1534860979635" expanded="true" signature="569:584" ph="..." />
+            <marker date="1534860979635" expanded="true" signature="602:635" ph="..." />
+            <marker date="1534860979635" expanded="true" signature="684:698" ph="..." />
+            <marker date="1534860979635" expanded="true" signature="732:745" ph="..." />
+            <marker date="1534860979635" expanded="true" signature="841:881" ph="..." />
+            <marker date="1534860979635" expanded="true" signature="1676:1693" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../ivento4.0/resources/views/admin/users/tab/cadastrados.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding>
+            <marker date="1534862301623" expanded="true" signature="674:689" ph="..." />
+            <marker date="1534862301623" expanded="true" signature="707:739" ph="..." />
+            <marker date="1534862301623" expanded="true" signature="788:802" ph="..." />
+            <marker date="1534862301623" expanded="true" signature="836:849" ph="..." />
+            <marker date="1534862301623" expanded="true" signature="882:979" ph="..." />
+            <marker date="1534862301623" expanded="true" signature="885:908" ph="..." />
+            <marker date="1534862301623" expanded="true" signature="914:937" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../ivento4.0/resources/views/admin/users/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="27" column="28" lean-forward="false" selection-start-line="27" selection-start-column="28" selection-end-line="27" selection-end-column="28" />
+          <folding>
+            <marker date="1534861309101" expanded="true" signature="9:24" ph="..." />
+            <marker date="1534861309101" expanded="true" signature="36:55" ph="..." />
+            <marker date="1534861309101" expanded="true" signature="67:76" ph="..." />
+            <marker date="1534861309101" expanded="true" signature="1509:1542" ph="..." />
+            <marker date="1534861309101" expanded="true" signature="2409:2438" ph="..." />
+            <marker date="1534861309101" expanded="true" signature="2689:2718" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/app/Http/Resources/UserResource.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/app/Http/Controllers/UserController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../ivento4.0/database/migrations/2018_02_07_030056_create_campos_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="31" column="8" lean-forward="false" selection-start-line="31" selection-start-column="8" selection-end-line="33" selection-end-column="47" />
+          <folding>
+            <element signature="e#7#45#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../ivento4.0/database/migrations/2018_02_07_034427_create_select_items_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="363">
+          <caret line="39" column="8" lean-forward="false" selection-start-line="39" selection-start-column="8" selection-end-line="41" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../ivento4.0/database/migrations/2018_02_07_033529_create_users_campos_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="363">
+          <caret line="52" column="8" lean-forward="true" selection-start-line="52" selection-start-column="8" selection-end-line="54" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../ivento4.0/app/Models/Auth/SelectItem/SelectItem.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="4" lean-forward="false" selection-start-line="8" selection-start-column="4" selection-end-line="16" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../ivento4.0/app/Models/Auth/Campo/Campo.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="29" lean-forward="true" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/database/migrations/2018_08_23_041113_create_campos_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="227">
+          <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/database/migrations/2018_08_23_041141_create_items_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="52" lean-forward="false" selection-start-line="18" selection-start-column="52" selection-end-line="18" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/database/migrations/2018_08_23_041426_create_users_campos_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="641">
+          <caret line="45" column="1" lean-forward="true" selection-start-line="45" selection-start-column="1" selection-end-line="45" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/app/Http/Requests/Admin/Campo/ItemRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/app/Models/Admin/Item.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/app/Http/Requests/UserRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="32" column="37" lean-forward="true" selection-start-line="32" selection-start-column="37" selection-end-line="32" selection-end-column="37" />
+          <folding>
+            <element signature="e#37#62#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/app/Http/Requests/Admin/Campo/UpdateItemRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="30" lean-forward="true" selection-start-line="19" selection-start-column="30" selection-end-line="19" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/app/Http/Requests/Admin/Campo/CampoRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="34" column="3" lean-forward="true" selection-start-line="34" selection-start-column="3" selection-end-line="34" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/app/Models/Admin/Campo.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="697">
+          <caret line="47" column="33" lean-forward="true" selection-start-line="47" selection-start-column="33" selection-end-line="47" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../ivento4.0/app/Http/Controllers/Admin/CampoController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="14" column="8" lean-forward="true" selection-start-line="14" selection-start-column="8" selection-end-line="23" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/app/Http/Requests/Admin/Campo/UpdateCampoRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/app/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="41" column="7" lean-forward="true" selection-start-line="41" selection-start-column="7" selection-end-line="41" selection-end-column="7" />
+          <folding>
+            <element signature="e#23#32#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../ivento4.0/resources/views/auth/confirmar.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1734">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1532364243912" expanded="true" signature="30:52" ph="..." />
+            <marker date="1532364243912" expanded="true" signature="261:275" ph="..." />
+            <marker date="1532364243912" expanded="true" signature="326:346" ph="..." />
+            <marker date="1532364243912" expanded="true" signature="915:959" ph="..." />
+            <marker date="1532364243912" expanded="true" signature="968:1016" ph="..." />
+            <marker date="1532364243912" expanded="true" signature="3212:3273" ph="..." />
+            <marker date="1532364243912" expanded="true" signature="3340:3354" ph="..." />
+            <marker date="1532364243912" expanded="true" signature="3375:3394" ph="..." />
+            <marker date="1532364243912" expanded="true" signature="3789:3800" ph="..." />
+            <marker date="1532364243912" expanded="true" signature="4222:4239" ph="..." />
+            <marker date="1532364243912" expanded="true" signature="4270:4304" ph="..." />
+            <marker date="1532364243912" expanded="true" signature="4447:4459" ph="..." />
+            <marker date="1532364243912" expanded="true" signature="4503:4515" ph="..." />
+            <marker date="1532364243912" expanded="true" signature="4667:4691" ph="..." />
+            <marker date="1532364243912" expanded="true" signature="4752:4762" ph="..." />
+            <marker date="1532364243912" expanded="true" signature="4821:4847" ph="..." />
+            <marker date="1532364243912" expanded="true" signature="4879:4891" ph="..." />
+            <marker date="1532364243912" expanded="true" signature="5007:5017" ph="..." />
+            <marker date="1532364243912" expanded="true" signature="5029:5041" ph="..." />
+            <marker date="1532364243912" expanded="true" signature="5070:5080" ph="..." />
+            <marker date="1532364243912" expanded="true" signature="5272:5300" ph="..." />
+            <marker date="1532364243912" expanded="true" signature="5369:5378" ph="..." />
+            <marker date="1532364243912" expanded="true" signature="5392:5401" ph="..." />
+            <marker date="1532364243912" expanded="true" signature="5408:5419" ph="..." />
+            <marker date="1532364243912" expanded="true" signature="5620:5646" ph="..." />
+            <marker date="1532364243912" expanded="true" signature="5781:5817" ph="..." />
+            <marker date="1532364243912" expanded="true" signature="5898:5906" ph="..." />
+            <marker date="1532364243912" expanded="true" signature="6266:6278" ph="..." />
+            <marker date="1532364243912" expanded="true" signature="6322:6334" ph="..." />
+            <marker date="1532364243912" expanded="true" signature="6486:6510" ph="..." />
+            <marker date="1532364243912" expanded="true" signature="6571:6581" ph="..." />
+            <marker date="1532364243912" expanded="true" signature="6640:6666" ph="..." />
+            <marker date="1532364243912" expanded="true" signature="6698:6710" ph="..." />
+            <marker date="1532364243912" expanded="true" signature="6723:6773" ph="..." />
+            <marker date="1532364243912" expanded="true" signature="6889:6899" ph="..." />
+            <marker date="1532364243912" expanded="true" signature="6911:6923" ph="..." />
+            <marker date="1532364243912" expanded="true" signature="6952:6962" ph="..." />
+            <marker date="1532364243912" expanded="true" signature="7141:7219" ph="..." />
+            <marker date="1532364243912" expanded="true" signature="7278:7306" ph="..." />
+            <marker date="1532364243912" expanded="true" signature="7364:7386" ph="..." />
+            <marker date="1532364243912" expanded="true" signature="7463:7472" ph="..." />
+            <marker date="1532364243912" expanded="true" signature="7494:7503" ph="..." />
+            <marker date="1532364243912" expanded="true" signature="7509:7520" ph="..." />
+            <marker date="1532364243912" expanded="true" signature="7665:7674" ph="..." />
+            <marker date="1532364243912" expanded="true" signature="7687:7696" ph="..." />
+            <marker date="1532364243912" expanded="true" signature="7702:7713" ph="..." />
+            <marker date="1532364243912" expanded="true" signature="7951:7979" ph="..." />
+            <marker date="1532364243912" expanded="true" signature="8037:8100" ph="..." />
+            <marker date="1532364243912" expanded="true" signature="8177:8186" ph="..." />
+            <marker date="1532364243912" expanded="true" signature="8208:8217" ph="..." />
+            <marker date="1532364243912" expanded="true" signature="8223:8234" ph="..." />
+            <marker date="1532364243912" expanded="true" signature="8379:8388" ph="..." />
+            <marker date="1532364243912" expanded="true" signature="8401:8410" ph="..." />
+            <marker date="1532364243912" expanded="true" signature="8416:8427" ph="..." />
+            <marker date="1532364243912" expanded="true" signature="8703:8802" ph="..." />
+            <marker date="1532364243912" expanded="true" signature="8865:8875" ph="..." />
+            <marker date="1532364243912" expanded="true" signature="8986:8996" ph="..." />
+            <marker date="1532364243912" expanded="true" signature="9239:9289" ph="..." />
+            <marker date="1532364243912" expanded="true" signature="9326:9336" ph="..." />
+            <marker date="1532364243912" expanded="true" signature="9531:9557" ph="..." />
+            <marker date="1532364243912" expanded="true" signature="9692:9728" ph="..." />
+            <marker date="1532364243912" expanded="true" signature="9809:9817" ph="..." />
+            <marker date="1532364243912" expanded="true" signature="10571:10603" ph="..." />
+            <marker date="1532364243912" expanded="true" signature="10769:10779" ph="..." />
+            <marker date="1532364243912" expanded="true" signature="10935:10953" ph="..." />
+            <marker date="1532364243912" expanded="true" signature="11121:11145" ph="..." />
+            <marker date="1532364243912" expanded="true" signature="11152:11160" ph="..." />
+            <marker date="1532364243912" expanded="true" signature="11337:11371" ph="..." />
+            <marker date="1532364243912" expanded="true" signature="11502:11512" ph="..." />
+            <marker date="1532364243912" expanded="true" signature="12129:12172" ph="..." />
+            <marker date="1532364243912" expanded="true" signature="12839:13203" ph="..." />
+            <marker date="1532364243912" expanded="true" signature="12938:13014" ph="..." />
+            <marker date="1532364243912" expanded="false" signature="13105:13115" ph="..." />
+            <marker date="1532364243912" expanded="true" signature="13182:13203" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../ivento4.0/resources/views/congressista/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1533966105534" expanded="true" signature="9:23" ph="..." />
+            <marker date="1533966105534" expanded="true" signature="103:110" ph="..." />
+            <marker date="1533966105534" expanded="true" signature="289:301" ph="..." />
+            <marker date="1533966105534" expanded="true" signature="370:389" ph="..." />
+            <marker date="1533966105534" expanded="true" signature="427:435" ph="..." />
+            <marker date="1533966105534" expanded="true" signature="723:732" ph="..." />
+            <marker date="1533966105534" expanded="true" signature="1006:1026" ph="..." />
+            <marker date="1533966105534" expanded="true" signature="1061:1089" ph="..." />
+            <marker date="1533966105534" expanded="true" signature="3195:3214" ph="..." />
+            <marker date="1533966105534" expanded="true" signature="3502:3532" ph="..." />
+            <marker date="1533966105534" expanded="true" signature="3804:3832" ph="..." />
+            <marker date="1533966105534" expanded="true" signature="4109:4139" ph="..." />
+            <marker date="1533966105534" expanded="true" signature="4422:4447" ph="..." />
+            <marker date="1533966105534" expanded="true" signature="6645:6654" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../ivento4.0/resources/views/welcome.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-153">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1532893796145" expanded="true" signature="9:23" ph="..." />
+            <marker date="1532893796145" expanded="true" signature="103:110" ph="..." />
+            <marker date="1532893796145" expanded="true" signature="187:199" ph="..." />
+            <marker date="1532893796145" expanded="true" signature="264:283" ph="..." />
+            <marker date="1532893796145" expanded="true" signature="319:327" ph="..." />
+            <marker date="1532893796145" expanded="true" signature="405:414" ph="..." />
+            <marker date="1532893796145" expanded="true" signature="571:591" ph="..." />
+            <marker date="1532893796145" expanded="true" signature="654:674" ph="..." />
+            <marker date="1532893796145" expanded="true" signature="875:918" ph="..." />
+            <marker date="1532893796145" expanded="true" signature="994:1003" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../ivento4.0/app/Http/Controllers/Auth/ConfirmController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="139" column="29" lean-forward="false" selection-start-line="139" selection-start-column="29" selection-end-line="139" selection-end-column="29" />
+          <folding>
+            <element signature="e#45#77#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../ivento4.0/app/Models/Auth/User/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="46" column="40" lean-forward="false" selection-start-line="46" selection-start-column="40" selection-end-line="46" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/laravel/app/Providers/AppServiceProvider.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="463">
           <caret line="28" column="0" lean-forward="true" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -263,9 +739,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="32">
           <caret line="22" column="9" lean-forward="false" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="9" />
-          <folding>
-            <element signature="e#33#72#0#PHP" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -273,7 +746,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1466">
           <caret line="163" column="25" lean-forward="false" selection-start-line="163" selection-start-column="25" selection-end-line="163" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -281,7 +753,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-268">
           <caret line="5" column="43" lean-forward="false" selection-start-line="5" selection-start-column="43" selection-end-line="5" selection-end-column="43" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -290,7 +761,6 @@
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="0">
             <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-            <folding />
           </first_editor>
           <second_editor />
         </state>
@@ -300,7 +770,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" column="21" lean-forward="true" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -308,7 +777,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="561">
           <caret line="33" column="14" lean-forward="true" selection-start-line="33" selection-start-column="14" selection-end-line="33" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -317,9 +785,178 @@
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="357">
             <caret line="21" column="11" lean-forward="true" selection-start-line="21" selection-start-column="11" selection-end-line="21" selection-end-column="11" />
-            <folding />
           </first_editor>
           <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../ivento4.0/app/Parcela.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="618">
+          <caret line="210" column="9" lean-forward="false" selection-start-line="210" selection-start-column="9" selection-end-line="210" selection-end-column="9" />
+          <folding>
+            <element signature="e#23#68#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../ivento4.0/app/Http/Controllers/Auth/RegisterController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="4" lean-forward="false" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+          <folding>
+            <element signature="e#45#60#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../ivento4.0/resources/views/layouts/home.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-102">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1534178480008" expanded="true" signature="120:142" ph="..." />
+            <marker date="1534178480008" expanded="true" signature="403:417" ph="..." />
+            <marker date="1534178480008" expanded="true" signature="590:597" ph="..." />
+            <marker date="1534178480008" expanded="true" signature="633:645" ph="..." />
+            <marker date="1534178480008" expanded="true" signature="689:697" ph="..." />
+            <marker date="1534178480008" expanded="true" signature="736:780" ph="..." />
+            <marker date="1534178480008" expanded="true" signature="3272:3314" ph="..." />
+            <marker date="1534178480008" expanded="true" signature="8572:8585" ph="..." />
+            <marker date="1534178480008" expanded="true" signature="8731:8739" ph="..." />
+            <marker date="1534178480008" expanded="true" signature="8871:8889" ph="..." />
+            <marker date="1534178480008" expanded="true" signature="9034:9058" ph="..." />
+            <marker date="1534178480008" expanded="true" signature="9068:9076" ph="..." />
+            <marker date="1534178480008" expanded="true" signature="9229:9244" ph="..." />
+            <marker date="1534178480008" expanded="true" signature="9359:9369" ph="..." />
+            <marker date="1534178480008" expanded="true" signature="9546:9565" ph="..." />
+            <marker date="1534178480008" expanded="true" signature="9622:9636" ph="..." />
+            <marker date="1534178480008" expanded="true" signature="9665:9680" ph="..." />
+            <marker date="1534178480008" expanded="true" signature="9686:9713" ph="..." />
+            <marker date="1534178480008" expanded="true" signature="9747:9765" ph="..." />
+            <marker date="1534178480008" expanded="true" signature="9771:9801" ph="..." />
+            <marker date="1534178480008" expanded="true" signature="9846:9886" ph="..." />
+            <marker date="1534178480008" expanded="true" signature="10021:10036" ph="..." />
+            <marker date="1534178480008" expanded="true" signature="10042:10069" ph="..." />
+            <marker date="1534178480008" expanded="true" signature="10119:10207" ph="..." />
+            <marker date="1534178480008" expanded="true" signature="10371:10392" ph="..." />
+            <marker date="1534178480008" expanded="true" signature="10398:10432" ph="..." />
+            <marker date="1534178480008" expanded="true" signature="10463:10505" ph="..." />
+            <marker date="1534178480008" expanded="true" signature="10637:10647" ph="..." />
+            <marker date="1534178480008" expanded="true" signature="10653:10674" ph="..." />
+            <marker date="1534178480008" expanded="true" signature="10731:10747" ph="..." />
+            <marker date="1534178480008" expanded="true" signature="10969:10978" ph="..." />
+            <marker date="1534178480008" expanded="true" signature="11314:11323" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../ivento4.0/resources/views/auth/register.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="516">
+          <caret line="120" column="43" lean-forward="false" selection-start-line="120" selection-start-column="43" selection-end-line="120" selection-end-column="43" />
+          <folding>
+            <marker date="1535067981538" expanded="true" signature="9:28" ph="..." />
+            <marker date="1535067981538" expanded="true" signature="40:63" ph="..." />
+            <marker date="1535067981538" expanded="true" signature="75:94" ph="..." />
+            <marker date="1535067981538" expanded="true" signature="106:112" ph="..." />
+            <marker date="1535067981538" expanded="true" signature="150:164" ph="..." />
+            <marker date="1535067981538" expanded="true" signature="3306:3333" ph="..." />
+            <marker date="1535067981538" expanded="true" signature="3481:3518" ph="..." />
+            <marker date="1535067981538" expanded="true" signature="3551:3585" ph="..." />
+            <marker date="1535067981538" expanded="true" signature="3778:3813" ph="..." />
+            <marker date="1535067981538" expanded="true" signature="3861:3874" ph="..." />
+            <marker date="1535067981538" expanded="true" signature="4115:4150" ph="..." />
+            <marker date="1535067981538" expanded="true" signature="4736:4771" ph="..." />
+            <marker date="1535067981538" expanded="true" signature="5056:5091" ph="..." />
+            <marker date="1535067981538" expanded="true" signature="5203:5220" ph="..." />
+            <marker date="1535067981538" expanded="true" signature="5318:5337" ph="..." />
+            <marker date="1535067981538" expanded="true" signature="5436:5470" ph="..." />
+            <marker date="1535067981538" expanded="true" signature="5699:5709" ph="..." />
+            <marker date="1535067981538" expanded="true" signature="5817:5836" ph="..." />
+            <marker date="1535067981538" expanded="true" signature="5947:5965" ph="..." />
+            <marker date="1535067981538" expanded="true" signature="6064:6080" ph="..." />
+            <marker date="1535067981538" expanded="true" signature="6190:6206" ph="..." />
+            <marker date="1535067981538" expanded="true" signature="6425:6461" ph="..." />
+            <marker date="1535067981538" expanded="true" signature="6660:6695" ph="..." />
+            <marker date="1535067981538" expanded="true" signature="6741:6757" ph="..." />
+            <marker date="1535067981538" expanded="true" signature="6784:6820" ph="..." />
+            <marker date="1535067981538" expanded="true" signature="7045:7065" ph="..." />
+            <marker date="1535067981538" expanded="true" signature="7116:7127" ph="..." />
+            <marker date="1535067981538" expanded="true" signature="7132:7171" ph="..." />
+            <marker date="1535067981538" expanded="true" signature="7177:7197" ph="..." />
+            <marker date="1535067981538" expanded="true" signature="7203:7242" ph="..." />
+            <marker date="1535067981538" expanded="true" signature="7337:7352" ph="..." />
+            <marker date="1535067981538" expanded="true" signature="7434:7461" ph="..." />
+            <marker date="1535067981538" expanded="true" signature="7620:7635" ph="..." />
+            <marker date="1535067981538" expanded="true" signature="7713:7740" ph="..." />
+            <marker date="1535067981538" expanded="true" signature="7939:7947" ph="..." />
+            <marker date="1535067981538" expanded="true" signature="7968:8018" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../ivento4.0/database/migrations/2017_04_10_000000_create_users_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="4" lean-forward="false" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
+          <folding>
+            <element signature="e#8#46#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/app/Models/Admin/Pacote.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1711">
+          <caret line="4" column="4" lean-forward="false" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+          <folding>
+            <element signature="e#36#62#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/app/Http/Requests/Admin/UpdatePacoteRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-198">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/app/Http/Requests/Admin/UpdateLoteRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-93">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/app/Http/Controllers/Admin/ConfigController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1139">
+          <caret line="5" column="4" lean-forward="true" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="4" />
+          <folding>
+            <element signature="e#41#69#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/app/Http/Controllers/Admin/LoteController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-663">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/app/Http/Controllers/Admin/PacoteController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="397">
+          <caret line="97" column="9" lean-forward="true" selection-start-line="97" selection-start-column="9" selection-end-line="97" selection-end-column="9" />
+          <folding>
+            <element signature="e#41#69#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

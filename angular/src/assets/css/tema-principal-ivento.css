@@ -1,0 +1,27 @@
+body {
+  background-image: url("../../../assets/img/background/background-img.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 100vh;
+
+
+/* conteúdo principal */
+.principal {
+  margin-top: 15vh;
+}
+
+/* formatação de texto */
+.header {
+  background-color: #f5f5f5;
+  min-height: 8vh;
+}
+
+@media screen and (max-width: 429px) {
+  .titulo-home {
+    font-size: 5em;
+  }
+  .container {
+    width: 90%;
+  }
+}

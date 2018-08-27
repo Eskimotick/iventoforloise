@@ -1,0 +1,55 @@
+
+/* navbar */
+nav .nav-admin {
+  text-shadow: none;
+  color: #f5f5f5;
+}
+
+nav .nav-admin .brand-logo, nav ul li a {
+  color: #424242;
+}
+
+/* elementos */
+
+.row-cards-hoteis {
+  margin: 2vw;
+}
+
+.card h5 {
+  font-size: 1em;
+  color: #424242;
+  text-align: center;
+}
+.card .card-title {
+  text-shadow: 2px 2px 6px #424242;
+}
+.modal {
+  min-height: 70vh;
+}
+
+ @media screen and (min-width: 993px) {
+   .modal {
+     min-height: 62vh;
+     max-width: 40vw;
+   }
+
+ }
+.modal .modal-content {
+  padding: 0;
+}
+
+.modal-close {
+  padding-top: 2vh;
+  color: #424242;
+}
+
+
+h4 {
+  font-family: 'Raleway';
+  font-size: 1.8em;
+  padding-top: 1.8vh;
+}
+
+.fabs-card-hospedagem {
+  margin-top: -7vh;
+}

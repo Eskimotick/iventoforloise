@@ -1,0 +1,29 @@
+/* menu - sidebar fixa ------------------------------------------------- */
+/* estrutura */
+.sidebar-fixa {
+  background-color:rgba(255, 255, 255, 0.7);
+  height: 100%;
+  width: 15vw;
+  position: fixed;
+}
+
+/* menu - lista */
+.menu-admin {
+  font-family: 'Roboto';
+  font-weight: 300;
+  font-size: 1.25em;
+  margin-top: 5vh;
+  border-top: 1px solid #eeeeee;
+}
+
+.menu-admin .btn-large {
+  width: 100%;
+  border-bottom: 1px solid #eeeeee;
+}
+.menu-admin .btn-flat:hover  {
+  background-color: #eeeeee;
+}
+
+.menu-admin li a {
+  color: black;
+}
