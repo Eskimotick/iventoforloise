@@ -74,10 +74,31 @@ Route::group([
 });
 
 //Grupo de Rotas para o painel de admin
-Route::group([
+Route::group([//criar middleware para restringir acesso
   'prefix' => 'admin'
 ], function () {
-  //rotas aqui
+
+    //Rotas de pacotes
+    Route::group(['prefix' => 'pacotes'], function(){
+
+        Route::get('/','PacoteController@index');                   //http://site.com/api/admin/pacotes/
+        Route::get('{id}','PacoteController@showPacote');           //http://site.com/api/admin/pacotes/id
+        Route::post('/', 'PacoteController@storePacote');           //http://site.com/api/admin/pacotes/
+        Route::put('{id}', 'PacoteController@updatePacote');        //http://site.com/api/admin/pacotes/id
+        Route::delete('{id}', 'PacoteController@destroyPacote');    //http://site.com/api/admin/pacotes/id
+    });
+
+    // rota de edição dos lotes
+    Route::group(['prefix' => 'lotes'], function(){
+        Route::put('{id}', 'LoteController@updateLote');            //http://site.com/api/admin/lotes/id
+    });
+    
+    //rotas de atualizar configurações
+    Route::put('inscricoes', 'ConfigController@updateInscricoes');      //http://site.com/api/admin/inscricoes
+    Route::put('evento', 'ConfigController@updateEvento');              //http://site.com/api/admin/evento
+    Route::put('abreinscricoes', 'ConfigController@abreInscricoes');    //http://site.com/api/admin/abreinscricoes
+    Route::put('fechainscricoes', 'ConfigController@fechaInscricoes');  //http://site.com/api/admin/fechainscricoes
+    
 });
 
 /*  Modelo de Grupo de rotas
