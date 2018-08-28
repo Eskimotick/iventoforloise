@@ -101,6 +101,17 @@ Route::group([//criar middleware para restringir acesso
     Route::put('abreinscricoes', 'ConfigController@abreInscricoes');    //http://site.com/api/admin/abreinscricoes
     Route::put('fechainscricoes', 'ConfigController@fechaInscricoes');  //http://site.com/api/admin/fechainscricoes
     
+
+     //Rotas de hospedagens
+     Route::group(['prefix' => 'hospedagens'], function(){
+
+        Route::get('/','Admin\HospedagemController@index');                       //http://site.com/api/admin/hospedagens/
+        Route::get('{id}','Admin\HospedagemController@showHospedagem');           //http://site.com/api/admin/hospedagens/id
+        Route::post('/', 'Admin\HospedagemController@storeHospedagem');           //http://site.com/api/admin/hospedagens/
+        Route::put('{id}', 'Admin\HospedagemController@updateHospedagem');        //http://site.com/api/admin/hospedagens/id
+        Route::delete('{id}', 'Admin\HospedagemController@destroyHospedagem');    //http://site.com/api/admin/hospedagens/id
+    });
+
 });
 
 /*  Modelo de Grupo de rotas
