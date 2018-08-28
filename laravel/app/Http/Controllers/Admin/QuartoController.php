@@ -45,7 +45,8 @@ class QuartoController extends Controller
         }
 
         //pega os novos quartos que acabaram de ser criados.
-        $novosQuartos = Quarto::where('hospedagem_id', $hospedagem->id)->where('id', '>', $maiorId)->get();
+        $novosQuartos = Quarto::where('hospedagem_id', $hospedagem->id)
+                        ->where('id', '>', $maiorId)->get();
 
         return response()->success($novosQuartos);
        
