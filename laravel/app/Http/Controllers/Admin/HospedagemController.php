@@ -92,9 +92,7 @@ class HospedagemController extends Controller
 
         if($hospedagem){
             $hospedagem->delete();
-
             return response()->success('Hospedagem deletada com sucesso!');
-
         }
         else{
             return response()->error('Hospedagem não encontrada, verifique se a mesma existe.', 400);
