@@ -112,6 +112,17 @@ Route::group([//criar middleware para restringir acesso
         Route::delete('{id}', 'Admin\HospedagemController@destroyHospedagem');    //http://site.com/api/admin/hospedagens/id
     });
 
+    //Rotas de quartos
+    Route::group(['prefix' => 'quartos'], function(){
+
+        // Route::get('/','Admin\QuartoController@index');                   //http://site.com/api/admin/quartos/
+        // Route::get('{id}','Admin\QuartoController@showQuarto');           //http://site.com/api/admin/quartos/id
+        Route::post('/', 'Admin\QuartoController@storeQuarto');           //http://site.com/api/admin/quartos/
+        // Route::put('{id}', 'Admin\QuartoController@updateQuarto');        //http://site.com/api/admin/quartos/id
+        // Route::delete('{id}', 'Admin\QuartoController@destroyQuarto');    //http://site.com/api/admin/quartos/id
+    });
+
+
 });
 
 /*  Modelo de Grupo de rotas
