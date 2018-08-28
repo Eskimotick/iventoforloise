@@ -2,6 +2,7 @@
 
 namespace App\Models\Admin;
 
+use App\Models\Admin\Quarto;
 use Illuminate\Database\Eloquent\Model;
 
 class Hospedagem extends Model
@@ -35,10 +36,53 @@ class Hospedagem extends Model
         if($request->vagas){
             //verificar se as vagas dos quartos sao maiores que as vagas da request
             //se forem impedir a mudança até o user deletar algum quarto.
+            $vagasQuartos = $this->hasMany('App\Models\Admin\Quarto')->sum('vagas');
+            if($request->vagas < $vagasQuartos){
+                return "Quantidade de vagas é menor que a quantidade de vagas já ocupadas pelos quartos.".
+                        " Favor deletar os quartos antes de alterar as vagas.";
+            }
             $this->vagas = $request->vagas;
         }
         
         $this->save();
+
+    }
+
+    public function validaCriacaoQuartos($request){
+        
+        $vagasQuartos = Quarto::where('hospedagem_id', $this->id)->sum('vagas');
+        
+        //verificar vagas disponiveis com quantidade de vagas.
+        $vagasDisponiveis = $this->vagas - $vagasQuartos;
+        
+        if($vagasDisponiveis <= 0){
+            return 'Quantidade de vagas livres esgotadas.';
+        }
+        
+        $quartosPossiveis = (integer)($vagasDisponiveis / $request->vagas);
+
+        if($quartosPossiveis < $request->qnt_quartos){
+            return 'O máximo de quartos possíveis a ser criados'. 
+                    ' com este número de vagas é '.$quartosPossiveis.
+                    '. Quantidade de vagas livres disponíveis = '.$vagasDisponiveis;
+        }
+
+
+        for($i = 1; $i <= $request->qnt_quartos; $i++){
+            
+            $nome = $i < 10 ?  $request->nome.' - 0'.$i : $request->nome.' - '.$i;
+            $dados = [
+                'nome' => $nome,
+                'descricao' => $request->descricao,
+                'hospedagem_id' => $this->id,
+                'vagas' => $request->vagas,
+            ];
+
+            $dados = (object)$dados;
+
+            $novoQuarto = new Quarto;
+            $novoQuarto->createQuarto($dados);
+        }
 
     }
 }
