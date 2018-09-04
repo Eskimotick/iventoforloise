@@ -43,6 +43,7 @@ class Hospedagem extends Model
             }
             $this->vagas = $request->vagas;
         }
+
         
         $this->save();
 
@@ -52,24 +53,16 @@ class Hospedagem extends Model
         
         $vagasQuartos = Quarto::where('hospedagem_id', $this->id)->sum('vagas');
         
-        //verificar vagas disponiveis com quantidade de vagas.
-        $vagasDisponiveis = $this->vagas - $vagasQuartos;
-        
-        if($vagasDisponiveis <= 0){
-            return 'Quantidade de vagas livres esgotadas.';
-        }
-        
-        $quartosPossiveis = (integer)($vagasDisponiveis / $request->vagas);
+        $resposta = $this->verificaVagasDisponiveis($vagasQuartos, $request->vagas, $request->qnt_quartos);
 
-        if($quartosPossiveis < $request->qnt_quartos){
-            return 'O máximo de quartos possíveis a ser criados'. 
-                    ' com este número de vagas é '.$quartosPossiveis.
-                    '. Quantidade de vagas livres disponíveis = '.$vagasDisponiveis;
+        if(gettype($resposta) == 'string'){
+            return $resposta;
         }
-
 
         for($i = 1; $i <= $request->qnt_quartos; $i++){
             
+            // verifica se o numero do quarto é menor que 10 para adicionar o 0 antes do número
+            // para ficar bonitinho no nome.
             $nome = $i < 10 ?  $request->nome.' - 0'.$i : $request->nome.' - '.$i;
             $dados = [
                 'nome' => $nome,
@@ -82,6 +75,25 @@ class Hospedagem extends Model
 
             $novoQuarto = new Quarto;
             $novoQuarto->createQuarto($dados);
+        }
+
+    }
+
+    public function verificaVagasDisponiveis($vagasQuartos, $requestVagas, $qntQuartos){
+        
+        //verificar vagas disponiveis com quantidade de vagas.
+        $vagasDisponiveis = $this->vagas - $vagasQuartos;
+        
+        if($vagasDisponiveis <= 0){
+            return 'Quantidade de vagas livres esgotadas.';
+        }
+        
+        $quartosPossiveis = (integer)($vagasDisponiveis / $requestVagas);
+
+        if($quartosPossiveis < $qntQuartos){
+            return 'O máximo de quartos possíveis a ser criados'. 
+                    ' com este número de vagas é '.$quartosPossiveis.
+                    '. Quantidade de vagas livres disponíveis = '.$vagasDisponiveis;
         }
 
     }
