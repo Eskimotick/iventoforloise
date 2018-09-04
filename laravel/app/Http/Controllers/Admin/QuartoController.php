@@ -72,7 +72,17 @@ class QuartoController extends Controller
      */
     public function updateQuarto(Request $request, $id)
     {
-        //
+        $quarto = Quarto::find($id);
+        $resposta = $quarto->updateQuarto($request);
+
+        if(gettype($resposta) == 'string'){
+            return response()->error($resposta, 400);
+        }
+
+        $nome = explode('-', $quarto->nome, 2)[0];
+        $quartosAtualizados = Quarto::where('nome', 'LIKE', $nome.' -$')->get();
+
+        return response()->success($quarto);
     }
 
     /**
