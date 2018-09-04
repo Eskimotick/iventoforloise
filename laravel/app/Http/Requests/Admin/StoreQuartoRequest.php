@@ -31,7 +31,7 @@ class StoreQuartoRequest extends FormRequest
     public function rules()
     {
         return [
-            'nome' => 'required|string|min:10|max:50',
+            'nome' => 'required|string|min:10|max:50', //usar um regex para alfanumerico
             'descricao' => 'required|string|min:10|max:300',
             'hospedagem' => 'required|integer|min:1',
             'vagas' => 'required|integer|min:1',
