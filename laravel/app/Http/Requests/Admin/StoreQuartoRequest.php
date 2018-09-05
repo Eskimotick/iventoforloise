@@ -31,17 +31,22 @@ class StoreQuartoRequest extends FormRequest
     public function rules()
     {
         return [
-            'nome' => 'required|string|min:10|max:50', //usar um regex para alfanumerico
+            'nome' => array('required',
+                            'regex:/^[0-9a-zA-ZÀ-Úà-ú\s]+$/',
+                            'min:10','max:50'),  
+                            
             'descricao' => 'required|string|min:10|max:300',
             'hospedagem' => 'required|integer|min:1',
             'vagas' => 'required|integer|min:1',
-            'qnt_quartos' => 'required|integer|min:1'
+            'qnt_quartos' => 'required|integer|min:1',
+            'pacotes' => 'required|string|min:1'
         ];
     }
 
     public function messages(){
         return [
             'nome.required' => 'Digite um nome para o Quarto',
+            'nome.regex' => 'São aceitos somente letras e números para o nome',
             'nome.min' => 'O nome deve conter no mínimo 10 caracteres',
             'nome.max' => 'O nome deve conter no máximo 50 caracteres',
             'descricao.required' => 'Uma descrição é necessária',
@@ -54,8 +59,10 @@ class StoreQuartoRequest extends FormRequest
             'vagas.integer' => 'A quantidade de vagas deve ser um número',
             'vagas.min' => 'O número de vagas tem que ser maior que zero.',
             'qnt_quartos.required' => 'É necessário fornecer a quantidade de quartos a ser criados',
-            'qnt_quartos.integer' => 'A quantidade de quantidade de quartos deve ser um número',
+            'qnt_quartos.integer' => 'A quantidade de quartos deve ser um número',
             'qnt_quartos.min' => 'O número de quantidade de quartos tem que ser maior que zero.',
+            'pacotes.required' => 'É necessário fornecer pelo menos um pacote ao qual o quarto pertence',
+            'pacotes.min' => 'O número de pacotes tem que ser maior que zero.'
 
         ];
     }
