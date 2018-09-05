@@ -69,6 +69,7 @@ class Hospedagem extends Model
                 'descricao' => $request->descricao,
                 'hospedagem_id' => $this->id,
                 'vagas' => $request->vagas,
+                'pacotes' => $request->pacotes
             ];
 
             $dados = (object)$dados;
