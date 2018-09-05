@@ -7,6 +7,7 @@ use App\Models\Admin\Hospedagem;
 use App\Models\Admin\Quarto;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreQuartoRequest as StoreRequest;
+use App\Http\Requests\Admin\UpdateQuartoRequest as UpdateRequest;
 
 class QuartoController extends Controller
 {
@@ -70,19 +71,21 @@ class QuartoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function updateQuarto(Request $request, $id)
+    public function updateQuarto(UpdateRequest $request, $id)
     {
         $quarto = Quarto::find($id);
+
+        if(!$quarto){
+            return response()->error('Quarto não encontrado, verifique se o mesmo existe.', 400);
+        }
+
         $resposta = $quarto->updateQuarto($request);
 
         if(gettype($resposta) == 'string'){
             return response()->error($resposta, 400);
         }
 
-        $nome = explode('-', $quarto->nome, 2)[0];
-        $quartosAtualizados = Quarto::where('nome', 'LIKE', $nome.' -$')->get();
-
-        return response()->success($quarto);
+        return response()->success($resposta);
     }
 
     /**
@@ -97,10 +100,44 @@ class QuartoController extends Controller
 
         if($quarto){
             $quarto->delete();
-            return response()->success('Quarto deletada com sucesso!');
+            return response()->success('Quarto deletado com sucesso!');
         }
         else{
-            return response()->error('Quarto não encontrada, verifique se a mesma existe.', 400);
+            return response()->error('Quarto não encontrada, verifique se o mesmo existe.', 400);
         }
     }
+
+    public function adminAlocaUser(Request $request, $id){
+
+        $quarto = Quarto::find($id);
+        if(!$quarto){
+            return response()->error('Quarto não encontrado, verifique se o mesmo existe.', 400);
+        }
+
+        $resposta = $quarto->alocaUser($request->cpf);
+
+        if(gettype($resposta) == 'string'){
+            return response()->error($resposta, 400);
+        }
+
+        $resposta = implode('/', $resposta);
+        return response()->success('User alocado com sucesso! user/quarto => '.$resposta);
+
+    }
+
+    public function adminDesalocaUser(Request $request){
+        
+
+        $quarto = new Quarto;
+        $resposta = $quarto->desalocaUser($request->cpf);
+
+        if(gettype($resposta) == 'string'){
+            return response()->error($resposta, 400);
+        }
+
+        $resposta = implode('/', $resposta);
+        return response()->success('User desalocado com sucesso! user/quarto => '.$resposta);
+    }
+
+
 }
