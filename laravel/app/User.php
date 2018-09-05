@@ -19,6 +19,8 @@ use App\Notifications\Auth\ChangeEmail\NewEmail\NewEmailConfirmedNotification;
 use App\Notifications\Auth\ChangeEmail\OldEmail\OldEmailConfirmedNotification;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+use App\Models\Admin\Quarto;
+
 class User extends Authenticatable
 {
     use Notifiable;
@@ -115,4 +117,81 @@ class User extends Authenticatable
       }
       return $check;
     }
+
+    ### Parte de hospedagens e quartos ###
+
+    public function alocaUserQuarto($quartoId){
+
+      if($this->quarto_id != null){
+        return 'user já está alocado em um quarto.';
+      }  
+      
+      $quarto = Quarto::find($quartoId);
+      $resposta = $quarto->preencheVaga();
+
+      if(gettype($resposta) == 'string'){
+        return $resposta;
+      }
+
+      $this->quarto_id = $quartoId;
+      $this->save();
+
+      $resposta = array($this->nickname, $quarto->nome);
+
+      return $resposta;
+        
+    }
+
+    public function desalocaUserQuarto(){
+
+      if($this->quarto_id == null){
+        return 'user não está alocado em um quarto.';
+      }
+
+      $quarto = Quarto::find($this->quarto_id);
+      $quarto->removeVaga();
+
+      $this->quarto_id = null;
+      $this->save();
+
+      $resposta = array($this->nickname, $quarto->nome);
+
+      return $resposta;
+    }
+
+    //verifica se o cpf é valido
+    public static function validar_cpf($cpf)
+    {
+    
+        $cpf = preg_replace('/[^0-9]/', '', (string) $cpf);
+
+        $invalidos = array('00000000000',
+            '11111111111',
+            '22222222222',
+            '33333333333',
+            '44444444444',
+            '55555555555',
+            '66666666666',
+            '77777777777',
+            '88888888888',
+            '99999999999');
+        if (in_array($cpf, $invalidos))
+            return false;
+
+        // Valida tamanho
+        if (strlen($cpf) != 11)
+            return false;
+        // Calcula e confere primeiro dígito verificador
+        for ($i = 0, $j = 10, $soma = 0; $i < 9; $i++, $j--)
+            $soma += $cpf{$i} * $j;
+        $resto = $soma % 11;
+        if ($cpf{9} != ($resto < 2 ? 0 : 11 - $resto))
+            return false;
+        // Calcula e confere segundo dígito verificador
+        for ($i = 0, $j = 11, $soma = 0; $i < 10; $i++, $j--)
+            $soma += $cpf{$i} * $j;
+        $resto = $soma % 11;
+        return $cpf{10} == ($resto < 2 ? 0 : 11 - $resto);
+    }
+
 }
