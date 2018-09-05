@@ -110,17 +110,21 @@ Route::group([//criar middleware para restringir acesso
         Route::post('/', 'Admin\HospedagemController@storeHospedagem');           //http://site.com/api/admin/hospedagens/
         Route::put('{id}', 'Admin\HospedagemController@updateHospedagem');        //http://site.com/api/admin/hospedagens/id
         Route::delete('{id}', 'Admin\HospedagemController@destroyHospedagem');    //http://site.com/api/admin/hospedagens/id
+
+        //Rotas de quartos
+        Route::group(['prefix' => 'quartos'], function(){
+            // Route::get('/','Admin\QuartoController@index');                //http://site.com/api/admin/quartos/
+            // Route::get('{id}','Admin\QuartoController@showQuarto');        //http://site.com/api/admin/quartos/id
+            Route::post('/', 'Admin\QuartoController@storeQuarto');           //http://site.com/api/admin/quartos/
+            Route::put('{id}', 'Admin\QuartoController@updateQuarto');        //http://site.com/api/admin/quartos/id
+            Route::delete('{id}', 'Admin\QuartoController@destroyQuarto');    //http://site.com/api/admin/quartos/id
+            
+            Route::put('{id}/aloca', 'Admin\QuartoController@adminAlocaUser');    //http://site.com/api/admin/quartos/id/aloca
+            Route::post('/desaloca', 'Admin\QuartoController@adminDesalocaUser'); //http://site.com/api/admin/quartos/id/desaloca
+        });
     });
 
-    //Rotas de quartos
-    Route::group(['prefix' => 'quartos'], function(){
 
-        // Route::get('/','Admin\QuartoController@index');                   //http://site.com/api/admin/quartos/
-        // Route::get('{id}','Admin\QuartoController@showQuarto');           //http://site.com/api/admin/quartos/id
-        Route::post('/', 'Admin\QuartoController@storeQuarto');           //http://site.com/api/admin/quartos/
-        Route::put('{id}', 'Admin\QuartoController@updateQuarto');        //http://site.com/api/admin/quartos/id
-        // Route::delete('{id}', 'Admin\QuartoController@destroyQuarto');    //http://site.com/api/admin/quartos/id
-    });
 
 
 });
