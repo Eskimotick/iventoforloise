@@ -66,7 +66,7 @@ class Quarto extends Model
             Quarto::where('nome','LIKE', $nome."-%")->update(['descricao' => $request->descricao]);
         }
         
-        //foi
+        //atualiza a quais pacotes o quarto pertence.
         if($request->pacotes){
             
             $requestPacotes = $this->stringToArray($request->pacotes);
@@ -78,17 +78,18 @@ class Quarto extends Model
             $pacotes = $pacotes->pluck('pacote_id')->toArray();
 
             if($qnt_pacotes < count($requestPacotes)){
-                //arrumar quando detach e attach verificar se ta funcionando direito.
-                $diff = array_diff($requestPacotes, $pacotes);
-                $this->associaPacotes($diff);
+
+                //verifica os ids que serão adicionados a tabela pivot
+                $diferenca = array_diff($requestPacotes, $pacotes);
+                $this->associaPacotes($diferenca);
             }
             else{
-                dd($requestPacotes);
-                $diff = array_diff($pacotes, $requestPacotes);
-                dd($diff);   
-                if(!empty($diff)){
+                //verifica os ids que serão retirados da tabela pivot
+                $diferenca = array_diff($pacotes, $requestPacotes);
                 
-                    $this->desassociaPacotes($diff);
+                //testa se existe algum id que ainda não ta na tabela
+                if(!empty($diferenca)){
+                    $this->desassociaPacotes($diferenca);
                 }
 
             }
