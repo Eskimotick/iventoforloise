@@ -34,9 +34,10 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
 
-            $table->foreign('quarto_id')
-                    ->references('id')->on('quarto')
-                    ->onDelete('set null');
+            // dando erro no migrate
+            // $table->foreign('quarto_id')
+            //         ->references('id')->on('quartos')
+            //         ->onDelete('cascade');
         });
 
         

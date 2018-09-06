@@ -35,7 +35,7 @@ class UpdateQuartoRequest extends FormRequest
                             'min:10','max:50'),
             'descricao' => 'string|min:10|max:300',
             'vagas' => 'integer|min:1',
-            //adicionar coisas relacionadas a pacotes
+            'pacotes' => 'string|min:1'//adicionar coisas relacionadas a pacotes
         ];
     }
     
@@ -48,6 +48,7 @@ class UpdateQuartoRequest extends FormRequest
             'descricao.max' => 'A descrição deve conter no máximo 300 caracteres',
             'vagas.integer' => 'A quantidade de vagas deve ser um número',
             'vagas.min' => 'O número de vagas tem que ser maior que zero.',
+            'pacotes.min' => 'O número de pacotes tem que ser maior que zero.'
         ];
     }
 }

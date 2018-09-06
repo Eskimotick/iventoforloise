@@ -14,11 +14,11 @@ class Quarto extends Model
         return $this->belongsToMany('App\Models\Admin\Pacote', 'pacotes_quartos');
     }
 
-    public function associaQuartoPacotes($pacotes){
+    public function associaPacotes($pacotes){
         $this->pacotes()->withTimestamps()->attach($pacotes);
     }
 
-    public function desassociaQuartoPacotes($excluirPacotes){
+    public function desassociaPacotes($excluirPacotes){
         $this->pacotes()->detach($excluirPacotes);
     }
 
@@ -32,7 +32,7 @@ class Quarto extends Model
         $this->save();
 
         $pacotes = $this->stringToArray($request->pacotes);
-        $this->associaQuartoPacotes($pacotes);
+        $this->associaPacotes($pacotes);
 
     }
 
@@ -66,23 +66,33 @@ class Quarto extends Model
             Quarto::where('nome','LIKE', $nome."-%")->update(['descricao' => $request->descricao]);
         }
         
-        // // ver como fazer o update dependendo se vier com novos pacotes ou pacotes a menos
-        // pensando q vai ser melhor criar função separada pra adicionar e remover os pacotes...
-        // if($request->pacotes){
-        //     $requestPacotes = $this->stringToArray($request->pacotes);
-        //     $qnt_pacotes = $this->pacotes()->count();
-        //     $pacotes = $this->pacotes()->select('pacote_id')->get();
-        //     $pacotes = $pacots->pluck('pacote_id');
+        //foi
+        if($request->pacotes){
+            
+            $requestPacotes = $this->stringToArray($request->pacotes);
+            $qnt_pacotes = $this->pacotes()->count();
 
-        //     if($qnt_pacotes < count($requestPacotes)){
-        //         for($i = $qnt_pacotes; $i <= count($requestPacotes); $i++){
-        //             $this->associaQuartoPacotes($requestPacotes[$i]);
-        //         }
-        //     }
-        //     elseif($qnt_pacotes > count($requestPacotes)){
+            //pega todos os pacotes do pivot
+            $pacotes = $this->pacotes()->select('pacote_id')->get();
+            //transforma a collection em array só com os ids do pacote
+            $pacotes = $pacotes->pluck('pacote_id')->toArray();
 
-        //     }
-        // }
+            if($qnt_pacotes < count($requestPacotes)){
+                //arrumar quando detach e attach verificar se ta funcionando direito.
+                $diff = array_diff($requestPacotes, $pacotes);
+                $this->associaPacotes($diff);
+            }
+            else{
+                dd($requestPacotes);
+                $diff = array_diff($pacotes, $requestPacotes);
+                dd($diff);   
+                if(!empty($diff)){
+                
+                    $this->desassociaPacotes($diff);
+                }
+
+            }
+        }
 
         if($request->nome){
             
@@ -106,7 +116,7 @@ class Quarto extends Model
     public function stringToArray($string){
 
         $string = str_replace(' ','', $string);
-        $array = explode(',', $string, 3);
+        $array = explode(',', $string);
 
         return $array;
     }
