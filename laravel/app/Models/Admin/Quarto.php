@@ -38,6 +38,7 @@ class Quarto extends Model
 
     public function updateQuarto($request){
         
+        //corrigir tirar os espaços das palavras das variaveis quarto comum 2 
         $nome = explode('-', $this->nome, 2)[0];
         $quartos = Quarto::where('nome','LIKE', $nome."-%")->get();
         
@@ -81,7 +82,10 @@ class Quarto extends Model
 
                 //verifica os ids que serão adicionados a tabela pivot
                 $diferenca = array_diff($requestPacotes, $pacotes);
-                $this->associaPacotes($diferenca);
+                foreach($quartos as $quarto){
+                    $quarto->associaPacotes($diferenca);
+                    $quarto->save();
+                }
             }
             else{
                 //verifica os ids que serão retirados da tabela pivot
@@ -89,7 +93,22 @@ class Quarto extends Model
                 
                 //testa se existe algum id que ainda não ta na tabela
                 if(!empty($diferenca)){
-                    $this->desassociaPacotes($diferenca);
+                    
+                    foreach($quartos as $quarto){
+                        $quarto->desassociaPacotes($diferenca);
+                        $quarto->save();
+                    }
+                }
+
+                // ##TESTAR -> verificar se vai causar algum conflito.
+                $diferenca = array_diff($requestPacotes, $pacotes);
+
+                if(!empty($diferenca)){
+                    
+                    foreach($quartos as $quarto){
+                        $quarto->associaPacotes($diferenca);
+                        $quarto->save();
+                    }
                 }
 
             }
@@ -100,6 +119,7 @@ class Quarto extends Model
             //atualiza o nome em todos os quartos de mesmo nome.
             foreach($quartos as $quarto){
                 
+                //corrigir tirar os espaços do nome se der ruim
                 $num = explode('-', $quarto->nome, 2)[1];
                 $quarto->nome = $request->nome.' -'.$num;
                 $quarto->save();
@@ -107,7 +127,8 @@ class Quarto extends Model
             }
         
         }
-
+    
+        $quartos = Quarto::where('nome','LIKE', $request->nome." -%")->get();
         return $quartos;
         
     }
