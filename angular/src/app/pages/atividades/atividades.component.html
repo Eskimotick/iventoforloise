@@ -1,0 +1,55 @@
+<app-navadmin></app-navadmin>
+<app-sidebar></app-sidebar>
+<section class="conteudo-admin">
+	<div class="container white container-admin">
+		<div class="header">
+			<h2 class="titulo-pagina">Atividades</h2>
+		</div>
+
+		<!-- Uso do fullcalendar -->
+		<div *ngIf="calendarOptions">
+			<ng-fullcalendar #ucCalendar [options]="calendarOptions" (eventClick)="eventClick($event.detail)" (eventDrop)="updateEvent($event.detail)" (eventResize)="updateEvent($event.detail)" (clickButton)="clickButton($event.detail)">
+			</ng-fullcalendar>
+		</div>
+	</div>
+
+	<!-- Modal de Atividade -->
+	<div class="modal" materialize="modal"  [materializeParams]="[{dismissible: true}]" [materializeActions]="updateAtividadeModal">
+		<div *ngIf="updateAtividade">	
+			<div class="modal-header">
+				<div class="valign-wrapper">
+					<img class="title-icon" src="assets/img/ivento-logo.png" height="40">
+					<span>
+						<h5 class="title"><b>Atividade {{updateAtividade.title}}</b></h5>
+						<p class="subtitle content">do evento {{evento.title}}</p>
+					</span>
+				</div>
+			</div>
+			<div class="modal-content">
+				<div class="valign-wrapper">
+					<i class="col l1 material-icons icon">check</i>
+					<p>As inscrições para esta atividade estão abertas!</p>
+				</div>
+				<div class="row">
+					<i class="col l1 material-icons icon">date_range</i>
+					<div class="col l11">
+						<b class="topic">Horário da Atividade</b>
+						<p class="content">Data: {{updateAtividade.start}}, de: {{updateAtividade.start}} até: {{updateAtividade.end}}</p>
+					</div>
+				</div>
+				<div class="row">
+					<i class="col l1 material-icons icon">subject</i>
+					<div class="col l11">
+						<b class="topic">Descrição</b>
+		        <textarea id="textarea1" class="materialize-textarea" placeholder="Adicione uma descrição mais detalhada..."[(ngModel)]="updateAtividade.description"></textarea>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<a class="waves-effect waves-green btn-flat">Close</a>
+				<a class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+			</div>
+		</div>
+	</div>
+
+</section>

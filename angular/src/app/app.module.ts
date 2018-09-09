@@ -4,8 +4,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app.routing.module';
-import { MaterializeModule} from 'angular2-materialize';
-
+import { MaterializeModule } from 'angular2-materialize';
+import { FullCalendarModule } from 'ng-fullcalendar';
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 
 import { JwtModule } from '@auth0/angular-jwt';
 import { ToastrModule } from 'ngx-toastr';
@@ -14,7 +15,6 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { TooltipModule } from 'ngx-tooltip';
 
 import { AppComponent } from './app.component';
-
 
 /* elementos admin */
 import { NavadminComponent } from './components/navadmin/navadmin.component';
@@ -32,7 +32,6 @@ import { NavusuarioComponent } from './components/navusuario/navusuario.componen
 import { SidebarUsuarioComponent } from './components/sidebar-usuario/sidebar-usuario.component';
 import { PainelUsuarioComponent} from './pages/user/painel-usuario/painel-usuario.component';
 
-
 /* visitante */
 import { NavbarComponent } from './components/navbar/navbar.component';
 
@@ -41,7 +40,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { CadastroComponent } from './pages/cadastro/cadastro.component';
 import { environment } from '../environments/environment';
-
+import { AtividadesComponent } from './pages/atividades/atividades.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -64,7 +63,8 @@ export function tokenGetter() {
     DashboardComponent, //painel do Admin - mudar nome
     SidebarUsuarioComponent, // sidebar Usuario
     NavusuarioComponent, //Navbar Usuario
-    PainelUsuarioComponent
+    PainelUsuarioComponent, 
+    AtividadesComponent
   ],
   imports: [
     AppRoutingModule,
@@ -84,7 +84,10 @@ export function tokenGetter() {
     BrowserAnimationsModule,
     NgxMaskModule.forRoot(), // https://www.npmjs.com/package/ngx-mask
     NgxPaginationModule, // https://www.npmjs.com/package/ngx-pagination
-    TooltipModule // https://www.npmjs.com/package/ngx-tooltip
+    TooltipModule, // https://www.npmjs.com/package/ngx-tooltip
+    FullCalendarModule, 
+    OwlDateTimeModule, 
+    OwlNativeDateTimeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

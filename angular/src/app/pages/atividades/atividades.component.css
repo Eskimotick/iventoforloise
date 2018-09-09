@@ -1,0 +1,40 @@
+.modal {
+	border-radius: 5px;
+}
+
+.modal-header {
+	margin-left: 3%;
+	margin-top: 1%;
+}
+
+/*pequenos consertos nos alinhamentos do conteúdo da modal*/
+.title-icon {
+	margin-right: 1.5%;
+	opacity: 0.8;
+}
+
+.icon {
+	font-size: 30px;
+	opacity: 0.7;
+}
+
+.title {
+	margin-bottom: 0;
+}
+
+.subtitle {
+	opacity: 0.7;
+}
+
+.content {
+	margin: 0;
+}
+
+.topic {
+	font-size: 16px;
+}
+
+.materialize-textarea:focus:not([readonly]) {
+	border-bottom: 1px solid #0281ae !important;
+	box-shadow: 0 1px 0 0 #0281ae !important;
+}
