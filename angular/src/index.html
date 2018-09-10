@@ -62,7 +62,7 @@
     close: 'Ok',
     closeOnSelect: false // Close upon selecting a date,
     container: undefined, // ex. 'body' will append picker to body
-  });
+  }),
   /* inicialização timepicker // nao existe no angular2-materialize :(((
   $('.timepicker').pickatime({
     default: 'now', // Set default time: 'now', '1:30AM', '16:30'
@@ -76,6 +76,9 @@
     ampmclickable: true, // make AM PM clickable
     aftershow: function(){} //Function for after opening timepicker
   }); */
+    $(document).ready(function(){
+      $('.tooltipped').tooltip({delay: 50});
+    });
   </script>
 </body>
 </html>

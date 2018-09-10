@@ -118,33 +118,66 @@
                     <div class="collapsible-header">Suite Standard <span class="new badge blue-grey lighten-1" data-badge-caption="vagas restantes">2</span></div>
                     <div class="collapsible-body">
                       <div class="row">
-                        <div class="col l5">
-                          <img src="./assets/img/hoteis/hotel-room.jpg" class="foto-quarto responsive-img">
-                          <!-- conteudo do collapsible buga quando colocamos a imagem dentro de uma col sem uma row por fora-->
+                        <div class="row">
+                          <div class="col l5">
+                            <img src="./assets/img/hoteis/hotel-room.jpg" class="foto-quarto responsive-img">
+                            <!-- conteudo do collapsible buga quando colocamos a imagem dentro de uma col sem uma row por fora-->
+                            <div class="col l12 s12 checkboxesPacotes">
+                              <h5>Atribuir aos Pacotes</h5>
+                              <div class="col l12 s12">
+                                <label>
+                                  <input type="checkbox" class="filled-in" />
+                                  <span>Pacote Master</span>
+                                </label>
+                              </div>
+                              <div class="col l12 s12">
+                                <label>
+                                  <input type="checkbox" class="filled-in" />
+                                  <span>Pacote Executivo Plus</span>
+                                </label>
+                              </div>
+                              <div class="col l12 s12">
+                                <label>
+                                  <input type="checkbox" class="filled-in" />
+                                  <span>Pacote Executivo</span>
+                                </label>
+                              </div>
+                              <div class="col l12 s12">
+                                <label>
+                                  <input type="checkbox" class="filled-in" />
+                                  <span>Pacote Simples</span>
+                                </label>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col l7 dadosQuarto">
+                            <div class="input-field col s12 l8">
+                              <input type="text" id="nomeQuarto" value="Suite Standard">
+                              <label for="nomeQuarto">Nome/Tipo de Quarto</label>
+                            </div>
+                            <div class="input-field col s6 l2">
+                              <input type="number" id="numeroQuarto" value="115">
+                              <label for="numeroQuarto">Número</label>
+                            </div>
+                            <div class="input-field col s6 l2">
+                              <input type="number" id="vagasQuarto" value="2">
+                              <label for="vagasQuarto">Vagas</label>
+                            </div>
+                            <div class="input-field col s12 l12">
+                              <textarea id="obsQuarto" class="materialize-textarea">Ar Condicionado, TV, Frigobar, WiFi
+                              </textarea>
+                              <label for="obsQuarto">Observações</label>
+                            </div>
+                            <div class="input-field col s12 l12">
+                              <input type="text" id="ocupantes">
+                              <label for="ocupantes">Ocupantes</label>
+                            </div>
+                          </div>
                         </div>
-                        <div class="col l7">
-                          <div class="input-field col s12 l8">
-                            <input type="text" id="nomeQuarto" value="Suite Standard">
-                            <label for="nomeQuarto">Nome/Tipo de Quarto</label>
-                          </div>
-                          <div class="input-field col s6 l2">
-                            <input type="number" id="numeroQuarto" value="115">
-                            <label for="numeroQuarto">Número</label>
-                          </div>
-                          <div class="input-field col s6 l2">
-                            <input type="number" id="vagasQuarto" value="2">
-                            <label for="vagasQuarto">Vagas</label>
-                          </div>
-                          <div class="input-field col s12 l12">
-                            <textarea id="obsQuarto" class="materialize-textarea">Ar Condicionado, TV, Frigobar, WiFi
-                            </textarea>
-                            <label for="obsQuarto">Observações</label>
-                          </div>
-                          <div class="input-field col s12 l12">
-                            <input type="text" id="ocupantes">
-                            <label for="ocupantes">Ocupantes</label>
-                          </div>
-                          <button class="btn right" type="submit" name="action">Salvar Alterações</button>
+
+                        <div class="row center">
+                          <button class="btn-flat" type="submit" name="action">Deletar Quarto</button>
+                          <button class="btn" type="submit" name="action">Salvar Alterações</button>
                         </div>
                       </div>
                     </div>
@@ -165,40 +198,15 @@
                     <div class="collapsible-header">Quarto Triplo Standard</div>
                     <div class="collapsible-body">
                       <div class="row">
-                        <div class="col l5">
-                          <img src="./assets/img/hoteis/hotel-room.jpg" class="foto-quarto responsive-img">
-                          <!-- conteudo do collapsible buga quando colocamos a imagem dentro de uma col sem uma row por fora-->
-                        </div>
-                        <div class="col l7">
-                          <div class="input-field col s12 l8">
-                            <input type="text" id="nomeQuarto" value="Suite Standard">
-                            <label for="nomeQuarto">Nome/Tipo de Quarto</label>
-                          </div>
-                          <div class="input-field col s6 l2">
-                            <input type="number" id="numeroQuarto" value="125">
-                            <label for="numeroQuarto">Número</label>
-                          </div>
-                          <div class="input-field col s6 l2">
-                            <input type="number" id="vagasQuarto" value="3">
-                            <label for="vagasQuarto">Vagas</label>
-                          </div>
-                          <div class="input-field col s12 l12">
-                            <textarea id="obsQuarto" class="materialize-textarea">Ar Condicionado, TV, Frigobar, WiFi
-                            </textarea>
-                            <label for="obsQuarto">Observações</label>
-                          </div>
-                          <div class="input-field col s12 l12">
-                            <input type="text" id="ocupantes" value="Pessoa Um, Pessoa Dois, Pessoa Três">
-                            <label for="ocupantes">Ocupantes</label>
-                          </div>
-                          <button class="btn right" type="submit" name="action">Salvar Alterações</button>
-                        </div>
-                      </div>
+                      </div>  
                     </div>
                   </li>
                   <li>
                     <div class="collapsible-header">Quarto Compartilhado Standard</div>
-                    <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+                    <div class="collapsible-body">
+                      <div class="row">
+                      </div>
+                    </div>
                   </li>
                 </ul>
               </div>
@@ -245,28 +253,31 @@
   </div>
   <div class="modal-content">
     <div class="row conteudo dadosHotel">
-        <div class="input-field col s12 l6">
-          <input type="text" id="nomeHotel" value="[Nome do Hotel]">
-          <label for="nomeHotel">Nome do Hotel</label>
-        </div>
-        <div class="input-field col s12 l6">
-          <input type="text" id="enderecoHotel" value="Rua Gal. Olímpio, 233">
-          <label for="enderecoHotel">Endereço</label>
-        </div>
-        <div class="input-field col s12 l12">
-          <textarea id="descricaoHotel" class="materialize-textarea">[Lorem Ipsum Dolor Sit Amet]
-          </textarea>
-          <label for="descricaoHotel">Descrição</label>
-        </div>
-        <div class="col l12 s12 file-field input-field">
-          <div class="btn">
-            <span>Foto</span>
-            <input type="file" (change)="onFileSelection($event)">
+        <div class="col l12 s12">
+          <div class="input-field col s12 l6">
+            <input type="text" id="nomeHotel" value="[Nome do Hotel]">
+            <label for="nomeHotel">Nome do Hotel</label>
           </div>
-          <div class="file-path-wrapper">
-            <input class="file-path validate" type="text" value="foto.png">
+          <div class="input-field col s12 l6">
+            <input type="text" id="enderecoHotel" value="Rua Gal. Olímpio, 233">
+            <label for="enderecoHotel">Endereço</label>
+          </div>
+          <div class="input-field col s12 l12">
+            <textarea id="descricaoHotel" class="materialize-textarea">[Lorem Ipsum Dolor Sit Amet]
+            </textarea>
+            <label for="descricaoHotel">Descrição</label>
+          </div>
+          <div class="col l12 s12 file-field input-field">
+            <div class="btn">
+              <span>Foto</span>
+              <input type="file" (change)="onFileSelection($event)">
+            </div>
+            <div class="file-path-wrapper">
+              <input class="file-path validate" type="text" value="foto.png">
+            </div>
           </div>
         </div>
+
     </div>
   </div>
   <div class="modal-footer">
