@@ -32,6 +32,7 @@
 
 .topic {
 	font-size: 16px;
+	display: block;
 }
 
 .materialize-textarea:focus:not([readonly]) {

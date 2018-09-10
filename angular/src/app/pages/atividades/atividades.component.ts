@@ -19,8 +19,11 @@ export class AtividadesComponent implements OnInit {
   	id: 0, title: 'Evento 1', start: '2018-09-04', end: '2018-09-11', rendering: 'background'
   };
   atividade: any[] = [
-		{ id: 1, title: 'Cagar no Pau', start: '2018-09-05T12:00:00', end: '2018-09-05T18:00:00', description: 'Atividade que faço com qualquer projeto' },
-		{ id: 2, title: 'Codar Ivento', allDay: true, start: '2018-09-05', end: '2018-09-08', backgroundColor: 'red', borderColor: 'red' }  	
+		{ id: 1, title: 'Cagar no Pau', start: '2018-09-05T12:00:00', end: '2018-09-05T18:00:00', 
+		descricao: 'Atividade que faço com qualquer projeto', palestrante: 'Shakira', qntdVagas: 31, status: true, disp: 0 },
+
+		{ id: 2, title: 'Codar Ivento', allDay: true, start: '2018-09-05', end: '2018-09-08', backgroundColor: 'red',
+		borderColor: 'red', palestrante: 'Teteu', qntdVagas: 1, status: false }  	
   ]; 
 
   //para o modal de atividade
