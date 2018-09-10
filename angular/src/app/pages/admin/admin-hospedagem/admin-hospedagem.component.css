@@ -17,7 +17,7 @@
 
  @media screen and (min-width: 993px) {
    .modal  {
-     min-height:78vh;
+     min-height:82vh;
      min-width: 80vw;
    }
    .dadosHotel {
@@ -47,6 +47,13 @@ i .material-icons {
   border: 2px solid black;
   background-color: black;
 } nao funciona :( */
+
+.mapa iframe {
+  max-height: 32vh;
+  max-width: 100%;
+
+}
+
 
 
 .header {

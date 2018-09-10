@@ -46,38 +46,67 @@
               <li class="tab col l6"><a href="#cadastrados">Quartos Cadastrados</a></li>
             </ul>
           </div>
-          <div id="novoQuarto" class="col s12">
-            <div class="novoQuarto">
-              <div class="row">
-                <h5>Cadastrar Novo Quarto</h5>
-                <div class="input-field col s12 l8">
-                  <input type="text" id="nomeQuarto">
-                  <label for="nomeQuarto">Nome/Tipo de Quarto</label>
+          <div id="novoQuarto">
+            <div class="row">
+              <div class="col s12 l6 novoQuarto">
+                  <div class="row">
+                    <h5>Informações</h5>
+                    <div class="input-field col s12 l8">
+                      <input type="text" id="nomeQuarto">
+                      <label for="nomeQuarto">Nome/Tipo de Quarto</label>
+                    </div>
+                    <div class="input-field col s6 l2">
+                      <input type="number" id="numeroQuarto">
+                      <label for="numeroQuarto">Número</label>
+                    </div>
+                    <div class="input-field col s6 l2">
+                      <input type="number" id="vagasQuarto">
+                      <label for="vagasQuarto">Vagas</label>
+                    </div>
+                    <div class="col l12 s12 file-field input-field">
+                      <div class="btn">
+                        <span>Fotos</span>
+                        <input type="file" (change)="onFileSelection($event)">
+                      </div>
+                      <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text">
+                      </div>
+                    </div>
+                    <div class="input-field col s12 l12">
+                      <textarea id="obsQuarto" class="materialize-textarea"></textarea>
+                      <label for="obsQuarto">Observações</label>
+                    </div>
                 </div>
-                <div class="input-field col s6 l2">
-                  <input type="number" id="numeroQuarto">
-                  <label for="numeroQuarto">Número</label>
+              </div>
+              <div class="col l6 s12 checkboxesPacotes">
+                <h5>Atribuir aos Pacotes</h5>
+                <div class="col l6 s12">
+                  <label>
+                    <input type="checkbox" class="filled-in" />
+                    <span>Pacote Master</span>
+                  </label>
                 </div>
-                <div class="input-field col s6 l2">
-                  <input type="number" id="vagasQuarto">
-                  <label for="vagasQuarto">Vagas</label>
+                <div class="col l6">
+                  <label>
+                    <input type="checkbox" class="filled-in" />
+                    <span>Pacote Executivo Plus</span>
+                  </label>
                 </div>
-                <div class="col l12 s12 file-field input-field">
-                  <div class="btn">
-                    <span>Fotos</span>
-                    <input type="file" (change)="onFileSelection($event)">
-                  </div>
-                  <div class="file-path-wrapper">
-                    <input class="file-path validate" type="text">
-                  </div>
+                <div class="col l6">
+                  <label>
+                    <input type="checkbox" class="filled-in" />
+                    <span>Pacote Executivo</span>
+                  </label>
                 </div>
-                <div class="input-field col s12 l12">
-                  <textarea id="obsQuarto" class="materialize-textarea"></textarea>
-                  <label for="obsQuarto">Observações</label>
+                <div class="col l6">
+                  <label>
+                    <input type="checkbox" class="filled-in" />
+                    <span>Pacote Simples</span>
+                  </label>
                 </div>
-                <button class="btn-large right" type="submit" name="action">Cadastrar Quarto</button>
               </div>
             </div>
+            <button class="btn-large right" type="submit" name="action">Cadastrar Quarto</button>
           </div>
           <div id="cadastrados" class="col s12">
             <div class="row">

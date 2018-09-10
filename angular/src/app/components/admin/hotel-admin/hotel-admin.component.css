@@ -48,11 +48,20 @@
   min-height: 75vh;
   min-width: 35vw;
 }
- #modalQuartos {
-   min-height: 90vh;
-   min-width: 70vw;
+#modalQuartos {
+  min-height: 90vh;
+  min-width: 78vw;
 
- }
+}
+
+.novoQuarto {
+  margin-top: 1vh;
+  border-right: 3px solid #e0e0e0;
+}
+.checkboxesPacotes h5{
+  padding-bottom: 2vh;
+
+}
 
 
 i .material-icons {
