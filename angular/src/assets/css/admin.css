@@ -50,14 +50,18 @@
 .btn, input.btn,
 .btn.btn-large,
 .btn-floating.fab.waves-effect.waves-light,
-.btn.modal-trigger {
+.btn.modal-trigger,
+.file-field input-field .btn,
+button .btn {
   background-color: #607d8b;
 }
 /* hover - botao padrão */
 .btn:hover, input.btn:hover,
 .btn.btn-large:hover,
 .btn-floating.fab.waves-effect.waves-light:hover,
-.btn.modal-trigger:hover {
+.btn.modal-trigger:hover,
+.file-field input-field .btn:hover,
+button .btn:hover{
   background-color: #90a4ae;
 }
 

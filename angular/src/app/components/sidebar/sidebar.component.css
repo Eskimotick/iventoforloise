@@ -1,7 +1,7 @@
 /* menu - sidebar fixa ------------------------------------------------- */
 /* estrutura */
 .sidebar-fixa {
-  background-color:rgba(255, 255, 255, 0.7);
+  background-color: #e0e0e0;
   height: 100%;
   width: 15vw;
   position: fixed;
@@ -21,7 +21,7 @@
   border-bottom: 1px solid #eeeeee;
 }
 .menu-admin .btn-flat:hover  {
-  background-color: #eeeeee;
+  background-color: white;
 }
 
 .menu-admin li a {

@@ -20,6 +20,7 @@ import { AppComponent } from './app.component';
 import { NavadminComponent } from './components/navadmin/navadmin.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { ContainerAdminComponent } from './components/container-admin/container-admin.component';
+import {HotelAdminComponent} from './components/admin/hotel-admin/hotel-admin.component';
 
 /* páginas admin */
 import { AdminUsuariosComponent } from './pages/admin/admin-usuarios/admin-usuarios.component';
@@ -27,10 +28,13 @@ import { AdminHospedagemComponent } from './pages/admin/admin-hospedagem/admin-h
 import { AdminConfigComponent } from './pages/admin/admin-config/admin-config.component';
 import { DashboardComponent } from './pages/admin/dashboard/dashboard.component';
 
+
 /*usuário */
 import { NavusuarioComponent } from './components/navusuario/navusuario.component';
 import { SidebarUsuarioComponent } from './components/sidebar-usuario/sidebar-usuario.component';
 import { PainelUsuarioComponent} from './pages/user/painel-usuario/painel-usuario.component';
+import { HotelUsuarioComponent} from './components/usuario/hotel-usuario/hotel-usuario.component';
+import { HospedagemUsuarioComponent} from './pages/user/hospedagem-usuario/hospedagem-usuario.component';
 
 
 /* visitante */
@@ -64,7 +68,10 @@ export function tokenGetter() {
     DashboardComponent, //painel do Admin - mudar nome
     SidebarUsuarioComponent, // sidebar Usuario
     NavusuarioComponent, //Navbar Usuario
-    PainelUsuarioComponent
+    PainelUsuarioComponent,
+    HospedagemUsuarioComponent,
+    HotelAdminComponent,
+    HotelUsuarioComponent
   ],
   imports: [
     AppRoutingModule,

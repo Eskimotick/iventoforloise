@@ -1,0 +1,130 @@
+<div class="col s12 m4 l4">
+  <div class="card">
+    <div class="card-image">
+      <img src="./assets/img/hoteis/hotel-5.jpg" class="foto-hotel">
+      <span class="card-title nome-hotel">[Nome do Hotel]</span>
+    </div>
+    <div class="card-content">
+      <div class="container fabs-card-hospedagem">
+        <div class="row center">
+          <a class="btn waves-effect waves-light modal-trigger" href="#infoHotel">
+            Mais Informações
+          </a>
+        </div>
+      </div>
+      <h5><span class="new badge blue-grey lighten-1" data-badge-caption="vagas">4</span></h5>
+      <p class="truncate">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          In efficitur interdum neque, vitae sodales felis.
+          Fusce purus ipsum, vestibulum non urna commodo, interdum rhoncus quam.
+      </p>
+    </div>
+  </div>
+</div>
+<div id="infoHotel" class="modal" materialize="modal">
+  <div class="header">
+    <div class="col s11">
+      <h4>[Nome do Hotel]</h4>
+    </div>
+    <div class="col s1">
+      <i class="material-icons modal-close right">
+        close
+      </i>
+    </div>
+  </div>
+  <div class="modal-content">
+    <div class="row">
+      <div class="col l4 s12">
+        <img src="./assets/img/hoteis/hotel-5.jpg" class="responsive-img">
+      </div>
+      <div class="l8 s12">
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          In efficitur interdum neque, vitae sodales felis.
+          Fusce purus ipsum, vestibulum non urna commodo, interdum rhoncus quam.
+          Nulla placerat maximus diam, sed molestie diam sollicitudin.
+        </p>
+        <h5><strong>Endereço:</strong> Rua Gal. Olímpio, 233 </h5>
+      </div>
+    </div>
+    <div class="row">
+      <ul materialize="collapsible" class="collapsible" data-collapsible="accordion" [materializeParams]="params" [materializeActions]="actions1">
+        <li>
+          <div class="collapsible-header">Suite Standard <span class="new badge blue-grey lighten-1" data-badge-caption="vagas restantes">2</span></div>
+          <div class="collapsible-body">
+            <div class="row">
+              <div class="col l5">
+                <img src="./assets/img/hoteis/hotel-room.jpg" class="foto-quarto responsive-img">
+                <!-- conteudo do collapsible buga quando colocamos a imagem dentro de uma col sem uma row por fora-->
+              </div>
+              <div class="col l7">
+                <div class="input-field col s12 l8">
+                  <input disabled type="text" id="nomeQuarto" value="Suite Standard">
+                  <label for="nomeQuarto">Nome/Tipo de Quarto</label>
+                </div>
+                <div class="input-field col s6 l2">
+                  <input disabled type="number" id="numeroQuarto" value="115">
+                  <label for="numeroQuarto">Número</label>
+                </div>
+                <div class="input-field col s6 l2">
+                  <input disabled type="number" id="vagasQuarto" value="2">
+                  <label for="vagasQuarto">Vagas</label>
+                </div>
+                <div class="input-field col s12 l12">
+                  <textarea disabled id="obsQuarto" class="materialize-textarea">Ar Condicionado, TV, Frigobar, WiFi
+                  </textarea>
+                  <label for="obsQuarto">Observações</label>
+                </div>
+                <div class="input-field col s12 l12">
+                  <input disabled type="text" id="ocupantes">
+                  <label for="ocupantes">Ocupantes</label>
+                </div>
+                <button class="btn right" type="submit" name="action">Escolher Este Quarto</button>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="collapsible-header">Quarto Triplo <span class="new badge blue-grey lighten-1" data-badge-caption="vagas restantes">2</span></div>
+          <div class="collapsible-body">
+            <div class="row">
+              <div class="col l5">
+                <img src="./assets/img/hoteis/hotel-room.jpg" class="foto-quarto responsive-img">
+                <!-- conteudo do collapsible buga quando colocamos a imagem dentro de uma col sem uma row por fora-->
+              </div>
+              <div class="col l7">
+                <div class="input-field col s12 l8">
+                  <input disabled type="text" id="nomeQuarto" value="Quarto Triplo">
+                  <label for="nomeQuarto">Nome/Tipo de Quarto</label>
+                </div>
+                <div class="input-field col s6 l2">
+                  <input disabled type="number" id="numeroQuarto" value="125">
+                  <label for="numeroQuarto">Número</label>
+                </div>
+                <div class="input-field col s6 l2">
+                  <input disabled type="number" id="vagasQuarto" value="2">
+                  <label for="vagasQuarto">Vagas</label>
+                </div>
+                <div class="input-field col s12 l12">
+                  <textarea disabled id="obsQuarto" class="materialize-textarea">Ar Condicionado, TV, Frigobar, WiFi
+                  </textarea>
+                  <label for="obsQuarto">Observações</label>
+                </div>
+                <div class="input-field col s12 l12">
+                  <input disabled type="text" id="ocupantes" value="Oscar Wilde">
+                  <label for="ocupantes">Ocupantes</label>
+                </div>
+                <button class="btn right" type="submit" name="action">Escolher Este Quarto</button>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <div class="divider"></div>
+    <button  class="modal-close waves-effect btn-flat">Sair</button>
+    <!--<input type="submit" class="btn modal-close" value="Sim, deletar">-->
+  </div>
+</div>
