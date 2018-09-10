@@ -24,6 +24,7 @@
 						<p class="subtitle content">do evento {{evento.title}}</p>
 					</span>
 				</div>
+				<i class="material-icons close modal-close">close</i>
 			</div>
 			<div class="modal-content">
 				<div class="row">
@@ -53,7 +54,17 @@
 					<i class="col l1 material-icons icon">archive</i>
 					<div class="col l11">
 						<b class="topic">Pacotes</b>
-						<div class="chip">Jane Doe</div>
+						<div *ngFor="let pacote of updateAtividade.pacotes" class="chip">{{pacote}}</div>
+					</div>
+				</div>
+				<div class="row">
+					<i class="col l1 material-icons icon">image</i>
+					<div class="col l11">
+						<b class="topic">Galeria de Imagens</b>
+						<span>
+							<img class="materialboxed" materialize="materialbox" width="100" [src]="updateAtividade.image">
+							<p>Coe</p>
+						</span>
 					</div>
 				</div>
 			</div>

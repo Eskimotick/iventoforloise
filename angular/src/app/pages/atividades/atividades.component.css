@@ -7,6 +7,12 @@
 	margin-top: 1%;
 }
 
+.close {
+	position: absolute;
+  right: 1%;
+  top: 2%;
+}
+
 /*pequenos consertos nos alinhamentos do conteúdo da modal*/
 .title-icon {
 	margin-right: 1.5%;
