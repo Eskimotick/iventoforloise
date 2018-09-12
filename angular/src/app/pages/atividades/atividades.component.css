@@ -41,6 +41,10 @@
 	display: block;
 }
 
+.gallery {
+	margin-top: 2%;
+}
+
 .materialize-textarea:focus:not([readonly]) {
 	border-bottom: 1px solid #0281ae !important;
 	box-shadow: 0 1px 0 0 #0281ae !important;

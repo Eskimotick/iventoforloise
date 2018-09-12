@@ -21,11 +21,11 @@ export class AtividadesComponent implements OnInit {
   atividade: any[] = [
 		{ id: 1, title: 'Cagar no Pau', start: '2018-09-05T12:00:00', end: '2018-09-05T18:00:00', 
 		descricao: 'Atividade que faço com qualquer projeto', palestrante: 'Shakira', qntdVagas: 31, status: true, disp: 0,
-		pacotes: ['EJCM', 'Diretoria de Projetos'], image: 'https://i.ytimg.com/vi/bPNTOZTXl44/maxresdefault.jpg' },
+		pacotes: ['EJCM', 'Diretoria de Projetos'], image: 'https://www.planwallpaper.com/static/images/general-night-golden-gate-bridge-hd-wallpapers-golden-gate-bridge-wallpaper.jpg' },
 
-		{ id: 2, title: 'Codar Ivento', allDay: true, start: '2018-09-05', end: '2018-09-08', backgroundColor: 'red',
-		borderColor: 'red', palestrante: 'Teteu', qntdVagas: 1, status: false, pacotes: ['EJCM', 'Diretoria de Projetos',
-		'Equipe Ivento'] }  	
+		{ id: 2, title: 'Codar Ivento', start: '2018-09-05T11:30:00', end: '2018-09-08T13:50:00', 
+		backgroundColor: 'red', borderColor: 'red', palestrante: 'Teteu', qntdVagas: 1, status: false, 
+		pacotes: ['EJCM', 'Diretoria de Projetos','Equipe Ivento'] }  	
   ]; 
 
   //para o modal de atividade
@@ -62,6 +62,10 @@ export class AtividadesComponent implements OnInit {
   	this.calendarOptions.events.push(this.evento);
   	for(let i = 0; i < this.atividade.length; i++)
   		this.calendarOptions.events.push(this.atividade[i]);
+  }
+
+  sameDay() {
+  	return this.updateAtividade.start.substring(8, 10) == this.updateAtividade.end.substring(8, 10);
   }
 
   //abre um modal quando apertar em alguma atividade

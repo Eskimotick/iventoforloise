@@ -41,6 +41,8 @@ import { LoginComponent } from './pages/login/login.component';
 import { CadastroComponent } from './pages/cadastro/cadastro.component';
 import { environment } from '../environments/environment';
 import { AtividadesComponent } from './pages/atividades/atividades.component';
+import { DataAtividadePipe } from './pipes/data-atividade.pipe';
+import { HoraAtividadePipe } from './pipes/hora-atividade.pipe';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -64,7 +66,9 @@ export function tokenGetter() {
     SidebarUsuarioComponent, // sidebar Usuario
     NavusuarioComponent, //Navbar Usuario
     PainelUsuarioComponent, 
-    AtividadesComponent
+    AtividadesComponent, 
+    DataAtividadePipe, 
+    HoraAtividadePipe
   ],
   imports: [
     AppRoutingModule,
