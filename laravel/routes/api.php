@@ -97,6 +97,7 @@ Route::group([
 
 //Grupo de Rotas para o painel de admin
 Route::group([//criar middleware para restringir acesso
+  'middleware' => 'auth:api',
   'prefix' => 'admin'
 ], function () {
 
@@ -121,12 +122,10 @@ Route::group([//criar middleware para restringir acesso
     Route::put('abreinscricoes', 'ConfigController@abreInscricoes');    //http://site.com/api/admin/abreinscricoes
     Route::put('fechainscricoes', 'ConfigController@fechaInscricoes');  //http://site.com/api/admin/fechainscricoes
 
-});
-
-Route::group(['middleware' => 'auth:api'], function(){
     //Rotas para inscrever e desisncrever usuários em atividades
     Route::post('inscricao-atividade/{id_user},{id_ativ}', 'Admin\AdminController@inscreveUser');
     Route::post('remove-atividade/{id}', 'Admin\AdminController@desinscreveUser');
+
 });
 
 

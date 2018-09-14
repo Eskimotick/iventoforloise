@@ -16,7 +16,6 @@ class AdminController extends Controller
     {
         // Pega o usuário logado.
         $user_logado = Auth::user();
-        dd($user_logado);
         // Se for um admin pode inserir novos usuários.
         if($user_logado->admin == 'true')
         {
@@ -57,5 +56,3 @@ class AdminController extends Controller
         }
     }
 }
-
-
