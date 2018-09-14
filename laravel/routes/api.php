@@ -129,6 +129,8 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::post('remove-atividade/{id}', 'Admin\AdminController@desinscreveUser');
 });
 
+
+
 /*  Modelo de Grupo de rotas
  *  Route::group([
  *      'middleware' => 'example',
