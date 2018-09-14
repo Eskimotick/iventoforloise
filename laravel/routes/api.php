@@ -123,6 +123,12 @@ Route::group([//criar middleware para restringir acesso
 
 });
 
+Route::group(['middleware' => 'auth:api'], function(){
+    //Rotas para inscrever e desisncrever usuários em atividades
+    Route::post('inscricao-atividade/{id_user},{id_ativ}', 'Admin\AdminController@inscreveUser');
+    Route::post('remove-atividade/{id}', 'Admin\AdminController@desinscreveUser');
+});
+
 /*  Modelo de Grupo de rotas
  *  Route::group([
  *      'middleware' => 'example',
