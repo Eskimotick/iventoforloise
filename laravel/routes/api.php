@@ -75,6 +75,12 @@ Route::group([
     Route::delete('{id}', 'UserController@delete'); //http://site.com/api/users/id
 });
 
+Route::group([
+    'middleware' => 'auth:api',
+], function (){
+    Route::get('activity', 'UserController@myPackageActivities');
+});
+
 //Grupo de rotas para atividades
 Route::group([
     'middleware' => 'auth:api',
@@ -86,6 +92,8 @@ Route::group([
     Route::put('{id}', 'AtividadesController@update'); //http://site.com/api/atividades/id
     Route::delete('{id}', 'AtividadesController@delete'); //http://site.com/api/atividades/id
 });
+
+
 
 //Grupo de Rotas para o painel de admin
 Route::group([//criar middleware para restringir acesso

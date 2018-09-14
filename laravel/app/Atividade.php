@@ -5,6 +5,8 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use App\UsuarioAtividade;
+use Auth;
 
 class Atividade extends Model
 {
@@ -19,15 +21,25 @@ class Atividade extends Model
   {
     $this->titulo = $request->titulo;
     $this->descricao = $request->descricao;
+    $this->palestrante = $request->palestrante;
     $this->data_inicio = $request->data_inicio;
     $this->data_fim = $request->data_fim;
     $this->vagas = $request->vagas;
     $this->vagas_ocupadas = $request->vagas_ocupadas;
     $this->status = $request->status;
-
+    //$ids dos pacotes
     //falta fazer o tratamento para o upload de imagens
-
     $this->save();
+  }
+
+  public function enrollActivity(Atividade $atividade)
+  {
+    $user = Auth::user();
+    $minha_atividade = new UsuarioAtividade;
+    $minha_atividade->usuario_id = $user->id;
+    $minha_atividade->atividade_id = $this->id;
+
+    $minha_atividade->save();
   }
 
   // Função para editar dados de atividades.
@@ -41,6 +53,10 @@ class Atividade extends Model
     if($request->descricao)
     {
       $this->descricao = $request->descricao;
+    }
+    if($request->palestrante)
+    {
+      $this->palestrante = $request->palestrante;
     }
     if($request->data_inicio)
     {
@@ -65,9 +81,9 @@ class Atividade extends Model
   }
 
   // Função para deletar atividades.
-  public function deleteActivity(Ativcidade $atividade)
+  public function deleteActivity(Atividade $atividade)
   {
     // Deleta a atividade passada na função.
-    User::destroy($atividade->id);
+    Atividade::destroy($atividade->id);
   }
 }

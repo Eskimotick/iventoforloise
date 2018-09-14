@@ -8,6 +8,9 @@ use App\Http\Requests\UpdateUserRequest;
 use App\Http\Requests\UserRequest;
 use Illuminate\Http\Request;
 use App\User;
+use App\PacoteAtividade;
+use App\UsuarioAtividade;
+use App\Atividade;
 use Auth;
 
 class UserController extends Controller
@@ -88,5 +91,27 @@ class UserController extends Controller
         $user_log->deleteUsers($user_log);
         return response()->success('Usuário Deletado com Sucesso!');
       }
+    }
+
+    public function lote(Request $request)
+    {
+      // Pega o usuário logado.
+      $user_log = Auth::user();
+      $user_log->lote_id = $request->lote_id;
+      $user_log->save();
+    }
+
+    public function myPackageActivities()
+    {
+      $user = Auth::user();
+      $myActivities = UsuarioAtividade::where('usuario_id', $user->id)->get();
+      $myPackageActivities = [];
+      foreach ($myActivities as $atividade)
+      {
+        $aux = PacoteAtividade::where('atividade_id', $atividade->atividade_id)->select('atividade_id')->first();
+        $aux2 = Atividade::where('id', $aux->atividade_id)->first();
+        array_push($myPackageActivities, $aux2);
+      }
+      return response()->success($myPackageActivities);
     }
 }

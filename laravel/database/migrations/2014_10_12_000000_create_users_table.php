@@ -28,17 +28,17 @@ class CreateUsersTable extends Migration
             $table->string('old_email_code')->nullable();
             $table->boolean('confirmed')->default(0);
             $table->string('admin')->default('false');
-            //table->integer('lote_id')->unsigned()->nullable();
-            //table->integer('quarto_id')->unsigned()->nullable();
-            //table->integer('google_id')->unsigned()->nullable();
+            $table->integer('lote_id')->unsigned()->nullable();
+            // $table->integer('quarto_id')->unsigned()->nullable();
+            //$table->integer('google_id')->unsigned()->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
 
-        //Schema::table('users', function (BluePrint $table) {
-        //    $table->foreign('lote_id')->references('id')->on('lote')->onDelete('set null');
-        //    $table->foreign('quarto_id')->references('id')->on('quarto')->onDelete('set null');
-        //});
+        Schema::table('users', function (BluePrint $table) {
+          // $table->foreign('quarto_id')->references('id')->on('quartos')->onDelete('set null');
+           $table->foreign('lote_id')->references('id')->on('lotes')->onDelete('set null');
+        });
     }
 
     /**
