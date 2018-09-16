@@ -28,11 +28,12 @@ export class AtividadesComponent implements OnInit {
 		pacotes: ['EJCM', 'Diretoria de Projetos','Equipe Ivento'] }  	
   ]; 
 
-  //para o modal de atividade
-  updateAtividadeModal = new EventEmitter<string|MaterializeAction>();
+  //para pegar a atividade que foi clicada
   updateAtividade: any;
+  atividadeClick: number;
 
   constructor() { 
+  	this.atividadeClick = 0;
   }
 
   ngOnInit() {
@@ -64,16 +65,11 @@ export class AtividadesComponent implements OnInit {
   		this.calendarOptions.events.push(this.atividade[i]);
   }
 
-  //verificando se a atividade ocorre em um dia ou não
-  oneDay() {
-  	return this.updateAtividade.start.substring(8, 10) == this.updateAtividade.end.substring(8, 10);
-  }
-
-  //abre um modal quando apertar em alguma atividade
+  //pega a atividade que foi clicada
   eventClick(atividade) {
+  	this.atividadeClick++;
   	let i = this.atividade.findIndex(at => at.id == atividade.event.id);
   	this.updateAtividade = this.atividade[i];
-  	this.updateAtividadeModal.emit({action: 'modal', params: ['open']});
   }
 
 }

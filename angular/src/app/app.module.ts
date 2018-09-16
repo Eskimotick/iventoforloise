@@ -39,6 +39,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { AtividadesComponent } from './pages/atividades/atividades.component';
 import { DataAtividadePipe } from './pipes/data-atividade.pipe';
 import { HoraAtividadePipe } from './pipes/hora-atividade.pipe';
+import { UpdateAtividadeModalComponent } from './pages/atividades/update-atividade-modal/update-atividade-modal.component';
 
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -68,7 +69,8 @@ export function tokenGetter() {
     SidebarUsuarioComponent, // sidebar Usuario
     NavusuarioComponent, //Navbar Usuario
     PainelUsuarioComponent, 
-    AtividadesComponent, 
+    AtividadesComponent,
+    UpdateAtividadeModalComponent, 
     DataAtividadePipe, 
     HoraAtividadePipe
   ],
