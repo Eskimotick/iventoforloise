@@ -35,14 +35,16 @@ import { PainelUsuarioComponent} from './pages/user/painel-usuario/painel-usuari
 /* visitante */
 import { NavbarComponent } from './components/navbar/navbar.component';
 
+/* atividades */
+import { AtividadesComponent } from './pages/atividades/atividades.component';
+import { DataAtividadePipe } from './pipes/data-atividade.pipe';
+import { HoraAtividadePipe } from './pipes/hora-atividade.pipe';
+
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { CadastroComponent } from './pages/cadastro/cadastro.component';
 import { environment } from '../environments/environment';
-import { AtividadesComponent } from './pages/atividades/atividades.component';
-import { DataAtividadePipe } from './pipes/data-atividade.pipe';
-import { HoraAtividadePipe } from './pipes/hora-atividade.pipe';
 
 export function tokenGetter() {
   return localStorage.getItem('token');

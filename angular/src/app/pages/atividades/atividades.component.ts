@@ -64,7 +64,8 @@ export class AtividadesComponent implements OnInit {
   		this.calendarOptions.events.push(this.atividade[i]);
   }
 
-  sameDay() {
+  //verificando se a atividade ocorre em um dia ou não
+  oneDay() {
   	return this.updateAtividade.start.substring(8, 10) == this.updateAtividade.end.substring(8, 10);
   }
 
