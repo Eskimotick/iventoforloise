@@ -45,12 +45,6 @@ export class UpdateAtividadeModalComponent implements OnInit, OnChanges {
   	this.footer = '';
   }
 
-  //adiciona pacotes na atividade
-  addPacote(pacote: any) {
-  	this.updateAtividade.pacotes.push(pacote.value);
-  	this.footer = '';
-  }
-
   //apaga atividade e fecha o modal
 	deleteAtividade() {
 		this.deleteAtividadeEmitter.emit(this.updateAtividade.id);
