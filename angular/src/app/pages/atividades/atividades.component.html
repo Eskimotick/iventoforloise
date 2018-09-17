@@ -14,6 +14,6 @@
 	</div>
 
 	<!-- Modal de atividades -->
-	<app-update-atividade-modal  [evento]="evento.title" [updateAtividade]="updateAtividade" [atividadeClick]="atividadeClick"></app-update-atividade-modal>
+	<app-update-atividade-modal  [evento]="evento.title" [updateAtividade]="updateAtividade" [atividadeClick]="atividadeClick" (deleteAtividadeEmitter)="deleteAtividade($event)"></app-update-atividade-modal>
 
 </section>

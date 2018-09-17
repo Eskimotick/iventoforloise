@@ -72,4 +72,8 @@ export class AtividadesComponent implements OnInit {
   	this.updateAtividade = this.atividade[i];
   }
 
+  deleteAtividade(event) {
+    this.ucCalendar.fullCalendar('removeEvents', event);
+  }
+
 }

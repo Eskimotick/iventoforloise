@@ -56,6 +56,7 @@
 	box-shadow: 0 1px 0 0 #607d8b !important;
 }
 
+/*alinhamento das coisas do footer*/
 .modal-footer {
 	margin-bottom: 0;
 	background-color: #607d8b;
@@ -64,3 +65,39 @@
 .action {
 	font-size: 30px;
 }
+
+.back {
+	font-size: 25px;
+}
+
+.footer-input {
+	margin-top: 0;
+}
+
+.footer-input > input {
+	margin-bottom: 0;
+}
+
+.footer-input input[type=text]:focus {
+	border-bottom: 1px solid #ffffff !important;
+	box-shadow: 0 1px 0 0 #ffffff !important;
+}
+
+.action-btn {
+	margin-left: 3% !important;
+	background-color: rgba(0, 0, 0, 0.2);
+	color: white;
+	border: 1.5px solid white;
+	border-radius: 5px;
+}
+
+.desactive {
+	opacity: 0;
+	-webkit-transition: opacity 1s;
+	transition: opacity 1s;
+}
+
+.active {
+	opacity: 1;
+}
+

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, Input, EventEmitter } from '@angular/core';
+import { Component, OnInit, OnChanges, Input, Output, EventEmitter } from '@angular/core';
 import { MaterializeAction } from 'angular2-materialize';
 
 
@@ -13,14 +13,20 @@ export class UpdateAtividadeModalComponent implements OnInit, OnChanges {
 	@Input('updateAtividade') updateAtividade: any;
 	@Input('atividadeClick') atividadeClick: number;
 	updateAtividadeModal = new EventEmitter<string|MaterializeAction>();
+	@Output() deleteAtividadeEmitter = new EventEmitter<number>();
 
-  constructor() { }
+	footer: string;
+
+  constructor() {
+  	this.footer = '';
+  }
 
   ngOnInit() {
   }
 
   ngOnChanges() {
 		console.log(this.atividadeClick, this.updateAtividade);
+		this.footer = '';
 		this.updateAtividadeModal.emit({action: 'modal', params: ['open']});
 	}
 
@@ -28,5 +34,27 @@ export class UpdateAtividadeModalComponent implements OnInit, OnChanges {
 	oneDay() {
   	return this.updateAtividade.start.substring(8, 10) == this.updateAtividade.end.substring(8, 10);
   }
+
+  actionFooter(action: string) {
+  	this.footer = action;
+  }
+
+  //inscreve o usuario na atividade
+  inscricao(cpf: any) {
+  	console.log(cpf);
+  	this.footer = '';
+  }
+
+  //adiciona pacotes na atividade
+  addPacote(pacote: any) {
+  	this.updateAtividade.pacotes.push(pacote.value);
+  	this.footer = '';
+  }
+
+  //apaga atividade e fecha o modal
+	deleteAtividade() {
+		this.deleteAtividadeEmitter.emit(this.updateAtividade.id);
+		this.updateAtividadeModal.emit({action: 'modal', params: ['close']});
+	}
 
 }

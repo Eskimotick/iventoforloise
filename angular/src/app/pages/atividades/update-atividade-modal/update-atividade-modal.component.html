@@ -49,18 +49,29 @@
 			</div>
 		</div>
 		<div class="row modal-footer">
-			<a materialize="tooltip" class="col l3 waves-effect waves-light btn-flat center-align white-text tooltipped" data-position="bottom" data-delay="50" data-tooltip="Inscrever usuário">
-				<i class="material-icons action">person_add</i>
-			</a>
-			<a materialize="tooltip" class="col l3 waves-effect waves-light btn-flat center-align white-text tooltipped" data-position="bottom" data-delay="50" data-tooltip="Adicionar pacote">
-				<i class="material-icons action">add_box</i>
-			</a>
-			<a materialize="tooltip" class="col l3 waves-effect waves-light btn-flat center-align white-text tooltipped" data-position="bottom" data-delay="50" data-tooltip="Trocar cor do evento">
-				<i class="material-icons action">color_lens</i>
-			</a>
-			<a materialize="tooltip" class="col l3 waves-effect waves-light btn-flat center-align white-text tooltipped" data-position="bottom" data-delay="50" data-tooltip="Apagar atividade">
-				<i class="material-icons action">delete</i>
-			</a>
+			<div *ngIf="!footer">
+				<a materialize="tooltip" class="col l3 waves-effect waves-light btn-flat center-align white-text tooltipped" data-position="bottom" data-delay="50" data-tooltip="Inscrever usuário" (click)="actionFooter('inscricao')">
+					<i class="material-icons action">person_add</i>
+				</a>
+				<a materialize="tooltip" class="col l3 waves-effect waves-light btn-flat center-align white-text tooltipped" data-position="bottom" data-delay="50" data-tooltip="Adicionar pacote" (click)="actionFooter('pacote')">
+					<i class="material-icons action">add_box</i>
+				</a>
+				<a materialize="tooltip" class="col l3 waves-effect waves-light btn-flat center-align white-text tooltipped" data-position="bottom" data-delay="50" data-tooltip="Trocar cor do evento">
+					<i class="material-icons action">color_lens</i>
+				</a>
+				<a materialize="tooltip" class="col l3 waves-effect waves-light btn-flat center-align white-text tooltipped" data-position="bottom" data-delay="50" data-tooltip="Apagar atividade" (click)="deleteAtividade()">
+					<i class="material-icons action">delete</i>
+				</a>
+			</div>
+			<div *ngIf="footer == 'inscricao'">
+				<div class="input-field footer-input col l3">
+					<input placeholder="CPF do usuário" type="text" mask="999.999.999-99" name="cpf" ngModel #cpf="ngModel">
+				</div>
+				<a class="col l2 waves-effect waves-light btn-flat action-btn center-align" (click)="inscricao(cpf)">Inscrever</a>
+				<a class="waves-effect waves-light btn-flat white-text" (click)="actionFooter('')">
+					<i class="material-icons back">arrow_forward</i>
+				</a>
+			</div>
    	</div>
 	</div>
 </div>
