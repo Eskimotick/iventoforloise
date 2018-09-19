@@ -13,9 +13,15 @@
 				<i class="col l1 material-icons icon">info</i>
 				<div class="col l5">
 					<b class="topic">Informações</b>
-					<p class="content">Palestrante: {{updateAtividade.palestrante}}</p>
-					<p class="content">Quantidade de Vagas: {{updateAtividade.qntdVagas}}</p>
-					<p class="content">Status:  {{(updateAtividade.status ? (updateAtividade.disp ? "Aberta e com vagas" : "Aberta e sem vagas") : "Fechada")}}</p>
+					<p class="content info" (click)="editMode('palestrante')" *ngIf="!(editAction == 'palestrante'); else palestranteEdit">Palestrante: {{updateAtividade.palestrante}}</p>
+					<ng-template #palestranteEdit>
+						Palestrante:
+	          <div class="input-field inline">
+							<input type="text" [ngModel]="updateAtividade.palestrante">
+						</div>
+					</ng-template>
+					<p class="content info" (click)="editMode('vagas')">Quantidade de Vagas: {{updateAtividade.qntdVagas}}</p>
+					<p class="content info" (click)="editMode('status')">Status:  {{(updateAtividade.status ? (updateAtividade.disp ? "Aberta e com vagas" : "Aberta e sem vagas") : "Fechada")}}</p>
 				</div>
 				<i class="col l1 material-icons icon">event</i>
 				<div class="col l5">
@@ -32,7 +38,7 @@
 				<i class="col l1 material-icons icon">subject</i>
 				<div class="col l11">
 					<b class="topic">Descrição</b>
-	        <textarea id="textarea1" class="materialize-textarea" placeholder="Adicione uma descrição mais detalhada..." [(ngModel)]="updateAtividade.descricao"></textarea>
+	        <textarea id="textarea1" class="materialize-textarea" placeholder="Adicione uma descrição mais detalhada..." [ngModel]="updateAtividade.descricao"></textarea>
 				</div>
 			</div>
 			<div class="row" *ngIf="updateAtividade.image">
@@ -43,8 +49,13 @@
 			<div class="row">
 				<i class="col l1 material-icons icon">archive</i>
 				<div class="col l11">
-					<b class="topic">Pacotes</b>
-					<div *ngFor="let pacote of updateAtividade.pacotes" class="chip">{{pacote}}</div>
+					<b class="topic pacotes">Pacotes</b>
+					<div *ngFor="let pacote of pacotes; let i = index">
+						<div class="col l4" *ngIf="pacotePermitido(i)">
+							<input type="checkbox" [id]="'pacote' + i" class="filled-in" checked disabled/>
+							<label [for]="'pacote' + i">{{pacote}}</label>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

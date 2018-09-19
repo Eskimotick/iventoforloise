@@ -42,13 +42,31 @@
 	margin: 0;
 }
 
+.info:hover {
+	border-radius: 3px;
+	background-color: #cfd8dc;
+	cursor: pointer;
+}
+
 .topic {
 	font-size: 16px;
 	display: block;
 }
 
+.edit {
+	color: grey;
+    text-decoration: underline;
+    font-size: 14px;
+    margin-left: 3%;
+    cursor: pointer;
+}
+
 .gallery {
 	margin-top: 2%;
+}
+
+.pacotes {
+	margin-bottom: 2%;
 }
 
 .materialize-textarea:focus:not([readonly]) {
@@ -90,14 +108,3 @@
 	border: 1.5px solid white;
 	border-radius: 5px;
 }
-
-.desactive {
-	opacity: 0;
-	-webkit-transition: opacity 1s;
-	transition: opacity 1s;
-}
-
-.active {
-	opacity: 1;
-}
-

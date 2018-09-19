@@ -18,14 +18,19 @@ export class AtividadesComponent implements OnInit {
   evento: any = {
   	id: 0, title: 'Evento 1', start: '2018-09-04', end: '2018-09-11', rendering: 'background'
   };
+
+  pacotes: string[] = [
+    'EJCM', 'Diretoria de Projetos', 'Diretoria de GP', 'Diretoria de Marketing', 'Equipe Ivento', 'Equipe Bikeme', 'Equipe Vida'
+  ];
+
   atividade: any[] = [
 		{ id: 1, title: 'Cagar no Pau', start: '2018-09-05T12:00:00', end: '2018-09-05T18:00:00', 
 		descricao: 'Atividade que faço com qualquer projeto', palestrante: 'Shakira', qntdVagas: 31, status: true, disp: 0,
-		pacotes: ['EJCM', 'Diretoria de Projetos'], image: 'https://www.planwallpaper.com/static/images/general-night-golden-gate-bridge-hd-wallpapers-golden-gate-bridge-wallpaper.jpg' },
+		pacotes: [0, 1], image: 'https://www.planwallpaper.com/static/images/general-night-golden-gate-bridge-hd-wallpapers-golden-gate-bridge-wallpaper.jpg' },
 
 		{ id: 2, title: 'Codar Ivento', start: '2018-09-05T11:30:00', end: '2018-09-08T13:50:00', 
 		backgroundColor: 'red', borderColor: 'red', palestrante: 'Teteu', qntdVagas: 1, status: false, 
-		pacotes: ['EJCM', 'Diretoria de Projetos','Equipe Ivento'] }  	
+		pacotes: [0, 1, 4] }  	
   ]; 
 
   //para pegar a atividade que foi clicada
@@ -72,8 +77,8 @@ export class AtividadesComponent implements OnInit {
   	this.updateAtividade = this.atividade[i];
   }
 
-  deleteAtividade(event) {
-    this.ucCalendar.fullCalendar('removeEvents', event);
+  deleteAtividade(eventId) {
+    this.ucCalendar.fullCalendar('removeEvents', eventId);
   }
 
 }
