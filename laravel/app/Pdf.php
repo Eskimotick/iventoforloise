@@ -13,6 +13,8 @@ class Pdf extends Model
         $pdf->selectFont('Helvetica');
         $pdf->ezText('Hello World!',50);
         $pdf->ezStream();
+
+        return $pdf;
     }
     
 }

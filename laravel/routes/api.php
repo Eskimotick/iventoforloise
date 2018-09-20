@@ -13,6 +13,8 @@ use Illuminate\Http\Request;
 |
 */
 
+Route::get('teste', 'PdfController@index');
+
 // Visitantes podem ver a listagem de usuários.
 Route::get('user/{id}', 'UserController@show');
 Route::get('user', 'UserController@index');
