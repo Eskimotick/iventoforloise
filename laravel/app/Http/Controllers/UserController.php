@@ -114,4 +114,22 @@ class UserController extends Controller
       }
       return response()->success($myPackageActivities);
     }
+
+    public function inscreveAtividadePacote($id_ativ)
+    {
+      $user = Auth::user();
+      $atividade = Atividade::findOrFail($id_ativ);
+      $pacote_usuario = Pacote::findOrFail($pacote_usuario->lote_id);
+      dd($pacote_usuario);
+      $inscricao = new UsuarioAtividade;
+      if ($aux == true)
+      {
+        $inscricao->usuario_id = $user->id;
+        $inscricao->atividade_id = $atividade->id;
+        $inscricao->status = 'ok';
+
+        $inscricao->save();
+        return response()->success('Usuário Inscrito com Sucesso!');
+      }
+    }
 }

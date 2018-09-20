@@ -73,6 +73,8 @@ Route::group([
     Route::post('/', 'UserController@store'); //http://site.com/api/users/
     Route::put('{id}', 'UserController@update'); //http://site.com/api/users/id
     Route::delete('{id}', 'UserController@delete'); //http://site.com/api/users/id
+
+    Route::post('inscreve-atividade/{id}', 'UserController@inscreveAtividadePacote'); //http://site.com/api/users/inscreve-atividade/id
 });
 
 Route::group([
@@ -123,7 +125,7 @@ Route::group([//criar middleware para restringir acesso
     Route::put('fechainscricoes', 'ConfigController@fechaInscricoes');  //http://site.com/api/admin/fechainscricoes
 
     //Rotas para inscrever e desisncrever usuários em atividades
-    Route::post('inscricao-atividade/{id_user},{id_ativ}', 'Admin\AdminController@inscreveUser');
+    Route::post('inscricao-atividade/{id_user}-{id_ativ}', 'Admin\AdminController@inscreveUser');
     Route::post('remove-atividade/{id}', 'Admin\AdminController@desinscreveUser');
 
 });

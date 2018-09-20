@@ -19,7 +19,6 @@ class AdminController extends Controller
         // Se for um admin pode inserir novos usuários.
         if($user_logado->admin == 'true')
         {
-            dd($user_logado);
             $user = User::findOrFail($id_user);
             $atividade = Atividade::findOrFail($id_ativ);
             $inscricao = new UsuarioAtividade;
@@ -37,17 +36,17 @@ class AdminController extends Controller
         }
     }
 
-    public function desinscreveUser(UsuarioAtividade $userActivity)
+    public function desinscreveUser($id)
     {
         // Pega o usuário logado.
         $user_logado = Auth::user();
-        dd($user_logado);
+        //pega a inscrição a partir do ID
+        $userActivity = UsuarioAtividade::findOrFail($id);
         // Se for um admin pode inserir novos usuários.
         if($user_logado->admin == 'true')
         {
-            UsuarioAtividade::destroy($user->id);
-
-            return response()->success('Usuário Inscrito com Sucesso!');
+            UsuarioAtividade::destroy($userActivity->id);
+            return response()->success('Usuário removido da atividade com sucesso!');
         }
         // Se não for, mensagem de erro.
         else
