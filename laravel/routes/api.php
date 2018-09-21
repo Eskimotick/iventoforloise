@@ -97,7 +97,7 @@ Route::group([
     Route::post('inscreve-atividade/{id}', 'UserController@inscreveAtividadePacote');
     //http://site.com/api/users/inscreve-atividade/id
     Route::post('remove-atividade/{id}', 'UserController@desinscreveAtividade');
-    //http://site.com/api/users/desinscreve-atividade/id
+    //http://site.com/api/users/remove-atividade/id
 });
 
 Route::group([
@@ -133,7 +133,6 @@ Route::group([//criar middleware para restringir acesso
 
     //Rotas de pacotes
     Route::group(['prefix' => 'pacotes'], function(){
-
         Route::get('/','PacoteController@index');
         //http://site.com/api/admin/pacotes/
         Route::get('{id}','PacoteController@showPacote');
@@ -157,13 +156,21 @@ Route::group([//criar middleware para restringir acesso
     //http://site.com/api/admin/inscricoes
     Route::put('evento', 'ConfigController@updateEvento');
     //http://site.com/api/admin/evento
-    Route::put('abreinscricoes', 'ConfigController@abreInscricoes');    //http://site.com/api/admin/abreinscricoes
-    Route::put('fechainscricoes', 'ConfigController@fechaInscricoes');  //http://site.com/api/admin/fechainscricoes
+    Route::put('abreinscricoes', 'ConfigController@abreInscricoes');
+    //http://site.com/api/admin/abreinscricoes
+    Route::put('fechainscricoes', 'ConfigController@fechaInscricoes');
+    //http://site.com/api/admin/fechainscricoes
+
 
     //Rotas para inscrever e desisncrever usuários em atividades
-    Route::post('inscricao-atividade/{id_user}-{id_ativ}', 'Admin\AdminController@inscreveUser');
-    Route::post('remove-atividade/{id}', 'Admin\AdminController@desinscreveUser');
-
+    Route::group(['prefix' => 'atividades'], function(){
+        Route::post('inscricao/{id_user}-{id_ativ}', 'Admin\AdminController@inscreveUser');
+        //http://site.com/api/admin/atividades/inscricao/id-id
+        Route::post('remove/{id}', 'Admin\AdminController@desinscreveUser');
+        //http://site.com/api/admin/atividades/remove/id
+        Route::post('nova-atividade-pacote/{$id_ativ}-{id_pacote}', 'AtividadesController@insereAtividadePacote');
+        //http://site.com/api/admin/atividades/nova-atividade-pacote/id-id
+    });
 });
 
 

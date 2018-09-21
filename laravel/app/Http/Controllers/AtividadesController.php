@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Atividade;
+use App\Models\Admin\Pacote;
 use Illuminate\Http\Request;
 
 class AtividadesController extends Controller
@@ -39,5 +40,21 @@ class AtividadesController extends Controller
         $atividade_del = Atividade::findOrFail($id);
         $atividade_del->deleteActivity($atividade_del);
         return response()->success('Atividade Deletada com Sucesso!');
+    }
+
+    public function insereAtividadePacote($id_ativ, $id_pacote)
+    {
+      $atividadePacote = new PacoteAtividade;
+      $pacote = Pacote::findOrFail($id_pacote);
+      $atividade = Atividade::findOrFail($id_ativ);
+      $lote = Lote::findOrFail($pacote->lote_atual);
+      $atividadePacote->pacote_id = $pacote->id;
+      $atividadePacote->atividade_id = $atividade->id;
+      $atividadePacote->save();
+      $usuariosPacote = User::where('lote_id', $lote->id)->get();
+      foreach ($usuariosPacote as $user)
+      {
+        $user->notify(new NovaAtividadePacoteNotification());
+      }
     }
 }
