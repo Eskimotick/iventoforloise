@@ -2,16 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\UserResource as UserResource;
-use Illuminate\Support\Facades\Validator;
-use App\Http\Requests\UpdateUserRequest;
-use App\Http\Requests\UserRequest;
-use Illuminate\Http\Request;
+use Auth;
 use App\User;
+use App\Atividade;
 use App\PacoteAtividade;
 use App\UsuarioAtividade;
-use App\Atividade;
-use Auth;
+use App\Models\Admin\Lote;
+use App\Models\Admin\Pacote;
+use Illuminate\Http\Request;
+use App\Http\Requests\UserRequest;
+use App\Http\Requests\UpdateUserRequest;
+use Illuminate\Support\Facades\Validator;
+use App\Http\Resources\UserResource as UserResource;
 
 class UserController extends Controller
 {
@@ -93,43 +95,97 @@ class UserController extends Controller
       }
     }
 
+    //Função para por um lote no user.
     public function lote(Request $request)
     {
-      // Pega o usuário logado.
+      //Pega o usuário logado.
       $user_log = Auth::user();
+      //Passa seu lote ID pela request.
       $user_log->lote_id = $request->lote_id;
+      //salva no BD.
       $user_log->save();
     }
 
+    //Função para ver um usuário ver as atividades de seu pacote.
     public function myPackageActivities()
     {
+      //Pega o usuário logado.
       $user = Auth::user();
+      //Pega as atividades dele.
       $myActivities = UsuarioAtividade::where('usuario_id', $user->id)->get();
+      //Guarda elas num array.
       $myPackageActivities = [];
+      //Para cada elemento do array.
       foreach ($myActivities as $atividade)
       {
-        $aux = PacoteAtividade::where('atividade_id', $atividade->atividade_id)->select('atividade_id')->first();
+        //Variável auxiliar 1, para pegar uma atividade do pacote temporariamente.
+        $aux = PacoteAtividade::where('atividade_id',             $atividade->atividade_id)->select('atividade_id')->first();
+        //Variável auxiliar 2, para pegar e colocar essa atividade no array de "Atividades do meu pacote".
         $aux2 = Atividade::where('id', $aux->atividade_id)->first();
+        //Coloca essa atividade no array.
         array_push($myPackageActivities, $aux2);
       }
+      //Response de sucesso.
       return response()->success($myPackageActivities);
     }
 
+    //Função para que os usuários se inscrevam em atividades de seus pacotes.
     public function inscreveAtividadePacote($id_ativ)
     {
+      //Pega o user logado.
       $user = Auth::user();
-      $atividade = Atividade::findOrFail($id_ativ);
-      $pacote_usuario = Pacote::findOrFail($pacote_usuario->lote_id);
-      dd($pacote_usuario);
-      $inscricao = new UsuarioAtividade;
-      if ($aux == true)
-      {
-        $inscricao->usuario_id = $user->id;
-        $inscricao->atividade_id = $atividade->id;
-        $inscricao->status = 'ok';
+      //Pega o pacote da atividade que o user quer se inscrever.
+      $atividade_pacote = PacoteAtividade::findOrFail($id_ativ);
+      //Pega o lote desse usuário.
+      $lote_usuario = Lote::findOrFail($user->lote_id);
+      //Pega o pacote do usuário pelo lote.
+      $pacote_usuario = Pacote::findOrFail($lote_usuario->pacote_id);
 
+      //Se o pacote da atividade for o mesmo do usuário...
+      if($pacote_usuario->id == $atividade_pacote->pacote_id)
+      {
+        //Cria uma nova inscrição.
+        $inscricao = new UsuarioAtividade;
+        //Inscreve o usuário.
+        $inscricao->usuario_id = $user->id;
+        //E a atividade dele
+        $inscricao->atividade_id = $atividade_pacote->atividade_id;
+        $inscricao->status = 'ok';
+        //save() pra guardar no BD;
         $inscricao->save();
+        //Response de bem-sucedido.
         return response()->success('Usuário Inscrito com Sucesso!');
+      }
+      //senão...
+      else
+      {
+        //Response de erro.
+        return response()->error('Essa atividade não faz parte do seu pacote! Por favor selecione outra.');
+      }
+    }
+
+    //Função para remover o usuário de uma atividade inscrtita.
+    public function desinscreveAtividade($id_ativ)
+    {
+      //Pega o usuário logado.
+      $user_logado = Auth::user();
+      //Pega a atividade passada na função.
+      $activity = Atividade::findOrFail($id_ativ);
+      //Pega a inscrição do usuário na atividade a partir do ID
+      $userActivity = UsuarioAtividade::where('usuario_id', $user_logado->id)->where('atividade_id', $activity->id)->first();
+      //Caso haja inscrição do usuário em alguma inscrição:
+      if(!$userActivity == null)
+      {
+        //Remove a inscrição do usuário da atividade passada na função.
+        UsuarioAtividade::destroy($userActivity->id);
+        //Return de success.
+        return response()->success('Você foi removido da atividade com sucesso!');
+      }
+      //Caso não haja...
+      else
+      {
+        //Return de erro.
+        return response()->error('Você não pode ser removido de uma atividade em que não está inscrito! Por favor selecione outra atividade.');
       }
     }
 }
