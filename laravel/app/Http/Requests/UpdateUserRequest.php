@@ -2,7 +2,10 @@
 
 namespace App\Http\Requests;
 
+use App\Requests\Request;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class UpdateUserRequest extends FormRequest
 {
@@ -10,6 +13,12 @@ class UpdateUserRequest extends FormRequest
     {
         return true;
     }
+
+    protected function failedValidation(Validator $validator)
+    {
+        throw new HttpResponseException(response()->json($validator->errors(), 422));
+    }
+
 
     // Regras de validação para o usuário.
     public function rules()
@@ -25,6 +34,7 @@ class UpdateUserRequest extends FormRequest
     // Mensagens de falha na validação.
     public function messages()
      {
+
        return [
          'nickame.regex' => 'O nome deve consistir apenas de caracteres alfabéticos.',
          'nickame.max' => 'O nome deve ter no máximo 255 caracteres.',

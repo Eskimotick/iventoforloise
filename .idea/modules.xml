@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/../heroes/.idea/heroes.iml" filepath="$PROJECT_DIR$/../heroes/.idea/heroes.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/iVento.iml" filepath="$PROJECT_DIR$/.idea/iVento.iml" />
     </modules>
   </component>

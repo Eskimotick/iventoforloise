@@ -17,6 +17,7 @@ use App\Notifications\Auth\ChangeEmail\NewEmail\ConfirmNewEmailNotification;
 use App\Notifications\Auth\ChangeEmail\OldEmail\ConfirmOldEmailNotification;
 use App\Notifications\Auth\ChangeEmail\NewEmail\NewEmailConfirmedNotification;
 use App\Notifications\Auth\ChangeEmail\OldEmail\OldEmailConfirmedNotification;
+use App\Models\Admin\Campo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -25,7 +26,7 @@ class User extends Authenticatable
     use HasApiTokens;
 
     protected $fillable = [
-        'nickname', 'email', 'password', 'confirmation_code', 'password_reset_code', 'cpf', 'nome_completo', 'confirmd', 'admin'
+        'nickname', 'email', 'password', 'confirmation_code', 'password_reset_code', 'cpf', 'nome_completo', 'confirmed', 'admin'
     ];
 
     protected $hidden = [
@@ -43,21 +44,63 @@ class User extends Authenticatable
     }
 
     // Função para editar dados de usuários.
-    public function updateUsers(UpdateUserRequest $request, User $user)
+    public function updateUsers($request, User $user)
     {
-      // Só modifica os dados que forem recebidos na request.
-      if($request->nickname)
-      {
-        $this->nickname = $request->nickname;
-      }
 
-      if($request->email)
-      {
+        //dd($request);
+
+        // Só modifica os dados que forem recebidos na request.
+        if($request->nickname)
+        {
+        $this->nickname = $request->nickname;
+        }
+
+        if($request->email)
+        {
         $this->email = $request->email;
-      }
+        }
+
+
+        $campos = Campo::All();
+
+        foreach ($campos as $campo){
+            //Substitui o espaço dos names dos inputs por _
+            $nome = str_replace(" ", "_", $campo->nome);
+            //Verifica se o campo do foreach está sendo editado
+            if($request[$nome]) {
+
+                //Verifica se esse campo já foi preenchido pelo usuário
+                if ($user->campos()->find($campo->id)) {
+                    //Verifica se o campo tem a opção outro e se o usuário escolheu essa opção e preencheu
+                    if (($campo->outro) && $request["outro-".$campo->id]){
+                        //Preenche o campo com o conteudo outro do campo
+                        $user->campos()->updateExistingPivot($campo->id, ['conteudo' => $request["outro-".$campo->id]]);
+                    } else {
+                        //Preenche o campo com o conteudo normal
+                        $user->campos()->updateExistingPivot($campo->id, ['conteudo' => $request[$nome]]);
+                    }
+                    //Caso o usuário ainda não tenha preenchido essa opção
+                } else{
+                    //Verifica se o campo tem a opção outro e se o usuário escolheu essa opção e preencheu
+                    if ($campo->outro && $request["outro-".$campo->id]){
+                        //Preenche o campo com o conteudo outro do campo
+                        $user->campos()->attach($campo->id, ['conteudo' => $request["outro-".$campo->id]]);
+                    } else {
+                        //Preenche o campo com o conteudo normal
+                        $user->campos()->attach($campo->id, ['conteudo' => $request[$nome]]);
+                    }
+                }
+            }
+        }
 
       $this->save();
     }
+
+    //Retorna os campos associados à esse usuário com o valor do atributo "conteudo" da tabela pivot
+    public function campos(){
+        return $this->belongsToMany(Campo::class, "users_campos")->withPivot("conteudo");
+    }
+
 
     // Função para deletar usuários.
     public function deleteUsers(User $user)

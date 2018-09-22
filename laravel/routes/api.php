@@ -12,6 +12,33 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+//Rotas para Campos
+
+Route::group([
+    'prefix' => 'campos'
+], function () {
+    Route::get('/','Admin\CampoController@index');                   //http://site.com/api/admin/campos/
+    Route::get('{id}','Admin\CampoController@show');                 //http://site.com/api/admin/campos/{id}
+    Route::post('/','Admin\CampoController@store');                  //http://site.com/api/admin/campos/
+    Route::put('{id}','Admin\CampoController@update');               //http://site.com/api/admin/campos/{id}
+    Route::delete('{id}','Admin\CampoController@delete');            //http://site.com/api/admin/campos/{id}
+
+    Route::get('{id}/itens','Admin\ItemController@index');     //http://site.com/api/admin/campos/{campo_id}/itens/
+    Route::post('{id}/itens','Admin\ItemController@store');    //http://site.com/api/admin/campos/{campo_id}/itens/
+
+    Route::group([
+        'prefix' => 'itens'
+    ], function() {
+        Route::get('{id}','Admin\ItemController@show');                 //http://site.com/api/admin/campos/itens/{id}
+        Route::put('{id}','Admin\ItemController@update');               //http://site.com/api/admin/campos/itens/{id}
+        Route::delete('{id}','Admin\ItemController@delete');            //http://site.com/api/admin/campos/itens/{id}
+    });
+
+});
+
+
+
+
 
 // Visitantes podem ver a listagem de usuários.
 Route::get('user/{id}', 'UserController@show');
