@@ -16,11 +16,15 @@ export class UpdateAtividadeModalComponent implements OnInit, OnChanges {
 	updateAtividadeModal = new EventEmitter<string|MaterializeAction>();
 	@Output() deleteAtividadeEmitter = new EventEmitter<number>();
 
+  atividadeOnEdit: string;
+  descriptionOnEdit: boolean;
 	footer: string;
   editAction: string;
 
   constructor() {
   	this.footer = '';
+    this.atividadeOnEdit = '';
+    this.descriptionOnEdit = false;
     this.editAction = '';
   }
 
@@ -29,8 +33,14 @@ export class UpdateAtividadeModalComponent implements OnInit, OnChanges {
 
   ngOnChanges() {
 		console.log(this.atividadeClick, this.updateAtividade);
-		this.footer = '';
-    this.editAction = '';
+    if(this.atividadeOnEdit)
+      this.atividadeOnEdit = '';
+    if(this.descriptionOnEdit)
+      this.descriptionOnEdit = false;
+    if(this.footer)
+		  this.footer = '';
+    if(this.editAction)
+      this.editAction = '';
 		this.updateAtividadeModal.emit({action: 'modal', params: ['open']});
 	}
 
@@ -46,8 +56,40 @@ export class UpdateAtividadeModalComponent implements OnInit, OnChanges {
 
   // campo do modal que está em edição
   editMode(section: string) {
-    console.log(section);
     this.editAction = section;
+    if(section == 'palestrante') 
+      this.atividadeOnEdit = this.updateAtividade.palestrante;
+    else if(section == 'vagas')
+      this.atividadeOnEdit = this.updateAtividade.qntdVagas;
+    else if(section == 'descricao' && !this.descriptionOnEdit) {
+      this.atividadeOnEdit = this.updateAtividade.descricao;
+      this.descriptionOnEdit = true;
+    }
+    else if(!section) {
+      this.atividadeOnEdit = '';
+      this.descriptionOnEdit = false;
+    }
+  }
+
+  // salva o que foi alterado
+  saveEdit() {
+    if(this.editAction == 'palestrante')
+      this.updateAtividade.palestrante = this.atividadeOnEdit;
+    else if(this.editAction == 'vagas')
+      this.updateAtividade.qntdVagas = this.atividadeOnEdit;
+    else if(this.editAction == 'descricao') {
+      this.updateAtividade.descricao = this.atividadeOnEdit;
+      this.descriptionOnEdit = false;
+    }
+    this.editAction = '';
+  }
+
+  // cancela/não salva se apertar o 'x' ou fechar o modal
+  cancelEdit() {
+    this.editAction = '';
+    this.atividadeOnEdit = '';
+    if(this.descriptionOnEdit)
+      this.descriptionOnEdit = false;
   }
 
   // inscreve o usuario na atividade

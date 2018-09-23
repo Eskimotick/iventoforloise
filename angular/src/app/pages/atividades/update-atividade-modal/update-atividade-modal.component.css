@@ -53,11 +53,20 @@
 	display: block;
 }
 
+.info-edit {
+	margin-top: 5%;
+}
+
+.cancel {
+	margin-left: 3%;
+	cursor: pointer;
+}
+
 .edit {
 	color: grey;
     text-decoration: underline;
     font-size: 14px;
-    margin-left: 3%;
+    margin-left: 2%;
     cursor: pointer;
 }
 
@@ -66,7 +75,12 @@
 }
 
 .pacotes {
+	margin-top: 0%;
 	margin-bottom: 2%;
+}
+
+.pacotes-edit {
+	margin-left: 2%;
 }
 
 .materialize-textarea:focus:not([readonly]) {

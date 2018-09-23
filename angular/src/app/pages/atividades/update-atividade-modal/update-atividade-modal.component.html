@@ -16,12 +16,22 @@
 					<p class="content info" (click)="editMode('palestrante')" *ngIf="!(editAction == 'palestrante'); else palestranteEdit">Palestrante: {{updateAtividade.palestrante}}</p>
 					<ng-template #palestranteEdit>
 						Palestrante:
-	          <div class="input-field inline">
-							<input type="text" [ngModel]="updateAtividade.palestrante">
+						<div class="input-field inline">
+							<input type="text" [(ngModel)]="atividadeOnEdit" autofocus (focus)="$event.target.select()">
 						</div>
 					</ng-template>
-					<p class="content info" (click)="editMode('vagas')">Quantidade de Vagas: {{updateAtividade.qntdVagas}}</p>
-					<p class="content info" (click)="editMode('status')">Status:  {{(updateAtividade.status ? (updateAtividade.disp ? "Aberta e com vagas" : "Aberta e sem vagas") : "Fechada")}}</p>
+					<p class="content info" (click)="editMode('vagas')" *ngIf="!(editAction == 'vagas'); else vagasEdit">Quantidade de Vagas: {{updateAtividade.qntdVagas}}</p>
+					<ng-template #vagasEdit>
+						Palestrante:
+						<div class="input-field inline">
+							<input type="number" [(ngModel)]="atividadeOnEdit" autofocus (focus)="$event.target.select()">
+						</div>
+					</ng-template>
+					<p class="content">Status:  {{(updateAtividade.status ? (updateAtividade.disp ? "Aberta e com vagas" : "Aberta e sem vagas") : "Fechada")}}</p>
+					<div *ngIf="(editAction == 'palestrante') || (editAction == 'vagas')" class="valign-wrapper info-edit">
+						<a class="waves-effect waves-light btn green lighten-1" (click)="saveEdit()">Salvar</a>
+						<i class="material-icons cancel" (click)="cancelEdit()">close</i>
+					</div>
 				</div>
 				<i class="col l1 material-icons icon">event</i>
 				<div class="col l5">
@@ -38,7 +48,11 @@
 				<i class="col l1 material-icons icon">subject</i>
 				<div class="col l11">
 					<b class="topic">Descrição</b>
-	        <textarea id="textarea1" class="materialize-textarea" placeholder="Adicione uma descrição mais detalhada..." [ngModel]="updateAtividade.descricao"></textarea>
+	        <textarea id="textarea1" class="materialize-textarea" placeholder="Adicione uma descrição mais detalhada..." [(ngModel)]="!(editAction == 'descricao') ? updateAtividade.descricao : atividadeOnEdit" (keydown)="editMode('descricao')" (focus)="$event.target.select()"></textarea>
+	        <div *ngIf="editAction == 'descricao'" class="valign-wrapper">
+						<a class="waves-effect waves-light btn green lighten-1" (click)="saveEdit()">Salvar</a>
+						<i class="material-icons cancel" (click)="cancelEdit()">close</i>
+					</div>
 				</div>
 			</div>
 			<div class="row" *ngIf="updateAtividade.image">
@@ -49,12 +63,26 @@
 			<div class="row">
 				<i class="col l1 material-icons icon">archive</i>
 				<div class="col l11">
-					<b class="topic pacotes">Pacotes</b>
-					<div *ngFor="let pacote of pacotes; let i = index">
-						<div class="col l4" *ngIf="pacotePermitido(i)">
-							<input type="checkbox" [id]="'pacote' + i" class="filled-in" checked disabled/>
-							<label [for]="'pacote' + i">{{pacote}}</label>
+					<p class="topic pacotes"><b>Pacotes</b><span class="edit" (click)="editMode('pacotes')" *ngIf="!(editAction == 'pacotes')">Editar</span></p>
+					<div class="row pacotes">
+						<div *ngFor="let pacote of pacotes; let i = index">
+							<div *ngIf="!(editAction == 'pacotes'); else pacotesEdit">
+								<div class="col l4" *ngIf="pacotePermitido(i)">
+									<input type="checkbox" [id]="'pacote' + i" class="filled-in" checked disabled/>
+									<label [for]="'pacote' + i">{{pacote}}</label>
+								</div>
+							</div>
+							<ng-template #pacotesEdit>
+								<div class="col l4">
+									<input type="checkbox" [id]="'pacote' + i" class="filled-in" [checked]="pacotePermitido(i)"/>
+									<label class="truncate" [for]="'pacote' + i">{{pacote}}</label>
+								</div>
+							</ng-template>
 						</div>
+					</div>
+					<div *ngIf="editAction == 'pacotes'" class="valign-wrapper">
+						<a class="waves-effect waves-light btn green lighten-1 pacotes-edit" (click)="saveEdit()">Salvar</a>
+						<i class="material-icons cancel" (click)="cancelEdit()">close</i>
 					</div>
 				</div>
 			</div>
