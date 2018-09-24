@@ -69,12 +69,12 @@
 							<div *ngIf="!(editAction == 'pacotes'); else pacotesEdit">
 								<div class="col l4" *ngIf="pacotePermitido(i)">
 									<input type="checkbox" [id]="'pacote' + i" class="filled-in" checked disabled/>
-									<label [for]="'pacote' + i">{{pacote}}</label>
+									<label class="truncate" [for]="'pacote' + i">{{pacote}}</label>
 								</div>
 							</div>
 							<ng-template #pacotesEdit>
 								<div class="col l4">
-									<input type="checkbox" [id]="'pacote' + i" class="filled-in" [checked]="pacotePermitido(i)"/>
+									<input type="checkbox" [id]="'pacote' + i" class="filled-in" [checked]="pacotePermitido(i)" (click)="pacotesOnChange(i)"/>
 									<label class="truncate" [for]="'pacote' + i">{{pacote}}</label>
 								</div>
 							</ng-template>

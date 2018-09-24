@@ -16,7 +16,7 @@ export class UpdateAtividadeModalComponent implements OnInit, OnChanges {
 	updateAtividadeModal = new EventEmitter<string|MaterializeAction>();
 	@Output() deleteAtividadeEmitter = new EventEmitter<number>();
 
-  atividadeOnEdit: string;
+  atividadeOnEdit: any;
   descriptionOnEdit: boolean;
 	footer: string;
   editAction: string;
@@ -65,10 +65,21 @@ export class UpdateAtividadeModalComponent implements OnInit, OnChanges {
       this.atividadeOnEdit = this.updateAtividade.descricao;
       this.descriptionOnEdit = true;
     }
+    else if(section == 'pacotes')
+      this.atividadeOnEdit = this.updateAtividade.pacotes;
     else if(!section) {
       this.atividadeOnEdit = '';
       this.descriptionOnEdit = false;
     }
+  }
+
+  // editando as checkboxes
+  pacotesOnChange(index: any) {
+    let id = this.atividadeOnEdit.indexOf(index);
+    if(id == -1)
+      this.atividadeOnEdit.push(index);
+    else
+      this.atividadeOnEdit.splice(id, 1);
   }
 
   // salva o que foi alterado
@@ -81,6 +92,8 @@ export class UpdateAtividadeModalComponent implements OnInit, OnChanges {
       this.updateAtividade.descricao = this.atividadeOnEdit;
       this.descriptionOnEdit = false;
     }
+    else if(this.editAction == 'pacotes')
+      this.updateAtividade.pacotes = this.atividadeOnEdit;
     this.editAction = '';
   }
 
@@ -112,5 +125,4 @@ export class UpdateAtividadeModalComponent implements OnInit, OnChanges {
     }
     return false;
   } 
-
 }
