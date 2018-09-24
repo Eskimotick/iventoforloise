@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, EventEmitter } from '@angular/core';
 import { CalendarComponent } from 'ng-fullcalendar';
 import { Options } from 'fullcalendar';
 import { MaterializeAction } from 'angular2-materialize';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-atividades',
@@ -75,6 +76,19 @@ export class AtividadesComponent implements OnInit {
   	this.atividadeClick++;
   	let i = this.atividade.findIndex(at => at.id == atividade.event.id);
   	this.updateAtividade = this.atividade[i];
+  }
+
+  updateEvent(atividade) {
+    console.log(atividade);
+    let newDateStart = '';
+    let newDateEnd = '';
+    let dateChanges = atividade.duration._data;
+    for (let property in dateChanges) {
+            
+    }
+    moment.locale('pt-BR');
+    var b = moment(this.evento.start).add(atividade.duration);
+    console.log(b); // pt-BR
   }
 
   deleteAtividade(eventId) {
