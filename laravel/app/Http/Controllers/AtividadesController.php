@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Atividade;
 use App\Models\Admin\Pacote;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\StoreAtividadeRequest;
+use App\Http\Requests\UpdateAtividadeRequest;
 
 class AtividadesController extends Controller
 {
@@ -21,14 +24,14 @@ class AtividadesController extends Controller
         return response()->success($all_activities);
     }
 
-    public function store(Request $request)
+    public function store(StoreAtividadeRequest $request)
     {
         $nova_atividade = new Atividade;
         $nova_atividade->createActivity($request);
         return response()->success($nova_atividade);
     }
 
-    public function update(Request $request, $id)
+    public function update(UpdateAtividadeRequest $request, $id)
     {
         $atividade_alt = Atividade::findOrFail($id);
         $atividade_alt->updateActivity($request, $atividade_alt);
@@ -40,6 +43,20 @@ class AtividadesController extends Controller
         $atividade_del = Atividade::findOrFail($id);
         $atividade_del->deleteActivity($atividade_del);
         return response()->success('Atividade Deletada com Sucesso!');
+    }
+
+    public function exibirFoto($id)
+    {
+      $atividade = Atividade::findOrFail($id);
+      $filePath = storage_path('app/localPhotos/'.$atividade->img_path);
+      return response()->download($filePath, $atividade->img_path);
+    }
+
+    public function downloadFoto($id)
+    {
+      $atividade = Atividade::findOrFail($id);
+      $filePath = storage_path('app/localPhotos/'.$atividade->img_path);
+      return response()->file($filePath);
     }
 
     public function insereAtividadePacote($id_ativ, $id_pacote)

@@ -43,19 +43,22 @@ Route::group([
     'prefix' => 'mail'
 ], function (){
 
-    // Rota para confirmação de email.
+    //Rota para confirmação de email.
     Route::post('confirm', 'API\AuthController@register')->name('confirm-mail');
     //http://site.com/api/mail/confirm
+
     Route::post('confirmed', 'API\AuthController@confirmRegister');
     //http://site.com/api/mail/confirmed
+
     Route::post('resend', 'API\AuthController@resendConfirmation');
     //http://site.com/api/mail/resend
 
     //Rotas para a troca de e-mail (mudar as URIs depois).
-    Route::post('new', 'API\AuthController@requestNewEmail');
-    //http://site.com/api/mail/new/
-    Route::post('new/confirm', 'API\AuthController@newEmailConfirmed');
-    //http://site.com/api/mail/new/confirm
+    Route::post('new-email', 'API\AuthController@requestNewEmail');
+    //http://site.com/api/mail/new-email/
+
+    Route::post('new-email/confirm', 'API\AuthController@newEmailConfirmed');
+    //http://site.com/api/mail/new-email/confirm
 });
 
 // Grupo de rotas para usuários logados.
@@ -98,12 +101,8 @@ Route::group([
     //http://site.com/api/users/inscreve-atividade/id
     Route::post('remove-atividade/{id}', 'UserController@desinscreveAtividade');
     //http://site.com/api/users/remove-atividade/id
-});
-
-Route::group([
-    'middleware' => 'auth:api',
-], function (){
-    Route::get('activity', 'UserController@myPackageActivities');
+    Route::get('my-activities', 'UserController@myPackageActivities');
+    //http://site.com/api/users/my-activities
 });
 
 //Grupo de rotas para atividades
@@ -121,6 +120,10 @@ Route::group([
     //http://site.com/api/atividades/id
     Route::delete('{id}', 'AtividadesController@delete');
     //http://site.com/api/atividades/id
+    Route::get('picture/{id}', 'AtividadesController@exibirFoto');
+    //http://site.com/api/atividades/picture/id
+    Route::get('picture/download/{id}', 'AtividadesController@downloadFoto');
+    //http://site.com/api/atividades/picture/download/id
 });
 
 
@@ -172,7 +175,6 @@ Route::group([//criar middleware para restringir acesso
         //http://site.com/api/admin/atividades/nova-atividade-pacote/id-id
     });
 });
-
 
 
 /*  Modelo de Grupo de rotas

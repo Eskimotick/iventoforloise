@@ -28,13 +28,20 @@ class AuthController extends Controller
     /* attempt() pega o user do BD cujo campo 'email' corresponde ao email passado na request.
     Retorna true se a senha desse user no BD corresponder à senha passada na request */
     if (Auth::attempt(['email' => request('email'), 'password' => request('password')])){
-      //Autentica o user encontrado e o guarda em $user.
-      $user = Auth::user();
-      //Cria um token para $user.
-      $success['message'] = 'Log-in efetuado com sucesso, '.$user->name.'!';
-      $success['token'] = $user->createToken('iVento')->accessToken;
-      //Retorna o token, com status 200 (tudo ok).
-      return response()->success(['success' => $success]);
+      if (Auth::user()->confirmed == true)
+      {
+        //Autentica o user encontrado e o guarda em $user.
+        $user = Auth::user();
+        //Cria um token para $user.
+        $success['message'] = 'Log-in efetuado com sucesso, '.$user->name.'!';
+        $success['token'] = $user->createToken('iVento')->accessToken;
+        //Retorna o token, com status 200 (tudo ok).
+        return response()->success(['success' => $success]);
+      }
+      else
+      {
+        return response()->error('Por favor, confirme seu e-mail para concluir seu cadastro.');
+      }
     }
     else
     {

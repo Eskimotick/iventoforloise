@@ -119,7 +119,7 @@ class UserController extends Controller
       foreach ($myActivities as $atividade)
       {
         //Variável auxiliar 1, para pegar uma atividade do pacote temporariamente.
-        $aux = PacoteAtividade::where('atividade_id',             $atividade->atividade_id)->select('atividade_id')->first();
+        $aux = PacoteAtividade::where('atividade_id', $atividade->atividade_id)->select('atividade_id')->first();
         //Variável auxiliar 2, para pegar e colocar essa atividade no array de "Atividades do meu pacote".
         $aux2 = Atividade::where('id', $aux->atividade_id)->first();
         //Coloca essa atividade no array.
