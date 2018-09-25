@@ -79,20 +79,20 @@ export class AtividadesComponent implements OnInit {
   }
 
   updateEvent(atividade) {
-    console.log(atividade);
-    let newDateStart = '';
-    let newDateEnd = '';
-    let dateChanges = atividade.duration._data;
-    for (let property in dateChanges) {
-            
-    }
-    moment.locale('pt-BR');
-    var b = moment(this.evento.start).add(atividade.duration);
-    console.log(b); // pt-BR
+    let i = this.atividade.findIndex(at => at.id == atividade.event.id);
+    let newDateStart = moment(this.atividade[i].start).add(atividade.duration);
+    let newDateEnd = moment(this.atividade[i].end).add(atividade.duration);
+    this.atividade[i].start = newDateStart.format('YYYY-MM-DDTHH:mm:ss');
+    this.atividade[i].end = newDateEnd.format('YYYY-MM-DDTHH:mm:ss');
   }
 
   deleteAtividade(eventId) {
     this.ucCalendar.fullCalendar('removeEvents', eventId);
   }
 
+  updateTitle(event) {
+    let atividade = this.ucCalendar.fullCalendar('clientEvents', event.id);
+    atividade[0].title = event.title;
+    this.ucCalendar.fullCalendar('updateEvent', atividade[0]);
+  }
 }

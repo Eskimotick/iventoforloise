@@ -1,6 +1,6 @@
 import { Component, OnInit, OnChanges, Input, Output, EventEmitter } from '@angular/core';
 import { MaterializeAction } from 'angular2-materialize';
-
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-update-atividade-modal',
@@ -15,6 +15,7 @@ export class UpdateAtividadeModalComponent implements OnInit, OnChanges {
 	@Input('atividadeClick') atividadeClick: number;
 	updateAtividadeModal = new EventEmitter<string|MaterializeAction>();
 	@Output() deleteAtividadeEmitter = new EventEmitter<number>();
+  @Output() updateTitleEmitter = new EventEmitter<any|any>();
 
   atividadeOnEdit: any;
   descriptionOnEdit: boolean;
@@ -46,7 +47,9 @@ export class UpdateAtividadeModalComponent implements OnInit, OnChanges {
 
 	// verifica se o evento ocorre no mesmo dia
 	oneDay() {
-  	return this.updateAtividade.start.substring(8, 10) == this.updateAtividade.end.substring(8, 10);
+    let start = moment(this.updateAtividade.start);
+    let end = moment(this.updateAtividade.end);
+  	return !end.diff(start, 'days');
   }
 
   // muda o tipo de ação do footer
@@ -67,6 +70,8 @@ export class UpdateAtividadeModalComponent implements OnInit, OnChanges {
     }
     else if(section == 'pacotes')
       this.atividadeOnEdit = this.updateAtividade.pacotes;
+    else if(section == 'data')
+      this.atividadeOnEdit = { start: this.updateAtividade.start, end: this.updateAtividade.end };
     else if(!section) {
       this.atividadeOnEdit = '';
       this.descriptionOnEdit = false;
@@ -84,7 +89,9 @@ export class UpdateAtividadeModalComponent implements OnInit, OnChanges {
 
   // salva o que foi alterado
   saveEdit() {
-    if(this.editAction == 'palestrante')
+    if(this.editAction == 'titulo')
+      this.updateTitleEmitter.emit({id: this.updateAtividade.id, title: this.updateAtividade.title});
+    else if(this.editAction == 'palestrante')
       this.updateAtividade.palestrante = this.atividadeOnEdit;
     else if(this.editAction == 'vagas')
       this.updateAtividade.qntdVagas = this.atividadeOnEdit;

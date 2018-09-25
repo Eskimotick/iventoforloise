@@ -1,4 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import * as moment from 'moment';
 
 @Pipe({
   name: 'dataAtividade'
@@ -6,10 +7,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class DataAtividadePipe implements PipeTransform {
 
   transform(data: string): string {
-    if(!data) return '';
-    var re = /([-T])/;
-    const str = data.split(re);
-    return `${str[4]}/${str[2]}/${str[0]}`;
+  	if(!data) return '';
+  	return moment(data).format('DD/MM/YYYY');
   }
 
 }

@@ -4,7 +4,8 @@
 			<div class="modal-header valign-wrapper">
 				<img class="title-icon" src="assets/img/ivento-logo.png" height="40">
 				<span>
-					<h5 class="title"><b>Atividade {{updateAtividade.title}}</b></h5>
+					<h5 class="title" (click)="editMode('titulo')" *ngIf="!(editAction == 'titulo'); else tituloEdit"><b>Atividade {{updateAtividade.title}}</b></h5>
+					<input class="input-title" *ngIf="editAction == 'titulo'" type="text" [(ngModel)]="updateAtividade.title" (blur)="saveEdit()" (keydown.enter)="saveEdit()" autofocus (focus)="$event.target.select()">
 					<p class="subtitle content">do evento {{evento}}</p>
 				</span>
 			</div>
@@ -35,12 +36,17 @@
 				</div>
 				<i class="col l1 material-icons icon">event</i>
 				<div class="col l5">
-					<b class="topic">Horário</b>
-					<p *ngIf="oneDay(); else manyDays" class="content">
-						Data: {{updateAtividade.start | dataAtividade}}, de: {{updateAtividade.start | horaAtividade}} até: {{updateAtividade.end | horaAtividade}}
-					</p>
-					<ng-template #manyDays class="content">
-						De {{updateAtividade.start | dataAtividade}} às {{updateAtividade.start | horaAtividade}}, até  {{updateAtividade.end | dataAtividade}} às {{updateAtividade.end | horaAtividade}}
+					<p class="topic content"><b>Horário</b><span class="edit" (click)="editMode('data')" *ngIf="!(editAction == 'data')">Editar</span></p>
+					<div *ngIf="!(editAction == 'data'); else dataEdit">
+						<p *ngIf="oneDay(); else manyDays" class="content">
+							Data: {{updateAtividade.start | dataAtividade}}, de: {{updateAtividade.start | horaAtividade}} até: {{updateAtividade.end | horaAtividade}}
+						</p>
+						<ng-template #manyDays class="content">
+							De {{updateAtividade.start | dataAtividade}} às {{updateAtividade.start | horaAtividade}}, até  {{updateAtividade.end | dataAtividade}} às {{updateAtividade.end | horaAtividade}}
+						</ng-template>
+					</div>
+					<ng-template #dataEdit>
+
 					</ng-template>
 				</div>
 			</div>
