@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "8beb55fe2b1c4af3e006659a240e38fb",
+    "content-hash": "8a0b9b1d9b28428fe2547bd03c5b7727",
     "packages": [
         {
             "name": "barryvdh/laravel-dompdf",
@@ -773,6 +773,76 @@
                 "url"
             ],
             "time": "2017-03-20T17:10:46+00:00"
+        },
+        {
+            "name": "intervention/image",
+            "version": "2.4.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Intervention/image.git",
+                "reference": "e82d274f786e3d4b866a59b173f42e716f0783eb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Intervention/image/zipball/e82d274f786e3d4b866a59b173f42e716f0783eb",
+                "reference": "e82d274f786e3d4b866a59b173f42e716f0783eb",
+                "shasum": ""
+            },
+            "require": {
+                "ext-fileinfo": "*",
+                "guzzlehttp/psr7": "~1.1",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "~0.9.2",
+                "phpunit/phpunit": "^4.8 || ^5.7"
+            },
+            "suggest": {
+                "ext-gd": "to use GD library based image processing.",
+                "ext-imagick": "to use Imagick based image processing.",
+                "intervention/imagecache": "Caching extension for the Intervention Image library"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.4-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Intervention\\Image\\ImageServiceProvider"
+                    ],
+                    "aliases": {
+                        "Image": "Intervention\\Image\\Facades\\Image"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Intervention\\Image\\": "src/Intervention/Image"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Oliver Vogel",
+                    "email": "oliver@olivervogel.com",
+                    "homepage": "http://olivervogel.com/"
+                }
+            ],
+            "description": "Image handling and manipulation library with support for Laravel integration",
+            "homepage": "http://image.intervention.io/",
+            "keywords": [
+                "gd",
+                "image",
+                "imagick",
+                "laravel",
+                "thumbnail",
+                "watermark"
+            ],
+            "time": "2018-05-29T14:19:03+00:00"
         },
         {
             "name": "jakub-onderka/php-console-color",
@@ -2368,75 +2438,6 @@
                 "uuid"
             ],
             "time": "2018-07-19T23:38:55+00:00"
-        },
-        {
-            "name": "rospdf/pdf-php",
-            "version": "0.12.48",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/rospdf/pdf-php.git",
-                "reference": "7af97bde9fdfc91fecfa571134c84ce3dc6f88ea"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/rospdf/pdf-php/zipball/7af97bde9fdfc91fecfa571134c84ce3dc6f88ea",
-                "reference": "7af97bde9fdfc91fecfa571134c84ce3dc6f88ea",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "3.7.38",
-                "squizlabs/php_codesniffer": "2.8.*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-experimental": "0.13.x-dev",
-                    "dev-master": "0.12.x-dev"
-                }
-            },
-            "autoload": {
-                "files": [
-                    "src/Cpdf.php",
-                    "src/Cezpdf.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Lars Olesen",
-                    "email": "lars@intraface.dk",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Ole Koeckemann",
-                    "email": "ole.k@web.de",
-                    "role": "Project Head / Developer"
-                },
-                {
-                    "name": "Sune Jensen",
-                    "email": "sj@sunet.dk",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Nicola Asuni",
-                    "email": "info@tecnick.com",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Wayne Munro",
-                    "email": "pdf@ros.co.nz",
-                    "role": "Founder / Inactive"
-                }
-            ],
-            "description": "The R&OS Pdf class supports the creation of PDF documents without any adiditional modules or extensions.",
-            "homepage": "https://github.com/rospdf/pdf-php",
-            "time": "2018-08-24T18:25:10+00:00"
         },
         {
             "name": "sabberworm/php-css-parser",

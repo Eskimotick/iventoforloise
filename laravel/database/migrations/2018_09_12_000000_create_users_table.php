@@ -35,16 +35,16 @@ class CreateUsersTable extends Migration
             $table->timestamps();
 
             // dando erro no migrate
-            // $table->foreign('quarto_id')
-            //         ->references('id')->on('quartos')
-            //         ->onDelete('cascade');
+            
         });
 
         
-        //Schema::table('users', function (BluePrint $table) {
-        //    $table->foreign('lote_id')->references('id')->on('lote')->onDelete('set null');
-        //    
-        //});
+        Schema::table('users', function (BluePrint $table) {
+            $table->foreign('quarto_id')
+                    ->references('id')->on('quartos')
+                    ->onDelete('set null');
+        //    $table->foreign('lote_id')->references('id')->on('lote')->onDelete('set null'); 
+        });
     }
 
     /**
