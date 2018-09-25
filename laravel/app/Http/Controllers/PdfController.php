@@ -69,8 +69,19 @@ class PdfController extends Controller
 
     public function generatePdf(Request $request){
 
-        $details = ['title' => 'test'];
-        $pdf = PDF::loadView('textDoc', $details);
-        return $pdf->download('My Portable Document.pdf');
+        $details = '<html>
+        <body background="http://d1x4bjge7r9nas.cloudfront.net/wp-content/uploads/2018/02/17094131/bolsonaro.jpg">
+        <div class="text-center">
+        
+            <h1 style="color:yellow">Ivento Terminado</h1>
+           
+           
+        </div>
+        </body>
+        </html>
+        ';
+        $pdf = PDF::loadHtml($details);
+        $pdf->setPaper('A4', 'landscape');
+        return $pdf->stream();
     }
 }
