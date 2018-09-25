@@ -155,6 +155,7 @@ return [
          */
         
         Barryvdh\DomPdf\ServiceProvider::class, //DomPdf
+        Intervention\Image\ImageServiceProvider::class, // dependencia para tratar imagens.
 
         /*
          * Application Service Providers...
@@ -220,6 +221,7 @@ return [
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
 
         'PDF' => Barryvdh\DomPdf\Facade::class, //pacote de pdf
+        'Image' => Intervention\Image\Facades\Image::class, //Image
 
     ],
 
