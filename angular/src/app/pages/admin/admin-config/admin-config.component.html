@@ -12,9 +12,10 @@
                 <ul class="tabs" materialize="tabs">
                   <li class="tab col l3"><a href="#inscricoes">Inscrições</a></li>
                   <li class="tab col l2"><a href="#pacotes">Pacotes</a></li>
-                  <li class="tab col l3"><a href="#pagamentos">Pagamentos</a></li>
+                  <!--li class="tab col l3"><a href="#pagamentos">Pagamentos</a></li-->
                   <li class="tab col l2"><a href="#aparencias">Aparências</a></li>
                   <li class="tab col l2"><a href="#campos">Campos</a></li>
+                  <li class="tab col l3"><a href="#certificados">Certificados</a></li>
                 </ul>
                 <div class="divider"></div>
               </div>
@@ -235,7 +236,7 @@
                 </div>
               </div>
 
-              <div id="pagamentos" class="row">
+              <!--div id="pagamentos" class="row">
                 <div class="col s12">
                   <div class="container">
                     <div class="row">
@@ -302,7 +303,7 @@
 
                   </div>
                 </div>
-              </div>
+              </div-->
               <div id="aparencias" class="row">
                 <div class="col s12">
                   <div class="container">
@@ -345,6 +346,89 @@
                     <!--<a href="#!" class="modal-close waves-effect btn-flat">Cancelar</a>-->
                   </div>
                 </div>
+              </div>
+              <div id="certificados" class="row">
+                <div class="row">
+                  <div class="col l10 offset-l1 m10 offset-m1 s12">
+                    <div class="row">
+                      <div class="card-panel card-certificados z-depth-3">
+                        <div class="row center">
+                          <h4>Você já pode gerar certificados</h4>
+                          <!--h4>Você ainda não possui um modelo de certificado!</h4-->
+                        </div>
+                        <div class="row">
+                          <div class="divider"></div>
+                          <div class="container conteudo-certificados">
+                            <div class="row center">
+                              <div class="card">
+                                <div class="card-image waves-effect waves-block waves-light">
+                                  <img class="activator" src='http://blog.visme.co/wp-content/uploads/2017/07/50-Beautiful-and-Minimalist-Presentation-Backgrounds-037.jpg'>
+                                </div>
+                                <div class="card-content">
+                                  <span class="card-title grey-text text-darken-4">Certificado</span>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row comandos">
+                              <!--div class="col l12 s12 center">
+                                <a class="btn-large modal-trigger" href="#modal-layoutCertificado">Criar modelo de Certificado</a>
+                              </div-->
+                              <div class="col l6 s12 center">
+                                <a class="btn-large modal-trigger" href="#modal-layoutCertificado">Editar Certificado</a>
+                              </div>
+                              <div class="col l6 s12 center">
+                                <button class="btn-large">Gerar Certificados</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div><!-- fim do card -->
+                    </div>
+                  </div>
+                </div>
+
+                <div id="modal-layoutCertificado" class="modal" materialize="modal">
+                  <div class="modal-content">
+                    <div class="header">
+                      <div class="col s10">
+                        <h4> Criar Modelo de Certificado</h4>
+                      </div>
+                      <div class="col s2">
+                        <i class="material-icons modal-close right">
+                          close
+                        </i>
+                      </div>
+                    </div>
+                    <div class="row conteudo-modal">
+                      <div class="row">
+                        <form action="#">
+                          <div class="file-field input-field">
+                            <div class="btn">
+                              <span>Adicionar imagem de fundo</span>
+                              <input type="file">
+                            </div>
+                            <div class="file-path-wrapper">
+                              <input class="file-path validate" type="text">
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                      <div class="row"> <!-- editor -->
+                        <quill-editor>
+
+                        </quill-editor>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <div class="container">
+                      <a href="#!" class="modal-close waves-effect btn-flat">Não Salvar</a>
+                      <input type="submit" class="modal-clodebtn" value="Salvar Certificado">
+                    </div>
+
+                  </div>
+                </div>
+
               </div>
             </div>
           </div>

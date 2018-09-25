@@ -48,7 +48,8 @@
 
 /* botao padrao - cinza azulado */
 .btn, input.btn,
-.btn.btn-large,
+.btn .btn-large,
+ a .btn.btn-large.modal-trigger,
 .btn-floating.fab.waves-effect.waves-light,
 .btn.modal-trigger,
 .file-field input-field .btn,

@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app.routing.module';
 import { MaterializeModule} from 'angular2-materialize';
+import { QuillModule } from 'ngx-quill' //editor de texto
 
 
 import { JwtModule } from '@auth0/angular-jwt';
@@ -91,7 +92,8 @@ export function tokenGetter() {
     BrowserAnimationsModule,
     NgxMaskModule.forRoot(), // https://www.npmjs.com/package/ngx-mask
     NgxPaginationModule, // https://www.npmjs.com/package/ngx-pagination
-    TooltipModule // https://www.npmjs.com/package/ngx-tooltip
+    TooltipModule, // https://www.npmjs.com/package/ngx-tooltip
+    QuillModule // https://github.com/KillerCodeMonkey/ngx-quill
   ],
   providers: [],
   bootstrap: [AppComponent]
