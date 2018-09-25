@@ -153,6 +153,8 @@ return [
         /*
          * Package Service Providers...
          */
+        
+        Barryvdh\DomPdf\ServiceProvider::class, //DomPdf
 
         /*
          * Application Service Providers...
@@ -216,6 +218,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+
+        'PDF' => Barryvdh\DomPdf\Facade::class, //pacote de pdf
 
     ],
 

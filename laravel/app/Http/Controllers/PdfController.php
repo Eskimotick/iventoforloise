@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Pdf;
+//use App\Pdf;
+use PDF;
 
 class PdfController extends Controller
 {
@@ -64,5 +65,12 @@ class PdfController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function generatePdf(Request $request){
+
+        $details = ['title' => 'test'];
+        $pdf = PDF::loadView('textDoc', $details);
+        return $pdf->download('My Portable Document.pdf');
     }
 }
