@@ -29,7 +29,7 @@
   width: auto;
 }
 
-
+/* formatação de texto .............................................*/
 h3 {
   font-size: 1.9em;
   margin: 0vh;
@@ -168,6 +168,7 @@ table tbody {
 }
 
 
+
 #agendarInscricoes {
   min-height: 78vh;
 }
@@ -205,4 +206,26 @@ button .btn {
 .file-field input-field .btn:hover,
 button .btn:hover{
   background-color: #90a4ae;
+}
+
+
+
+/* container */
+.container.white.container-admin {
+  width: 95%;
+
+}
+@media (min-width: 992px){
+  .container.white.container-admin {
+    margin: 0;
+    margin-left: 12vw;
+    height: 85vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 90vw;
+  }
+  .conteudo-admin {
+    margin-left: 5vw;
+  }
+
 }
