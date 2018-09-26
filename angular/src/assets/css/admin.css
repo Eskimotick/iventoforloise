@@ -1,7 +1,7 @@
 /* admin */
 .conteudo-admin {
   margin-top: 4vh;
-  width: 90%;
+  width: 80%;
 }
 /* formatação de texto */
 .header {
@@ -12,17 +12,16 @@
 
 /* container */
 .container.white.container-admin {
-  width: 95%;
+  width: 90%;
 
 }
 @media (min-width: 992px){
   .container.white.container-admin {
-    margin: 0;
     margin-left: 12vw;
     height: 85vh;
     overflow-y: auto;
     overflow-x: hidden;
-    width: 90vw;
+    width: 81vw;
   }
   .conteudo-admin {
     margin-left: 5vw;

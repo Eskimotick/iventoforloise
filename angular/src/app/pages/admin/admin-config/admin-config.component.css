@@ -207,25 +207,3 @@ button .btn {
 button .btn:hover{
   background-color: #90a4ae;
 }
-
-
-
-/* container */
-.container.white.container-admin {
-  width: 95%;
-
-}
-@media (min-width: 992px){
-  .container.white.container-admin {
-    margin: 0;
-    margin-left: 12vw;
-    height: 85vh;
-    overflow-y: auto;
-    overflow-x: hidden;
-    width: 90vw;
-  }
-  .conteudo-admin {
-    margin-left: 5vw;
-  }
-
-}
