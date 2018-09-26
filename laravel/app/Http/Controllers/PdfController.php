@@ -69,17 +69,19 @@ class PdfController extends Controller
 
     public function generatePdf(Request $request){
 
+        $teste = 'José maria';
         $details = '<html>
         <body background="http://d1x4bjge7r9nas.cloudfront.net/wp-content/uploads/2018/02/17094131/bolsonaro.jpg">
         <div class="text-center">
         
-            <h1 style="color:yellow">Ivento Terminado</h1>
+            <h1 style="color:yellow">Ivento Terminado $user->name </h1>
            
            
         </div>
         </body>
-        </html>
-        ';
+        </html>';
+
+        $details = str_replace('$user->name', $teste, $details);
         $pdf = PDF::loadHtml($details);
         $pdf->setPaper('A4', 'landscape');
         return $pdf->stream();

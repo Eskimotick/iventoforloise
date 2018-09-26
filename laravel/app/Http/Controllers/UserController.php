@@ -89,4 +89,60 @@ class UserController extends Controller
         return response()->success('Usuário Deletado com Sucesso!');
       }
     }
+
+    public function enterQuarto($quartoId){
+      $user = Auth::user();
+      
+      $resposta = $user->alocaUserQuarto($quartoId);
+
+      if(gettype($resposta) == 'string'){
+        return response()->error($resposta, 400);
+      }
+
+      $resposta = implode('/', $resposta);
+      return response()->success('User alocado com sucesso! user/quarto => '.$resposta);
+
+    }
+
+    public function exitQuarto(){
+
+      $user = Auth::user();
+      $resposta = $user->desalocaUserQuarto();
+
+      if(gettype($resposta) == 'string'){
+          return response()->error($resposta, 400);
+      }
+
+      $resposta = implode('/', $resposta);
+      return response()->success('User desalocado com sucesso! user/quarto => '.$resposta);
+    }
+
+    //ainda tem que testar estas duas funções abaixo
+    public function showPacoteQuartos(){
+      
+      $user = Auth::user();
+
+      $quartos = $user->getQuartos();
+
+      if($quartos->count() == 0){
+        return response()->error('Seu pacote ainda não possui quartos. 
+        Entre em contato com os organizadores', 400);
+      }
+
+      return response()->success($quartos);
+
+    }
+
+    public function showQuarto($id){
+      $user = Auth::user();
+
+      $quarto = $user->showQuart($id);
+
+      if(gettype($quarto) == 'string'){
+        return response()->error($resposta, 400);
+      }
+
+      return response()->success($quarto);
+
+    }
 }

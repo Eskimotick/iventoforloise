@@ -19,7 +19,10 @@ use App\Notifications\Auth\ChangeEmail\NewEmail\NewEmailConfirmedNotification;
 use App\Notifications\Auth\ChangeEmail\OldEmail\OldEmailConfirmedNotification;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+use App\Models\Admin\Lote;
 use App\Models\Admin\Quarto;
+use App\Models\Admin\Pacote;
+
 
 class User extends Authenticatable
 {
@@ -120,6 +123,15 @@ class User extends Authenticatable
 
     ### Parte de hospedagens e quartos ###
 
+    public function getQuartos(){
+      $lote = Lote::find($this->lote_id);
+      $pacote = Pacote::find($lote->pacote_id);
+      $quartos = $pacote->belongsToMany('App\Models\Admin\Quarto','pacotes_quartos');
+      
+      return $quartos;
+
+    }
+
     public function alocaUserQuarto($quartoId){
 
       if($this->quarto_id != null){
@@ -127,6 +139,10 @@ class User extends Authenticatable
       }  
       
       $quarto = Quarto::find($quartoId);
+      if(!$quarto){
+        return 'Quarto não encontrado, verifique se o mesmo existe.';
+      }
+
       $resposta = $quarto->preencheVaga();
 
       if(gettype($resposta) == 'string'){
@@ -149,6 +165,11 @@ class User extends Authenticatable
       }
 
       $quarto = Quarto::find($this->quarto_id);
+      
+      if(!$quarto){
+        return 'Quarto não encontrado, verifique se o mesmo existe.';
+      }
+
       $quarto->removeVaga();
 
       $this->quarto_id = null;
@@ -158,6 +179,21 @@ class User extends Authenticatable
 
       return $resposta;
     }
+
+    public function showQuarto($id){
+      
+      $quarto = Quarto::find($id);
+
+        if($quarto){
+            return $quarto;
+        }
+        else{
+            return 'Quarto não encontrado, verifique se o mesmo existe.';
+        }
+    }
+
+    ### fim Parte de hospedagens e quartos ###
+
 
     //verifica se o cpf é valido
     public static function validar_cpf($cpf)
