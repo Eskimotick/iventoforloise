@@ -104,4 +104,11 @@ class Hospedagem extends Model
         }
 
     }
+
+    public function getQuartos(){
+        
+        $listaQuartos = $this->hasMany('App\Models\Admin\Quarto')->get();
+
+        return $listaQuartos;
+    }
 }

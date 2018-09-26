@@ -98,4 +98,22 @@ class HospedagemController extends Controller
             return response()->error('Hospedagem não encontrada, verifique se a mesma existe.', 400);
         }
     }
+
+    public function showQuartos($id){
+        
+        $hospedagem = Hospedagem::find($id);
+
+        if(!$hospedagem){
+            return response()->error('Hospedagem não encontrada, verifique se a mesma existe.', 400);
+        }
+
+        $quartos = $hospedagem->getQuartos();
+
+        if($quartos->count() == 0){
+            return response()->error('Esta hospedagem ainda não possui quartos.', 400);
+        }
+
+        return response()->success($quartos);
+
+    }
 }

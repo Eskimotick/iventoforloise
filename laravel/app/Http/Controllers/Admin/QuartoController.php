@@ -61,7 +61,14 @@ class QuartoController extends Controller
      */
     public function showQuarto($id)
     {
-        //
+        $quarto = Quarto::find($id);
+
+        if($quarto){
+            return response()->success($quarto);
+        }
+        else{
+            return response()->error('Quarto não encontrado, verifique se o mesmo existe.', 400);
+        }
     }
 
     /**
@@ -107,6 +114,18 @@ class QuartoController extends Controller
         }
     }
 
+    public function destroyAllQuartos(Request $request){
+        
+        $quarto = new Quarto;
+        $listaQuartos = explode(',', $request->quartos);;
+        
+        $numQuartos = count($listaQuartos);
+        //fazer algum tipo de verificação antes de deletar os quartos, para ver se a lista existe.
+        Quarto::destroy($listaQuartos);
+
+        return response()->success('Os seguintes quartos foram deletados com sucesso! lista: '.$listaQuartos);
+    }
+
     public function adminAlocaUser(Request $request, $id){
 
         $quarto = Quarto::find($id);
@@ -126,7 +145,6 @@ class QuartoController extends Controller
     }
 
     public function adminDesalocaUser(Request $request){
-        
 
         $quarto = new Quarto;
         $resposta = $quarto->desalocaUser($request->cpf);
