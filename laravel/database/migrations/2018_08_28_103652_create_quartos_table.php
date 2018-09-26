@@ -27,6 +27,7 @@ class CreateQuartosTable extends Migration
                     ->references('id')->on('hospedagems')
                     ->onDelete('cascade');
         });
+
     }
 
     /**
@@ -36,6 +37,10 @@ class CreateQuartosTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('quartos');
+        Schema::enableForeignKeyConstraints();
     }
+
+    
 }
