@@ -19,6 +19,7 @@
      overflow-x: hidden;
    }
 }
+
 .modal .modal-content{
   padding: 0;
 }
@@ -52,6 +53,14 @@
   min-height: 90vh;
   min-width: 74vw;
 
+}
+
+@media screen and (min-width: 1530px) {
+   #modalQuartos {
+     min-height: 78vh;
+     min-width: 70vw;
+     overflow: hidden;
+   }
 }
 
 .novoQuarto {

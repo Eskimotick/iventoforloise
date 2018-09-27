@@ -1,7 +1,7 @@
 /* admin */
 .conteudo-admin {
   margin-top: 4vh;
-  width: 98%;
+  width: 90%;
 }
 /* formatação de texto */
 .header {
@@ -12,16 +12,31 @@
 
 /* container */
 .container.white.container-admin {
-  width: 98%;
+  width: 95%;
 
 }
 @media (min-width: 992px){
   .container.white.container-admin {
+    margin: 0;
     margin-left: 12vw;
-    height: 82vh;
+    height: 85vh;
     overflow-y: auto;
     overflow-x: hidden;
-    width: 81vw;
+    width: 90vw;
+  }
+  .conteudo-admin {
+    margin-left: 5vw;
+  }
+
+}
+@media (min-width: 1584px){
+  .container.white.container-admin {
+    margin: 0;
+    margin-left: 12vw;
+    height: 85vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 96vw;
   }
   .conteudo-admin {
     margin-left: 5vw;
