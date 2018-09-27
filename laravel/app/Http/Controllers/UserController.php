@@ -136,10 +136,10 @@ class UserController extends Controller
     public function showQuarto($id){
       $user = Auth::user();
 
-      $quarto = $user->showQuart($id);
+      $quarto = $user->showQuarto($id);
 
       if(gettype($quarto) == 'string'){
-        return response()->error($resposta, 400);
+        return response()->error($quarto, 400);
       }
 
       return response()->success($quarto);

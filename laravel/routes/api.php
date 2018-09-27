@@ -75,10 +75,15 @@ Route::group([
     Route::put('{id}', 'UserController@update');
     Route::delete('{id}', 'UserController@delete');
 
-    Route::get('/quartos', 'UserController@showPacoteQuartos');     //http://site.com/api/users/quartos
-    Route::get('{id}/quartos', 'UserController@showQuarto');        //http://site.com/api/users/id/quartos
-    Route::put('{id}/quartoenter', 'UserController@enterQuarto');   //http://site.com/api/users/id/quartoenter
-    Route::post('/quartoexit', 'UserController@exitQuarto');        //http://site.com/api/users/quartoexit
+    Route::group([
+        'prefix' => 'quarto'
+    ], function(){
+        Route::get('/all', 'UserController@showPacoteQuartos');     //http://site.com/api/users/quarto/
+        Route::get('{id}', 'UserController@showQuarto');            //http://site.com/api/users/quarto/id
+        Route::put('{id}/enter', 'UserController@enterQuarto');     //http://site.com/api/users/quarto/id/enter
+        Route::post('/exit', 'UserController@exitQuarto');          //http://site.com/api/users/quarto/exit
+    });
+    
 
 });
 

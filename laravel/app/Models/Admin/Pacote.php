@@ -10,6 +10,10 @@ class Pacote extends Model
     //
     protected $fillable = [];
 
+    public function quartos(){
+        return $this->belongsToMany('App\Models\Admin\Quarto', 'pacotes_quartos');
+    }
+
     public function createPacote($request){
 
         $this->nome = $request->nome;

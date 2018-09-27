@@ -126,7 +126,8 @@ class User extends Authenticatable
     public function getQuartos(){
       $lote = Lote::find($this->lote_id);
       $pacote = Pacote::find($lote->pacote_id);
-      $quartos = $pacote->belongsToMany('App\Models\Admin\Quarto','pacotes_quartos');
+      // $quartos = $pacote->belongsToMany('App\Models\Admin\Quarto','pacotes_quartos');
+      $quartos = $pacote->quartos()->get();
       
       return $quartos;
 
