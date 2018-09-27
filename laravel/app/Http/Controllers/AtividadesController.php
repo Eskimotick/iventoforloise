@@ -2,12 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\Atividade;
+use App\PacoteAtividade;
+use App\UsuarioAtividade;
+use App\Models\Admin\Lote;
 use App\Models\Admin\Pacote;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StoreAtividadeRequest;
 use App\Http\Requests\UpdateAtividadeRequest;
+use App\Notifications\Atividade\NovaAtividadePacoteNotification;
+use App\Notifications\Atividade\UpdateAtividadePacoteNotification;
 
 class AtividadesController extends Controller
 {
@@ -35,6 +41,7 @@ class AtividadesController extends Controller
     {
         $atividade_alt = Atividade::findOrFail($id);
         $atividade_alt->updateActivity($request, $atividade_alt);
+        $this->updateAtividadePacote($atividade_alt->id);
         return response()->success($atividade_alt);
     }
 
@@ -69,9 +76,19 @@ class AtividadesController extends Controller
       $atividadePacote->atividade_id = $atividade->id;
       $atividadePacote->save();
       $usuariosPacote = User::where('lote_id', $lote->id)->get();
-      foreach ($usuariosPacote as $user)
+      foreach($usuariosPacote as $user)
       {
         $user->notify(new NovaAtividadePacoteNotification());
+      }
+    }
+
+    public function updateAtividadePacote($id_ativ)
+    {
+      $userAtividade = UsuarioAtividade::where('atividade_id', $id_ativ)->get();
+      foreach($userAtividade as $user)
+      {
+        $userInscrito = User::findOrFail($user->usuario_id);
+        $userInscrito->notify(new UpdateAtividadePacoteNotification());
       }
     }
 }
