@@ -25,7 +25,7 @@
   </div>
 </div>
 
-<!-- modais -->
+<!-- modais ...............................................................................-->
 <div id="modalQuartos" class="modal" materialize="modal">
   <div class="modal-content">
     <div class="header">
@@ -115,62 +115,98 @@
                 <h6>Vagas Disponíveis</h6>
                 <ul materialize="collapsible" class="collapsible" data-collapsible="accordion" [materializeParams]="params" [materializeActions]="actions1">
                   <li>
-                    <div class="collapsible-header">Suite Standard <span class="new badge blue-grey lighten-1" data-badge-caption="vagas restantes">2</span></div>
+                    <div class="collapsible-header">Suite Standard
+                      <!-- badges ................................................... -->
+                      <span class="new badge blue-grey lighten-1 right" data-badge-caption="vagas por quarto">2</span>
+                      <span class="new badge blue-grey darken-2 right" data-badge-caption="vagas restantes">2</span> 
+                    </div>
+                      
                     <div class="collapsible-body">
-                      <div class="row">
+                      <div class="row center acoesQuartos">
+                        <a class="btn-large">Editar</a>
+                        <a class="btn-large">Deletar</a>
+                      </div>  
+                      <div class="container listaQuartos">
                         <div class="row">
-                          <div class="col l5">
-                            <img src="./assets/img/hoteis/hotel-room.jpg" class="foto-quarto responsive-img">
-                            <!-- conteudo do collapsible buga quando colocamos a imagem dentro de uma col sem uma row por fora-->
-                            <div class="col l12 s12 checkboxesPacotes">
-                              <h5>Atribuir aos Pacotes</h5>
-                              <div class="col l12 s12">
-                                <label>
-                                  <input type="checkbox" class="filled-in" />
-                                  <span>Pacote Master</span>
-                                </label>
-                              </div>
-                              <div class="col l12 s12">
-                                <label>
-                                  <input type="checkbox" class="filled-in" />
-                                  <span>Pacote Executivo Plus</span>
-                                </label>
-                              </div>
-                              <div class="col l12 s12">
-                                <label>
-                                  <input type="checkbox" class="filled-in" />
-                                  <span>Pacote Executivo</span>
-                                </label>
-                              </div>
-                              <div class="col l12 s12">
-                                <label>
-                                  <input type="checkbox" class="filled-in" />
-                                  <span>Pacote Simples</span>
-                                </label>
-                              </div>
-                            </div>
+                          <div class="col l6 s12">
+                              <div class="card-panel modal-trigger grey lighten-2" href="#quarto">
+                                Quarto 102
+                              </div> 
                           </div>
-                          <div class="col l7 dadosQuarto">
-                            <div class="input-field col s12 l8">
-                              <input type="text" id="nomeQuarto" value="Suite Standard">
-                              <label for="nomeQuarto">Nome/Tipo de Quarto</label>
+                          <div class="col l6 s12">
+                              <div class="card-panel modal-trigger grey lighten-2" href="#quarto">
+                                  Quarto 111
+                               </div> 
+                          </div>
+                        </div>    
+                      </div>
+                      <!-- transformar em modal -->
+                      <div class="modal z-depth-5" id="quarto" materialize="modal">
+                          <div class="header">
+                              <div class="col s11">
+                                <h4>Quarto [nº do quarto]</h4>
+                              </div>
+                              <div class="col s1">
+                                <i class="material-icons modal-close right">
+                                  close
+                                </i>
+                              </div>
+                          </div>
+                        <div class="modal-content">
+                          <div class="row">
+                            <div class="col l5">
+                              <img src="./assets/img/hoteis/hotel-room.jpg" class="foto-quarto responsive-img">
+                              <!-- conteudo do collapsible buga quando colocamos a imagem dentro de uma col sem uma row por fora-->
+                              <div class="col l12 s12 checkboxesPacotes">
+                                <h5>Atribuir aos Pacotes</h5>
+                                <div class="col l12 s12">
+                                  <label>
+                                    <input type="checkbox" class="filled-in" />
+                                    <span>Pacote Master</span>
+                                  </label>
+                                </div>
+                                <div class="col l12 s12">
+                                  <label>
+                                    <input type="checkbox" class="filled-in" />
+                                    <span>Pacote Executivo Plus</span>
+                                  </label>
+                                </div>
+                                <div class="col l12 s12">
+                                  <label>
+                                    <input type="checkbox" class="filled-in" />
+                                    <span>Pacote Executivo</span>
+                                  </label>
+                                </div>
+                                <div class="col l12 s12">
+                                  <label>
+                                    <input type="checkbox" class="filled-in" />
+                                    <span>Pacote Simples</span>
+                                  </label>
+                                </div>
+                              </div>
                             </div>
-                            <div class="input-field col s6 l2">
-                              <input type="number" id="numeroQuarto" value="115">
-                              <label for="numeroQuarto">Número</label>
-                            </div>
-                            <div class="input-field col s6 l2">
-                              <input type="number" id="vagasQuarto" value="2">
-                              <label for="vagasQuarto">Vagas</label>
-                            </div>
-                            <div class="input-field col s12 l12">
-                              <textarea id="obsQuarto" class="materialize-textarea">Ar Condicionado, TV, Frigobar, WiFi
-                              </textarea>
-                              <label for="obsQuarto">Observações</label>
-                            </div>
-                            <div class="input-field col s12 l12">
-                              <input type="text" id="ocupantes">
-                              <label for="ocupantes">Ocupantes</label>
+                            <div class="col l7 dadosQuarto">
+                              <div class="input-field col s12 l8">
+                                <input type="text" id="nomeQuarto" value="Suite Standard">
+                                <label for="nomeQuarto">Nome/Tipo de Quarto</label>
+                              </div>
+                              <div class="input-field col s6 l2">
+                                <input type="number" id="numeroQuarto" value="115">
+                                <label for="numeroQuarto">Número</label>
+                              </div>
+                              <div class="input-field col s6 l2">
+                                <input type="number" id="vagasQuarto" value="2">
+                                <label for="vagasQuarto">Vagas</label>
+                              </div>
+                              <div class="input-field col s12 l12">
+                                <textarea id="obsQuarto" class="materialize-textarea">Ar Condicionado, TV, Frigobar, WiFi
+                                </textarea>
+                                <label for="obsQuarto">Observações</label>
+                              </div>
+                              <div class="input-field col s12 l12">
+                                <input type="text" id="ocupantes">
+                                <label for="ocupantes">Ocupantes</label>
+                              </div>
                             </div>
                           </div>
                         </div>

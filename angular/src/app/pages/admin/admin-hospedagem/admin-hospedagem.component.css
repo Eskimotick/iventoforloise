@@ -7,6 +7,7 @@
 .modal {
   min-height: 70vh;
   overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .modal .conteudo {
@@ -26,6 +27,14 @@
   }
 
  }
+ @media screen and (min-width: 1530px) {
+  .modal {
+    min-height: 70vh;
+  }
+
+ }
+
+
 .modal .modal-content {
   padding: 0;
 }

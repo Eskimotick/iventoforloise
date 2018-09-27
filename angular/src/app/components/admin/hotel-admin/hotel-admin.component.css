@@ -49,17 +49,26 @@
   min-height: 75vh;
   min-width: 35vw;
 }
+
 #modalQuartos {
-  min-height: 90vh;
-  min-width: 74vw;
+  width: 100vw;
+  min-height: 100vh;
+  padding-bottom: 5vh;
+  top: 0% !important;
+}
+
+.acoesQuartos .btn-large {
+  margin: 1vh;
 
 }
 
+#quarto .modal-content{
+  padding: 2%;
+}
+
 @media screen and (min-width: 1530px) {
-   #modalQuartos {
-     min-height: 78vh;
-     min-width: 70vw;
-     overflow: hidden;
+   #modalEditar {
+    min-height: 56vh;
    }
 }
 
@@ -101,6 +110,13 @@ h6 {
   margin-top: -7vh;
 }
 
+@media screen and (min-width: 1530px) {
+  .fabs-card-hospedagem {
+    margin-top: -5vh;
+  }
+}
+
+
 /* modal Quartos */
 
 .quartosCadastrados {
@@ -139,4 +155,13 @@ ul li .indicator {
 .btn-large:hover
 .btn:hover{
   background-color: #90a4ae;
+}
+
+
+
+
+/* badges */
+.new.badge:last-child {
+  margin-left: 0.3vw;
+
 }
