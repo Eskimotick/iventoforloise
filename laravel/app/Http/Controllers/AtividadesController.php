@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\User;
 use App\Atividade;
 use App\PacoteAtividade;
@@ -20,14 +21,30 @@ class AtividadesController extends Controller
 
     public function show($id)
     {
+      $user_logado = Auth::user();
+      if($user_logado->admin == 1)
+      {
         $atividade = Atividade::findOrFail($id);
         return response()->success($atividade);
+      }
+      else
+      {
+        return response()->error('Você não possui a permissão necessária para ver essa atividade.');
+      }
     }
 
     public function index()
     {
+      $user_logado = Auth::user();
+      if($user_logado->admin == 1)
+      {
         $all_activities = Atividade::all();
         return response()->success($all_activities);
+      }
+      else
+      {
+        return response()->error('Você não possui a permissão necessária para ver essas atividades.');
+      }
     }
 
     public function store(StoreAtividadeRequest $request)

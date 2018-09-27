@@ -25,6 +25,9 @@ Route::post('login', 'API\AuthController@login');
 Route::post('register', 'API\AuthController@register');
 //http://site.com/api/register
 
+Route::get('data-evento', 'ConfigController@showDataEvento');
+//http://site.com/api/data-evento
+
 // Grupo de rotas para password.
 Route::group([
     'prefix' => 'password'

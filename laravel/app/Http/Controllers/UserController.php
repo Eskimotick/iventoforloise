@@ -38,7 +38,7 @@ class UserController extends Controller
       // Pega o usuário logado.
       $user = Auth::user();
       // Se for um admin pode inserir novos usuários.
-      if($user->admin == 'true')
+      if($user->admin == 1)
       {
         $novoUser = new User;
         $novoUser->createUsers($request);
@@ -60,7 +60,7 @@ class UserController extends Controller
       // Acha o usuário passado na função
       $user = User::findOrFail($id);
       // Se for admin, pode modificar os dados de qualquer usuário.
-      if($user_log->admin == 'true')
+      if($user_log->admin == 1)
       {
         $user->updateUsers($request, $user);
         return response()->success(new UserResource($user));
@@ -82,7 +82,7 @@ class UserController extends Controller
       // Acha o usuário passado na função
       $user = User::findOrFail($id);
       // Se for admin, pode deletar qualquer usuário.
-      if($user_log->admin == 'true')
+      if($user_log->admin == 1)
       {
         $user->deleteUsers($user);
         return response()->success('Usuário Deletado com Sucesso!');
@@ -106,7 +106,7 @@ class UserController extends Controller
       $user_log->save();
     }
 
-    //Função para ver um usuário ver as atividades de seu pacote.
+    //Função para um usuário ver as atividades de seu pacote.
     public function myPackageActivities()
     {
       //Pega o usuário logado.

@@ -41,6 +41,24 @@ class ConfigController extends Controller
         //
     }
 
+    public function showDataEvento()
+    {
+      // Pega o usuário logado.
+      $user = Auth::user();
+      // Se for um admin pode inserir novos usuários.
+      if($user->admin == 1)
+      {
+        $config = Config::find(1);
+        $data_evento['data_inicio'] = $config->inicio_evento;
+        $data_evento['data_fim'] = $config->fim_evento;
+        return response()->success($data_evento);
+      }
+      else
+      {
+        return response()->error('ERRO. Operação não autorizada.', 403);
+      }
+    }
+
     /**
      * Update the specified resource in storage.
      *
