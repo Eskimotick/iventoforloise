@@ -41,6 +41,13 @@ class Quarto extends Model
         //corrigir tirar os espaços das palavras das variaveis quarto comum 2 
         $nome = explode('-', $this->nome, 2)[0];
         $quartos = Quarto::where('nome','LIKE', $nome."-%")->get();
+
+        $nomeExiste = Quarto::where('nome','LIKE', $request->nome." -%")->count();
+        
+        //verifica se já existem quartos com esse nome.
+        if($nomeExiste != 0){
+            return "Já existem quartos com esse nome = ".$request->nome;
+        }
         
         if($request->vagas){
             // resgata a hospedagem do quarto

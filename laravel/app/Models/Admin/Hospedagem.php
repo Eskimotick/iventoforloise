@@ -52,7 +52,7 @@ class Hospedagem extends Model
     public function validaCriacaoQuartos($request){
         
         $vagasQuartos = Quarto::where('hospedagem_id', $this->id)->sum('vagas');
-        $nomeExiste = $quartos = Quarto::where('nome','LIKE', $request->nome." -%")->count();
+        $nomeExiste = Quarto::where('nome','LIKE', $request->nome." -%")->count();
         
         //verifica se já existem quartos com esse nome.
         if($nomeExiste != 0){
