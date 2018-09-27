@@ -75,11 +75,14 @@ Route::group([
     'middleware' => 'web',
     'prefix' => 'social/login'
 ], function (){
-    Route::get('/facebook', 'API\FacebookController@redirectToFacebook'); //http://site.com/api/social/login/facebook
-    Route::get('/facebook/callback', 'API\FacebookController@handleFacebookCallback'); //http://site.com/api/social/login/facebook/callback
+    Route::get('/facebook', 'API\FacebookController@redirectToFacebook');
+    //http://site.com/api/social/login/facebook
+    Route::get('/facebook/callback', 'API\FacebookController@handleFacebookCallback');
+    //http://site.com/api/social/login/facebook/callback
     Route::get('/google', 'API\GoogleController@redirectToGoogle');
     //http://site.com/api/social/login/google
-    Route::get('/google/callback', 'API\GoogleController@handleGoogleCallback'); //http://site.com/api/social/login/google/callback
+    Route::get('/google/callback', 'API\GoogleController@handleGoogleCallback'); 
+    //http://site.com/api/social/login/google/callback
 });
 
 //Grupo de Rotas para o painel de usuário
@@ -171,7 +174,7 @@ Route::group([//criar middleware para restringir acesso
         //http://site.com/api/admin/atividades/inscricao/id-id
         Route::post('remove/{id}', 'Admin\AdminController@desinscreveUser');
         //http://site.com/api/admin/atividades/remove/id
-        Route::post('nova-atividade-pacote/{$id_ativ}-{id_pacote}', 'AtividadesController@insereAtividadePacote');
+        Route::post('nova-atividade-pacote/{id_ativ}-{id_pacote}', 'AtividadesController@insereAtividadePacote');
         //http://site.com/api/admin/atividades/nova-atividade-pacote/id-id
     });
 });
