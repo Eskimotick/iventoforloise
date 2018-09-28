@@ -33,6 +33,8 @@ class CreateUsuarioAtividadesTable extends Migration
     */
    public function down()
    {
-     Schema::dropIfExists('usuario_atividades');
+      Schema::disableForeignKeyConstraints();
+      Schema::dropIfExists('usuario_atividades');
+      Schema::enableForeignKeyConstraints();
    }
 }

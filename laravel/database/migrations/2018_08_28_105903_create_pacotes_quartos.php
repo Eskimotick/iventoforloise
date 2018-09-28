@@ -20,6 +20,16 @@ class CreatePacotesQuartos extends Migration
             $table->timestamps();
 
         });
+
+        Schema::table('pacotes_quartos', function (BluePrint $table) {
+            $table->foreign('pacote_id')
+                    ->references('id')->on('pacotes')
+                    ->onDelete('cascade');
+
+            $table->foreign('quarto_id')
+                    ->references('id')->on('quartos')
+                    ->onDelete('cascade');
+         });
     }
 
     /**
@@ -29,6 +39,8 @@ class CreatePacotesQuartos extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('pacotes_quartos');
+        Schema::enableForeignKeyConstraints();
     }
 }

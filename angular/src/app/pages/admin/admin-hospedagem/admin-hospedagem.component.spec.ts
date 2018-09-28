@@ -22,4 +22,4 @@ describe('AdminHospedagemComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-});
+}); 

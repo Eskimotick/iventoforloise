@@ -1,8 +1,8 @@
 <div class="col s12 m4 l4">
   <div class="card">
     <div class="card-image">
-      <img src="./assets/img/hoteis/hotel-5.jpg" class="foto-hotel">
-      <span class="card-title nome-hotel">[Nome do Hotel]</span>
+      <img [src]="hotelFoto" class="foto-hotel">
+      <span class="card-title nome-hotel">{{hoteis.nomeHotel}}</span>
 
     </div>
     <div class="card-content">
@@ -80,11 +80,10 @@
               </div>
               <div class="col l6 s12 checkboxesPacotes">
                 <h5>Atribuir aos Pacotes</h5>
-                <div class="col l6 s12">
-                  <label>
-                    <input type="checkbox" class="filled-in" />
-                    <span>Pacote Master</span>
-                  </label>
+                <div class="input-field col l6 s12">
+                  <input type="checkbox" />
+                  <label>Pacote Master</label>
+                  
                 </div>
                 <div class="col l6">
                   <label>

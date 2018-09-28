@@ -17,17 +17,25 @@ class AdminController extends Controller
         // Pega o usuário logado.
         $user_logado = Auth::user();
         // Se for um admin pode inserir novos usuários.
-        if($user_logado->admin == 'true')
+        if($user_logado->admin == 1)
         {
             $user = User::findOrFail($id_user);
             $atividade = Atividade::findOrFail($id_ativ);
-            $inscricao = new UsuarioAtividade;
-            $inscricao->usuario_id = $user->id;
-            $inscricao->atividade_id = $atividade->id;
-            $inscricao->status = 'ok';
+            $checa_repetido = UsuarioAtividade::where('usuario_id', $user->id)->where('atividade_id', $atividade->id)->first();
+            if(!$checa_repetido)
+            {
+                $inscricao = new UsuarioAtividade;
+                $inscricao->usuario_id = $user->id;
+                $inscricao->atividade_id = $atividade->id;
+                $inscricao->status = 'ok';
 
-            $inscricao->save();
-            return response()->success('Usuário Inscrito com Sucesso!');
+                $inscricao->save();
+                return response()->success('Usuário Inscrito com Sucesso!');
+            }
+            else
+            {
+                return response()->error('Este usuário já está inscrito na atividade.');
+            }
         }
         // Se não for, mensagem de erro.
         else
@@ -43,7 +51,7 @@ class AdminController extends Controller
         //pega a inscrição a partir do ID
         $userActivity = UsuarioAtividade::findOrFail($id);
         // Se for um admin pode inserir novos usuários.
-        if($user_logado->admin == 'true')
+        if($user_logado->admin == 1)
         {
             UsuarioAtividade::destroy($userActivity->id);
             return response()->success('Usuário removido da atividade com sucesso!');
