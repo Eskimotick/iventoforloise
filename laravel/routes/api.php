@@ -216,9 +216,9 @@ Route::group([//criar middleware para restringir acesso
     Route::group(['prefix' => 'atividades'], function(){
         Route::post('inscricao/{id_user}-{id_ativ}', 'Admin\AdminController@inscreveUser');
         //http://site.com/api/admin/atividades/inscricao/id-id
-        Route::post('remove/{id}', 'Admin\AdminController@desinscreveUser');
-        //http://site.com/api/admin/atividades/remove/id
-        Route::post('nova-atividade-pacote/{id_ativ}-{id_pacote}', 'AtividadesController@insereAtividadePacote');
+        Route::post('remove/{id_user}-{id_ativ}', 'Admin\AdminController@desinscreveUser');
+        //http://site.com/api/admin/atividades/remove/id-id
+        Route::post('nova-atividade-pacote/{id_ativ}-{id_pacote}', 'Admin\AdminController@insereAtividadePacote');
         //http://site.com/api/admin/atividades/nova-atividade-pacote/id-id
     });
      //Rotas de hospedagens
