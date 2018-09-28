@@ -11,11 +11,11 @@ import * as moment from 'moment';
 })
 export class AtividadesComponent implements OnInit {
 
-	//variaveis para funcionamento do fullcalendar
+	// variaveis para funcionamento do fullcalendar
   @ViewChild(CalendarComponent) ucCalendar: CalendarComponent;
   calendarOptions: Options;
 
-  //carregando os eventos do calendário
+  // carregando os eventos do calendário
   evento: any = {
   	id: 0, title: 'Evento 1', start: '2018-09-04', end: '2018-09-11', rendering: 'background'
   };
@@ -34,18 +34,23 @@ export class AtividadesComponent implements OnInit {
 		pacotes: [0, 1, 4] }  	
   ]; 
 
-  //para pegar a atividade que foi clicada
+  // para pegar a atividade que foi clicada
   updateAtividade: any;
   atividadeClick: number;
 
+  // toast para caso o usuário tentou atualizar a data da atividade para fora do evento
   errorUpdateToast = new EventEmitter<string|MaterializeAction>();
+
+  // pra detectar se o usuário clicou no caléndário numa data para criar uma atividade
+  createClick: number;
 
   constructor() { 
   	this.atividadeClick = 0;
+    this.createClick = 0;
   }
 
   ngOnInit() {
-  	//personalizando as opções do fullcalendar
+  	// personalizando as opções do fullcalendar
 		this.calendarOptions = {
 			locale: 'pt-br',
 			editable: true,
@@ -66,20 +71,26 @@ export class AtividadesComponent implements OnInit {
 		this.initEvents();
   }
 
-  //inicializa o evento e as atividades do calendário
+  // inicializa o evento e as atividades do calendário
   initEvents() {
   	this.calendarOptions.events.push(this.evento);
   	for(let i = 0; i < this.atividade.length; i++)
   		this.calendarOptions.events.push(this.atividade[i]);
   }
 
-  //pega a atividade que foi clicada
+  dayClick(atividade) {
+    this.createClick++;
+    console.log(atividade);
+  }
+
+  // pega a atividade que foi clicada
   eventClick(atividade) {
   	this.atividadeClick++;
   	let i = this.atividade.findIndex(at => at.id == atividade.event.id);
   	this.updateAtividade = this.atividade[i];
   }
 
+  // atualiza se a atividade for movida para uma data dentro do evento, senão não deixa e emite um toast de erro
   updateEvent(atividade) {
     let i = this.atividade.findIndex(at => at.id == atividade.event.id);
 
@@ -98,15 +109,14 @@ export class AtividadesComponent implements OnInit {
     	this.ucCalendar.fullCalendar('updateEvent', atividade.event);
     	this.errorUpdateToast.emit('toast');
     }
-
-    console.log(atividade);
-
   }
 
+  // apaga a atividade do calendário
   deleteAtividade(eventId) {
     this.ucCalendar.fullCalendar('removeEvents', eventId);
   }
 
+  // atualiza o titulo da atividade no calendário
   updateTitle(event) {
     let atividade = this.ucCalendar.fullCalendar('clientEvents', event.id);
     atividade[0].title = event.title;

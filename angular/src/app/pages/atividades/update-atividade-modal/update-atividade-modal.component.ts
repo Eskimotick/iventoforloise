@@ -42,7 +42,8 @@ export class UpdateAtividadeModalComponent implements OnInit, OnChanges {
 		  this.footer = '';
     if(this.editAction)
       this.editAction = '';
-		this.updateAtividadeModal.emit({action: 'modal', params: ['open']});
+    if(this.updateAtividade)
+		  this.updateAtividadeModal.emit({action: 'modal', params: ['open']});
 	}
 
 	// verifica se o evento ocorre no mesmo dia
