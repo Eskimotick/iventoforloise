@@ -4,6 +4,7 @@ namespace App\Models\Admin;
 
 use App\Models\Admin\Quarto;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Hospedagem extends Model
 {
@@ -16,26 +17,8 @@ class Hospedagem extends Model
         $this->localizacao = $request->localizacao;
         $this->vagas = $request->vagas;
 
-        //lógica para o upload de imagens.
-        if(!Storage::exists('localPhotos/')){
-            Storage::makeDirectory('localPhotos/', 0775, true);
-        }
-        
-        //decodifica a string em base64 e a atribui a uma variável
-        $image = base64_decode($request->img_path);
-        
-        //gera um nome único para o arquivo e concatena seu nome com a
-        //extensão ‘.png’ para termos de fato uma imagem
-        $imgName = uniqid() . '.png';
-        
-        //atribui a variável o caminho para a imagem que é constituída do
-        //caminho das pastas e o nome do arquivo
-        $path = storage_path('/app/localPhotos/'.$imgName);
-        
-        //salva o que está na variável $image como o arquivo definido em $path
-        file_put_contents($path,$image);
+        $imgName = $this->getImgPath($request->img_path);
         $this->img_path = $imgName;
-
 
         $this->save();
     }
@@ -66,25 +49,7 @@ class Hospedagem extends Model
         }
 
         if($request->img_path){
-            Storage::delete('localPhotos/'.$atividade->img_path);
-            //lógica para o upload de imagens.
-            if(!Storage::exists('localPhotos/')){
-                Storage::makeDirectory('localPhotos/', 0775, true);
-                //decodifica a string em base64 e a atribui a uma variável
-            }
-            
-            $image = base64_decode($request->img_path);
-            
-            //gera um nome único para o arquivo e concatena seu nome com a    
-            //extensão ‘.png’ para termos de fato uma imagem
-            $imgName = uniqid() . '.png';
-            
-            //atribui a variável o caminho para a imagem que é constituída do 
-            //caminho das pastas e o nome do arquivo
-            $path = storage_path('/app/localPhotos/'.$imgName);
-            
-            //salva o que está na variável $image como o arquivo definido em $path
-            file_put_contents($path,$image);
+            $imgName = $this->updateImgPath($request->img_path);
             $this->img_path = $imgName;
         }
 
@@ -109,6 +74,10 @@ class Hospedagem extends Model
             return $resposta;
         }
 
+        //pega o path da imagem de todos os quartos e salva em uma variavel para ficar com o msm path
+        //em todos os quartos.
+        $img_path = $this->getImgPath($request->img_path);
+
         for($i = 1; $i <= $request->qnt_quartos; $i++){
             
             // verifica se o numero do quarto é menor que 10 para adicionar o 0 antes do número
@@ -119,7 +88,8 @@ class Hospedagem extends Model
                 'descricao' => $request->descricao,
                 'hospedagem_id' => $this->id,
                 'vagas' => $request->vagas,
-                'pacotes' => $request->pacotes
+                'pacotes' => $request->pacotes,
+                'img_path' => $img_path
             ];
 
             $dados = (object)$dados;
@@ -154,5 +124,53 @@ class Hospedagem extends Model
         $listaQuartos = $this->hasMany('App\Models\Admin\Quarto')->get();
 
         return $listaQuartos;
+    }
+
+    public function getImgPath($img){
+         //lógica para o upload de imagens.
+         if(!Storage::exists('localPhotos/')){
+            Storage::makeDirectory('localPhotos/', 0775, true);
+        }
+        
+        //decodifica a string em base64 e a atribui a uma variável
+        $image = base64_decode($img);
+        
+        //gera um nome único para o arquivo e concatena seu nome com a
+        //extensão ‘.png’ para termos de fato uma imagem
+        $imgName = uniqid() . '.png';
+        
+        //atribui a variável o caminho para a imagem que é constituída do
+        //caminho das pastas e o nome do arquivo
+        $path = storage_path('/app/localPhotos/'.$imgName);
+        
+        //salva o que está na variável $image como o arquivo definido em $path
+        file_put_contents($path,$image);
+
+        return $imgName;
+    }
+
+    public function updateImgPath($img){
+        
+        Storage::delete('localPhotos/'.$this->img_path);
+            //lógica para o upload de imagens.
+            if(!Storage::exists('localPhotos/')){
+                Storage::makeDirectory('localPhotos/', 0775, true);
+                //decodifica a string em base64 e a atribui a uma variável
+            }
+            
+            $image = base64_decode($img);
+            
+            //gera um nome único para o arquivo e concatena seu nome com a    
+            //extensão ‘.png’ para termos de fato uma imagem
+            $imgName = uniqid() . '.png';
+            
+            //atribui a variável o caminho para a imagem que é constituída do 
+            //caminho das pastas e o nome do arquivo
+            $path = storage_path('/app/localPhotos/'.$imgName);
+            
+            //salva o que está na variável $image como o arquivo definido em $path
+            file_put_contents($path,$image);
+
+            return $imgName;
     }
 }

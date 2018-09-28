@@ -1,7 +1,7 @@
 /* admin */
 .conteudo-admin {
   margin-top: 4vh;
-  width: 90%;
+  
 }
 /* formatação de texto */
 .header {
@@ -29,14 +29,14 @@
   }
 
 }
-@media (min-width: 1584px){
+@media (min-width: 1602px){
   .container.white.container-admin {
     margin: 0;
     margin-left: 12vw;
     height: 85vh;
     overflow-y: auto;
     overflow-x: hidden;
-    width: 96vw;
+    width: 90%;
   }
   .conteudo-admin {
     margin-left: 5vw;
@@ -103,4 +103,9 @@ button .btn:hover{
 .dropdown-content li>a,
 .dropdown-content li>span {
   color: #37474f;
+}
+
+/* procurar classe certa .................. */
+input [type="checkbox"] + label {
+  color: #607d8b;
 }
