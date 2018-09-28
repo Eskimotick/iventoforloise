@@ -133,34 +133,55 @@ class UserController extends Controller
     {
       //Pega o user logado.
       $user = Auth::user();
+      //Pega a atividade passada na função.
+      $atividade = Atividade::findOrfail($id_ativ);
       //Pega o pacote da atividade que o user quer se inscrever.
-      $atividade_pacote = PacoteAtividade::findOrFail($id_ativ);
+      $atividade_pacote = PacoteAtividade::where('atividade_id', $atividade->id)->first();
       //Pega o lote desse usuário.
       $lote_usuario = Lote::findOrFail($user->lote_id);
       //Pega o pacote do usuário pelo lote.
       $pacote_usuario = Pacote::findOrFail($lote_usuario->pacote_id);
-
-      //Se o pacote da atividade for o mesmo do usuário...
-      if($pacote_usuario->id == $atividade_pacote->pacote_id)
-      {
-        //Cria uma nova inscrição.
-        $inscricao = new UsuarioAtividade;
-        //Inscreve o usuário.
-        $inscricao->usuario_id = $user->id;
-        //E a atividade dele
-        $inscricao->atividade_id = $atividade_pacote->atividade_id;
-        $inscricao->status = 'ok';
-        //save() pra guardar no BD;
-        $inscricao->save();
-        //Response de bem-sucedido.
-        return response()->success('Usuário Inscrito com Sucesso!');
+      
+      $checa_repetido = UsuarioAtividade::where('usuario_id', $user->id)->where('atividade_id', $atividade->id)->first();
+      if($atividade->vagas_ocupadas < $atividade->vagas)
+			{
+        if(!$checa_repetido)
+        {
+          //Se o pacote da atividade for o mesmo do usuário...
+          if($pacote_usuario->id == $atividade_pacote->pacote_id)
+          {
+            //Cria uma nova inscrição.
+            $inscricao = new UsuarioAtividade;
+            //Inscreve o usuário.
+            $inscricao->usuario_id = $user->id;
+            //E a atividade dele.
+            $inscricao->atividade_id = $atividade_pacote->atividade_id;
+            $inscricao->status = 'ok';
+            //save() pra guardar no BD.
+            $inscricao->save();
+            //Aumenta o número de inscritos na atividade.
+            $atividade->vagas_ocupadas++;
+            //Guarda esse novo valor.
+            $atividade->save();
+            //Response de bem-sucedido.
+            return response()->success('Usuário Inscrito com Sucesso!');
+          }
+          else
+          {
+            return response()->error('Essa atividade não faz parte do seu pacote! Por favor selecione outra.');
+          }
+        }
+        //senão...
+        else
+        {
+          //Response de erro.
+          return response()->error('Você já está inscrito na atividade.');
+        }
       }
-      //senão...
       else
-      {
-        //Response de erro.
-        return response()->error('Essa atividade não faz parte do seu pacote! Por favor selecione outra.');
-      }
+			{
+			  return response()->error('Não foi possível concluir a inscrição pois as vagas estão esgotadas.');
+			}
     }
 
     //Função para remover o usuário de uma atividade inscrtita.
