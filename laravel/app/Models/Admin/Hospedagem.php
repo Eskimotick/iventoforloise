@@ -16,6 +16,27 @@ class Hospedagem extends Model
         $this->localizacao = $request->localizacao;
         $this->vagas = $request->vagas;
 
+        //lógica para o upload de imagens.
+        if(!Storage::exists('localPhotos/')){
+            Storage::makeDirectory('localPhotos/', 0775, true);
+        }
+        
+        //decodifica a string em base64 e a atribui a uma variável
+        $image = base64_decode($request->img_path);
+        
+        //gera um nome único para o arquivo e concatena seu nome com a
+        //extensão ‘.png’ para termos de fato uma imagem
+        $imgName = uniqid() . '.png';
+        
+        //atribui a variável o caminho para a imagem que é constituída do
+        //caminho das pastas e o nome do arquivo
+        $path = storage_path('/app/localPhotos/'.$imgName);
+        
+        //salva o que está na variável $image como o arquivo definido em $path
+        file_put_contents($path,$image);
+        $this->img_path = $imgName;
+
+
         $this->save();
     }
 
@@ -42,6 +63,29 @@ class Hospedagem extends Model
                         " Favor deletar os quartos antes de alterar as vagas.";
             }
             $this->vagas = $request->vagas;
+        }
+
+        if($request->img_path){
+            Storage::delete('localPhotos/'.$atividade->img_path);
+            //lógica para o upload de imagens.
+            if(!Storage::exists('localPhotos/')){
+                Storage::makeDirectory('localPhotos/', 0775, true);
+                //decodifica a string em base64 e a atribui a uma variável
+            }
+            
+            $image = base64_decode($request->img_path);
+            
+            //gera um nome único para o arquivo e concatena seu nome com a    
+            //extensão ‘.png’ para termos de fato uma imagem
+            $imgName = uniqid() . '.png';
+            
+            //atribui a variável o caminho para a imagem que é constituída do 
+            //caminho das pastas e o nome do arquivo
+            $path = storage_path('/app/localPhotos/'.$imgName);
+            
+            //salva o que está na variável $image como o arquivo definido em $path
+            file_put_contents($path,$image);
+            $this->img_path = $imgName;
         }
 
         
