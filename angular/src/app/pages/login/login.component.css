@@ -123,11 +123,11 @@ h4, a {
 
 /* forms ................................................ */
 /* checkbox */
-[type="checkbox"]+span:not(.lever) {
+[type="checkbox"]+label:not(.lever) {
   font-size: 0.8em;
   color: #bdbdbd;
 }
-[type="checkbox"]:checked+span:not(.lever):before {
+[type="checkbox"]:checked+label:not(.lever):before {
   border-right: 2px solid white;
   border-bottom: 2px solid white;
 }
@@ -145,4 +145,21 @@ h4, a {
 /* cor do input dado pelo usuário */
 input:not([type]), input[type="email" i], input[type="number" i], input[type="password" i], input[type="tel" i], input[type="url" i], input[type="text" i] {
     color: white;
+}
+
+
+/* auxiliares ........*/
+/*labels */
+.aux-login label {
+  font-size: 0.83em;
+  color: white;
+  margin-top: 2.1vh;
+  font-weight: 300;
+}
+
+/* btn flat */
+.aux-login .btn-flat {
+  font-size: 0.83em;
+  color: white;
+  font-weight: 300;
 }
