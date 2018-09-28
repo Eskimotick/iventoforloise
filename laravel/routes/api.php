@@ -25,6 +25,9 @@ Route::post('login', 'API\AuthController@login');
 Route::post('register', 'API\AuthController@register');
 //http://site.com/api/register
 
+Route::get('data-evento', 'ConfigController@showDataEvento');
+//http://site.com/api/data-evento
+
 // Grupo de rotas para password.
 Route::group([
     'prefix' => 'password'
@@ -43,19 +46,22 @@ Route::group([
     'prefix' => 'mail'
 ], function (){
 
-    // Rota para confirmação de email.
+    //Rota para confirmação de email.
     Route::post('confirm', 'API\AuthController@register')->name('confirm-mail');
     //http://site.com/api/mail/confirm
+
     Route::post('confirmed', 'API\AuthController@confirmRegister');
     //http://site.com/api/mail/confirmed
+
     Route::post('resend', 'API\AuthController@resendConfirmation');
     //http://site.com/api/mail/resend
 
     //Rotas para a troca de e-mail (mudar as URIs depois).
-    Route::post('new', 'API\AuthController@requestNewEmail');
-    //http://site.com/api/mail/new/
-    Route::post('new/confirm', 'API\AuthController@newEmailConfirmed');
-    //http://site.com/api/mail/new/confirm
+    Route::post('new-email', 'API\AuthController@requestNewEmail');
+    //http://site.com/api/mail/new-email/
+
+    Route::post('new-email/confirm', 'API\AuthController@newEmailConfirmed');
+    //http://site.com/api/mail/new-email/confirm
 });
 
 // Grupo de rotas para usuários logados.
@@ -72,11 +78,14 @@ Route::group([
     'middleware' => 'web',
     'prefix' => 'social/login'
 ], function (){
-    Route::get('/facebook', 'API\FacebookController@redirectToFacebook'); //http://site.com/api/social/login/facebook
-    Route::get('/facebook/callback', 'API\FacebookController@handleFacebookCallback'); //http://site.com/api/social/login/facebook/callback
+    Route::get('/facebook', 'API\FacebookController@redirectToFacebook');
+    //http://site.com/api/social/login/facebook
+    Route::get('/facebook/callback', 'API\FacebookController@handleFacebookCallback');
+    //http://site.com/api/social/login/facebook/callback
     Route::get('/google', 'API\GoogleController@redirectToGoogle');
     //http://site.com/api/social/login/google
-    Route::get('/google/callback', 'API\GoogleController@handleGoogleCallback'); //http://site.com/api/social/login/google/callback
+    Route::get('/google/callback', 'API\GoogleController@handleGoogleCallback'); 
+    //http://site.com/api/social/login/google/callback
 });
 
 //Grupo de Rotas para o painel de usuário
@@ -113,6 +122,7 @@ Route::group([
     'middleware' => 'auth:api',
 ], function (){
     Route::get('activity', 'UserController@myPackageActivities');
+    //http://site.com/api/users/my-activities
 });
 
 //Grupo de rotas para atividades
@@ -129,8 +139,11 @@ Route::group([
     Route::put('{id}', 'AtividadesController@update');
     //http://site.com/api/atividades/id
     Route::delete('{id}', 'AtividadesController@delete');
-    //http://site.com/api/atividades/id 
-
+    //http://site.com/api/atividades/id
+    Route::get('picture/{id}', 'AtividadesController@exibirFoto');
+    //http://site.com/api/atividades/picture/id
+    Route::get('picture/download/{id}', 'AtividadesController@downloadFoto');
+    //http://site.com/api/atividades/picture/download/id
 });
 
 
@@ -178,7 +191,7 @@ Route::group([//criar middleware para restringir acesso
         //http://site.com/api/admin/atividades/inscricao/id-id
         Route::post('remove/{id}', 'Admin\AdminController@desinscreveUser');
         //http://site.com/api/admin/atividades/remove/id
-        Route::post('nova-atividade-pacote/{$id_ativ}-{id_pacote}', 'AtividadesController@insereAtividadePacote');
+        Route::post('nova-atividade-pacote/{id_ativ}-{id_pacote}', 'AtividadesController@insereAtividadePacote');
         //http://site.com/api/admin/atividades/nova-atividade-pacote/id-id
     });
      //Rotas de hospedagens
@@ -206,7 +219,6 @@ Route::group([//criar middleware para restringir acesso
         });
     });
 });
-
 
 
 /*  Modelo de Grupo de rotas

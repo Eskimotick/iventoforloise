@@ -7,10 +7,10 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class NovaAtividadePacoteNotification extends Notification
+class UpdateAtividadePacoteNotification extends Notification
 {
     use Queueable;
-    
+
     public function __construct()
     {
         //
@@ -24,10 +24,10 @@ class NovaAtividadePacoteNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-        ->subject('Nova atividade disponível para seu pacote no '.env('APP_NAME').'.')
+        ->subject('Atividade modificada em seu pacote no '.env('APP_NAME').'.')
         ->greeting($notifiable->name)
-        ->line('Uma nova atividade foi adicionada ao seu pacote do '.env('APP_NAME').'.')
-        ->line('Confira e corra para garantir sua inscrição!')
+        ->line('Uma atividade do seu pacote do '.env('APP_NAME').' foi modificada.')
+        ->line('Acesse o '.env('APP_NAME'). ' para conferir as mudanças do seu pacote.')
         ->line('Atenciosamente, equipe '.env('APP_NAME').'.');
     }
 
