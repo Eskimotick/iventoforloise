@@ -39,6 +39,8 @@ class CreatePacotesQuartos extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('pacotes_quartos');
+        Schema::enableForeignKeyConstraints();
     }
 }
