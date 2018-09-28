@@ -116,14 +116,12 @@ class QuartoController extends Controller
 
     public function destroyAllQuartos(Request $request){
         
-        $quarto = new Quarto;
-        $listaQuartos = explode(',', $request->quartos);;
-        
-        $numQuartos = count($listaQuartos);
-        //fazer algum tipo de verificação antes de deletar os quartos, para ver se a lista existe.
+        $quartos = $request->quartos;
+        $listaQuartos = explode(',', $quartos);
+        //fazer algum tipo de verificação antes de deletar os quartos, para ver se a lista existe, talvez?
         Quarto::destroy($listaQuartos);
 
-        return response()->success('Os seguintes quartos foram deletados com sucesso! lista: '.$listaQuartos);
+        return response()->success('Os seguintes quartos foram deletados com sucesso! lista: '.$quartos);
     }
 
     public function adminAlocaUser(Request $request, $id){
