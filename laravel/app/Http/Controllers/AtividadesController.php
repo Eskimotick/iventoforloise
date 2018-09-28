@@ -49,24 +49,48 @@ class AtividadesController extends Controller
 
     public function store(StoreAtividadeRequest $request)
     {
+      $user_logado = Auth::user();
+      if($user_logado->admin == 1)
+      {
         $nova_atividade = new Atividade;
         $nova_atividade->createActivity($request);
         return response()->success($nova_atividade);
+      }
+      else
+      {
+        return response()->error('Você não possui a permissão necessária para ver essa atividade.');
+      }
     }
 
     public function update(UpdateAtividadeRequest $request, $id)
     {
+      $user_logado = Auth::user();
+      if($user_logado->admin == 1)
+      {
         $atividade_alt = Atividade::findOrFail($id);
         $atividade_alt->updateActivity($request, $atividade_alt);
         $this->updateAtividadePacote($atividade_alt->id);
         return response()->success($atividade_alt);
+      }
+      else
+      {
+        return response()->error('Você não possui a permissão necessária para ver essa atividade.');
+      }
     }
 
     public function delete($id)
     {
+      $user_logado = Auth::user();
+      if($user_logado->admin == 1)
+      {
         $atividade_del = Atividade::findOrFail($id);
         $atividade_del->deleteActivity($atividade_del);
         return response()->success('Atividade Deletada com Sucesso!');
+      }
+      else
+      {
+        return response()->error('Você não possui a permissão necessária para ver essa atividade.');
+      }
     }
 
     public function exibirFoto($id)
