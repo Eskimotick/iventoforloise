@@ -43,10 +43,13 @@ export class AtividadesComponent implements OnInit {
 
   // pra detectar se o usuário clicou no caléndário numa data para criar uma atividade
   createClick: number;
+  createDate: string;
+
 
   constructor() { 
   	this.atividadeClick = 0;
     this.createClick = 0;
+    this.createDate = '';
   }
 
   ngOnInit() {
@@ -80,7 +83,9 @@ export class AtividadesComponent implements OnInit {
 
   dayClick(atividade) {
     this.createClick++;
+    this.createDate = moment(atividade.date).format('YYYY-MM-DD')
     console.log(atividade);
+    console.log(this.createDate);
   }
 
   // pega a atividade que foi clicada
