@@ -1,6 +1,7 @@
 /* admin */
 .conteudo-admin {
   margin-top: 4vh;
+  width: 90%;
 }
 /* formatação de texto */
 .header {
@@ -16,11 +17,26 @@
 }
 @media (min-width: 992px){
   .container.white.container-admin {
+    margin: 0;
     margin-left: 12vw;
-    height: 82vh;
+    height: 85vh;
     overflow-y: auto;
     overflow-x: hidden;
-    width: 85%;
+    width: 90vw;
+  }
+  .conteudo-admin {
+    margin-left: 5vw;
+  }
+
+}
+@media (min-width: 1584px){
+  .container.white.container-admin {
+    margin: 0;
+    margin-left: 12vw;
+    height: 85vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 96vw;
   }
   .conteudo-admin {
     margin-left: 5vw;
@@ -48,16 +64,21 @@
 
 /* botao padrao - cinza azulado */
 .btn, input.btn,
-.btn.btn-large,
+.btn .btn-large,
+ a .btn.btn-large.modal-trigger,
 .btn-floating.fab.waves-effect.waves-light,
-.btn.modal-trigger {
+.btn.modal-trigger,
+.file-field input-field .btn,
+button .btn {
   background-color: #607d8b;
 }
 /* hover - botao padrão */
 .btn:hover, input.btn:hover,
 .btn.btn-large:hover,
 .btn-floating.fab.waves-effect.waves-light:hover,
-.btn.modal-trigger:hover {
+.btn.modal-trigger:hover,
+.file-field input-field .btn:hover,
+button .btn:hover{
   background-color: #90a4ae;
 }
 

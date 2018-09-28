@@ -1,4 +1,4 @@
-.card-inscricoes {
+.card-inscricoes, .card-certificados {
 
   border-radius: 5px;
   min-height: 8vh;
@@ -19,6 +19,17 @@
 }
 
 
+.conteudo-certificados {
+  margin-top: 4vh;
+  margin-bottom: 4vh;
+}
+
+.conteudo-certificados .card-image {
+  height: 20vh;
+  width: auto;
+}
+
+/* formatação de texto .............................................*/
 h3 {
   font-size: 1.9em;
   margin: 0vh;
@@ -146,6 +157,18 @@ table tbody {
   }
 }
 
+#modal-layoutCertificado {
+  width: 100vw;
+  min-height: 100vh;
+  padding-bottom: 5vh;
+  top: 0% !important;
+}
+#modal-layoutCertificado .conteudo-modal {
+  margin: 2%;
+}
+
+
+
 #agendarInscricoes {
   min-height: 78vh;
 }
@@ -161,4 +184,26 @@ table tbody {
 }
 #agendarInscricoes .btn {
   margin-right: 0.5vw;
+}
+
+
+/* botoes */
+/* botao padrao - cinza azulado */
+.btn, input.btn,
+.btn .btn-large,
+ a .btn.btn-large.modal-trigger,
+.btn-floating.fab.waves-effect.waves-light,
+.btn.modal-trigger,
+.file-field input-field .btn,
+button .btn {
+  background-color: #607d8b;
+}
+/* hover - botao padrão */
+.btn:hover, input.btn:hover,
+.btn.btn-large:hover,
+.btn-floating.fab.waves-effect.waves-light:hover,
+.btn.modal-trigger:hover,
+.file-field input-field .btn:hover,
+button .btn:hover{
+  background-color: #90a4ae;
 }

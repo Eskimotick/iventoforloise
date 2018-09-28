@@ -1,0 +1,101 @@
+.card h5 {
+  font-size: 1.1em;
+  color: #424242;
+  text-align: center;
+  margin-top: 0;
+  padding-top: 0.5vh;
+}
+.modal {
+  overflow-x: hidden;
+}
+ @media screen and (min-width: 993px) {
+   .modal  {
+     min-height: 84vh;
+     min-width: 70vw;
+   }
+   .tabs {
+     overflow-x: hidden;
+   }
+}
+.modal .modal-content{
+  padding: 3%;
+}
+.conteudo {
+  margin-top: 1vh;
+  padding-left: 4%;
+  padding-right: 4%;
+
+}
+.header {
+  padding-top: 2vh;
+}
+.modal-close {
+  color: #424242;
+}
+
+
+
+i .material-icons {
+  padding-top: 1.2vh;
+}
+
+h4 {
+  font-family: 'Raleway';
+  font-size: 1.8em;
+}
+
+h5 {
+  font-family: 'Raleway';
+  font-size: 1.2em;
+  text-align: center;
+  padding-top: 0.8vh;
+}
+
+h6 {
+  font-family: 'Raleway';
+  font-size: 1.1em;
+  color: #424242;
+  margin-left: 1vw;
+
+}
+p {
+  font-family: 'Roboto';
+  font-size: 1.1em;
+}
+
+.fabs-card-hospedagem {
+  margin-top: -7vh;
+}
+
+/* tabs */
+.tabs-row {
+  margin: 2%;
+}
+
+/* tabs */
+.tabs .tab a {
+  color: #9e9e9e;
+
+}
+.tabs .tab a:hover,
+.tabs .tab a.active,
+.tabs .tab a:focus.active{
+  color: black;
+  background-color: #eceff1;
+
+}
+.tabs .indicator,
+ul li .indicator {
+  background-color: black !important;
+}
+
+/* botões */
+.btn-large,
+.btn {
+  background-color: #607d8b;
+  color: white;
+}
+.btn-large:hover
+.btn:hover{
+  background-color: #90a4ae;
+}

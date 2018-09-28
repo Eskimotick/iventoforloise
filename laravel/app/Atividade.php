@@ -34,8 +34,8 @@ class Atividade extends Model
     if(!Storage::exists('localPhotos/'))
     {
       Storage::makeDirectory('localPhotos/', 0775, true);
-      //decodifica a string em base64 e a atribui a uma variável
     }
+    //decodifica a string em base64 e a atribui a uma variável
     $image = base64_decode($request->img_path);
     //gera um nome único para o arquivo e concatena seu nome com a
     //extensão ‘.png’ para termos de fato uma imagem

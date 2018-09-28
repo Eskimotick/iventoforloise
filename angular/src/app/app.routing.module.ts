@@ -11,6 +11,8 @@ import { AdminHospedagemComponent } from './pages/admin/admin-hospedagem/admin-h
 import { AdminConfigComponent } from './pages/admin/admin-config/admin-config.component';
 import { DashboardComponent } from './pages/admin/dashboard/dashboard.component';
 import { PainelUsuarioComponent } from './pages/user/painel-usuario/painel-usuario.component';
+import { HospedagemUsuarioComponent } from './pages/user/hospedagem-usuario/hospedagem-usuario.component';
+import { AtividadesComponent } from './pages/atividades/atividades.component';
 import { AuthGuard } from './guards/auth.guards';
 
 
@@ -23,7 +25,9 @@ const routes: Routes = [
   { path: 'hospedagem', component: AdminHospedagemComponent },
   { path: 'configuracoes', component: AdminConfigComponent },
   { path: 'painelAdmin', component: DashboardComponent },
-  { path: 'painelUsuario', component: PainelUsuarioComponent },
+  { path: 'painelUsuario', component: PainelUsuarioComponent},
+  { path: 'hospedagemUsuario', component: HospedagemUsuarioComponent},
+  { path: 'atividades', component: AtividadesComponent },
   { path: '**', component: NotFoundComponent }
 ];
 

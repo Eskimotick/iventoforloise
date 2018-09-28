@@ -5,6 +5,11 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app.routing.module';
 import { MaterializeModule} from 'angular2-materialize';
+import { QuillModule } from 'ngx-quill' //editor de texto
+
+
+import { FullCalendarModule } from 'ng-fullcalendar';
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 
 
 import { JwtModule } from '@auth0/angular-jwt';
@@ -15,11 +20,11 @@ import { TooltipModule } from 'ngx-tooltip';
 
 import { AppComponent } from './app.component';
 
-
 /* elementos admin */
 import { NavadminComponent } from './components/navadmin/navadmin.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { ContainerAdminComponent } from './components/container-admin/container-admin.component';
+import {HotelAdminComponent} from './pages/admin/admin-hospedagem/hotel-admin/hotel-admin.component';
 
 /* páginas admin */
 import { AdminUsuariosComponent } from './pages/admin/admin-usuarios/admin-usuarios.component';
@@ -27,21 +32,29 @@ import { AdminHospedagemComponent } from './pages/admin/admin-hospedagem/admin-h
 import { AdminConfigComponent } from './pages/admin/admin-config/admin-config.component';
 import { DashboardComponent } from './pages/admin/dashboard/dashboard.component';
 
+
 /*usuário */
 import { NavusuarioComponent } from './components/navusuario/navusuario.component';
 import { SidebarUsuarioComponent } from './components/sidebar-usuario/sidebar-usuario.component';
 import { PainelUsuarioComponent} from './pages/user/painel-usuario/painel-usuario.component';
-
+import { HotelUsuarioComponent} from './components/usuario/hotel-usuario/hotel-usuario.component';
+import { HospedagemUsuarioComponent} from './pages/user/hospedagem-usuario/hospedagem-usuario.component';
 
 /* visitante */
 import { NavbarComponent } from './components/navbar/navbar.component';
+
+/* atividades */
+import { AtividadesComponent } from './pages/atividades/atividades.component';
+import { DataAtividadePipe } from './pipes/data-atividade.pipe';
+import { HoraAtividadePipe } from './pipes/hora-atividade.pipe';
+import { UpdateAtividadeModalComponent } from './pages/atividades/update-atividade-modal/update-atividade-modal.component';
+import { CreateAtividadeModalComponent } from './pages/atividades/create-atividade-modal/create-atividade-modal.component';
 
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { CadastroComponent } from './pages/cadastro/cadastro.component';
 import { environment } from '../environments/environment';
-
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -64,7 +77,16 @@ export function tokenGetter() {
     DashboardComponent, //painel do Admin - mudar nome
     SidebarUsuarioComponent, // sidebar Usuario
     NavusuarioComponent, //Navbar Usuario
-    PainelUsuarioComponent
+    PainelUsuarioComponent,
+    HospedagemUsuarioComponent,
+    HotelAdminComponent,
+    HotelUsuarioComponent,
+    PainelUsuarioComponent, 
+    AtividadesComponent,
+    UpdateAtividadeModalComponent,
+    CreateAtividadeModalComponent,
+    DataAtividadePipe, 
+    HoraAtividadePipe
   ],
   imports: [
     AppRoutingModule,
@@ -84,7 +106,11 @@ export function tokenGetter() {
     BrowserAnimationsModule,
     NgxMaskModule.forRoot(), // https://www.npmjs.com/package/ngx-mask
     NgxPaginationModule, // https://www.npmjs.com/package/ngx-pagination
-    TooltipModule // https://www.npmjs.com/package/ngx-tooltip
+    TooltipModule, // https://www.npmjs.com/package/ngx-tooltip
+    QuillModule, // https://github.com/KillerCodeMonkey/ngx-quill
+    FullCalendarModule, 
+    OwlDateTimeModule, 
+    OwlNativeDateTimeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
