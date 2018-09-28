@@ -21,7 +21,7 @@ export class AtividadesComponent implements OnInit {
   };
 
   pacotes: string[] = [
-    'EJCM', 'Diretoria de Projetos', 'Diretoria de GP', 'Diretoria de Marketing', 'Equipe Ivento', 'Equipe Bikeme', 'Equipe Vida'
+    'EJCM', 'Diretoria de Projetos', 'Diretoria de Marketing', 'Equipe Ivento', 'Equipe Bikeme', 'Equipe Sintaf'
   ];
 
   atividade: any[] = [
@@ -37,6 +37,8 @@ export class AtividadesComponent implements OnInit {
   //para pegar a atividade que foi clicada
   updateAtividade: any;
   atividadeClick: number;
+
+  errorUpdateToast = new EventEmitter<string|MaterializeAction>();
 
   constructor() { 
   	this.atividadeClick = 0;
@@ -80,10 +82,25 @@ export class AtividadesComponent implements OnInit {
 
   updateEvent(atividade) {
     let i = this.atividade.findIndex(at => at.id == atividade.event.id);
+
+    let start = moment(this.evento.start);
+    let end = moment(this.evento.end);
+
     let newDateStart = moment(this.atividade[i].start).add(atividade.duration);
     let newDateEnd = moment(this.atividade[i].end).add(atividade.duration);
-    this.atividade[i].start = newDateStart.format('YYYY-MM-DDTHH:mm:ss');
-    this.atividade[i].end = newDateEnd.format('YYYY-MM-DDTHH:mm:ss');
+
+    if((newDateStart.diff(start, 'hours') >= 0) && (end.diff(newDateEnd, 'hours') >= 0)) {
+    	this.atividade[i].start = newDateStart.format('YYYY-MM-DDTHH:mm:ss');
+    	this.atividade[i].end = newDateEnd.format('YYYY-MM-DDTHH:mm:ss');
+    } else {
+    	atividade.event.start = moment(this.atividade[i].start);
+    	atividade.event.end = moment(this.atividade[i].end);
+    	this.ucCalendar.fullCalendar('updateEvent', atividade.event);
+    	this.errorUpdateToast.emit('toast');
+    }
+
+    console.log(atividade);
+
   }
 
   deleteAtividade(eventId) {
