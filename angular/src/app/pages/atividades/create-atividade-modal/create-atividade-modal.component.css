@@ -42,6 +42,16 @@
 .close {
 	position: absolute;
 	right: 1%;
-	top: 5%;
+	top: 2%;
+}
+
+.topic {
+	font-size: 17px;
+	display: block;
+	margin-bottom: 2%;
+}
+
+.create-action {
+	margin-right: 2% !important;
 }
 

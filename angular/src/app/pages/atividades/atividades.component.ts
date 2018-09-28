@@ -26,7 +26,7 @@ export class AtividadesComponent implements OnInit {
 
   atividade: any[] = [
 		{ id: 1, title: 'Cagar no Pau', start: '2018-09-05T12:00:00', end: '2018-09-05T18:00:00', 
-		descricao: 'Atividade que faço com qualquer projeto', palestrante: 'Shakira', qntdVagas: 31, status: true, disp: 0,
+		descricao: 'Atividade que faço com qualquer projeto', palestrante: 'Shakira', qntdVagas: 31, status: true,
 		pacotes: [0, 1], image: 'https://www.planwallpaper.com/static/images/general-night-golden-gate-bridge-hd-wallpapers-golden-gate-bridge-wallpaper.jpg' },
 
 		{ id: 2, title: 'Codar Ivento', start: '2018-09-05T11:30:00', end: '2018-09-08T13:50:00', 
@@ -93,6 +93,12 @@ export class AtividadesComponent implements OnInit {
   	this.atividadeClick++;
   	let i = this.atividade.findIndex(at => at.id == atividade.event.id);
   	this.updateAtividade = this.atividade[i];
+  }
+
+  createAtividade(atividade) {
+    this.atividade.push(atividade);
+    this.ucCalendar.fullCalendar('renderEvent', atividade, true);
+    console.log(atividade);
   }
 
   // atualiza se a atividade for movida para uma data dentro do evento, senão não deixa e emite um toast de erro
