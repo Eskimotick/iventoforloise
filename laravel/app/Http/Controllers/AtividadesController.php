@@ -5,15 +5,11 @@ namespace App\Http\Controllers;
 use Auth;
 use App\User;
 use App\Atividade;
-use App\PacoteAtividade;
 use App\UsuarioAtividade;
-use App\Models\Admin\Lote;
-use App\Models\Admin\Pacote;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StoreAtividadeRequest;
 use App\Http\Requests\UpdateAtividadeRequest;
-use App\Notifications\Atividade\NovaAtividadePacoteNotification;
 use App\Notifications\Atividade\UpdateAtividadePacoteNotification;
 
 class AtividadesController extends Controller
@@ -105,22 +101,6 @@ class AtividadesController extends Controller
       $atividade = Atividade::findOrFail($id);
       $filePath = storage_path('app/localPhotos/'.$atividade->img_path);
       return response()->file($filePath);
-    }
-
-    public function insereAtividadePacote($id_ativ, $id_pacote)
-    {
-      $atividadePacote = new PacoteAtividade;
-      $pacote = Pacote::findOrFail($id_pacote);
-      $atividade = Atividade::findOrFail($id_ativ);
-      $lote = Lote::findOrFail($pacote->lote_atual);
-      $atividadePacote->pacote_id = $pacote->id;
-      $atividadePacote->atividade_id = $atividade->id;
-      $atividadePacote->save();
-      $usuariosPacote = User::where('lote_id', $lote->id)->get();
-      foreach($usuariosPacote as $user)
-      {
-        $user->notify(new NovaAtividadePacoteNotification());
-      }
     }
 
     public function updateAtividadePacote($id_ativ)
