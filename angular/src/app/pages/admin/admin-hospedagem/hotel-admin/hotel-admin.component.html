@@ -1,5 +1,5 @@
 <div class="col s12 m4 l4">
-  <div class="card">
+  <div class="card z-depth-4">
     <div class="card-image">
       <img [src]="hotelFoto" class="foto-hotel">
       <span class="card-title nome-hotel">{{hoteis.nomeHotel}}</span>
@@ -30,7 +30,7 @@
   <div class="modal-content">
     <div class="header">
       <div class="col s11">
-        <h4> Quartos - [Nome do Hotel]</h4>
+        <h4> Quartos - {{hoteis.nomeHotel}}</h4>
       </div>
       <div class="col s1">
         <i class="material-icons modal-close right">
@@ -60,7 +60,7 @@
                       <label for="numeroQuarto">Número</label>
                     </div>
                     <div class="input-field col s6 l2">
-                      <input type="number" id="vagasQuarto">
+                      <input type="number" id="vagasQuarto"> 
                       <label for="vagasQuarto">Vagas</label>
                     </div>
                     <div class="col l12 s12 file-field input-field">
@@ -80,30 +80,11 @@
               </div>
               <div class="col l6 s12 checkboxesPacotes">
                 <h5>Atribuir aos Pacotes</h5>
-                <div class="col l6 s12">
-                  <label>
-                    <input type="checkbox" class="filled-in" />
-                    <span>Pacote Master</span>
-                  </label>
-                </div>
-                <div class="col l6">
-                  <label>
-                    <input type="checkbox" class="filled-in" />
-                    <span>Pacote Executivo Plus</span>
-                  </label>
-                </div>
-                <div class="col l6">
-                  <label>
-                    <input type="checkbox" class="filled-in" />
-                    <span>Pacote Executivo</span>
-                  </label>
-                </div>
-                <div class="col l6">
-                  <label>
-                    <input type="checkbox" class="filled-in" />
-                    <span>Pacote Simples</span>
-                  </label>
-                </div>
+                <div *ngFor="let pacote of pacotes; let i = index">
+                  <div class="col l6">
+                    <input [id]="pacote" type="checkbox" class="filled-in" />
+                    <label [for]="pacote">{{pacote}}</label>        
+                  </div>
               </div>
             </div>
             <button class="btn-large right" type="submit" name="action">Cadastrar Quarto</button>
