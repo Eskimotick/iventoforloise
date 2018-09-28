@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLotesTable extends Migration
+class CreateQuartosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,21 +13,21 @@ class CreateLotesTable extends Migration
      */
     public function up()
     {
-        Schema::create('lotes', function (Blueprint $table) {
+        Schema::create('quartos', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('lote')->unsigned();
-            $table->integer('pacote_id')->unsigned();
+            $table->integer('hospedagem_id')->unsigned();
+            $table->string('nome');
+            $table->string('descricao');
             $table->integer('vagas')->unsigned();
             $table->integer('vagas_ocupadas')->unsigned()->default(0);
-            $table->string('descricao')->nullable();
-            $table->string('valor')->nullable();
-            $table->string('vencimento');
+            $table->integer('status')->default(0); 
             $table->timestamps();
 
-            $table->foreign('pacote_id')
-                    ->references('id')->on('pacotes')
+            $table->foreign('hospedagem_id')
+                    ->references('id')->on('hospedagems')
                     ->onDelete('cascade');
         });
+
     }
 
     /**
@@ -38,7 +38,9 @@ class CreateLotesTable extends Migration
     public function down()
     {
         Schema::disableForeignKeyConstraints();
-        Schema::dropIfExists('lotes');
+        Schema::dropIfExists('quartos');
         Schema::enableForeignKeyConstraints();
     }
+
+    
 }

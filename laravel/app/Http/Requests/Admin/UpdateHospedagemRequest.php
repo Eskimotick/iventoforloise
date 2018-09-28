@@ -6,7 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class UpdatePacoteRequest extends FormRequest
+class UpdateHospedagemRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,7 +22,7 @@ class UpdatePacoteRequest extends FormRequest
     {
         throw new HttpResponseException(response()->json($validator->errors(), 400));
     }
-    
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -33,9 +33,9 @@ class UpdatePacoteRequest extends FormRequest
         return [
             'nome' => 'string|min:10|max:50',
             'descricao' => 'string|min:10|max:300',
-            'lotes' => 'integer|min:1',
+            'localizacao' => 'string|min:10|max:500',
             'vagas' => 'integer|min:1',
-            'lote_atual' => 'integer|min:1|lte:lotes',
+            //'status' => 'integer|min:0|max:1',
         ];
     }
 
@@ -46,13 +46,13 @@ class UpdatePacoteRequest extends FormRequest
             'descricao.string' => 'A descrição precisa ser um texto',
             'descricao.min' => 'A descrição deve conter no mínimo 10 caracteres',
             'descricao.max' => 'A descrição deve conter no máximo 300 caracteres',
-            'lotes.integer' => 'A quantidade de lotes deve ser um número',
-            'lotes.min' => 'O número de lotes tem que ser maior que zero.',
+            'localizacao.min' => 'A localização deve conter no mínimo 10 caracteres',
+            'localizacao.max' => 'A localização deve conter no máximo 500 caracteres',
             'vagas.integer' => 'A quantidade de vagas deve ser um número',
             'vagas.min' => 'O número de vagas tem que ser maior que zero.',
-            'lote_atual.integer' => 'O valor do lote atual deve ser um número',
-            'lote_atual.min' => 'O número do lote atual tem que ser maior que zero.',
-            'lote_atual.lte' => 'O número do lote atual não pode ser maior que o número de lotes.',
+            // 'status.integer' => 'O valor do status deve ser um número',
+            // 'status.min' => 'O número do status tem que ser maior ou igual a zero.',
+            // 'status.max' => 'O número do status não pode ser maior que 1',
         ];
     }
 }

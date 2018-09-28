@@ -98,6 +98,15 @@ Route::group([
     //http://site.com/api/users/inscreve-atividade/id
     Route::post('remove-atividade/{id}', 'UserController@desinscreveAtividade');
     //http://site.com/api/users/remove-atividade/id
+
+    Route::group([
+        'prefix' => 'quarto'
+    ], function(){
+        Route::get('/all', 'UserController@showPacoteQuartos');     //http://site.com/api/users/quarto/
+        Route::get('{id}', 'UserController@showQuarto');            //http://site.com/api/users/quarto/id
+        Route::put('{id}/enter', 'UserController@enterQuarto');     //http://site.com/api/users/quarto/id/enter
+        Route::post('/exit', 'UserController@exitQuarto');          //http://site.com/api/users/quarto/exit
+    });
 });
 
 Route::group([
@@ -120,7 +129,8 @@ Route::group([
     Route::put('{id}', 'AtividadesController@update');
     //http://site.com/api/atividades/id
     Route::delete('{id}', 'AtividadesController@delete');
-    //http://site.com/api/atividades/id
+    //http://site.com/api/atividades/id 
+
 });
 
 
@@ -170,6 +180,30 @@ Route::group([//criar middleware para restringir acesso
         //http://site.com/api/admin/atividades/remove/id
         Route::post('nova-atividade-pacote/{$id_ativ}-{id_pacote}', 'AtividadesController@insereAtividadePacote');
         //http://site.com/api/admin/atividades/nova-atividade-pacote/id-id
+    });
+     //Rotas de hospedagens
+     Route::group(['prefix' => 'hospedagens'], function(){
+
+        Route::get('/','Admin\HospedagemController@index');                       //http://site.com/api/admin/hospedagens/
+        Route::get('{id}','Admin\HospedagemController@showHospedagem');           //http://site.com/api/admin/hospedagens/id
+        Route::post('/', 'Admin\HospedagemController@storeHospedagem');           //http://site.com/api/admin/hospedagens/
+        Route::put('{id}', 'Admin\HospedagemController@updateHospedagem');        //http://site.com/api/admin/hospedagens/id
+        Route::delete('{id}', 'Admin\HospedagemController@destroyHospedagem');    //http://site.com/api/admin/hospedagens/id
+
+        Route::get('{id}/quartos', 'Admin\HospedagemController@showQuartos');     //http://site.com/api/admin/hospedagens/id/quartos
+
+        //Rotas de quartos
+        Route::group(['prefix' => 'quartos'], function(){
+            // Route::get('/','Admin\QuartoController@index');                //http://site.com/api/admin/hospedagens/quartos/
+            Route::get('{id}','Admin\QuartoController@showQuarto');        //http://site.com/api/admin/hospedagens/quartos/id
+            Route::post('/', 'Admin\QuartoController@storeQuarto');           //http://site.com/api/admin/hospedagens/quartos/
+            Route::put('{id}', 'Admin\QuartoController@updateQuarto');        //http://site.com/api/admin/hospedagens/quartos/id
+            Route::delete('{id}', 'Admin\QuartoController@destroyQuarto');    //http://site.com/api/admin/hospedagens/quartos/id
+            Route::post('/destroy', 'Admin\QuartoController@destroyAllQuartos');    //http://site.com/api/admin/hospedagens/quartos/destroy
+            
+            Route::put('{id}/aloca', 'Admin\QuartoController@adminAlocaUser');    //http://site.com/api/admin/hospedagens/quartos/id/aloca
+            Route::post('/desaloca', 'Admin\QuartoController@adminDesalocaUser'); //http://site.com/api/admin/hospedagens/quartos/id/desaloca
+        });
     });
 });
 
