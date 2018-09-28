@@ -40,6 +40,7 @@ import { AtividadesComponent } from './pages/atividades/atividades.component';
 import { DataAtividadePipe } from './pipes/data-atividade.pipe';
 import { HoraAtividadePipe } from './pipes/hora-atividade.pipe';
 import { UpdateAtividadeModalComponent } from './pages/atividades/update-atividade-modal/update-atividade-modal.component';
+import { CreateAtividadeModalComponent } from './pages/atividades/create-atividade-modal/create-atividade-modal.component';
 
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -70,7 +71,8 @@ export function tokenGetter() {
     NavusuarioComponent, //Navbar Usuario
     PainelUsuarioComponent, 
     AtividadesComponent,
-    UpdateAtividadeModalComponent, 
+    UpdateAtividadeModalComponent,
+    CreateAtividadeModalComponent,
     DataAtividadePipe, 
     HoraAtividadePipe
   ],
