@@ -1,0 +1,119 @@
+<div class="modal modal-fixed-footer" materialize="modal" [materializeParams]="[{dismissible: true}]" [materializeActions]="updateAtividadeModal">
+	<div *ngIf="updateAtividade">
+		<div class="modal-content">
+			<div class="modal-header valign-wrapper">
+				<img class="title-icon" src="assets/img/ivento-logo.png" height="40">
+				<span>
+					<h5 class="title" (click)="editMode('titulo')" *ngIf="!(editAction == 'titulo'); else tituloEdit"><b>Atividade {{updateAtividade.title}}</b></h5>
+					<input class="input-title" *ngIf="editAction == 'titulo'" type="text" [(ngModel)]="updateAtividade.title" (blur)="saveEdit()" (keydown.enter)="saveEdit()" autofocus (focus)="$event.target.select()">
+					<p class="subtitle content">do evento {{evento}}</p>
+				</span>
+			</div>
+			<i class="material-icons close modal-close">close</i>
+			<div class="row">
+				<i class="col l1 material-icons icon">info</i>
+				<div class="col l5">
+					<b class="topic">Informações</b>
+					<p class="content info" (click)="editMode('palestrante')" *ngIf="!(editAction == 'palestrante'); else palestranteEdit">Palestrante: {{updateAtividade.palestrante}}</p>
+					<ng-template #palestranteEdit>
+						Palestrante:
+						<div class="input-field inline">
+							<input type="text" [(ngModel)]="atividadeOnEdit" autofocus (focus)="$event.target.select()">
+						</div>
+					</ng-template>
+					<p class="content info" (click)="editMode('vagas')" *ngIf="!(editAction == 'vagas'); else vagasEdit">Quantidade de Vagas: {{updateAtividade.qntdVagas}}</p>
+					<ng-template #vagasEdit>
+						Palestrante:
+						<div class="input-field inline">
+							<input type="number" [(ngModel)]="atividadeOnEdit" autofocus (focus)="$event.target.select()">
+						</div>
+					</ng-template>
+					<p class="content">Status:  {{(updateAtividade.status ? (updateAtividade.disp ? "Aberta e com vagas" : "Aberta e sem vagas") : "Fechada")}}</p>
+					<div *ngIf="(editAction == 'palestrante') || (editAction == 'vagas')" class="valign-wrapper info-edit">
+						<a class="waves-effect waves-light btn green lighten-1" (click)="saveEdit()">Salvar</a>
+						<i class="material-icons cancel" (click)="cancelEdit()">close</i>
+					</div>
+				</div>
+				<i class="col l1 material-icons icon">event</i>
+				<div class="col l5">
+					<p class="topic content"><b>Horário</b><span class="edit" (click)="editMode('data')" *ngIf="!(editAction == 'data')">Editar</span></p>
+					<div *ngIf="!(editAction == 'data'); else dataEdit">
+						<p *ngIf="oneDay(); else manyDays" class="content">
+							Data: {{updateAtividade.start | dataAtividade}}, de: {{updateAtividade.start | horaAtividade}} até: {{updateAtividade.end | horaAtividade}}
+						</p>
+						<ng-template #manyDays class="content">
+							De {{updateAtividade.start | dataAtividade}} às {{updateAtividade.start | horaAtividade}}, até  {{updateAtividade.end | dataAtividade}} às {{updateAtividade.end | horaAtividade}}
+						</ng-template>
+					</div>
+					<ng-template #dataEdit>
+
+					</ng-template>
+				</div>
+			</div>
+			<div class="row">
+				<i class="col l1 material-icons icon">subject</i>
+				<div class="col l11">
+					<b class="topic">Descrição</b>
+	        <textarea id="textarea1" class="materialize-textarea" placeholder="Adicione uma descrição mais detalhada..." [(ngModel)]="!(editAction == 'descricao') ? updateAtividade.descricao : atividadeOnEdit" (keydown)="editMode('descricao')" (focus)="$event.target.select()"></textarea>
+	        <div *ngIf="editAction == 'descricao'" class="valign-wrapper">
+						<a class="waves-effect waves-light btn green lighten-1" (click)="saveEdit()">Salvar</a>
+						<i class="material-icons cancel" (click)="cancelEdit()">close</i>
+					</div>
+				</div>
+			</div>
+			<div class="row" *ngIf="updateAtividade.image">
+				<i class="col l1 material-icons icon">image</i>
+					<b class="topic">Imagem Ilustrativa</b>
+					<img class="materialboxed gallery col l11" materialize="materialbox" [src]="updateAtividade.image">
+			</div>
+			<div class="row">
+				<i class="col l1 material-icons icon">archive</i>
+				<div class="col l11">
+					<p class="topic pacotes"><b>Pacotes</b><span class="edit" (click)="editMode('pacotes')" *ngIf="!(editAction == 'pacotes')">Editar</span></p>
+					<div class="row pacotes">
+						<div *ngFor="let pacote of pacotes; let i = index">
+							<div *ngIf="!(editAction == 'pacotes'); else pacotesEdit">
+								<div class="col l4" *ngIf="pacotePermitido(i)">
+									<input type="checkbox" [id]="'pacote' + i" class="filled-in" checked disabled/>
+									<label class="truncate" [for]="'pacote' + i">{{pacote}}</label>
+								</div>
+							</div>
+							<ng-template #pacotesEdit>
+								<div class="col l4">
+									<input type="checkbox" [id]="'pacote' + i" class="filled-in" [checked]="pacotePermitido(i)" (click)="pacotesOnChange(i)"/>
+									<label class="truncate" [for]="'pacote' + i">{{pacote}}</label>
+								</div>
+							</ng-template>
+						</div>
+					</div>
+					<div *ngIf="editAction == 'pacotes'" class="valign-wrapper">
+						<a class="waves-effect waves-light btn green lighten-1 pacotes-edit" (click)="saveEdit()">Salvar</a>
+						<i class="material-icons cancel" (click)="cancelEdit()">close</i>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row modal-footer">
+			<div *ngIf="!footer">
+				<a materialize="tooltip" class="col l4 waves-effect waves-light btn-flat center-align white-text tooltipped" data-position="bottom" data-delay="50" data-tooltip="Inscrever usuário" (click)="actionFooter('inscricao')">
+					<i class="material-icons action">person_add</i>
+				</a>
+				<a materialize="tooltip" class="col l4 waves-effect waves-light btn-flat center-align white-text tooltipped" data-position="bottom" data-delay="50" data-tooltip="Trocar cor do evento">
+					<i class="material-icons action">color_lens</i>
+				</a>
+				<a materialize="tooltip" class="col l4 waves-effect waves-light btn-flat center-align white-text tooltipped" data-position="bottom" data-delay="50" data-tooltip="Apagar atividade" (click)="deleteAtividade()">
+					<i class="material-icons action">delete</i>
+				</a>
+			</div>
+			<div *ngIf="footer == 'inscricao'">
+				<div class="input-field footer-input col l3">
+					<input placeholder="CPF do usuário" type="text" mask="999.999.999-99" name="cpf" ngModel #cpf="ngModel">
+				</div>
+				<a class="col l2 waves-effect waves-light btn-flat action-btn center-align" (click)="inscricao(cpf)">Inscrever</a>
+				<a class="waves-effect waves-light btn-flat white-text" (click)="actionFooter('')">
+					<i class="material-icons back">arrow_forward</i>
+				</a>
+			</div>
+   	</div>
+	</div>
+</div>
