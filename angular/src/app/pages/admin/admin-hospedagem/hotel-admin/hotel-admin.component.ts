@@ -19,7 +19,7 @@ export class HotelAdminComponent implements OnInit {
     nomeQuarto: 'Suite Standard',
     numeroQuarto: 42,
     numeroVagas: 2,
-    observacoes: 'Lorem Ipsum Dolor Sit Amet ...', 
+    obsQuartos: 'Lorem Ipsum Dolor Sit Amet ...', 
     pacotes: ''
     
   }]
