@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, EventEmitter } from '@angular/core';
 import { CalendarComponent } from 'ng-fullcalendar';
 import { Options } from 'fullcalendar';
 import { MaterializeAction } from 'angular2-materialize';
-import * as moment from 'moment';
+import * as moment from 'moment'; 
 
 @Component({
   selector: 'app-atividades',
