@@ -36,10 +36,6 @@ Route::group([
 
 });
 
-
-
-
-
 // Visitantes podem ver a listagem de usuários.
 Route::get('user/{id}', 'UserController@show');
 //http://site.com/api/user/id
@@ -52,9 +48,6 @@ Route::post('login', 'API\AuthController@login');
 Route::post('register', 'API\AuthController@register');
 //http://site.com/api/register
 
-Route::get('data-evento', 'ConfigController@showDataEvento');
-//http://site.com/api/data-evento
-
 // Grupo de rotas para password.
 Route::group([
     'prefix' => 'password'
@@ -65,8 +58,6 @@ Route::group([
     Route::post('/reset', 'API\AuthController@resetPassword');
     //http://site.com/api/password/reset
 });
-
-
 
 //Grupo de rotas para funções envolvendo e-mails.
 Route::group([
@@ -124,8 +115,6 @@ Route::group([
     //http://site.com/api/users/id
     Route::get('/', 'UserController@index');
     //http://site.com/api/users/
-    Route::post('/', 'UserController@store');
-    //http://site.com/api/users/
     Route::put('{id}', 'UserController@update');
     //http://site.com/api/users/id
     Route::delete('{id}', 'UserController@delete');
@@ -152,34 +141,37 @@ Route::group([
     //http://site.com/api/users/my-activities
 });
 
-//Grupo de rotas para atividades
-Route::group([
-    'middleware' => 'auth:api',
-    'prefix' => 'atividades'
-], function (){
-    Route::get('{id}', 'AtividadesController@show');
-    //http://site.com/api/atividades/id
-    Route::get('/', 'AtividadesController@index');
-    //http://site.com/api/atividades/
-    Route::post('/', 'AtividadesController@store');
-    //http://site.com/api/atividades/
-    Route::put('{id}', 'AtividadesController@update');
-    //http://site.com/api/atividades/id
-    Route::delete('{id}', 'AtividadesController@delete');
-    //http://site.com/api/atividades/id
-    Route::get('picture/{id}', 'AtividadesController@exibirFoto');
-    //http://site.com/api/atividades/picture/id
-    Route::get('picture/download/{id}', 'AtividadesController@downloadFoto');
-    //http://site.com/api/atividades/picture/download/id
-});
-
-
-
 //Grupo de Rotas para o painel de admin
 Route::group([//criar middleware para restringir acesso
   'middleware' => ['auth:api','admin'],
   'prefix' => 'admin'
 ], function () {
+
+    //Grupo de rotas para atividades
+    Route::group([
+        'prefix' => 'atividades'
+    ], function (){
+        Route::get('{id}', 'AtividadesController@show');
+        //http://site.com/api/admin/atividades/id
+        Route::get('/', 'AtividadesController@index');
+        //http://site.com/api/admin/atividades/
+        Route::post('/', 'AtividadesController@store');
+        //http://site.com/api/admin/atividades/
+        Route::put('{id}', 'AtividadesController@update');
+        //http://site.com/api/admin/atividades/id
+        Route::delete('{id}', 'AtividadesController@delete');
+        //http://site.com/api/admin/atividades/id
+        Route::get('picture/{id}', 'AtividadesController@exibirFoto');
+        //http://site.com/api/admin/atividades/picture/id
+        Route::get('picture/download/{id}', 'AtividadesController@downloadFoto');
+        //http://site.com/api/admin/atividades/picture/download/id
+    });
+    Route::group([
+        'prefix' => 'users'
+    ], function(){
+        Route::post('/', 'UserController@store');
+        //http://site.com/api/admin/users/
+    });
 
     //Rotas de pacotes
     Route::group(['prefix' => 'pacotes'], function(){
@@ -245,6 +237,10 @@ Route::group([//criar middleware para restringir acesso
             Route::post('/desaloca', 'Admin\QuartoController@adminDesalocaUser'); //http://site.com/api/admin/hospedagens/quartos/id/desaloca
         });
     });
+
+    Route::get('data-evento', 'ConfigController@showDataEvento');
+    //http://site.com/api/admin/data-evento
+
 });
 
 

@@ -27,7 +27,7 @@ class CreateUsersTable extends Migration
             $table->string('new_email_code')->nullable();
             $table->string('old_email_code')->nullable();
             $table->boolean('confirmed')->default(0);
-            $table->string('admin')->default('false');
+            $table->string('admin')->default(0);
             $table->integer('lote_id')->unsigned()->nullable();
             $table->integer('quarto_id')->unsigned()->nullable();
             //table->integer('google_id')->unsigned()->nullable();

@@ -156,30 +156,41 @@ class UserController extends Controller
             $inscricao->usuario_id = $user->id;
             //E a atividade dele.
             $inscricao->atividade_id = $atividade_pacote->atividade_id;
-            $inscricao->status = 'ok';
+            
             //save() pra guardar no BD.
             $inscricao->save();
+
             //Aumenta o número de inscritos na atividade.
             $atividade->vagas_ocupadas++;
+            if($atividade->vagas_ocupadas == $atividade->vagas)
+							{
+								//Muda o status da atividade para "vagas esgotadas".
+								$atividade->status = "Vagas Esgotadas!";
+							}
             //Guarda esse novo valor.
             $atividade->save();
-            //Response de bem-sucedido.
+
+            //Response bem-sucedido.
             return response()->success('Usuário Inscrito com Sucesso!');
           }
+          //Se o pacote da atividade não for o mesmo do usuário ele não pode ser inscrito.
           else
           {
+            //Response de erro caso a atividade não esteja no pacote do usuário.
             return response()->error('Essa atividade não faz parte do seu pacote! Por favor selecione outra.');
           }
         }
-        //senão...
+        //Se o usuário já está inscrito na atividade ele não pode ser inscrito de novo.
         else
         {
-          //Response de erro.
+          //response de erro caso o usuário já esteja inscrito na atividade.
           return response()->error('Você já está inscrito na atividade.');
         }
       }
+      //Se o número de vagas ocupadas for igual ao de vagas totais, o usuário não pode ser inscrito.
       else
 			{
+				//Response de erro caso não hajam mais vagas na atividade.
 			  return response()->error('Não foi possível concluir a inscrição pois as vagas estão esgotadas.');
 			}
     }
@@ -198,7 +209,16 @@ class UserController extends Controller
       {
         //Remove a inscrição do usuário da atividade passada na função.
         UsuarioAtividade::destroy($userActivity->id);
-        //Return de success.
+        if($activity->vagas_ocupadas <= $activity->vagas)
+				{
+					//Muda o status da atividade para "vagas esgotadas".
+					$activity->status = "Vagas Abertas.";
+				}
+				//Desocupa uma vaga da atividade.
+				$activity->vagas_ocupadas--;
+				//salva a alteração no número de vagas.
+				$activity->save();
+				//Response bem-sucedido.
         return response()->success('Você foi removido da atividade com sucesso!');
       }
       //Caso não haja...

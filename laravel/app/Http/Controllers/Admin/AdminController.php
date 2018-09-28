@@ -85,10 +85,6 @@ class AdminController extends Controller
 				//Se o número de vagas ocupadas for igual ao de vagas totais, o usuário não pode ser inscrito.
 				else
 				{
-					//Muda o status da atividade para "vagas esgotadas".
-					$atividade->status = "Vagas Esgotadas!";
-					//Salva essa mudança no BD
-					$atividade->save();
 					//Response de erro caso não hajam mais vagas na atividade.
 					return response()->error('Não foi possível concluir a inscrição pois as vagas estão esgotadas.');
 				}
@@ -118,7 +114,7 @@ class AdminController extends Controller
         //Se for um admin pode inserir novos usuários.
         if($user_logado->admin == 1)
         {
-					//Remove o usuário d aatividade.
+					//Remove o usuário da atividade.
 					UsuarioAtividade::destroy($userActivity->id);
 					if($activity->vagas_ocupadas <= $activity->vagas)
 					{
