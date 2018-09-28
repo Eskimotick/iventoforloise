@@ -10,6 +10,17 @@ export class HotelAdminComponent implements OnInit {
   @Input('hoteis') hoteis: any;
   @Input('hotelFoto') hotelFoto: string;
 
+  pacotes: string[] = [
+    'Pacote Standard', 'Pacote Master', 'Pacote Simples'
+  ]
+
+  quartos: any[] = {
+    nomeQuarto: 'Suite Standard',
+    numeroQuarto: 42,
+    numeroVagas: 2,
+    observacoes: 'Lorem Ipsum Dolor Sit Amet ...',
+    
+  }
   constructor() { }
 
   ngOnInit() {

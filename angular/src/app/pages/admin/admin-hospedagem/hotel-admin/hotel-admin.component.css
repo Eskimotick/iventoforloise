@@ -3,6 +3,9 @@
   color: #424242;
   text-align: center;
 }
+.card-image img {
+  height: 20vh;;
+}
 .card-image:hover {
   opacity: 0.9;
   filter: alpha(opacity=90);
