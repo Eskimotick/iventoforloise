@@ -23,6 +23,8 @@ class CreatePacoteAtividadesTable extends Migration
 
   public function down()
   {
-     Schema::dropIfExists('pacote_atividade');
-   }
+    Schema::disableForeignKeyConstraints();
+    Schema::dropIfExists('pacote_atividade');
+    Schema::enableForeignKeyConstraints();
+  }
 }
