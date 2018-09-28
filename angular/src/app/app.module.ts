@@ -24,7 +24,7 @@ import { AppComponent } from './app.component';
 import { NavadminComponent } from './components/navadmin/navadmin.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { ContainerAdminComponent } from './components/container-admin/container-admin.component';
-import {HotelAdminComponent} from './components/admin/hotel-admin/hotel-admin.component';
+import {HotelAdminComponent} from './pages/admin/admin-hospedagem/hotel-admin/hotel-admin.component';
 
 /* páginas admin */
 import { AdminUsuariosComponent } from './pages/admin/admin-usuarios/admin-usuarios.component';
