@@ -70,7 +70,6 @@ class UserController extends Controller
         $user_log->updateUsers($request, $user_log);
         return response()->success(new UserResource($user_log));
       }
-
     }
 
     /* Usuários podem deletar suas contas e administradores
