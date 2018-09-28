@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-hotel-admin',
@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./hotel-admin.component.css']
 })
 export class HotelAdminComponent implements OnInit {
+
+  @Input('hoteis') hoteis: any;
+  @Input('hotelFoto') hotelFoto: string;
 
   constructor() { }
 
