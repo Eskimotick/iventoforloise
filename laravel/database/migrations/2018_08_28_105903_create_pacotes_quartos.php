@@ -21,12 +21,12 @@ class CreatePacotesQuartos extends Migration
 
         });
 
-        Schema::table('pacote_atividades', function (BluePrint $table) {
+        Schema::table('pacotes_quartos', function (BluePrint $table) {
             $table->foreign('pacote_id')
                     ->references('id')->on('pacotes')
                     ->onDelete('cascade');
 
-            $table->foreign('atividade_id')
+            $table->foreign('quarto_id')
                     ->references('id')->on('quartos')
                     ->onDelete('cascade');
          });

@@ -20,7 +20,8 @@ class CreateQuartosTable extends Migration
             $table->string('descricao');
             $table->integer('vagas')->unsigned();
             $table->integer('vagas_ocupadas')->unsigned()->default(0);
-            $table->integer('status')->default(0); 
+            $table->integer('status')->default(0);
+            $table->string('img_path')->nullable(); 
             $table->timestamps();
 
             $table->foreign('hospedagem_id')
