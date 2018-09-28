@@ -5,5 +5,32 @@
 </div>
 
 <div class="modal" materialize="modal" [materializeParams]="[{dismissible: true}]" [materializeActions]="createAtividadeModal">
-	opa
+	<div class="modal-content">
+		<div class="modal-header valign-wrapper">
+			<img class="title-icon" src="assets/img/ivento-logo.png" height="40">
+				<span>
+					<h5 class="title"><b>Criar Atividade Nova</b></h5>
+					<p class="subtitle content">em evento {{evento}}</p>
+				</span>
+		</div>
+		<i class="material-icons close modal-close">close</i>
+		<form #atividade="ngForm">
+			<div class="row">
+				<div class="input-field col l6">
+          <input id="title" type="text" name="title" ngModel>
+          <label for="title">Nome da Atvidade</label>
+        </div>
+        <div class="input-field col l6">
+          <input id="vagas" type="number" name="vagas" ngModel>
+          <label for="vagas">Quantidade de Vagas</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col l12">
+          <textarea placeholder="Adicione uma descrição mais detalhada..." id="descricao" class="materialize-textarea" name="descricao" ngModel></textarea>
+          <label for="descricao">Descrição</label>
+        </div>
+     	</div>
+		</form>
+	</div>
 </div>

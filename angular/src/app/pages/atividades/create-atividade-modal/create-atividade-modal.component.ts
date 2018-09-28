@@ -9,6 +9,7 @@ import { MaterializeAction } from 'angular2-materialize';
 export class CreateAtividadeModalComponent implements OnInit, OnChanges {
 
 	@Input('createClick') createClick: number;
+	@Input('evento') evento: string;
 	createAtividadeModal = new EventEmitter<string|MaterializeAction>();
 
   constructor() { }

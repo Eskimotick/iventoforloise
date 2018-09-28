@@ -83,7 +83,7 @@ export class AtividadesComponent implements OnInit {
 
   dayClick(atividade) {
     this.createClick++;
-    this.createDate = moment(atividade.date).format('YYYY-MM-DD')
+    this.createDate = moment(atividade.date).format('YYYY-MM-DD');
     console.log(atividade);
     console.log(this.createDate);
   }
