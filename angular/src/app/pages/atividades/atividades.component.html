@@ -10,7 +10,7 @@
 		</div>
 
 		<!-- Modal de criar atividade -->
-		<app-create-atividade-modal [createClick]="createClick"></app-create-atividade-modal>
+		<app-create-atividade-modal [evento]="evento.title" [pacotes]="pacotes" [createClick]="createClick" (createAtividadeEmitter)="createAtividade($event)"></app-create-atividade-modal>
 
 		<!-- Uso do fullcalendar -->
 		<div *ngIf="calendarOptions">

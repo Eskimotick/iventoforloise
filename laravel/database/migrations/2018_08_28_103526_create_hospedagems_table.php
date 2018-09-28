@@ -21,6 +21,7 @@ class CreateHospedagemsTable extends Migration
             $table->integer('vagas')->unsigned();
             $table->integer('vagas_ocupadas')->unsigned()->default(0);
             $table->integer('status')->unsigned()->default(0);
+            $table->string('img_path')->nullable();
             $table->timestamps();
         });
     }

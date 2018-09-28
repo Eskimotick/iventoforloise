@@ -4,6 +4,73 @@
 	</a>
 </div>
 
-<div class="modal" materialize="modal" [materializeParams]="[{dismissible: true}]" [materializeActions]="createAtividadeModal">
-	opa
+<div class="modal modal-fixed-footer" materialize="modal" [materializeParams]="[{dismissible: true}]" [materializeActions]="createAtividadeModal">
+	<form #atividade="ngForm" (ngSubmit)="onSubmit(atividade)">
+		<div class="modal-content">
+			<div class="modal-header valign-wrapper">
+				<img class="title-icon" src="assets/img/ivento-logo.png" height="40">
+					<span>
+						<h5 class="title"><b>Criar Atividade Nova</b></h5>
+						<p class="subtitle content">em evento {{evento}}</p>
+					</span>
+			</div>
+			<i class="material-icons close modal-close">close</i>
+			<div class="row">
+				<div class="input-field col l4">
+	        <input id="title" type="text" name="title" ngModel>
+	        <label for="title">Nome da Atividade*</label>
+	      </div>
+	      <div class="input-field col l4">
+	        <input id="palestrante" type="text" name="palestrante" ngModel>
+	        <label for="palestrante">Palestrante*</label>
+	      </div>
+	      <div class="input-field col l4">
+	        <input id="vagas" type="number" name="qntdVagas" ngModel>
+	        <label for="vagas">Quantidade de Vagas*</label>
+	      </div>
+	    </div>
+	    <div class="row">
+	    	<div class="input-field col l6">
+	        <input id="start" type="datetime-local" name="start" ngModel>
+	        <label for="start" class="active">Horário de Início*</label>
+	      </div>
+	      <div class="input-field col l6">
+	        <input id="end" type="datetime-local" name="end" ngModel>
+	        <label for="end" class="active">Horário de Término*</label>
+	      </div>
+	    </div>
+	    <div class="row">
+	      <div class="input-field col l12">
+	        <textarea placeholder="Adicione uma descrição mais detalhada..." id="descricao" class="materialize-textarea" name="descricao" ngModel></textarea>
+	        <label for="descricao">Descrição</label>
+	      </div>
+	    </div>
+	    <div class="row center-align" *ngIf="imagem">
+	    	<img [src]="imagem" width="40%">
+	    </div>
+	    <div class="row">
+	    	<div class="file-field input-field col l12">
+			    <div class="btn blue-grey">
+			      <span>Imagem Ilustrativa</span>
+			      <input type="file" (change)="onFileSelection($event)">
+			    </div>
+			    <div class="file-path-wrapper">
+			      <input class="file-path validate" type="text">
+			    </div>
+			  </div>
+	    </div>
+	    <div class="row">
+	    	<div class="col l12">
+		   		<b class="topic">Pacotes*</b>
+		   		<div class="col l4" *ngFor="let pacote of pacotes; let i = index">
+		   			<input type="checkbox" [id]="'pacote' + i" class="filled-in" [name]="'pacote' + i" ngModel/>
+						<label class="truncate" [for]="'pacote' + i">{{pacote}}</label>
+		    	</div>
+		   	</div>
+	    </div>
+		</div>
+		<div class="modal-footer">
+    	<button class="waves-effect waves-light btn-flat blue-grey white-text create-action">Criar Atividade</button>
+  	</div>
+  </form>
 </div>

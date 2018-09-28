@@ -177,7 +177,7 @@ Route::group([
 
 //Grupo de Rotas para o painel de admin
 Route::group([//criar middleware para restringir acesso
-  'middleware' => 'auth:api',
+  'middleware' => ['auth:api','admin'],
   'prefix' => 'admin'
 ], function () {
 
