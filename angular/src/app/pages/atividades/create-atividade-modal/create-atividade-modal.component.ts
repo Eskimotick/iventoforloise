@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, Input, Output EventEmitter } from '@angular/core';
+import { Component, OnInit, OnChanges, Input, Output, EventEmitter } from '@angular/core';
 import { MaterializeAction } from 'angular2-materialize';
 
 @Component({
@@ -16,6 +16,8 @@ export class CreateAtividadeModalComponent implements OnInit, OnChanges {
 
   file: File = new File([""], "filename");
   imagem: string;
+
+  checkboxMarked: boolean[] = [];
 
   constructor() {
     this.imagem = '';
@@ -50,9 +52,11 @@ export class CreateAtividadeModalComponent implements OnInit, OnChanges {
     myReader.readAsDataURL(this.file);
   }
 
-  onSubmit(atividade) {
-    console.log(atividade);
-    this.createAtividadeEmitter.emit(atividade.value);
+  onSubmit(atividadeForm) {
+    let atividade = atividadeForm.value;
+    atividade.status = true;
+    console.log(this.checkboxMarked);
+    this.createAtividadeEmitter.emit(atividade);
     this.createAtividadeModal.emit({action: 'modal', params: ['close']});
   }
 

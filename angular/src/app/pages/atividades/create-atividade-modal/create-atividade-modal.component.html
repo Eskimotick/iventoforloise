@@ -63,7 +63,7 @@
 	    	<div class="col l12">
 		   		<b class="topic">Pacotes*</b>
 		   		<div class="col l4" *ngFor="let pacote of pacotes; let i = index">
-		   			<input type="checkbox" [id]="'pacote' + i" class="filled-in" [name]="'pacote' + i" ngModel/>
+		   			<input type="checkbox" [id]="'pacote' + i" class="filled-in" [name]="'pacotes' + i" [(ngModel)]="checkboxMarked[i]"/>
 						<label class="truncate" [for]="'pacote' + i">{{pacote}}</label>
 		    	</div>
 		   	</div>
