@@ -16,8 +16,8 @@ export class AuthService {
 
   login(email: string, password: string):Observable<any> {
     return this.http.post(environment.api_url + 'login', {
-      'email': email,
-      'password': password
+      'admin@admin.com': email,
+      'admin': password
     }).pipe(tap(res => {
       localStorage.setItem('token', res.data.success.token);
       this.router.navigate(['/painelAdmin']);
