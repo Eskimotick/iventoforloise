@@ -9,6 +9,7 @@ export class HotelAdminComponent implements OnInit {
 
   @Input('hoteis') hoteis: any;
   @Input('hotelFoto') hotelFoto: string;
+  
 
 
   pacotes: string[] = [
