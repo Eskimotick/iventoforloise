@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 
+
 @Component({
   selector: 'app-hotel-admin',
   templateUrl: './hotel-admin.component.html',
@@ -10,6 +11,7 @@ export class HotelAdminComponent implements OnInit {
   @Input('hoteis') hoteis: any;
   @Input('hotelFoto') hotelFoto: string;
   
+
 
 
   pacotes: string[] = [
@@ -46,6 +48,8 @@ export class HotelAdminComponent implements OnInit {
     }
     myReader.readAsDataURL(this.file);
   }
+
+  
   
   constructor() { }
 
