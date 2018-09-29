@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-admin-hospedagem',
@@ -6,6 +7,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-hospedagem.component.css']
 })
 export class AdminHospedagemComponent implements OnInit {
+
+  deleteHotelEmitter = new EventEmitter<string|MaterializeAction>();
+  @Output() deleteHotelEmitter = new EventEmitter<any>();
+
+  
+  /* deletar hotel */
+  onSubmit(deletaHotelForm){
+    this.deleteHotelEmitter.emit(nomeHotel);
+    this.deleteHotelEmitter.emit({action: 'modal', params: ['close']});  
+  }
+
+  deleteHotel(hotel) {
+    let i = this.hoteis.findIndex(hoteis => hoteis.nomeHotel  == hotel);
+    this.hoteis.splice(i, 1);
+  }
 
   file: File = new File([""], "filename");
 
