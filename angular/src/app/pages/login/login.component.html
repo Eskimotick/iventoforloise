@@ -5,22 +5,24 @@
         <div class="container">
           <div class="row center principal-login z-depth-5">
              <!-- principal login .............................................-->
-             <h2> Login </h2>
-            <div class="row">
-                <div class="input-field col s12">
-                  <input type="email" id="email" class="validate">
-                  <label for="email">E-mail</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                  <input id="senha" type="password" class="validate">
-                  <label for="senha">Senha</label>
-                </div>
-            </div>
-            <div class="row">
-              <a class="btn botao-login" routerLink="/painelAdmin">Entrar</a>
-            </div>
+            <h2> Login </h2>
+            <form #login="ngForm" (ngSubmit)="onLogin(login)">
+              <div class="row">
+                  <div class="input-field col s12">
+                    <input type="email" id="email" class="validate" name="email" ngModel>
+                    <label for="email">E-mail</label>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="input-field col s12">
+                    <input id="senha" type="password" class="validate" name="password" ngModel>
+                    <label for="senha">Senha</label>
+                  </div>
+              </div>
+              <div class="row">
+                <button class="btn botao-login">Entrar</button>
+              </div>
+            </form>
             <!-- auxiliares de login ...........................................-->
             <div class="row aux-login">
               <div class="input-field col s7 xs12">
