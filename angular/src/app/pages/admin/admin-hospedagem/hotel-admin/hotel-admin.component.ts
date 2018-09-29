@@ -8,22 +8,16 @@ import { Output, EventEmitter} from '@angular/core';
 })
 export class HotelAdminComponent implements OnInit {
 
-  @Input('hoteis') hoteis: any;
+  @Input('hotel') hotel: any;
   @Input('hotelFoto') hotelFoto: string;
-
-  @Output() deleteHotelEmitter = new EventEmitter<any>();
-
-  onClick(deletaHotel) {
-    this.deleteHotelEmitter.emit();
-    this.deleteHotelEmitter.emit({action: 'modal', params: ['close']}); 
-
-  }
+  @Output() deleteHotelEmitter = new EventEmitter<string>();
   
 
   pacotes: string[] = [
     'Pacote Standard', 'Pacote Master', 'Pacote Simples'
   ]
-
+  imagem: any = '';
+  file: File = new File([""], "filename");
   quartos: any[] = [{
     nomeQuarto: 'Suite Standard',
     numeroQuarto: 42,
@@ -33,9 +27,11 @@ export class HotelAdminComponent implements OnInit {
     
   }]
 
-  imagem: any = '';
+  constructor() { }
 
-  file: File = new File([""], "filename");
+  ngOnInit() {
+  }
+
 
   onFileSelection(imagem) {
     let fileList: FileList = imagem.target.files;
@@ -55,11 +51,7 @@ export class HotelAdminComponent implements OnInit {
     myReader.readAsDataURL(this.file);
   }
 
-  
-  
-  constructor() { }
-
-  ngOnInit() {
+  deletaHotel() {
+    this.deleteHotelEmitter.emit(this.hotel.nomeHotel);
   }
-
 }

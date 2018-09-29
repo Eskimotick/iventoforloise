@@ -67,7 +67,7 @@
             </div>
             <div class="row row-cards-hoteis">
                 <div *ngFor="let hotel of hoteis; let i = index">
-                  <app-hotel-admin [hoteis]="hotel" [hotelFoto]="hotelFoto[i]"></app-hotel-admin>
+                  <app-hotel-admin [hotel]="hotel" [hotelFoto]="hotelFoto[i]" (deleteHotelEmitter)="deletaHotel($event)"></app-hotel-admin>
                 </div>
             </div><!-- fim da row hoteis -->
           </div>
