@@ -263,10 +263,10 @@
   </div>
   <div class="modal-footer">
     <div class="divider"></div>
-    <form id="deletaHotelForm" #deletaHotelForm="ngForm">
+    <div id="deletaHotel">
       <button  class="modal-close waves-effect btn-flat">Não</button>
-      <input type="submit" class="btn modal-close" value="Sim, deletar">
-    </form>
+      <input type="submit" class="btn modal-close" value="Sim, deletar" (click)="onClick">
+    </div>
     </div>
 </div>
 

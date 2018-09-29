@@ -13,11 +13,12 @@ export class HotelAdminComponent implements OnInit {
 
   @Output() deleteHotelEmitter = new EventEmitter<any>();
 
-  this.deleteHotelEmitter.emit(hotel);
-  this.deleteHotelEmitter.emit({action: 'modal', params: ['close']}); 
+  onClick(deletaHotel) {
+    this.deleteHotelEmitter.emit();
+    this.deleteHotelEmitter.emit({action: 'modal', params: ['close']}); 
+
+  }
   
-
-
 
   pacotes: string[] = [
     'Pacote Standard', 'Pacote Master', 'Pacote Simples'
