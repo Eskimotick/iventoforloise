@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Output, EventEmitter} from '@angular/core';
+
 
 @Component({
   selector: 'app-admin-hospedagem',
@@ -9,18 +9,15 @@ import { Output, EventEmitter} from '@angular/core';
 export class AdminHospedagemComponent implements OnInit {
 
 
-  @Output() deleteHotelEmitter = new EventEmitter<any>();
+
 
   
   /* deletar hotel */
 
-
   deleteHotel(hotel) {
     let i = this.hoteis.findIndex(hoteis => hoteis.nomeHotel  == hotel);
     this.hoteis.splice(i, 1);
-
-    this.deleteHotelEmitter.emit(hotel);
-    this.deleteHotelEmitter.emit({action: 'modal', params: ['close']});  
+ 
   }
 
   file: File = new File([""], "filename");

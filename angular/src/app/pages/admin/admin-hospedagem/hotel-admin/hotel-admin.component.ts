@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-
+import { Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-hotel-admin',
@@ -10,6 +10,11 @@ export class HotelAdminComponent implements OnInit {
 
   @Input('hoteis') hoteis: any;
   @Input('hotelFoto') hotelFoto: string;
+
+  @Output() deleteHotelEmitter = new EventEmitter<any>();
+
+  this.deleteHotelEmitter.emit(hotel);
+  this.deleteHotelEmitter.emit({action: 'modal', params: ['close']}); 
   
 
 
