@@ -56,6 +56,8 @@ import { LoginComponent } from './pages/login/login.component';
 import { CadastroComponent } from './pages/cadastro/cadastro.component';
 import { environment } from '../environments/environment';
 
+import { AuthService } from './services/auth.service';
+
 export function tokenGetter() {
   return localStorage.getItem('token');
 }
@@ -112,7 +114,9 @@ export function tokenGetter() {
     OwlDateTimeModule, 
     OwlNativeDateTimeModule
   ],
-  providers: [],
+  providers: [
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

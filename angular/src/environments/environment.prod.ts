@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  host: 'http://ivento.ejcm.com.br/',
-  api_url: 'http://ivento.ejcm.com.br/api/',
+  host: 'http://localhost:8000/',
+  api_url: 'http://localhost:8000/api/',
 };

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable } from 'rxjs';
+import { catchError, map, tap } from 'rxjs/operators';
 
 import { environment } from '../../environments/environment.prod';
 import { Usuario } from '../classes/usuario';
@@ -10,23 +11,13 @@ import { Usuario } from '../classes/usuario';
 })
 export class AuthService {
 
-  usuario = new BehaviorSubject<Usuario>(null);
-  private userSend(user: Usuario) {
-    return this.usuario.next(user);
-  }
-
   constructor(public http: HttpClient) { }
 
-  onRegistro(form_data) {
-    this.http.post(environment.api_url + 'auth/register', { dados: form_data });
-  }
-
-  onLogin(form_data) {
-    this.http.post(environment.api_url + 'auth/login', { dados: form_data });
-  }
-
-  onLogout(form_data) {
-    this.http.post(environment.api_url + 'auth/logout', { dados: form_data });
+  login(email: string, password: string):Observable<any> {
+    return this.http.post(environment.api_url + 'login', {
+      'email': email,
+      'password': password
+    }).pipe(tap(res => res));
   }
 
 }
