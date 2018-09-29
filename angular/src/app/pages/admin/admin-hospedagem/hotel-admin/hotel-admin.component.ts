@@ -16,16 +16,21 @@ export class HotelAdminComponent implements OnInit {
   pacotes: string[] = [
     'Pacote Standard', 'Pacote Master', 'Pacote Simples'
   ]
+  
   imagem: any = '';
+  
   file: File = new File([""], "filename");
+  
   quartos: any[] = [{
-    nomeQuarto: 'Suite Standard',
-    numeroQuarto: 42,
-    numeroVagas: 2,
-    obsQuartos: 'Lorem Ipsum Dolor Sit Amet ...', 
-    pacotes: ''
+    tipoQuarto: 'Suite Standard',
+    numeroQuartosDisponiveis: 3,
+    numeroVagasPorQuarto: 2,
+    numerosDosQuartos: [101, 102, 103, 104, []],
+    obsQuarto: 'Lorem Ipsum Dolor Sit Amet ...', 
+    pacotes: '',  
     
   }]
+
 
   constructor() { }
 

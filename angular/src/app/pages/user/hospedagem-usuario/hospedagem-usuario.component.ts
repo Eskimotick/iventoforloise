@@ -7,6 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HospedagemUsuarioComponent implements OnInit {
 
+  hoteis: any[] = [{
+    nomeHotel: 'Ibis', 
+    enderecoHotel: 'Av. Beira Mar, 238', 
+    descricaoHotel: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec hendrerit auctor nisi, a cursus elit laoreet eu. Nunc felis ante, lacinia in ante at, feugiat convallis ex. ',
+  }];
+
   constructor() { }
 
   ngOnInit() {

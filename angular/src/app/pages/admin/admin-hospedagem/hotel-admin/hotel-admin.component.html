@@ -110,7 +110,7 @@
                       <div class="collapsible-header">Suite Standard
                         <!-- badges ................................................... -->
                         <span class="new badge blue-grey lighten-1 right" data-badge-caption="vagas por quarto">2</span>
-                        <span class="new badge blue-grey darken-2 right" data-badge-caption="vagas restantes">2</span> 
+                        <span class="new badge blue-grey darken-2 right" data-badge-caption="quartos restantes">2</span> 
                       </div>
                       
                     <div class="collapsible-body">
@@ -285,15 +285,15 @@
     <div class="row conteudo dadosHotel">
         <div class="col l12 s12">
           <div class="input-field col s12 l6">
-            <input type="text" id="nomeHotel" value="[Nome do Hotel]">
+            <input type="text" id="nomeHotel" value="{{hotel.nomeHotel}}">
             <label for="nomeHotel">Nome do Hotel</label>
           </div>
           <div class="input-field col s12 l6">
-            <input type="text" id="enderecoHotel" value="Rua Gal. Olímpio, 233">
+            <input type="text" id="enderecoHotel" value="{{hotel.enderecoHotel}}">
             <label for="enderecoHotel">Endereço</label>
           </div>
           <div class="input-field col s12 l12">
-            <textarea id="descricaoHotel" class="materialize-textarea">[Lorem Ipsum Dolor Sit Amet]
+            <textarea id="descricaoHotel" class="materialize-textarea">"{{hotel.descricaoHotel}}"
             </textarea>
             <label for="descricaoHotel">Descrição</label>
           </div>

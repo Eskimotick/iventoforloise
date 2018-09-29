@@ -8,14 +8,21 @@ import { Component, OnInit } from '@angular/core';
 export class HotelUsuarioComponent implements OnInit {
 
 
+  usuario: any[] = [{
+    nomeUsuario: 'Usuário',
+    
+
+  }]
+
   pacotes: string[] = [
     'Pacote Standard', 'Pacote Master', 'Pacote Simples'
   ]
 
   quartos: any[] = [{
-    nomeQuarto: 'Suite Standard',
+    tipoQuarto: 'Suite Standard',
     numeroQuarto: 42,
-    numeroVagas: 2,
+    numeroVagasPorQuarto: 2,
+    numeroQuartosRestantes: 3,
     obsQuartos: 'Lorem Ipsum Dolor Sit Amet ...', 
     pacotes: ''
     

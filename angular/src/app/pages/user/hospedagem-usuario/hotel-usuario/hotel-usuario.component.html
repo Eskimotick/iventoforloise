@@ -2,7 +2,7 @@
   <div class="card">
     <div class="card-image">
       <img src="./assets/img/hoteis/hotel-5.jpg" class="foto-hotel">
-      <span class="card-title nome-hotel">[Nome do Hotel]</span>
+      <span class="card-title nome-hotel">{{quartos.tipoQuarto}}</span>
     </div>
     <div class="card-content">
       <div class="container fabs-card-hospedagem">
@@ -14,9 +14,7 @@
       </div>
       <h5><span class="new badge blue-grey lighten-1" data-badge-caption="vagas">4</span></h5>
       <p class="truncate">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          In efficitur interdum neque, vitae sodales felis.
-          Fusce purus ipsum, vestibulum non urna commodo, interdum rhoncus quam.
+          {{quartos.obsQuarto}}
       </p>
     </div>
   </div>
