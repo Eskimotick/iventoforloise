@@ -1,6 +1,8 @@
 import { Component, OnInit, OnChanges, Input, Output, EventEmitter } from '@angular/core';
 import { MaterializeAction } from 'angular2-materialize';
 
+import { AtividadesService } from '../../../services/atividades/atividades.service';
+
 @Component({
   selector: 'app-create-atividade-modal',
   templateUrl: './create-atividade-modal.component.html',
@@ -19,7 +21,7 @@ export class CreateAtividadeModalComponent implements OnInit, OnChanges {
 
   checkboxMarked: boolean[] = [];
 
-  constructor() {
+  constructor(private atividadesService: AtividadesService) {
     this.imagem = '';
   }
 
@@ -54,13 +56,17 @@ export class CreateAtividadeModalComponent implements OnInit, OnChanges {
 
   onSubmit(atividadeForm) {
     let atividade = atividadeForm.value;
-    atividade.status = true;
+    atividade.status = 'Aberto';
     atividade.pacotes = []; 
     for(let i = 0; i < this.checkboxMarked.length; i++) {
       if(this.checkboxMarked[i])
         atividade.pacotes.push(i);
     }
     atividade.image = this.imagem;
+    this.atividadesService.store(atividade).subscribe(
+      (res) => {
+        console.log(res);
+    });
     this.createAtividadeEmitter.emit(atividade);
     this.createAtividadeModal.emit({action: 'modal', params: ['close']});
   }

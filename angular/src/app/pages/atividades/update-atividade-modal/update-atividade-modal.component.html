@@ -23,7 +23,7 @@
 					</ng-template>
 					<p class="content info" (click)="editMode('vagas')" *ngIf="!(editAction == 'vagas'); else vagasEdit">Quantidade de Vagas: {{updateAtividade.qntdVagas}}</p>
 					<ng-template #vagasEdit>
-						Palestrante:
+						Quantidade de Vagas:
 						<div class="input-field inline">
 							<input type="number" [(ngModel)]="atividadeOnEdit" autofocus (focus)="$event.target.select()">
 						</div>

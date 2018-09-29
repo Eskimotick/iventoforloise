@@ -4,6 +4,8 @@ import { Options } from 'fullcalendar';
 import { MaterializeAction } from 'angular2-materialize';
 import * as moment from 'moment'; 
 
+import { PacotesService } from '../../services/pacotes/pacotes.service';
+
 @Component({
   selector: 'app-atividades',
   templateUrl: './atividades.component.html',
@@ -20,9 +22,7 @@ export class AtividadesComponent implements OnInit {
   	id: 0, title: 'Evento 1', start: '2018-09-04', end: '2018-09-11', rendering: 'background'
   };
 
-  pacotes: string[] = [
-    'EJCM', 'Diretoria de Projetos', 'Diretoria de Marketing', 'Equipe Ivento', 'Equipe Bikeme', 'Equipe Sintaf'
-  ];
+  pacotes: any[] = [];
 
   atividade: any[] = [
 		{ id: 1, title: 'Cagar no Pau', start: '2018-09-05T12:00:00', end: '2018-09-05T18:00:00', 
@@ -46,7 +46,7 @@ export class AtividadesComponent implements OnInit {
   createDate: string;
 
 
-  constructor() { 
+  constructor(private pacotesService: PacotesService) { 
   	this.atividadeClick = 0;
     this.createClick = 0;
     this.createDate = '';
@@ -72,6 +72,11 @@ export class AtividadesComponent implements OnInit {
 			events: []
 		};
 		this.initEvents();
+    this.pacotesService.index().subscribe(
+      (res) => {
+        for(let i = 0; i < res.data.length; i++)
+          this.pacotes.push(res.data[i].nome);
+    });
   }
 
   // inicializa o evento e as atividades do calendário
