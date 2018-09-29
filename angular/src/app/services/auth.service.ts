@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { catchError, map, tap, do } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
 import { environment } from '../../environments/environment.prod';
@@ -15,7 +15,7 @@ export class AuthService {
   constructor(public http: HttpClient, public router: Router) { }
 
   login(email: string, password: string):Observable<any> {
-    return this.http.post(environment.api_url + 'login', {
+    return this.http.post<any>(environment.api_url + 'login', {
       'email': email,
       'password': password
     }).pipe(tap(res => {

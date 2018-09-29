@@ -8,18 +8,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminHospedagemComponent implements OnInit {
 
-
-
-
-  
-  /* deletar hotel */
-
-  deleteHotel(hotel) {
-    let i = this.hoteis.findIndex(hoteis => hoteis.nomeHotel  == hotel);
-    this.hoteis.splice(i, 1);
- 
-  }
-
   file: File = new File([""], "filename");
 
   hoteis: any[] = [{
@@ -64,5 +52,10 @@ export class AdminHospedagemComponent implements OnInit {
       console.log(this.imagem);
     }
     myReader.readAsDataURL(this.file);
+  }
+
+  deletaHotel(hotel) {
+    let i = this.hoteis.findIndex(ho => ho.nomeHotel  == hotel);
+    this.hoteis.splice(i, 1);
   }
 } 
