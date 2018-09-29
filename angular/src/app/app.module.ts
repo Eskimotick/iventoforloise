@@ -37,7 +37,7 @@ import { DashboardComponent } from './pages/admin/dashboard/dashboard.component'
 import { NavusuarioComponent } from './components/navusuario/navusuario.component';
 import { SidebarUsuarioComponent } from './components/sidebar-usuario/sidebar-usuario.component';
 import { PainelUsuarioComponent} from './pages/user/painel-usuario/painel-usuario.component';
-import { HotelUsuarioComponent} from './components/usuario/hotel-usuario/hotel-usuario.component';
+import { HotelUsuarioComponent} from './pages/user//hospedagem-usuario/hotel-usuario/hotel-usuario.component';
 import { HospedagemUsuarioComponent} from './pages/user/hospedagem-usuario/hospedagem-usuario.component';
 
 /* visitante */

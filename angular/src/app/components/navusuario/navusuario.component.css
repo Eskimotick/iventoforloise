@@ -11,3 +11,14 @@ nav .brand-logo, nav ul li a {
 nav .brand-logo {
   font-weight: 200;
 }
+
+.side-nav li {
+  margin-top: 2.5vh;
+}
+.side-nav li a {
+  font-size: 1.4em;
+  text-shadow: none;
+  font-family: 'Raleway';
+  margin-bottom:
+}
+
