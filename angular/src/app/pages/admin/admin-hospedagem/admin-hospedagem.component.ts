@@ -8,19 +8,19 @@ import { Output, EventEmitter} from '@angular/core';
 })
 export class AdminHospedagemComponent implements OnInit {
 
-  deleteHotelEmitter = new EventEmitter<string|MaterializeAction>();
+
   @Output() deleteHotelEmitter = new EventEmitter<any>();
 
   
   /* deletar hotel */
-  onSubmit(deletaHotelForm){
-    this.deleteHotelEmitter.emit(nomeHotel);
-    this.deleteHotelEmitter.emit({action: 'modal', params: ['close']});  
-  }
+
 
   deleteHotel(hotel) {
     let i = this.hoteis.findIndex(hoteis => hoteis.nomeHotel  == hotel);
     this.hoteis.splice(i, 1);
+
+    this.deleteHotelEmitter.emit(hotel);
+    this.deleteHotelEmitter.emit({action: 'modal', params: ['close']});  
   }
 
   file: File = new File([""], "filename");

@@ -252,7 +252,7 @@
 </div>
 
 
-<div id="modalDeletar" class="modal" materialize="modal" (deleteHotelEmitter)="deleteHotel($event)" [materializeActions]="deleteHotel">
+<div id="modalDeletar" class="modal" materialize="modal" (deleteHotelEmitter)="deleteHotel($event)">
   <div class="col offset-s11 s1">
     <i class="material-icons modal-close right">
       close
@@ -265,7 +265,7 @@
     <div class="divider"></div>
     <form id="deletaHotelForm" #deletaHotelForm="ngForm" (ngSubmit)="onSubmit(deletaHotelForm)">
       <button  class="modal-close waves-effect btn-flat">Não</button>
-      <input type="submit" class="btn modal-close" value="Sim, deletar" ngModel>
+      <input type="submit" class="btn modal-close" value="Sim, deletar">
     </form>
     </div>
 </div>
