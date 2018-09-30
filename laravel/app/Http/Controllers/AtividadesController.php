@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StoreAtividadeRequest;
 use App\Http\Requests\UpdateAtividadeRequest;
 use App\Notifications\Atividade\UpdateAtividadePacoteNotification;
+use App\Http\Resources\Admin\AtividadeResource;
 
 class AtividadesController extends Controller
 {
@@ -21,7 +22,7 @@ class AtividadesController extends Controller
       if($user_logado->admin == 1)
       {
         $atividade = Atividade::findOrFail($id);
-        return response()->success($atividade);
+        return response()->success(new AtividadeResource($atividade));
       }
       else
       {
@@ -35,7 +36,7 @@ class AtividadesController extends Controller
       if($user_logado->admin == 1)
       {
         $all_activities = Atividade::all();
-        return response()->success($all_activities);
+        return response()->success(AtividadeResource::collection($all_activities));
       }
       else
       {
@@ -71,7 +72,7 @@ class AtividadesController extends Controller
         $atividade_alt = Atividade::findOrFail($id);
         $atividade_alt->updateActivity($request, $atividade_alt);
 
-        return response()->success(Atividade::find($id));
+          return response()->success(new AtividadeResource(Atividade::find($id)));
       }
       else
       {
@@ -108,7 +109,9 @@ class AtividadesController extends Controller
       return response()->file($filePath);
     }
 
-    //Temporariamente fora de uso
+    //##########################################################
+    //Temporariamente fora de uso ##############################
+    //##########################################################
     public function updateAtividadePacote($id_ativ)
     {
       $userAtividade = UsuarioAtividade::where('atividade_id', $id_ativ)->get();

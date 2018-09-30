@@ -26,7 +26,7 @@ class StoreAtividadeRequest extends FormRequest
     return [
       'titulo' => 'required',
       'descricao' => 'required',
-      'palestrante' => 'required',
+      //'palestrante' => 'required',
       'data_inicio' => $formato_data,
       'data_fim' => $formato_data,
       'vagas' => 'required',
