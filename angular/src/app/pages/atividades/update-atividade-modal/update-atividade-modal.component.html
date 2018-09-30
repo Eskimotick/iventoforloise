@@ -23,12 +23,12 @@
 					</ng-template>
 					<p class="content info" (click)="editMode('vagas')" *ngIf="!(editAction == 'vagas'); else vagasEdit">Quantidade de Vagas: {{updateAtividade.qntdVagas}}</p>
 					<ng-template #vagasEdit>
-						Palestrante:
+						Quantidade de Vagas:
 						<div class="input-field inline">
 							<input type="number" [(ngModel)]="atividadeOnEdit" autofocus (focus)="$event.target.select()">
 						</div>
 					</ng-template>
-					<p class="content">Status:  <b>{{updateAtividade.status ? 'Fechado' : 'Aberto'}}</b></p>
+					<p class="content">Status:  <b>{{updateAtividade.status}}</b></p>
 					<div *ngIf="(editAction == 'palestrante') || (editAction == 'vagas')" class="valign-wrapper info-edit">
 						<a class="waves-effect waves-light btn green lighten-1" (click)="saveEdit()">Salvar</a>
 						<i class="material-icons cancel" (click)="cancelEdit()">close</i>

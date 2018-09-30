@@ -1,6 +1,8 @@
 import { Component, OnInit, OnChanges, Input, Output, EventEmitter } from '@angular/core';
 import { MaterializeAction } from 'angular2-materialize';
 
+import { AtividadesService } from '../../../services/atividades/atividades.service';
+
 @Component({
   selector: 'app-create-atividade-modal',
   templateUrl: './create-atividade-modal.component.html',
@@ -10,7 +12,7 @@ export class CreateAtividadeModalComponent implements OnInit, OnChanges {
 
 	@Input('createClick') createClick: number;
 	@Input('evento') evento: string;
-  @Input('pacotes') pacotes: string[];
+  @Input('pacotes') pacotes: any[];
 	createAtividadeModal = new EventEmitter<string|MaterializeAction>();
   @Output() createAtividadeEmitter = new EventEmitter<any>();
 
@@ -19,7 +21,7 @@ export class CreateAtividadeModalComponent implements OnInit, OnChanges {
 
   checkboxMarked: boolean[] = [];
 
-  constructor() {
+  constructor(private atividadesService: AtividadesService) {
     this.imagem = '';
   }
 
@@ -54,13 +56,21 @@ export class CreateAtividadeModalComponent implements OnInit, OnChanges {
 
   onSubmit(atividadeForm) {
     let atividade = atividadeForm.value;
-    atividade.status = true;
+    atividade.status = 'Aberto';
     atividade.pacotes = []; 
+    let pacoteString = { array: [], string: '' };
     for(let i = 0; i < this.checkboxMarked.length; i++) {
-      if(this.checkboxMarked[i])
+      if(this.checkboxMarked[i]) {
         atividade.pacotes.push(i);
+        pacoteString.array.push(this.pacotes[i].id);
+      }
     }
+    pacoteString.string = pacoteString.array.join(',');
     atividade.image = this.imagem;
+    this.atividadesService.store(atividade, pacoteString.string).subscribe(
+      (res) => {
+        console.log(res);
+    });
     this.createAtividadeEmitter.emit(atividade);
     this.createAtividadeModal.emit({action: 'modal', params: ['close']});
   }
