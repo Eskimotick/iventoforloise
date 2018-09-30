@@ -31,22 +31,34 @@
     </div>
   </div>
   <div class="modal-content">
-    <div class="row">
-      <div class="col l4 s12">
-        <img src="./assets/img/hoteis/hotel-5.jpg" class="responsive-img">
+      <div class="row">
+          <div class="col l7 s12">
+            <img src="./assets/img/hoteis/hotel-5.jpg" class="responsive-img z-depth-1">
+          </div>
+          <div class="col l5 s12 dadosHotel">
+            <div class="container">
+            <div class="row">
+                <div class="card-panel grey lighten-4">
+                  <h5>
+                    <ul>
+                      <li><strong><i class="material-icons">location_on</i> Endereço:</strong> Rua Gal. Olímpio, 233</li>
+                      <li><strong><i class="material-icons">call</i>Telefone:</strong> (XX) 0000 - 00000</li>
+                    </ul>
+                  </h5>
+                </div>
+            </div>
+            <div class="row">
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  In efficitur interdum neque, vitae sodales felis.
+                  Fusce purus ipsum, vestibulum non urna commodo, interdum rhoncus quam.
+                  Nulla placerat maximus diam, sed molestie diam sollicitudin.
+                </p>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="l8 s12">
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          In efficitur interdum neque, vitae sodales felis.
-          Fusce purus ipsum, vestibulum non urna commodo, interdum rhoncus quam.
-          Nulla placerat maximus diam, sed molestie diam sollicitudin.
-        </p>
-        <h5><strong>Endereço:</strong> Rua Gal. Olímpio, 233 </h5>
-      </div>
-    </div>
-
-        <div class="row" >
+        <div class="row">
           <ul materialize="collapsible" class="collapsible" data-collapsible="accordion" [materializeParams]="params" [materializeActions]="actions1">
             <li *ngFor="let tipoQuarto of quarto; let j = index">
               <div class="collapsible-header">
@@ -59,32 +71,33 @@
                   </span>
               </div>
               <div class="collapsible-body">
-                <div class="row tabs-row">
+                <!--<div class="row tabs-row">
                     <div class="col s12">
                       <ul class="tabs"  materialize="tabs">
                         <li class="tab col l6"><a href="#infoQuarto[j]">Informações Sobre o Quarto</a></li>
                         <li class="tab col l6"><a href="#quartosDisponiveis[j]">Quartos Disponíveis</a></li>
                       </ul>
                     </div>
-                </div>
+                </div>-->
                 <div class="row" id="infoQuarto[j]">
-                  <div class="col l5">
+                  <h4 class="header">Informações Sobre o Quarto </h4>
+                  <div class="col l6 s12">
                     <img src="./assets/img/hoteis/hotel-room.jpg" class="foto-quarto responsive-img">
                     <!-- conteudo do collapsible buga quando colocamos a imagem dentro de uma col sem uma row por fora-->
                   </div>
-                  <div class="col l7">
+                  <div class="col l6 s12">
                     <div class="input-field col s12 l8">
-                      <input disabled type="text" id="nomeQuarto" value="Suite Standard">
-                      <label for="nomeQuarto">Nome/Tipo de Quarto</label>
+                      <h4 class="label">Nome/Tipo de Quarto</h4>
+                      <h5 value="Suite Standard" class="atributoQuarto">Suite Standard</h5>
+
                     </div>
                     <div class="input-field col s6 l4">
-                      <input disabled type="number" id="vagasQuarto" value="2">
-                      <label for="vagasQuarto">Vagas por Quarto</label>
+                      <h4 class="label">Vagas por Quarto</h4>
+                      <h5  value="2" class="atributoQuarto">2 vagas</h5>
                     </div>
                     <div class="input-field col s12 l12">
-                      <textarea disabled id="obsQuarto" class="materialize-textarea">Ar Condicionado, TV, Frigobar, WiFi
-                      </textarea>
-                      <label for="obsQuarto">Observações</label>
+                      <h4 class="label">Observações</h4>
+                      <h5  class="atributoQuarto">Ar Condicionado, TV, Frigobar, WiFi</h5>
                     </div>
 
                     <!--<button class="btn right" type="submit" name="action">Sair Deste Quarto e Escolher Outro</button>-->
@@ -92,20 +105,22 @@
                   </div>
                 </div>
                 <div class="row" id="quartosDisponiveis[j]">
+                  <div class="divider"></div>
+                  <h4 class="header">Quartos Disponíveis </h4>
                   <div class="container">
                     <form>
-                      <div *ngFor="let numero of quarto[j].numQuarto; let i = index">
-                        <div class="col l3 m3 s6">
-                          <div class="card-panel modal-trigger grey lighten-2" href="#quarto">
-                            <!--<input [id]="numQuarto[i]" type="checkbox" class="filled-in" [name]="'numero + i'" ngModel/>
-                            <label [for]="numQuarto[i]">Quarto {{numero}}</label>-->
-                            <input [name]="quartos" type="radio" [id]="quarto[j].numQuarto[i]" [value]="quarto[j].numQuarto[i]" ngModel/>
-                            <label [for]="quarto[j].numQuarto[i]">Quarto {{numero}}</label>
+                      <div class="row">
+                        <div *ngFor="let numero of quarto[j].numQuarto; let i = index">
+                          <div class="col l3 m4 s6">
+                            <div class="card-panel modal-trigger grey lighten-2" href="#quarto[j]">
+                              <input [name]="quartos" type="radio" [id]="quarto[j].numQuarto[i]" [value]="quarto[j].numQuarto[i]" ngModel/>
+                              <label [for]="quarto[j].numQuarto[i]">Quarto {{numero}}</label>
+                            </div>
                           </div>
                         </div>
                       </div>
-                      <div class="row">
-                        <button class="btn right" type="submit" name="action">Escolher Este Quarto</button>
+                      <div class="row center">
+                        <button class="btn-large" type="submit" name="action">Escolher Este Quarto</button>
                       </div>
                     </form>
                   </div>

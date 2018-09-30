@@ -118,3 +118,23 @@ ul li .indicator {
 label {
   color: black;
 }
+.dadosHotel .card-panel{
+  border-radius: 20px;
+  margin: 3%;
+}
+
+.dadosHotel .card-panel h5 strong {
+  font-weight: 500;
+}
+
+.label {
+  font-size: 1em;
+  font-weight: bold;
+  font-family: 'Roboto';
+}
+
+.atributoQuarto {
+  text-align: left;
+  font-family: 'Roboto';
+  color: #424242;
+}
