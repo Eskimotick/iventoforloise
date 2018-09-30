@@ -16,8 +16,8 @@ class CreatePacoteAtividadesTable extends Migration
      });
 
      Schema::table('pacote_atividades', function (BluePrint $table) {
-        $table->foreign('pacote_id')->references('id')->on('pacotes')->onDelete('set null');
-        $table->foreign('atividade_id')->references('id')->on('atividades')->onDelete('set null');
+        $table->foreign('pacote_id')->references('id')->on('pacotes')->onDelete('cascade');
+        $table->foreign('atividade_id')->references('id')->on('atividades')->onDelete('cascade');
      });
   }
 
