@@ -23,6 +23,7 @@ export class AtividadesComponent implements OnInit {
   	id: 0, title: 'Evento 1', start: '2018-09-04', end: '2018-09-11', rendering: 'background'
   };
 
+  // pacotes do evento
   pacotes: any[] = [];
 
   // para pegar a atividade que foi clicada
@@ -76,21 +77,31 @@ export class AtividadesComponent implements OnInit {
 
   // inicializa o evento e as atividades do calendário
   initEvents(atividadesJson) {
-    let atividade: any = {};
-  	this.ucCalendar.fullCalendar('renderEvent', this.evento, true);
-    for(let i = 0; i < atividadesJson.length; i++) {
-      atividade.id = atividadesJson[i].id;
-      atividade.title = atividadesJson[i].titulo;
-      atividade.start = moment(atividadesJson[i].data_inicio).format('YYYY-MM-DDTHH:mm');
-      atividade.end = moment(atividadesJson[i].data_fim).format('YYYY-MM-DDTHH:mm');
-      atividade.palestrante = atividadesJson[i].palestrante;
-      atividade.descricao = atividadesJson[i].descricao;
-      atividade.status = atividadesJson[i].status;
-      atividade.qntdVagas = atividadesJson[i].vagas;
-      this.ucCalendar.fullCalendar('renderEvent', atividade, true);
+    if(this.ucCalendar) {
+      let atividade: any = {};
+      atividade.pacotes = [];
+    	this.ucCalendar.fullCalendar('renderEvent', this.evento, true);
+      for(let i = 0; i < atividadesJson.length; i++) {
+        atividade.id = atividadesJson[i].ID;
+        atividade.title = atividadesJson[i].titulo;
+        atividade.start = moment(atividadesJson[i].data_inicio).format('YYYY-MM-DDTHH:mm');
+        atividade.end = moment(atividadesJson[i].data_fim).format('YYYY-MM-DDTHH:mm');
+        atividade.palestrante = atividadesJson[i].palestrante;
+        atividade.descricao = atividadesJson[i].descricao;
+        atividade.status = atividadesJson[i].status;
+        atividade.qntdVagas = atividadesJson[i].vagas;
+        for(let j = 0; j < atividadesJson[i].pacotes.length; j++)
+          atividade.pacotes.push(atividadesJson[i].pacotes[j].id);
+        this.ucCalendar.fullCalendar('renderEvent', atividade, true);
+      }
+    } else {
+      setTimeout(() => {
+        this.initEvents(atividadesJson);
+      }, 500);
     }
   }
 
+  // se o usuario clicar num dia vazio ele abre uma modal de criar atividade
   dayClick(atividade) {
     this.createClick++;
     this.createDate = moment(atividade.date).format('YYYY-MM-DD');
@@ -105,6 +116,7 @@ export class AtividadesComponent implements OnInit {
   	this.updateAtividade = atividade.event;
   }
 
+  // renderiza uma atividade nova no calendário
   createAtividade(atividade) {
     this.ucCalendar.fullCalendar('renderEvent', atividade, true);
     console.log(atividade);
@@ -112,20 +124,16 @@ export class AtividadesComponent implements OnInit {
 
   // atualiza se a atividade for movida para uma data dentro do evento, senão não deixa e emite um toast de erro
   updateEvent(atividade) {
-    let i = this.atividade.findIndex(at => at.id == atividade.event.id);
 
     let start = moment(this.evento.start);
     let end = moment(this.evento.end);
 
-    let newDateStart = moment(this.atividade[i].start).add(atividade.duration);
-    let newDateEnd = moment(this.atividade[i].end).add(atividade.duration);
+    let newDateStart = moment(atividade.event.start.format());
+    let newDateEnd = moment(atividade.event.end.format());
 
-    if((newDateStart.diff(start, 'hours') >= 0) && (end.diff(newDateEnd, 'hours') >= 0)) {
-    	this.atividade[i].start = newDateStart.format('YYYY-MM-DDTHH:mm:ss');
-    	this.atividade[i].end = newDateEnd.format('YYYY-MM-DDTHH:mm:ss');
-    } else {
-    	atividade.event.start = moment(this.atividade[i].start);
-    	atividade.event.end = moment(this.atividade[i].end);
+    if((newDateStart.diff(start, 'hours') < 0) || (end.diff(newDateEnd, 'hours') < 0)) {
+    	atividade.event.start = moment(atividade.event.start.subtract(atividade.duration).format());
+    	atividade.event.end = moment(atividade.event.end.subtract(atividade.duration).format());
     	this.ucCalendar.fullCalendar('updateEvent', atividade.event);
     	this.errorUpdateToast.emit('toast');
     }
@@ -133,7 +141,11 @@ export class AtividadesComponent implements OnInit {
 
   // apaga a atividade do calendário
   deleteAtividade(eventId) {
-    this.ucCalendar.fullCalendar('removeEvents', eventId);
+    this.atividadesService.delete(eventId).subscribe(
+      (res) => {
+        console.log(res);
+        this.ucCalendar.fullCalendar('removeEvents', eventId);
+    });
   }
 
   // atualiza o titulo da atividade no calendário

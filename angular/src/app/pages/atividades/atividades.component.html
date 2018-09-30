@@ -13,7 +13,7 @@
 		<app-create-atividade-modal [evento]="evento.title" [pacotes]="pacotes" [createClick]="createClick" (createAtividadeEmitter)="createAtividade($event)"></app-create-atividade-modal>
 
 		<!-- Uso do fullcalendar -->
-		<div *ngIf="calendarOptions">
+		<div *ngIf="calendarOptions" class="calendar-container">
 			<ng-fullcalendar #ucCalendar [options]="calendarOptions" (eventClick)="eventClick($event.detail)" (eventDrop)="updateEvent($event.detail)" (eventResize)="updateEvent($event.detail)" (dayClick)="dayClick($event.detail)">
 			</ng-fullcalendar>
 		</div>

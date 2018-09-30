@@ -47,7 +47,7 @@ export class AtividadesService {
   }
 
   delete(id):Observable<any> {
-    return this.http.delete<any>(environment.api_url + 'admin/atividades/', this.headers).pipe(
+    return this.http.delete<any>(environment.api_url + 'admin/atividades/' + id, this.headers).pipe(
       tap(() => this.atividades = null
     ));
   }

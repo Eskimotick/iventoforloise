@@ -70,9 +70,9 @@ export class CreateAtividadeModalComponent implements OnInit, OnChanges {
     this.atividadesService.store(atividade, pacoteString.string).subscribe(
       (res) => {
         console.log(res);
+        this.createAtividadeEmitter.emit(atividade);
+        this.createAtividadeModal.emit({action: 'modal', params: ['close']});
     });
-    this.createAtividadeEmitter.emit(atividade);
-    this.createAtividadeModal.emit({action: 'modal', params: ['close']});
   }
 
 }

@@ -33,7 +33,7 @@ export class UpdateAtividadeModalComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
-		console.log(this.atividadeClick, this.updateAtividade);
+		console.log(this.atividadeClick, this.updateAtividade, this.pacotes);
     if(this.atividadeOnEdit)
       this.atividadeOnEdit = '';
     if(this.descriptionOnEdit)
