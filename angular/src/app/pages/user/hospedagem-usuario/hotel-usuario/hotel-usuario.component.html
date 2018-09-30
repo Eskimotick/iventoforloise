@@ -97,8 +97,8 @@
                       <div *ngFor="let numero of numQuarto; let i = index">
                         <div class="col l2 m3 s6">
                           <div class="card-panel modal-trigger grey lighten-2" href="#quarto">
-                            <input [id]="numQuarto" type="checkbox" class="filled-in" [name]="'numero + i'" ngModel/>
-                            <label [for]="numQuarto">Quarto {{numero}}</label>
+                            <input [id]="numQuarto[i]" type="checkbox" class="filled-in" [name]="'numero + i'" ngModel/>
+                            <label [for]="numQuarto[i]">Quarto {{numero}}</label>
                           </div>
                         </div>
                       </div>
