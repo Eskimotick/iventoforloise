@@ -25,6 +25,10 @@ import { NavadminComponent } from './components/navadmin/navadmin.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { ContainerAdminComponent } from './components/container-admin/container-admin.component';
 import {HotelAdminComponent} from './pages/admin/admin-hospedagem/hotel-admin/hotel-admin.component';
+import {AddHotelComponent} from './pages/admin/admin-hospedagem/add-hotel/add-hotel.component'; // modal que cria hoteis
+import {ModalQuartosComponent} from './pages/admin/admin-hospedagem/hotel-admin/modal-quartos/modal-quartos.component'; //modal que gerencia quartos
+import {ModalEditarComponent} from './pages/admin/admin-hospedagem/hotel-admin/modal-editar/modal-editar.component'; //modal que edita hotel
+import {ModalDeletarComponent} from './pages/admin/admin-hospedagem/hotel-admin/modal-deletar/modal-deletar.component'; //modal que deleta hotel
 
 /* páginas admin */
 import { AdminUsuariosComponent } from './pages/admin/admin-usuarios/admin-usuarios.component';
@@ -85,12 +89,16 @@ export function tokenGetter() {
     HospedagemUsuarioComponent,
     HotelAdminComponent,
     HotelUsuarioComponent,
-    PainelUsuarioComponent, 
+    PainelUsuarioComponent,
     AtividadesComponent,
     UpdateAtividadeModalComponent,
     CreateAtividadeModalComponent,
-    DataAtividadePipe, 
-    HoraAtividadePipe
+    DataAtividadePipe,
+    HoraAtividadePipe,
+    AddHotelComponent,
+    ModalQuartosComponent,
+    ModalEditarComponent,
+    ModalDeletarComponent
   ],
   imports: [
     AppRoutingModule,
@@ -105,8 +113,8 @@ export function tokenGetter() {
     NgxPaginationModule, // https://www.npmjs.com/package/ngx-pagination
     TooltipModule, // https://www.npmjs.com/package/ngx-tooltip
     QuillModule, // https://github.com/KillerCodeMonkey/ngx-quill
-    FullCalendarModule, 
-    OwlDateTimeModule, 
+    FullCalendarModule,
+    OwlDateTimeModule,
     OwlNativeDateTimeModule
   ],
   providers: [

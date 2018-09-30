@@ -11,7 +11,7 @@ export class HospedagemUsuarioComponent implements OnInit {
     nomeHotel: 'Ibis', 
     enderecoHotel: 'Av. Beira Mar, 238', 
     descricaoHotel: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec hendrerit auctor nisi, a cursus elit laoreet eu. Nunc felis ante, lacinia in ante at, feugiat convallis ex. ',
-  }];
+  }, []];
 
   constructor() { }
 

@@ -10,25 +10,29 @@ export class HotelAdminComponent implements OnInit {
 
   @Input('hotel') hotel: any;
   @Input('hotelFoto') hotelFoto: string;
+
   @Output() deleteHotelEmitter = new EventEmitter<string>();
-  
+  @Output() editHotelEmitter = new EventEmitter<string>();
+  @Output() getRoomsEmitter = new EventEmitter<string>();
+
 
   pacotes: string[] = [
     'Pacote Standard', 'Pacote Master', 'Pacote Simples'
   ]
-  
+
   imagem: any = '';
-  
+
   file: File = new File([""], "filename");
-  
+
   quartos: any[] = [{
+    id: 1,
+    idHospedagem: 1,
     tipoQuarto: 'Suite Standard',
     numeroQuartosDisponiveis: 3,
     numeroVagasPorQuarto: 2,
     numerosDosQuartos: [101, 102, 103, 104, []],
-    obsQuarto: 'Lorem Ipsum Dolor Sit Amet ...', 
-    pacotes: '',  
-    
+    obsQuarto: 'Lorem Ipsum Dolor Sit Amet ...',
+    pacotes: '',
   }]
 
 
@@ -56,7 +60,16 @@ export class HotelAdminComponent implements OnInit {
     myReader.readAsDataURL(this.file);
   }
 
-  deletaHotel() {
-    this.deleteHotelEmitter.emit(this.hotel.nomeHotel);
+  openDeleteModal() {
+    this.deleteHotelEmitter.emit(this.hotel.id);
   }
+
+  editHotelEmitter() {
+    this.editHotelEmitter.emit(this.hotel.id);
+  }
+
+  openRoomsModal() {
+    this.getRoomsEmitter.emit(this.hotel.id);
+  }
+
 }
