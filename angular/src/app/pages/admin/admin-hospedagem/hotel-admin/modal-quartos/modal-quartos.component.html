@@ -1,0 +1,224 @@
+<div id="modalQuartos[i]" class="modal" materialize="modal">
+  <div class="modal-content">
+    <div class="header">
+      <div class="col s11">
+        <h4> Quartos - {{hotel.nomeHotel}}</h4>
+      </div>
+      <div class="col s1">
+        <i class="material-icons modal-close right">
+          close
+        </i>
+      </div>
+    </div>
+    <div class="row conteudo">
+          <div class="row tabs-row">
+              <div class="col s12">
+                <ul class="tabs"  materialize="tabs">
+                  <li class="tab col l6"><a href="#novoQuarto">Cadastrar Quarto</a></li>
+                  <li class="tab col l6"><a href="#cadastrados">Quartos Cadastrados</a></li>
+                </ul>
+              </div>
+          </div>
+          <div id="novoQuarto">
+            <div class="row">
+              <div class="col s12 l6 novoQuarto">
+                  <form>
+                    <div class="row">
+                      <h5>Informações</h5>
+                      <div class="input-field col s12 l8">
+                        <input type="text" id="nomeQuarto" name="nomeQuarto" ngModel>
+                        <label for="nomeQuarto">Nome/Tipo de Quarto</label>
+                      </div>
+                      <div class="input-field col s6 l2">
+                        <input type="number" id="numeroQuarto" name="numeroQuarto" ngModel>
+                        <label for="numeroQuarto">Número</label>
+                      </div>
+                      <div class="input-field col s6 l2">
+                        <input type="number" id="vagasQuarto" name="vagasQuarto" ngModel>
+                        <label for="vagasQuarto">Vagas</label>
+                      </div>
+                      <div class="input-field col s12 l12">
+                        <textarea id="obsQuarto" class="materialize-textarea" name="obsQuartos" ngModel></textarea>
+                        <label for="obsQuarto">Observações</label>
+                      </div>
+                      <div class="col l12">
+                        <h5>Atribuir aos Pacotes</h5>
+                        <!-- checkboxes pacotes .....................-->
+                        <div class="row">
+                          <div *ngFor="let pacote of pacotes; let i = index">
+                            <div class="col l6">
+                              <input [id]="pacote" type="checkbox" class="filled-in" [name]="'pacote'+i" ngModel/>
+                              <label [for]="pacote">{{pacote}}</label>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- fim checkboxes pacotes .....................-->
+                      </div>
+                    </div>
+                  </form>
+                </div>
+
+              <div class="col l6 s12">
+                  <div class="col l12 s12 file-field input-field">
+                      <div class="btn">
+                        <span>Fotos</span>
+                        <input type="file" (change)="onFileSelection($event)">
+                      </div>
+                      <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text">
+                      </div>
+                    </div>
+                    <img [src]="imagem" class="responsive-img">
+              </div>
+              <button class="btn-large right" type="submit" name="action">Cadastrar Quarto</button>
+            </div>
+            <div id="cadastrados" class="col s12">
+              <div class="row">
+                <h5>Quartos Cadastrados</h5>
+                <div class="row">
+                  <h6>Vagas Disponíveis</h6>
+                  <ul materialize="collapsible" class="collapsible" data-collapsible="accordion" [materializeParams]="params" [materializeActions]="actions1">
+                    <li>
+                      <div class="collapsible-header">Suite Standard
+                        <!-- badges ................................................... -->
+                        <span class="new badge blue-grey lighten-1 right" data-badge-caption="vagas por quarto">2</span>
+                        <span class="new badge blue-grey darken-2 right" data-badge-caption="quartos restantes">2</span>
+                      </div>
+
+                    <div class="collapsible-body">
+                      <div class="row center acoesQuartos">
+                        <a class="btn-large">Editar</a>
+                        <a class="btn-large">Deletar</a>
+                      </div>
+                      <div class="container listaQuartos">
+                        <div class="row">
+                          <div class="col l6 s12">
+                              <div class="card-panel modal-trigger grey lighten-2" href="#quarto">
+                                Quarto 102
+                              </div>
+                          </div>
+                          <div class="col l6 s12">
+                              <div class="card-panel modal-trigger grey lighten-2" href="#quarto">
+                                  Quarto 111
+                               </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- transformar em modal -->
+                      <div class="modal z-depth-5" id="quarto" materialize="modal">
+                        <div class="header">
+                          <div class="col s11">
+                              <h4>Quarto [nº do quarto]</h4>
+                          </div>
+                          <div class="col s1">
+                              <i class="material-icons modal-close right">
+                                close
+                              </i>
+                          </div>
+                        </div>
+                        <div class="modal-content">
+                          <div class="row">
+                            <div class="col l5">
+                              <img src="./assets/img/hoteis/hotel-room.jpg" class="foto-quarto responsive-img">
+                              <!-- conteudo do collapsible buga quando colocamos a imagem dentro de uma col sem uma row por fora-->
+                              <div class="col l12 s12 checkboxesPacotes">
+                                <h5>Atribuir aos Pacotes</h5>
+                                <div class="col l12 s12">
+                                  <label>
+                                    <input type="checkbox" class="filled-in" />
+                                    <span>Pacote Master</span>
+                                  </label>
+                                </div>
+                                <div class="col l12 s12">
+                                  <label>
+                                    <input type="checkbox" class="filled-in" />
+                                    <span>Pacote Executivo Plus</span>
+                                  </label>
+                                </div>
+                                <div class="col l12 s12">
+                                  <label>
+                                    <input type="checkbox" class="filled-in" />
+                                    <span>Pacote Executivo</span>
+                                  </label>
+                                </div>
+                                <div class="col l12 s12">
+                                  <label>
+                                    <input type="checkbox" class="filled-in" />
+                                    <span>Pacote Simples</span>
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col l7 dadosQuarto">
+                              <div class="input-field col s12 l8">
+                                <input type="text" id="nomeQuarto" value="Suite Standard">
+                                <label for="nomeQuarto">Nome/Tipo de Quarto</label>
+                              </div>
+                              <div class="input-field col s6 l2">
+                                <input type="number" id="numeroQuarto" value="115">
+                                <label for="numeroQuarto">Número</label>
+                              </div>
+                              <div class="input-field col s6 l2">
+                                <input type="number" id="vagasQuarto" value="2">
+                                <label for="vagasQuarto">Vagas</label>
+                              </div>
+                              <div class="input-field col s12 l12">
+                                <textarea id="obsQuarto" class="materialize-textarea">Ar Condicionado, TV, Frigobar, WiFi
+                                </textarea>
+                                <label for="obsQuarto">Observações</label>
+                              </div>
+                              <div class="input-field col s12 l12">
+                                <input type="text" id="ocupantes">
+                                <label for="ocupantes">Ocupantes</label>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="row center">
+                          <button class="btn-flat" type="submit" name="action">Deletar Quarto</button>
+                          <button class="btn" type="submit" name="action">Salvar Alterações</button>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+
+              <!--ul materialize="collapsible" class="collapsible" data-collapsible="accordion">
+                <li *ngFor="let value of values">
+                  <div class="collapsible-header">{{value}}</div>
+                  <div class="collapsible-body"><p>{{value}}</p></div>
+                </li>
+              </ul>-->
+              </div>
+              <div class="row ">
+                <h6>Lotação Esgotada</h6>
+                <ul materialize="collapsible" class="collapsible" data-collapsible="accordion" [materializeParams]="params" [materializeActions]="actions1">
+                  <li>
+                    <div class="collapsible-header">Quarto Triplo Standard</div>
+                    <div class="collapsible-body">
+                      <div class="row">
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="collapsible-header">Quarto Compartilhado Standard</div>
+                    <div class="collapsible-body">
+                      <div class="row">
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+    </div>
+  </div>
+  </div>
+  <div class="modal-footer">
+    <div class="divider"></div>
+    <button  class="modal-close waves-effect btn-flat">Sair</button>
+    <!--<input type="submit" class="btn modal-close" value="Salvar Alterações">-->
+
+  </div>
+</div>

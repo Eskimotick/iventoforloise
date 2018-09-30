@@ -11,8 +11,9 @@ export class AdminHospedagemComponent implements OnInit {
   file: File = new File([""], "filename");
 
   hoteis: any[] = [{
-    nomeHotel: 'Ibis', 
-    enderecoHotel: 'Av. Beira Mar, 238', 
+    id: 1,
+    nomeHotel: 'Ibis',
+    enderecoHotel: 'Av. Beira Mar, 238',
     descricaoHotel: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec hendrerit auctor nisi, a cursus elit laoreet eu. Nunc felis ante, lacinia in ante at, feugiat convallis ex. ',
   }];
 
@@ -55,7 +56,10 @@ export class AdminHospedagemComponent implements OnInit {
   }
 
   deletaHotel(hotel) {
-    let i = this.hoteis.findIndex(ho => ho.nomeHotel  == hotel);
+    let i = this.hoteis.findIndex(ho => ho.id == hotel);
     this.hoteis.splice(i, 1);
   }
-} 
+
+
+
+}

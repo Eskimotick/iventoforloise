@@ -151,10 +151,10 @@ input:not([type]), input[type="email" i], input[type="number" i], input[type="pa
 /* auxiliares ........*/
 /*labels */
 .aux-login label {
-  font-size: 0.83em;
+  font-size: 0.86em;
   color: white;
-  margin-top: 2.1vh;
-  font-weight: 300;
+  margin-top: 2.8vh;
+  font-weight: 400;
 }
 
 /* btn flat */
