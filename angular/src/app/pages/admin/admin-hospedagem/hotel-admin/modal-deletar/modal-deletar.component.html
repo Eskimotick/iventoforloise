@@ -1,0 +1,17 @@
+<div id="modalDeletar[i]" class="modal" materialize="modal">
+  <div class="col offset-s11 s1">
+    <i class="material-icons modal-close right">
+      close
+    </i>
+  </div>
+  <div class="modal-content">
+    <h4>Deseja mesmo deletar {{hotel.nomeHotel}}?</h4>
+  </div>
+  <div class="modal-footer">
+    <div class="divider"></div>
+    <div id="deletaHotel">
+      <button  class="modal-close waves-effect btn-flat">Não</button>
+      <input type="submit" class="btn modal-close" value="Sim, deletar" (click)="deletaHotel()">
+    </div>
+    </div>
+</div>

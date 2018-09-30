@@ -7,64 +7,14 @@
           </div>
           <div class="row">
             <div class="row center">
-              <button data-target="addHotel" class="btn btn-large modal-trigger" href="#addHotel">Adicionar Hotel </button>
+              <button data-target="addHotel" class="btn btn-large modal-trigger" (click)="openAddHotel()">Adicionar Hotel </button>
             </div>
-            <!-- modal adicionar hotel .......................................................................................-->
-            <div id="addHotel" class="modal" materialize="modal">
-              <form #hotel="ngForm" (ngSubmit)="onSubmit(hotel)">
-                <div class="modal-content">
-                  <div class="header">
-                    <div class="col s11">
-                      <h4> Adicionar Hotel</h4>
-                    </div>
-                    <div class="col s1">
-                      <i class="material-icons modal-close right">
-                        close
-                      </i>
-                    </div>
-                  </div>
-                  <div class="row conteudo">
-                    <div class="col l6 dadosHotel">
-                      <h5>Informações</h5>
-                      <div class="input-field col s12 l12">
-                        <input type="text" id="nomeHotel" name="nomeHotel" ngModel>
-                        <label for="nomeHotel">Nome do Hotel</label>
-                      </div>
-                      <div class="input-field col s12 l12">
-                        <input type="text" id="enderecoHotel" name="enderecoHotel" ngModel>
-                        <label for="enderecoHotel">Endereço</label>
-                      </div>
-                      <div class="input-field col s12 l12">
-                        <textarea id="descricaoHotel" class="materialize-textarea" name="descricaoHotel" ngModel></textarea>
-                        <label for="descricaoHotel">Descrição</label>
-                      </div>
-                      <div class="col l12 s12">
-                          <div class="row file-field input-field">
-                              <div class="btn">
-                                <span>File</span>
-                                <input type="file" (change)="onFileSelection($event)">
-                              </div>
-                              <div class="file-path-wrapper">
-                                <input class="file-path validate" type="text">
-                              </div>
-                          </div>           
-                      </div>
-                    </div>
-                    <!-- pre visualização foto do hotel-->
-                    <div class="col l6 s12" *ngIf="imagem">
-                      <img [src]="imagem" class="responsive-img">
-                    </div>
-                    </div>
-                  </div>
-                  
-                <div class="modal-footer">
-                  <div class="divider"></div>
-                  <a href="#!" class="modal-close waves-effect btn-flat">Cancelar</a>
-                  <input type="submit" class="btn modal-close" value="Adicionar Hotel">
+            <!-- Modais da CRUD de Hotéis -->
 
-                </div>
-              </form>
-            </div>
+            <app-modal-quartos></app-modal-quartos>
+            <app-modal-deletar></app-modal-deletar>
+            <app-modal-editar></app-modal-editar>
+
             <div class="row row-cards-hoteis">
                 <div *ngFor="let hotel of hoteis; let i = index">
                   <app-hotel-admin [hotel]="hotel" [hotelFoto]="hotelFoto[i]" (deleteHotelEmitter)="deletaHotel($event)"></app-hotel-admin>

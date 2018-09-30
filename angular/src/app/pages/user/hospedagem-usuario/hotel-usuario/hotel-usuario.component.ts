@@ -7,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HotelUsuarioComponent implements OnInit {
 
+  numQuarto: any[] = [
+     102, 103, 104, 105, 106
+  ]
+
+
 
   usuario: any[] = [{
     nomeUsuario: 'Usuário',
-    
+
 
   }]
 
@@ -23,9 +28,9 @@ export class HotelUsuarioComponent implements OnInit {
     numeroQuarto: 42,
     numeroVagasPorQuarto: 2,
     numeroQuartosRestantes: 3,
-    obsQuartos: 'Lorem Ipsum Dolor Sit Amet ...', 
+    obsQuartos: 'Lorem Ipsum Dolor Sit Amet ...',
     pacotes: ''
-    
+
   }]
 
   constructor() { }
