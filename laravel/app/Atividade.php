@@ -43,8 +43,8 @@ class Atividade extends Model
     $this->data_inicio = $request->data_inicio;
     $this->data_fim = $request->data_fim;
     $this->vagas = $request->vagas;
-    $this->vagas_ocupadas = $request->vagas_ocupadas;
-    $this->status = $request->status;
+    //$this->vagas_ocupadas = $request->vagas_ocupadas;
+    //$this->status = $request->status;
     //lógica para o upload de imagens.
     if(!Storage::exists('localPhotos/'))
     {
@@ -106,14 +106,14 @@ class Atividade extends Model
     {
       $this->vagas = $request->vagas;
     }
-    if($request->vagas_ocupadas)
+    /*if($request->vagas_ocupadas)
     {
       $this->vagas_ocupadas = $request->vagas_ocupadas;
-    }
-    if($request->status)
+    }*/
+    /*if($request->status)
     {
       $this->status = $request->status;
-    }
+    }*/
     if($request->img_path)
     {
       Storage::delete('localPhotos/'.$atividade->img_path);

@@ -161,9 +161,14 @@ class Quarto extends Model
 
     // ocupa uma vaga no quarto que chama a função
     public function preencheVaga(){
+        $hospedagem = Hospedagem::find($this->hospedagem_id);
+
         if($this->vagas_ocupadas < $this->vagas ){
             $this->vagas_ocupadas++;
             $this->save();
+            
+            $hospedagem->vagas_ocupadas++;
+            $hospedagem->save();
         }
         else{
             return 'todas as vagas deste quarto estão ocupadas no momento.';
@@ -172,8 +177,13 @@ class Quarto extends Model
 
     //remove uma vaga do quarto que chama a função
     public function removeVaga(){
+        $hospedagem = Hospedagem::find($this->hospedagem_id);
+
         $this->vagas_ocupadas--;
         $this->save();
+        
+        $hospedagem->vagas_ocupadas--;
+        $hospedagem->save();
     }
 
     // função para admin alocar o user no quarto

@@ -9,7 +9,7 @@ export class HotelUsuarioComponent implements OnInit {
 
   numQuarto: any[] = [
      102, 103, 104, 105, 106
-  ]
+] //testando - na vdd deve ser elemento do tipo de quarto
 
 
 
