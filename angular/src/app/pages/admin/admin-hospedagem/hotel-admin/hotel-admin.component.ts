@@ -61,7 +61,7 @@ export class HotelAdminComponent implements OnInit {
   }
 
   openAddHotel() {
-    this.addHotelEmitter.emit(this.hotel.id);
+    this.HotelEmitter.emit(this.hotel.id);
   }
 
   openDeleteModal() {
