@@ -10,7 +10,7 @@ import { environment } from '../../../environments/environment.prod';
 })
 export class PacotesService {
 
-	pacotes: Observable<any>;
+	private pacotes: Observable<any>;
 	private token: string;
 	private headers;
 

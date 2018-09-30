@@ -5,6 +5,7 @@ import { MaterializeAction } from 'angular2-materialize';
 import * as moment from 'moment'; 
 
 import { PacotesService } from '../../services/pacotes/pacotes.service';
+import { AtividadesService } from '../../services/atividades/atividades.service';
 
 @Component({
   selector: 'app-atividades',
@@ -24,16 +25,6 @@ export class AtividadesComponent implements OnInit {
 
   pacotes: any[] = [];
 
-  atividade: any[] = [
-		{ id: 1, title: 'Cagar no Pau', start: '2018-09-05T12:00:00', end: '2018-09-05T18:00:00', 
-		descricao: 'Atividade que faço com qualquer projeto', palestrante: 'Shakira', qntdVagas: 31, status: false,
-		pacotes: [0, 1], image: 'https://www.planwallpaper.com/static/images/general-night-golden-gate-bridge-hd-wallpapers-golden-gate-bridge-wallpaper.jpg' },
-
-		{ id: 2, title: 'Codar Ivento', start: '2018-09-05T11:30:00', end: '2018-09-08T13:50:00', 
-		backgroundColor: 'red', borderColor: 'red', palestrante: 'Teteu', qntdVagas: 1, status: true, 
-		pacotes: [0, 1, 4] }  	
-  ]; 
-
   // para pegar a atividade que foi clicada
   updateAtividade: any;
   atividadeClick: number;
@@ -46,7 +37,7 @@ export class AtividadesComponent implements OnInit {
   createDate: string;
 
 
-  constructor(private pacotesService: PacotesService) { 
+  constructor(private pacotesService: PacotesService, private atividadesService: AtividadesService) { 
   	this.atividadeClick = 0;
     this.createClick = 0;
     this.createDate = '';
@@ -71,19 +62,33 @@ export class AtividadesComponent implements OnInit {
 			},
 			events: []
 		};
-		this.initEvents();
     this.pacotesService.index().subscribe(
       (res) => {
         for(let i = 0; i < res.data.length; i++)
-          this.pacotes.push(res.data[i].nome);
+          this.pacotes.push(res.data[i]);
+    });
+    this.atividadesService.index().subscribe(
+      (res) => {
+        console.log(res);
+        this.initEvents(res.data);
     });
   }
 
   // inicializa o evento e as atividades do calendário
-  initEvents() {
-  	this.calendarOptions.events.push(this.evento);
-  	for(let i = 0; i < this.atividade.length; i++)
-  		this.calendarOptions.events.push(this.atividade[i]);
+  initEvents(atividadesJson) {
+    let atividade: any = {};
+  	this.ucCalendar.fullCalendar('renderEvent', this.evento, true);
+    for(let i = 0; i < atividadesJson.length; i++) {
+      atividade.id = atividadesJson[i].id;
+      atividade.title = atividadesJson[i].titulo;
+      atividade.start = moment(atividadesJson[i].data_inicio).format('YYYY-MM-DDTHH:mm');
+      atividade.end = moment(atividadesJson[i].data_fim).format('YYYY-MM-DDTHH:mm');
+      atividade.palestrante = atividadesJson[i].palestrante;
+      atividade.descricao = atividadesJson[i].descricao;
+      atividade.status = atividadesJson[i].status;
+      atividade.qntdVagas = atividadesJson[i].vagas;
+      this.ucCalendar.fullCalendar('renderEvent', atividade, true);
+    }
   }
 
   dayClick(atividade) {
@@ -95,13 +100,12 @@ export class AtividadesComponent implements OnInit {
 
   // pega a atividade que foi clicada
   eventClick(atividade) {
+    console.log(atividade);
   	this.atividadeClick++;
-  	let i = this.atividade.findIndex(at => at.id == atividade.event.id);
-  	this.updateAtividade = this.atividade[i];
+  	this.updateAtividade = atividade.event;
   }
 
   createAtividade(atividade) {
-    this.atividade.push(atividade);
     this.ucCalendar.fullCalendar('renderEvent', atividade, true);
     console.log(atividade);
   }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import * as moment from 'moment';
 
@@ -11,6 +11,7 @@ import { environment } from '../../../environments/environment.prod';
 })
 export class AtividadesService {
 
+  private atividades: Observable<any>;
 	private token: string;
 	private headers;
 
@@ -21,7 +22,7 @@ export class AtividadesService {
   	};
   }
 
-  store(atividade):Observable<any> {
+  store(atividade, pacotes):Observable<any> {
   	return this.http.post<any>(environment.api_url + 'admin/atividades', {
   		'titulo': atividade.title,
   		'descricao': atividade.descricao,
@@ -30,8 +31,25 @@ export class AtividadesService {
   		'data_fim': moment(atividade.end).format('YYYY-MM-DD HH:mm:ss'),
   		'vagas': atividade.qntdVagas,
   		'vagas_ocupadas': 0,
-  		'status': atividade.status
+  		'status': atividade.status,
+      'pacotes': pacotes
   	}, this.headers);
+  }
+
+  index():Observable<any> {
+    if(this.atividades) 
+      return of(this.atividades);
+    else {
+      return this.http.get<any>(environment.api_url + 'admin/atividades/', this.headers).pipe(
+        tap(atividades => this.atividades = atividades)
+      );
+    }
+  }
+
+  delete(id):Observable<any> {
+    return this.http.delete<any>(environment.api_url + 'admin/atividades/', this.headers).pipe(
+      tap(() => this.atividades = null
+    ));
   }
 
 }

@@ -12,7 +12,7 @@ export class CreateAtividadeModalComponent implements OnInit, OnChanges {
 
 	@Input('createClick') createClick: number;
 	@Input('evento') evento: string;
-  @Input('pacotes') pacotes: string[];
+  @Input('pacotes') pacotes: any[];
 	createAtividadeModal = new EventEmitter<string|MaterializeAction>();
   @Output() createAtividadeEmitter = new EventEmitter<any>();
 
@@ -58,12 +58,16 @@ export class CreateAtividadeModalComponent implements OnInit, OnChanges {
     let atividade = atividadeForm.value;
     atividade.status = 'Aberto';
     atividade.pacotes = []; 
+    let pacoteString = { array: [], string: '' };
     for(let i = 0; i < this.checkboxMarked.length; i++) {
-      if(this.checkboxMarked[i])
+      if(this.checkboxMarked[i]) {
         atividade.pacotes.push(i);
+        pacoteString.array.push(this.pacotes[i].id);
+      }
     }
+    pacoteString.string = pacoteString.array.join(',');
     atividade.image = this.imagem;
-    this.atividadesService.store(atividade).subscribe(
+    this.atividadesService.store(atividade, pacoteString.string).subscribe(
       (res) => {
         console.log(res);
     });
