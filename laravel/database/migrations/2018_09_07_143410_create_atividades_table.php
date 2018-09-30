@@ -21,9 +21,9 @@ class CreateAtividadesTable extends Migration
             $table->string('data_inicio');
             $table->string('data_fim');
             $table->integer('vagas');
-            $table->integer('vagas_ocupadas');
+            $table->integer('vagas_ocupadas')->default(0);
             $table->string('img_path')->nullable();
-            $table->string('status');
+            $table->string('status')->default('Fechado');
             $table->timestamps();
         });
     }
