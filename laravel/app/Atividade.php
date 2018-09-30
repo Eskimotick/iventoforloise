@@ -39,7 +39,7 @@ class Atividade extends Model
   {
     $this->titulo = $request->titulo;
     $this->descricao = $request->descricao;
-    //$this->palestrante = $request->palestrante;
+    $this->palestrante = $request->palestrante;
     $this->data_inicio = $request->data_inicio;
     $this->data_fim = $request->data_fim;
     $this->vagas = $request->vagas;

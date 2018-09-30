@@ -18,7 +18,7 @@ class AtividadeResource extends JsonResource
             'ID' => $this->id,
             'titulo' => $this->titulo,
             'descricao' => $this->descricao,
-            //'palestrante' => $this->palestrante,
+            'palestrante' => $this->palestrante,
             'data_inicio' => $this->data_inicio,
             'data_fim' => $this->data_fim,
             'vagas' => $this->vagas,
