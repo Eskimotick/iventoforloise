@@ -60,6 +60,10 @@ export class HotelAdminComponent implements OnInit {
     myReader.readAsDataURL(this.file);
   }
 
+  openAddHotel() {
+    this.HotelEmitter.emit(this.hotel.id);
+  }
+
   openDeleteModal() {
     this.deleteHotelEmitter.emit(this.hotel.id);
   }

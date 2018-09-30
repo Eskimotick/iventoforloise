@@ -24,6 +24,7 @@ class AtividadeResource extends JsonResource
             'vagas' => $this->vagas,
             'vagas_ocupadas' => $this->vagas_ocupadas,
             'status' => $this->status,
+            'img' => base64_encode(file_get_contents(storage_path('app/localPhotos/'.$this->img_path))),
             'pacotes' => $this->pacotes
         ];
     }

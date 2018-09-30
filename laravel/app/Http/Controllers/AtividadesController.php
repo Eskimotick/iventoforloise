@@ -99,6 +99,7 @@ class AtividadesController extends Controller
     {
       $atividade = Atividade::findOrFail($id);
       $filePath = storage_path('app/localPhotos/'.$atividade->img_path);
+
       return response()->download($filePath, $atividade->img_path);
     }
 
