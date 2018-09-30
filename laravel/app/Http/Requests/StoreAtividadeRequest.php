@@ -30,8 +30,8 @@ class StoreAtividadeRequest extends FormRequest
       'data_inicio' => $formato_data,
       'data_fim' => $formato_data,
       'vagas' => 'required',
-      'vagas_ocupadas' => 'required',
-      'status' => 'required',
+      //'vagas_ocupadas' => 'required',
+      //'status' => 'required',
       'pacotes' => 'required'
     ];
   }
@@ -48,8 +48,8 @@ class StoreAtividadeRequest extends FormRequest
        'data_fim.required' => 'Entre com a data e o horário do fim da atividade.',
        'data_fim.regex' => 'A data deve estar no formato AAAA-MM-DD HH:MM:SS.',
        'vagas.required' => 'Diga quantas vagas estão disponíveis para a atividade.',
-       'vagas_ocupadas.required' => 'Entre com a quantidade de vagas ocupadas.',
-       'status.required' => 'Entre com o status da atividade.',
+       //'vagas_ocupadas.required' => 'Entre com a quantidade de vagas ocupadas.',
+       //'status.required' => 'Entre com o status da atividade.',
        'pacotes.required' => 'É necessário pertencer a pelo menos um pacote',
      ];
    }

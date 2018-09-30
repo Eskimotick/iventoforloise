@@ -60,7 +60,9 @@ import { LoginComponent } from './pages/login/login.component';
 import { CadastroComponent } from './pages/cadastro/cadastro.component';
 import { environment } from '../environments/environment';
 
-import { AuthService } from './services/auth.service';
+import { AuthService } from './services/auth/auth.service';
+import { AtividadesService } from './services/atividades/atividades.service';
+import { PacotesService } from './services/pacotes/pacotes.service';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -105,13 +107,6 @@ export function tokenGetter() {
     HttpClientModule, // http
     FormsModule, // forms
     AppRoutingModule, // rotas
-    JwtModule.forRoot({
-      config: {
-        tokenGetter: tokenGetter,
-        whitelistedDomains: [ environment.host ],
-        blacklistedRoutes: [ environment.api_url + 'auth/' ]
-      }
-    }),
     ToastrModule.forRoot(), // https://www.npmjs.com/package/ngx-toastr
     BrowserAnimationsModule,
     NgxMaskModule.forRoot(), // https://www.npmjs.com/package/ngx-mask
@@ -123,7 +118,9 @@ export function tokenGetter() {
     OwlNativeDateTimeModule
   ],
   providers: [
-    AuthService
+    AuthService,
+    AtividadesService,
+    PacotesService
   ],
   bootstrap: [AppComponent]
 })
