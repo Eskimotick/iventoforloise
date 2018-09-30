@@ -19,6 +19,21 @@ class Atividade extends Model
     'titulo', 'descricao', 'data_inicio', 'data_fim', 'vagas', 'vagas_ocupadas', 'img_path', 'status'
   ];
 
+    //retorna os pacotes relacionados a essa atividade
+    public function pacotes(){
+        return $this->belongsToMany('App\Models\Admin\Pacote', 'pacote_atividades');
+    }
+
+    //atrela um pacote para essa atividade
+    public function associaPacotes($pacotes){
+        $this->pacotes()->withTimestamps()->attach($pacotes);
+    }
+
+    //remove um pacote dessa atividade
+    public function desassociaPacotes($excluirPacotes){
+        $this->pacotes()->detach($excluirPacotes);
+    }
+
   //Função para criar novas atividades.
   public function createActivity(StoreAtividadeRequest $request)
   {
@@ -48,6 +63,9 @@ class Atividade extends Model
     $this->img_path = $imgName;
 
     $this->save();
+    $pacotes = explode(',',$request->pacotes);
+    $this->associaPacotes($pacotes);
+
   }
 
   public function enrollActivity(Atividade $atividade)
@@ -116,7 +134,49 @@ class Atividade extends Model
       file_put_contents($path,$image);
       $this->img_path = $imgName;
     }
+
+
+      //atualiza a quais pacotes o quarto pertence.
+      if($request->pacotes){
+
+          $requestPacotes = explode(',',$request->pacotes);
+          //dd($requestPacotes);
+          $qnt_pacotes = $this->pacotes()->count();
+
+          //pega todos os pacotes do pivot
+          $pacotes = $this->pacotes()->select('pacote_id')->get();
+          //transforma a collection em array só com os ids do pacote
+          $pacotes = $pacotes->pluck('pacote_id')->toArray();
+
+          if($qnt_pacotes < count($requestPacotes)){
+
+              //verifica os ids que serão adicionados a tabela pivot
+              $diferenca = array_diff($requestPacotes, $pacotes);
+              $this->associaPacotes($diferenca);
+              $this->save();
+          }
+          else{
+              //verifica os ids que serão retirados da tabela pivot
+              $diferenca = array_diff($pacotes, $requestPacotes);
+
+              //testa se existe algum id que ainda não ta na tabela
+              if(!empty($diferenca)){
+                  $this->desassociaPacotes($diferenca);
+                  $this->save();
+              }
+
+              // ##TESTAR -> verificar se vai causar algum conflito.
+              $diferenca = array_diff($requestPacotes, $pacotes);
+
+              if(!empty($diferenca)){
+                  $this->associaPacotes($diferenca);
+                  $this->save();
+              }
+
+          }
+      }
     $this->save();
+
   }
 
   // Função para deletar atividades.

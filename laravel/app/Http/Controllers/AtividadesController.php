@@ -50,6 +50,7 @@ class AtividadesController extends Controller
       {
         $nova_atividade = new Atividade;
         $nova_atividade->createActivity($request);
+
         return response()->success($nova_atividade);
       }
       else
@@ -60,13 +61,17 @@ class AtividadesController extends Controller
 
     public function update(UpdateAtividadeRequest $request, $id)
     {
+
+//        dd($request->pacotes);
       $user_logado = Auth::user();
       if($user_logado->admin == 1)
       {
+
+
         $atividade_alt = Atividade::findOrFail($id);
         $atividade_alt->updateActivity($request, $atividade_alt);
-        $this->updateAtividadePacote($atividade_alt->id);
-        return response()->success($atividade_alt);
+
+        return response()->success(Atividade::find($id));
       }
       else
       {
@@ -103,6 +108,7 @@ class AtividadesController extends Controller
       return response()->file($filePath);
     }
 
+    //Temporariamente fora de uso
     public function updateAtividadePacote($id_ativ)
     {
       $userAtividade = UsuarioAtividade::where('atividade_id', $id_ativ)->get();
