@@ -29,7 +29,7 @@ export class HotelUsuarioComponent implements OnInit {
       numQuarto: [201, 202, 203, 204, 205, 206, 207],
       obsQuarto: 'Ventilador, Frigobar, WiFi'
 
-    }
+    },
     { tipoQuarto: 'Chalé',
       CapacidadeQuarto: '4',
       numQuarto: [16, 18, 21, 22, 23, 30],

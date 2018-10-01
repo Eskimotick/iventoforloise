@@ -6,9 +6,14 @@
   margin-top: 0;
   padding-top: 0.5vh;
 }
+
+.card .card-content p {
+  color: #616161;
+}
 .card-image img {
   height: 23vh;
 }
+
 
 
 .card span {
