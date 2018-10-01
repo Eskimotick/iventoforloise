@@ -53,7 +53,7 @@
           <ul materialize="collapsible" class="collapsible" data-collapsible="accordion" [materializeParams]="params" [materializeActions]="actions1">
             <li *ngFor="let tipoQuarto of quarto; let j = index">
               <div class="collapsible-header">
-                    {{quarto[j].tipoQuarto}}
+                    {{quarto[j].tipoQuarto}} <i class="material-icons">expand_more</i>
                   <span class="new badge blue-grey lighten-1 right" data-badge-caption="vagas por quarto">
                     {{quarto[j].CapacidadeQuarto}}
                   </span>
