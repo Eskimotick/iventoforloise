@@ -56,20 +56,18 @@ export class CreateAtividadeModalComponent implements OnInit, OnChanges {
 
   onSubmit(atividadeForm) {
     let atividade = atividadeForm.value;
-    atividade.status = 'Aberto';
+    delete atividade.checkbox;
     atividade.pacotes = []; 
-    let pacoteString = { array: [], string: '' };
     for(let i = 0; i < this.checkboxMarked.length; i++) {
-      if(this.checkboxMarked[i]) {
-        atividade.pacotes.push(i);
-        pacoteString.array.push(this.pacotes[i].id);
-      }
+      if(this.checkboxMarked[i]) 
+        atividade.pacotes.push(this.pacotes[i].id);
     }
-    pacoteString.string = pacoteString.array.join(',');
-    atividade.image = this.imagem;
-    this.atividadesService.store(atividade, pacoteString.string).subscribe(
+    let pacoteString = atividade.pacotes.join(',');
+    atividade.image = this.imagem.split(',')[1];
+    this.atividadesService.store(atividade, pacoteString).subscribe(
       (res) => {
-        console.log(res);
+        atividade.id = res.data.id;
+        atividade.status = res.data.status;
         this.createAtividadeEmitter.emit(atividade);
         this.createAtividadeModal.emit({action: 'modal', params: ['close']});
     });

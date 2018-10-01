@@ -79,9 +79,10 @@ export class AtividadesComponent implements OnInit {
   initEvents(atividadesJson) {
     if(this.ucCalendar) {
       let atividade: any = {};
-      atividade.pacotes = [];
+      // atividade.pacotes = [];
     	this.ucCalendar.fullCalendar('renderEvent', this.evento, true);
       for(let i = 0; i < atividadesJson.length; i++) {
+        atividade.pacotes = [];
         atividade.id = atividadesJson[i].ID;
         atividade.title = atividadesJson[i].titulo;
         atividade.start = moment(atividadesJson[i].data_inicio).format('YYYY-MM-DDTHH:mm');
@@ -90,6 +91,7 @@ export class AtividadesComponent implements OnInit {
         atividade.descricao = atividadesJson[i].descricao;
         atividade.status = atividadesJson[i].status;
         atividade.qntdVagas = atividadesJson[i].vagas;
+        atividade.image = atividadesJson[i].img;
         for(let j = 0; j < atividadesJson[i].pacotes.length; j++)
           atividade.pacotes.push(atividadesJson[i].pacotes[j].id);
         this.ucCalendar.fullCalendar('renderEvent', atividade, true);
@@ -136,16 +138,17 @@ export class AtividadesComponent implements OnInit {
     	atividade.event.end = moment(atividade.event.end.subtract(atividade.duration).format());
     	this.ucCalendar.fullCalendar('updateEvent', atividade.event);
     	this.errorUpdateToast.emit('toast');
+    } else {
+      this.atividadesService.update(atividade.event.id, 'data', [newDateStart, newDateEnd]).subscribe(
+        (res) => {
+          console.log(res);
+      });
     }
   }
 
   // apaga a atividade do calendário
   deleteAtividade(eventId) {
-    this.atividadesService.delete(eventId).subscribe(
-      (res) => {
-        console.log(res);
-        this.ucCalendar.fullCalendar('removeEvents', eventId);
-    });
+    this.ucCalendar.fullCalendar('removeEvents', eventId);
   }
 
   // atualiza o titulo da atividade no calendário
