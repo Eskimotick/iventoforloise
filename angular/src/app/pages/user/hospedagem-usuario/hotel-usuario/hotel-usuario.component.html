@@ -1,20 +1,14 @@
 <div class="col s12 m4 l4">
   <div class="card">
     <div class="card-image">
-      <img src="./assets/img/hoteis/hotel-5.jpg" class="foto-hotel">
-      <span class="card-title nome-hotel">Hotel</span>
+        <img src="./assets/img/hoteis/hotel-5.jpg" class="foto-hotel">
+        <a class="btn-floating halfway-fab waves-effect waves-light modal-trigger" href="#infoHotel"><i class="material-icons">add</i></a>
     </div>
     <div class="card-content">
-      <div class="container fabs-card-hospedagem">
-        <div class="row center">
-          <a class="btn waves-effect waves-light modal-trigger" href="#infoHotel">
-            Mais Informações
-          </a>
-        </div>
-      </div>
-      <h5><span class="new badge blue-grey lighten-1" data-badge-caption="vagas">4</span></h5>
+      <!--<h5><span class="new badge blue-grey lighten-3" data-badge-caption="vagas">N</span></h5>-->
+      <span class="card-title nome-hotel">{{hotel.nomeHotel}}</span>
       <p class="truncate">
-          Descrição Hotel
+          {{hotel.descricaoHotel}}
       </p>
     </div>
   </div>
@@ -22,7 +16,7 @@
 <div id="infoHotel" class="modal" materialize="modal">
   <div class="header">
     <div class="col s11">
-      <h4>[Nome do Hotel]</h4>
+      <h4>{{hotel.nomeHotel}}</h4>
     </div>
     <div class="col s1">
       <i class="material-icons modal-close right">
@@ -41,18 +35,15 @@
                 <div class="card-panel grey lighten-4">
                   <h5>
                     <ul>
-                      <li><strong><i class="material-icons">location_on</i> Endereço:</strong> Rua Gal. Olímpio, 233</li>
-                      <li><strong><i class="material-icons">call</i>Telefone:</strong> (XX) 0000 - 00000</li>
+                      <li><strong><i class="material-icons">location_on</i> Endereço:</strong> {{hotel.enderecoHotel}}</li>
+                      <li><strong><i class="material-icons">call</i>Telefone:</strong> {{hotel.telefoneHotel}}</li>
                     </ul>
                   </h5>
                 </div>
             </div>
             <div class="row">
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  In efficitur interdum neque, vitae sodales felis.
-                  Fusce purus ipsum, vestibulum non urna commodo, interdum rhoncus quam.
-                  Nulla placerat maximus diam, sed molestie diam sollicitudin.
+                  {{hotel.descricaoHotel}}
                 </p>
             </div>
           </div>
@@ -62,7 +53,7 @@
           <ul materialize="collapsible" class="collapsible" data-collapsible="accordion" [materializeParams]="params" [materializeActions]="actions1">
             <li *ngFor="let tipoQuarto of quarto; let j = index">
               <div class="collapsible-header">
-                  {{quarto[j].tipoQuarto}}
+                    {{quarto[j].tipoQuarto}}
                   <span class="new badge blue-grey lighten-1 right" data-badge-caption="vagas por quarto">
                     {{quarto[j].CapacidadeQuarto}}
                   </span>
@@ -71,6 +62,7 @@
                   </span>
               </div>
               <div class="collapsible-body">
+                <!-- tabs estavam bugas, vão ficar desativadas por enquanto -->
                 <!--<div class="row tabs-row">
                     <div class="col s12">
                       <ul class="tabs"  materialize="tabs">
@@ -79,25 +71,25 @@
                       </ul>
                     </div>
                 </div>-->
-                <div class="row" id="infoQuarto[j]">
+                <div class="row">
                   <h4 class="header">Informações Sobre o Quarto </h4>
                   <div class="col l6 s12">
                     <img src="./assets/img/hoteis/hotel-room.jpg" class="foto-quarto responsive-img">
-                    <!-- conteudo do collapsible buga quando colocamos a imagem dentro de uma col sem uma row por fora-->
+
                   </div>
                   <div class="col l6 s12">
-                    <div class="input-field col s12 l8">
+                    <div class="input-field col s6 l8">
                       <h4 class="label">Nome/Tipo de Quarto</h4>
-                      <h5 value="Suite Standard" class="atributoQuarto">Suite Standard</h5>
+                      <h5 value="Suite Standard" class="atributoQuarto">{{quarto[j].tipoQuarto}}</h5>
 
                     </div>
                     <div class="input-field col s6 l4">
                       <h4 class="label">Vagas por Quarto</h4>
-                      <h5  value="2" class="atributoQuarto">2 vagas</h5>
+                      <h5  value="2" class="atributoQuarto">{{quarto[j].CapacidadeQuarto}} vagas</h5>
                     </div>
                     <div class="input-field col s12 l12">
                       <h4 class="label">Observações</h4>
-                      <h5  class="atributoQuarto">Ar Condicionado, TV, Frigobar, WiFi</h5>
+                      <h5  class="atributoQuarto">{{quarto[j].obsQuarto}}</h5>
                     </div>
 
                     <!--<button class="btn right" type="submit" name="action">Sair Deste Quarto e Escolher Outro</button>-->
@@ -105,7 +97,7 @@
                   </div>
                 </div>
                 <div class="row" id="quartosDisponiveis[j]">
-                  <div class="divider"></div>
+
                   <h4 class="header">Quartos Disponíveis </h4>
                   <div class="container">
                     <form>
@@ -113,7 +105,7 @@
                         <div *ngFor="let numero of quarto[j].numQuarto; let i = index">
                           <div class="col l3 m4 s6">
                             <div class="card-panel modal-trigger grey lighten-2" href="#quarto[j]">
-                              <input [name]="quartos" type="radio" [id]="quarto[j].numQuarto[i]" [value]="quarto[j].numQuarto[i]" ngModel/>
+                              <input name="quartos" type="radio" [id]="quarto[j].numQuarto[i]" [value]="quarto[j].numQuarto[i]" ngModel/>
                               <label [for]="quarto[j].numQuarto[i]">Quarto {{numero}}</label>
                             </div>
                           </div>

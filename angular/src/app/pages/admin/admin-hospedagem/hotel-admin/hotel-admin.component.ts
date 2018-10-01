@@ -60,7 +60,7 @@ export class HotelAdminComponent implements OnInit {
     myReader.readAsDataURL(this.file);
   }
 
-  openAddHotel() {
+  /*openAddHotel() {
     this.HotelEmitter.emit(this.hotel.id);
   }
 
@@ -74,6 +74,6 @@ export class HotelAdminComponent implements OnInit {
 
   openRoomsModal() {
     this.getRoomsEmitter.emit(this.hotel.id);
-  }
+  }*/
 
 }

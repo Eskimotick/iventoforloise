@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input  } from '@angular/core';
+import { Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-hotel-usuario',
@@ -7,12 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HotelUsuarioComponent implements OnInit {
 
+  @Input('hotel') hotel: any;
+  @Input('hotelFoto') hotelFoto: string;
 
-  hotel: Array<any> = [{
+  /*hotel: Array<any> = [{
     nomeHotel: 'Ibis',
     enderecoHotel: 'Av. Beira Mar, 238',
     descricaoHotel: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec hendrerit auctor nisi, a cursus elit laoreet eu. Nunc felis ante, lacinia in ante at, feugiat convallis ex. ',
-  }];
+  }];*/
 
   quarto: Array<any> = [
     { tipoQuarto: 'Suite Standard',
@@ -27,6 +30,12 @@ export class HotelUsuarioComponent implements OnInit {
       numQuarto: [201, 202, 203, 204, 205, 206, 207],
       obsQuarto: 'Ventilador, Frigobar, WiFi'
 
+    }
+    { tipoQuarto: 'Chalé',
+      CapacidadeQuarto: '4',
+      numQuarto: [16, 18, 21, 22, 23, 30],
+      obsQuarto: 'Ventilador, Frigobar, WiFi'
+
   }
 ]
 
@@ -34,15 +43,6 @@ export class HotelUsuarioComponent implements OnInit {
     'Pacote Standard', 'Pacote Master', 'Pacote Simples'
   ]
 
-  quartos: any[] = [{
-    tipoQuarto: 'Suite Standard',
-    numeroQuarto: 42,
-    numeroVagasPorQuarto: 2,
-    numeroQuartosRestantes: 3,
-    obsQuartos: 'Lorem Ipsum Dolor Sit Amet ...',
-    pacotes: ''
-
-  }]
 
   constructor() { }
 

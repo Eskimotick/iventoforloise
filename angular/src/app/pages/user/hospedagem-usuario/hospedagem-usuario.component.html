@@ -7,7 +7,9 @@
           </div>
           <div class="row row-cards-hoteis">
             <div>
-              <app-hotel-usuario></app-hotel-usuario>
+              <div *ngFor="let hotel of hotel; let i = index">
+                <app-hotel-usuario [hotel]="hotel"></app-hotel-usuario>
+              </div>
             </div>
           </div>
         </div>

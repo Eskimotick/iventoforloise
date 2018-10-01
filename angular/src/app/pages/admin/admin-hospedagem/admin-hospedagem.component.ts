@@ -14,6 +14,7 @@ export class AdminHospedagemComponent implements OnInit {
     id: 1,
     nomeHotel: 'Ibis',
     enderecoHotel: 'Av. Beira Mar, 238',
+    telefoneHotel: '(21) 2345-6789',
     descricaoHotel: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec hendrerit auctor nisi, a cursus elit laoreet eu. Nunc felis ante, lacinia in ante at, feugiat convallis ex. ',
   }];
 

@@ -1,9 +1,42 @@
+
 .card h5 {
-  font-size: 1.1em;
+  font-size: 1em;
   color: #424242;
   text-align: center;
   margin-top: 0;
   padding-top: 0.5vh;
+}
+.card-image img {
+  height: 20vh;
+}
+
+
+.card span {
+  font-weight: 400;
+  font-family: 'Raleway';
+}
+
+
+.filtro {
+  display: block;
+  position: relative;
+
+}
+.filtro:: after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+
+}
+
+.collapsible-header {
+  font-size: 1.2em;
+  font-weight: 400;
+  font-family: 'Raleway';
 }
 .modal {
   overflow-x: hidden;
