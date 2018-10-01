@@ -21,8 +21,7 @@ export class HotelUsuarioComponent implements OnInit {
     { tipoQuarto: 'Suite Standard',
       CapacidadeQuarto: '2', // ex.: 2 pessoas por quarto
       numQuarto: [102, 103, 104, 105, 106], // numeros dos quartos deste tipo
-      obsQuarto: 'Ar Condicionado, TV, Frigobar, WiFi', //detalhes sobre o quarto, o que inclui: tv, ar condicionado
-      quarto: [],
+      obsQuarto: 'Ar Condicionado, TV, Frigobar, WiFi' //detalhes sobre o quarto, o que inclui: tv, ar condicionado
 
     },
     { tipoQuarto: 'Suite Simples',
