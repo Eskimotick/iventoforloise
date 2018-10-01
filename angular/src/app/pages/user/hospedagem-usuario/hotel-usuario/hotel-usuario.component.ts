@@ -7,19 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HotelUsuarioComponent implements OnInit {
 
-  hotel: any[] = [{
+
+  hotel: Array<any> = [{
     nomeHotel: 'Ibis',
     enderecoHotel: 'Av. Beira Mar, 238',
     descricaoHotel: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec hendrerit auctor nisi, a cursus elit laoreet eu. Nunc felis ante, lacinia in ante at, feugiat convallis ex. ',
   }];
 
-  quarto: any[] = [
+  quarto: Array<any> = [
     { tipoQuarto: 'Suite Standard',
       CapacidadeQuarto: '2', // ex.: 2 pessoas por quarto
       numQuarto: [102, 103, 104, 105, 106], // numeros dos quartos deste tipo
       obsQuarto: 'Ar Condicionado, TV, Frigobar, WiFi', //detalhes sobre o quarto, o que inclui: tv, ar condicionado
       quarto: [],
-      
+
     },
     { tipoQuarto: 'Suite Simples',
       CapacidadeQuarto: '2',
@@ -28,12 +29,6 @@ export class HotelUsuarioComponent implements OnInit {
 
   }
 ]
-
-  usuario: any[] = [{
-    nomeUsuario: 'Usuário',
-
-
-  }]
 
   pacotes: string[] = [
     'Pacote Standard', 'Pacote Master', 'Pacote Simples'

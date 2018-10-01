@@ -11,9 +11,9 @@ export class HotelAdminComponent implements OnInit {
   @Input('hotel') hotel: any;
   @Input('hotelFoto') hotelFoto: string;
 
-  @Output() deleteHotelEmitter = new EventEmitter<string>();
+  /*@Output() deleteHotelEmitter = new EventEmitter<string>();
   @Output() editHotelEmitter = new EventEmitter<string>();
-  @Output() getRoomsEmitter = new EventEmitter<string>();
+  @Output() getRoomsEmitter = new EventEmitter<string>(); */
 
 
   pacotes: string[] = [
