@@ -52,7 +52,7 @@ class AtividadesController extends Controller
         $nova_atividade = new Atividade;
         $nova_atividade->createActivity($request);
 
-        return response()->success($nova_atividade);
+        return response()->success(new AtividadeResource($nova_atividade));
       }
       else
       {

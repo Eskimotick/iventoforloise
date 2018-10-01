@@ -14,6 +14,7 @@ use App\Http\Requests\UserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Resources\UserResource as UserResource;
+use App\Http\Resources\Admin\QuartoResource;
 
 class UserController extends Controller
 {
@@ -268,7 +269,7 @@ class UserController extends Controller
         Entre em contato com os organizadores', 400);
       }
 
-      return response()->success($quartos);
+      return response()->success(QuartoResource::collection($quartos));
 
     }
 
@@ -281,7 +282,6 @@ class UserController extends Controller
         return response()->error($quarto, 400);
       }
 
-      return response()->success($quarto);
-
+      return response()->success(new QuartoResource($quarto));
     }
 }

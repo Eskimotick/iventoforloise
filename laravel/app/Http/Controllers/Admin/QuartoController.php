@@ -8,6 +8,7 @@ use App\Models\Admin\Quarto;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreQuartoRequest as StoreRequest;
 use App\Http\Requests\Admin\UpdateQuartoRequest as UpdateRequest;
+use App\Http\Resources\Admin\QuartoResource;
 
 class QuartoController extends Controller
 {
@@ -49,7 +50,7 @@ class QuartoController extends Controller
         $novosQuartos = Quarto::where('hospedagem_id', $hospedagem->id)
                         ->where('id', '>', $maiorId)->get();
 
-        return response()->success($novosQuartos);
+        return response()->success(QuartoResource::collection($novosQuartos));
        
     }
 
@@ -64,7 +65,7 @@ class QuartoController extends Controller
         $quarto = Quarto::find($id);
 
         if($quarto){
-            return response()->success($quarto);
+            return response()->success(new QuartoResource($quarto));
         }
         else{
             return response()->error('Quarto não encontrado, verifique se o mesmo existe.', 400);
@@ -92,7 +93,7 @@ class QuartoController extends Controller
             return response()->error($resposta, 400);
         }
 
-        return response()->success($resposta);
+        return response()->success(new QuartoResource($resposta));
     }
 
     /**
