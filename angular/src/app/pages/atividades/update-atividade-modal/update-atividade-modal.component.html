@@ -64,7 +64,7 @@
 			<div class="row" *ngIf="updateAtividade.image">
 				<i class="col l1 material-icons icon">image</i>
 					<b class="topic">Imagem Ilustrativa</b>
-					<img class="materialboxed gallery col l11" materialize="materialbox" [src]="updateAtividade.image">
+					<img class="materialboxed gallery col l11" materialize="materialbox" [src]="'data:image/png;base64,' + updateAtividade.image">
 			</div>
 			<div class="row">
 				<i class="col l1 material-icons icon">archive</i>
@@ -73,15 +73,15 @@
 					<div class="row pacotes">
 						<div *ngFor="let pacote of pacotes; let i = index">
 							<div *ngIf="!(editAction == 'pacotes'); else pacotesEdit">
-								<div class="col l4" *ngIf="pacotePermitido(i)">
+								<div class="col l4" *ngIf="pacotePermitido(pacote.id)">
 									<input type="checkbox" [id]="'pacote' + i" class="filled-in" checked disabled/>
-									<label class="truncate" [for]="'pacote' + i">{{pacote}}</label>
+									<label class="truncate" [for]="'pacote' + i">{{pacote.nome}}</label>
 								</div>
 							</div>
 							<ng-template #pacotesEdit>
 								<div class="col l4">
-									<input type="checkbox" [id]="'pacote' + i" class="filled-in" [checked]="pacotePermitido(i)" (click)="pacotesOnChange(i)"/>
-									<label class="truncate" [for]="'pacote' + i">{{pacote}}</label>
+									<input type="checkbox" [id]="'pacote' + i" class="filled-in" [checked]="pacotePermitido(pacote.id)" (click)="pacotesOnChange(pacote.id)"/>
+									<label class="truncate" [for]="'pacote' + i">{{pacote.nome}}</label>
 								</div>
 							</ng-template>
 						</div>

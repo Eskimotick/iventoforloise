@@ -2,6 +2,8 @@ import { Component, OnInit, OnChanges, Input, Output, EventEmitter } from '@angu
 import { MaterializeAction } from 'angular2-materialize';
 import * as moment from 'moment';
 
+import { AtividadesService } from '../../../services/atividades/atividades.service';
+
 @Component({
   selector: 'app-update-atividade-modal',
   templateUrl: './update-atividade-modal.component.html',
@@ -22,7 +24,7 @@ export class UpdateAtividadeModalComponent implements OnInit, OnChanges {
 	footer: string;
   editAction: string;
 
-  constructor() {
+  constructor(private atividadesService: AtividadesService) {
   	this.footer = '';
     this.atividadeOnEdit = '';
     this.descriptionOnEdit = false;
@@ -33,7 +35,7 @@ export class UpdateAtividadeModalComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
-		console.log(this.atividadeClick, this.updateAtividade);
+		console.log(this.atividadeClick, this.updateAtividade, this.pacotes);
     if(this.atividadeOnEdit)
       this.atividadeOnEdit = '';
     if(this.descriptionOnEdit)
@@ -82,27 +84,40 @@ export class UpdateAtividadeModalComponent implements OnInit, OnChanges {
   // editando as checkboxes
   pacotesOnChange(index: any) {
     let id = this.atividadeOnEdit.indexOf(index);
-    if(id == -1)
+    if(id == -1) {
       this.atividadeOnEdit.push(index);
+      this.atividadeOnEdit.sort((a, b) => a - b);
+    }
     else
       this.atividadeOnEdit.splice(id, 1);
   }
 
   // salva o que foi alterado
   saveEdit() {
-    if(this.editAction == 'titulo')
-      this.updateTitleEmitter.emit({id: this.updateAtividade.id, title: this.updateAtividade.title});
-    else if(this.editAction == 'palestrante')
-      this.updateAtividade.palestrante = this.atividadeOnEdit;
-    else if(this.editAction == 'vagas')
-      this.updateAtividade.qntdVagas = this.atividadeOnEdit;
-    else if(this.editAction == 'descricao') {
-      this.updateAtividade.descricao = this.atividadeOnEdit;
-      this.descriptionOnEdit = false;
+    if(this.editAction == 'titulo') {
+      this.atividadesService.update(this.updateAtividade.id, this.editAction, this.updateAtividade.title).subscribe(
+        (res) => {
+          console.log(res);
+          this.updateTitleEmitter.emit({id: this.updateAtividade.id, title: this.updateAtividade.title});
+          this.editAction = '';
+        });
+    } else {
+      this.atividadesService.update(this.updateAtividade.id, this.editAction, this.atividadeOnEdit).subscribe(
+        (res) => {
+          console.log(res);
+          if(this.editAction == 'palestrante')
+            this.updateAtividade.palestrante = this.atividadeOnEdit;
+          else if(this.editAction == 'vagas')
+            this.updateAtividade.qntdVagas = this.atividadeOnEdit;
+          else if(this.editAction == 'descricao') {
+            this.updateAtividade.descricao = this.atividadeOnEdit;
+            this.descriptionOnEdit = false;
+          }
+          else if(this.editAction == 'pacotes')
+            this.updateAtividade.pacotes = this.atividadeOnEdit;
+          this.editAction = '';
+        });
     }
-    else if(this.editAction == 'pacotes')
-      this.updateAtividade.pacotes = this.atividadeOnEdit;
-    this.editAction = '';
   }
 
   // cancela/não salva se apertar o 'x' ou fechar o modal
@@ -121,8 +136,12 @@ export class UpdateAtividadeModalComponent implements OnInit, OnChanges {
 
   // apaga atividade e fecha o modal
 	deleteAtividade() {
-		this.deleteAtividadeEmitter.emit(this.updateAtividade.id);
-		this.updateAtividadeModal.emit({action: 'modal', params: ['close']});
+    this.atividadesService.delete(this.updateAtividade.id).subscribe(
+      (res) => {
+        console.log(res);
+		    this.deleteAtividadeEmitter.emit(this.updateAtividade.id);
+		    this.updateAtividadeModal.emit({action: 'modal', params: ['close']});
+    });
 	}
 
   // pacotes permitido na atividade
