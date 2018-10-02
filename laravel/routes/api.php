@@ -206,10 +206,10 @@ Route::group([//criar middleware para restringir acesso
 
     //Rotas para inscrever e desisncrever usuários em atividades
     Route::group(['prefix' => 'atividades'], function(){
-        Route::post('inscricao/{id_user}-{id_ativ}', 'Admin\AdminController@inscreveUser');
-        //http://site.com/api/admin/atividades/inscricao/id-id
-        Route::post('remove/{id_user}-{id_ativ}', 'Admin\AdminController@desinscreveUser');
-        //http://site.com/api/admin/atividades/remove/id-id
+        Route::post('inscricao/{cpf_user}-{id_ativ}', 'Admin\AdminController@inscreveUser');
+        //http://site.com/api/admin/atividades/inscricao/cpf-id
+        Route::post('remove/{cpf_user}-{id_ativ}', 'Admin\AdminController@desinscreveUser');
+        //http://site.com/api/admin/atividades/remove/cpf-id
         Route::post('nova-atividade-pacote/{id_ativ}-{id_pacote}', 'Admin\AdminController@insereAtividadePacote');
         //http://site.com/api/admin/atividades/nova-atividade-pacote/id-id
     });
@@ -232,7 +232,7 @@ Route::group([//criar middleware para restringir acesso
             Route::put('{id}', 'Admin\QuartoController@updateQuarto');        //http://site.com/api/admin/hospedagens/quartos/id
             Route::delete('{id}', 'Admin\QuartoController@destroyQuarto');    //http://site.com/api/admin/hospedagens/quartos/id
             Route::post('/destroy', 'Admin\QuartoController@destroyAllQuartos');    //http://site.com/api/admin/hospedagens/quartos/destroy
-            
+
             Route::put('{id}/aloca', 'Admin\QuartoController@adminAlocaUser');    //http://site.com/api/admin/hospedagens/quartos/id/aloca
             Route::post('/desaloca', 'Admin\QuartoController@adminDesalocaUser'); //http://site.com/api/admin/hospedagens/quartos/id/desaloca
         });
