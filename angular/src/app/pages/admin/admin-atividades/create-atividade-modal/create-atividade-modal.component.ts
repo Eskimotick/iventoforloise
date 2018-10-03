@@ -1,7 +1,8 @@
 import { Component, OnInit, OnChanges, Input, Output, EventEmitter } from '@angular/core';
 import { MaterializeAction } from 'angular2-materialize';
+import * as moment from 'moment';
 
-import { AtividadesService } from '../../../services/atividades/atividades.service';
+import { AtividadesService } from '../../../../services/atividades/atividades.service';
 
 @Component({
   selector: 'app-create-atividade-modal',
@@ -11,6 +12,8 @@ import { AtividadesService } from '../../../services/atividades/atividades.servi
 export class CreateAtividadeModalComponent implements OnInit, OnChanges {
 
 	@Input('createClick') createClick: number;
+  @Input('createDate') createDate: string;
+  createHour: any = { start: '', end: '' };
 	@Input('evento') evento: string;
   @Input('pacotes') pacotes: any[];
 	createAtividadeModal = new EventEmitter<string|MaterializeAction>();
@@ -22,6 +25,8 @@ export class CreateAtividadeModalComponent implements OnInit, OnChanges {
   checkboxMarked: boolean[] = [];
 
   constructor(private atividadesService: AtividadesService) {
+    this.createHour.start = '00:00';
+    this.createHour.end = '01:00';
     this.imagem = '';
   }
 
@@ -31,10 +36,11 @@ export class CreateAtividadeModalComponent implements OnInit, OnChanges {
   ngOnChanges() {
 		console.log(this.createClick);
 		if(this.createClick)
-			this.openModal();
+      this.createAtividadeModal.emit({action: 'modal', params: ['open']});
 	}
 
   openModal() {
+    this.createDate = moment().format('YYYY-MM-DD');
   	this.createAtividadeModal.emit({action: 'modal', params: ['open']});
   }
 
@@ -56,6 +62,12 @@ export class CreateAtividadeModalComponent implements OnInit, OnChanges {
 
   onSubmit(atividadeForm) {
     let atividade = atividadeForm.value;
+    atividade.start = `${atividade.start_date} ${atividade.start_time}`;
+    atividade.end = `${atividade.end_date} ${atividade.end_time}`;
+    delete atividade.start_date;
+    delete atividade.start_time;
+    delete atividade.end_date;
+    delete atividade.end_time;
     delete atividade.checkbox;
     atividade.pacotes = []; 
     for(let i = 0; i < this.checkboxMarked.length; i++) {
@@ -67,7 +79,7 @@ export class CreateAtividadeModalComponent implements OnInit, OnChanges {
     this.atividadesService.store(atividade, pacoteString).subscribe(
       (res) => {
         atividade.id = res.data.id;
-        atividade.status = res.data.status;
+        atividade.status = 'Fechado';
         this.createAtividadeEmitter.emit(atividade);
         this.createAtividadeModal.emit({action: 'modal', params: ['close']});
     });

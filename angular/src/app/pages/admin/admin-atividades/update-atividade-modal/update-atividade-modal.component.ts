@@ -2,7 +2,8 @@ import { Component, OnInit, OnChanges, Input, Output, EventEmitter } from '@angu
 import { MaterializeAction } from 'angular2-materialize';
 import * as moment from 'moment';
 
-import { AtividadesService } from '../../../services/atividades/atividades.service';
+import { AtividadesService } from '../../../../services/atividades/atividades.service';
+import { AdminService } from '../../../../services/admin/admin.service';
 
 @Component({
   selector: 'app-update-atividade-modal',
@@ -24,7 +25,7 @@ export class UpdateAtividadeModalComponent implements OnInit, OnChanges {
 	footer: string;
   editAction: string;
 
-  constructor(private atividadesService: AtividadesService) {
+  constructor(private atividadesService: AtividadesService, private adminService: AdminService) {
   	this.footer = '';
     this.atividadeOnEdit = '';
     this.descriptionOnEdit = false;
@@ -131,6 +132,10 @@ export class UpdateAtividadeModalComponent implements OnInit, OnChanges {
   // inscreve o usuario na atividade
   inscricao(cpf: any) {
   	console.log(cpf);
+    this.adminService.inscreveUser(cpf.value, this.updateAtividade.id).subscribe(
+      (res) => {
+        console.log(res);
+    });
   	this.footer = '';
   }
 

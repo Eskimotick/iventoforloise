@@ -4,17 +4,17 @@ import { Options } from 'fullcalendar';
 import { MaterializeAction } from 'angular2-materialize';
 import * as moment from 'moment'; 
 
-import { PacotesService } from '../../services/pacotes/pacotes.service';
-import { AtividadesService } from '../../services/atividades/atividades.service';
+import { PacotesService } from '../../../services/pacotes/pacotes.service';
+import { AtividadesService } from '../../../services/atividades/atividades.service';
 
 @Component({
-  selector: 'app-atividades',
-  templateUrl: './atividades.component.html',
-  styleUrls: ['./atividades.component.css']
+  selector: 'app-admin-atividades',
+  templateUrl: './admin-atividades.component.html',
+  styleUrls: ['./admin-atividades.component.css']
 })
-export class AtividadesComponent implements OnInit {
+export class AdminAtividadesComponent implements OnInit {
 
-	// variaveis para funcionamento do fullcalendar
+  // variaveis para funcionamento do fullcalendar
   @ViewChild(CalendarComponent) ucCalendar: CalendarComponent;
   calendarOptions: Options;
 
@@ -27,7 +27,7 @@ export class AtividadesComponent implements OnInit {
   pacotes: any[] = [];
 
   // para pegar a atividade que foi clicada
-  updateAtividade: any;
+  atividade: any;
   atividadeClick: number;
 
   // toast para caso o usuário tentou atualizar a data da atividade para fora do evento
@@ -113,15 +113,13 @@ export class AtividadesComponent implements OnInit {
 
   // pega a atividade que foi clicada
   eventClick(atividade) {
-    console.log(atividade);
   	this.atividadeClick++;
-  	this.updateAtividade = atividade.event;
+  	this.atividade = atividade.event;
   }
 
   // renderiza uma atividade nova no calendário
   createAtividade(atividade) {
     this.ucCalendar.fullCalendar('renderEvent', atividade, true);
-    console.log(atividade);
   }
 
   // atualiza se a atividade for movida para uma data dentro do evento, senão não deixa e emite um toast de erro

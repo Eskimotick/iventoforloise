@@ -20,23 +20,30 @@
 	        <input id="title" type="text" name="title" ngModel>
 	        <label for="title">Nome da Atividade*</label>
 	      </div>
-	      <div class="input-field col l4">
-	        <input id="palestrante" type="text" name="palestrante" ngModel>
-	        <label for="palestrante">Palestrante*</label>
-	      </div>
-	      <div class="input-field col l4">
-	        <input id="vagas" type="number" name="qntdVagas" ngModel>
-	        <label for="vagas">Quantidade de Vagas*</label>
-	      </div>
-	    </div>
-	    <div class="row">
-	    	<div class="input-field col l6">
-	        <input id="start" type="datetime-local" name="start" ngModel>
-	        <label for="start" class="active">Horário de Início*</label>
-	      </div>
-	      <div class="input-field col l6">
-	        <input id="end" type="datetime-local" name="end" ngModel>
-	        <label for="end" class="active">Horário de Término*</label>
+				<div class="input-field col l4">
+					<input id="palestrante" type="text" name="palestrante" ngModel>
+					<label for="palestrante">Palestrante*</label>
+				</div>
+				<div class="input-field col l4">
+					<input id="vagas" type="number" name="qntdVagas" ngModel>
+					<label for="vagas">Quantidade de Vagas*</label>
+				</div>
+			</div>
+			<div class="row valign-wrapper">
+				<div class="input-field col l3">
+					<input id="start_date" type="date" name="start_date" [ngModel]="createDate">
+					<label for="start_date" class="active">Horário de Início*:</label>
+				</div>
+				<div class="input-field col l2">
+					<input id="start_time" type="time" name="start_time" [ngModel]="createHour.start">
+				</div>
+				<b class="col l2 center-align">até</b>
+				<div class="input-field col l3">
+					<input id="end_date" type="date" name="end_date" [ngModel]="createDate">
+					<label for="end_date" class="active">Horário de Término*:</label>
+				</div>
+	      <div class="input-field col l2">
+	        <input id="end_time" type="time" name="end_time" [ngModel]="createHour.end">
 	      </div>
 	    </div>
 	    <div class="row">

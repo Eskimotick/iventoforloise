@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { DateTimeAdapter } from 'ng-pick-datetime';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,8 +7,7 @@ import { DateTimeAdapter } from 'ng-pick-datetime';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(dateTimeAdapter: DateTimeAdapter<any>) {
-  	dateTimeAdapter.setLocale('pt-br');
+  constructor() {
   }
 
   ngOnInit() {

@@ -1,0 +1,53 @@
+<div class="modal modal-fixed-footer" materialize="modal" [materializeParams]="[{dismissible: true}]" [materializeActions]="atividadeModal">
+	<div *ngIf="atividade">
+		<div class="modal-content">
+			<div class="modal-header valign-wrapper">
+				<img class="title-icon" src="assets/img/ivento-logo.png" height="40">
+				<span>
+					<h5 class="title"><b>Atividade {{atividade.title}}</b></h5>
+					<p class="subtitle content">do evento {{evento}}</p>
+				</span>
+			</div>
+			<i class="material-icons close modal-close">close</i>
+			<div class="row">
+				<i class="col l1 material-icons icon">info</i>
+				<div class="col l5">
+					<b class="topic">Informações</b>
+					<p class="content info">Palestrante: {{atividade.palestrante}}</p>
+					<p class="content info">Quantidade de Vagas: {{atividade.qntdVagas}}</p>
+					<p class="content">Status:  <b>{{atividade.status}}</b></p>
+				</div>
+				<i class="col l1 material-icons icon">event</i>
+				<div class="col l5">
+					<b class="topic">Horário</b>
+					<p *ngIf="oneDay(); else manyDays" class="content">
+						Data: {{atividade.start | dataAtividade}}, de: {{atividade.start | horaAtividade}} até: {{atividade.end | horaAtividade}}
+					</p>
+					<ng-template #manyDays class="content">
+						De {{atividade.start | dataAtividade}} às {{atividade.start | horaAtividade}}, até  {{atividade.end | dataAtividade}} às {{atividade.end | horaAtividade}}
+					</ng-template>
+				</div>
+			</div>
+			<div class="row">
+				<i class="col l1 material-icons icon">subject</i>
+				<div class="col l11">
+					<b class="topic">Descrição</b>
+	        <textarea id="textarea1" class="materialize-textarea" [(ngModel)]="atividade.descricao" disabled></textarea>
+				</div>
+			</div>
+			<div class="row" *ngIf="atividade.image">
+				<i class="col l1 material-icons icon">image</i>
+					<b class="topic">Imagem Ilustrativa</b>
+					<img class="materialboxed gallery col l11" materialize="materialbox" [src]="'data:image/png;base64,' + atividade.image">
+			</div>
+		</div>
+		<div class="row modal-footer">
+			<a materialize="tooltip" class="col l6 waves-effect waves-light btn-flat center-align white-text tooltipped" data-position="bottom" data-delay="50" data-tooltip="Inscrever-se na atividade" (click)="inscrever()">
+				<i class="material-icons action">open_in_new</i>
+			</a>
+			<a materialize="tooltip" class="col l6 waves-effect waves-light btn-flat center-align white-text tooltipped" data-position="bottom" data-delay="50" data-tooltip="Desinscrever-se da atividade" (click)="desinscrever()">
+				<i class="material-icons action">cancel</i>
+			</a>			
+   	</div>
+	</div>
+</div>

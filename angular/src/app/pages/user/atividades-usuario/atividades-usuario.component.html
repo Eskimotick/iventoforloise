@@ -1,0 +1,18 @@
+<app-navusuario></app-navusuario>
+<app-sidebar-usuario></app-sidebar-usuario>
+
+<section class="conteudo-admin">
+	<div class="container white container-admin">
+		<div class="header">
+			<h2 class="titulo-pagina">Atividades</h2>
+		</div>
+
+		<!-- Uso do fullcalendar -->
+		<div *ngIf="calendarOptions" class="calendar-container">
+			<ng-fullcalendar #ucCalendar [options]="calendarOptions" (eventClick)="eventClick($event.detail)"></ng-fullcalendar>
+		</div>
+	</div>
+
+	<app-atividade-modal [evento]="evento.title" [atividade]="atividade" [atividadeClick]="atividadeClick"></app-atividade-modal>
+
+</section>

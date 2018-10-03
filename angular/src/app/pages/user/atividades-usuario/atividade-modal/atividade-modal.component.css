@@ -1,0 +1,132 @@
+.modal {
+	border-radius: 5px;
+}
+
+/*para posicionar o titulo*/
+.modal-content {
+	padding-top: 0;
+}
+
+/*para posicionar o conteudo abaixo do titulo*/
+.modal-header {
+	margin-bottom: 5%;
+}
+
+/*para posicionar o botão de fechar modal*/
+.close {
+	position: absolute;
+	right: 1%;
+	top: 2%;
+}
+
+/*pequenos consertos nos alinhamentos dos conteúdo da modal*/
+.title-icon {
+	margin-right: 1.5%;
+	opacity: 0.8;
+}
+
+.icon {
+	font-size: 30px;
+	opacity: 0.7;
+}
+
+.title {
+	margin-bottom: 0;
+}
+
+.input-title {
+	font-size: 1.7rem !important;
+    font-weight: bold;
+    margin-top: 2% !important;
+	margin-bottom: 0 !important;
+	width: 150% !important;
+}
+
+.subtitle {
+	opacity: 0.7;
+}
+
+.content {
+	margin: 0;
+}
+
+.info:hover {
+	border-radius: 3px;
+	background-color: #cfd8dc;
+	cursor: pointer;
+}
+
+.topic {
+	font-size: 16px;
+	display: block;
+}
+
+.info-edit {
+	margin-top: 5%;
+}
+
+.cancel {
+	margin-left: 3%;
+	cursor: pointer;
+}
+
+.edit {
+	color: grey;
+    text-decoration: underline;
+    font-size: 14px;
+    margin-left: 2%;
+    cursor: pointer;
+}
+
+.gallery {
+	margin-top: 2%;
+}
+
+.pacotes {
+	margin-top: 0%;
+	margin-bottom: 2%;
+}
+
+.pacotes-edit {
+	margin-left: 2%;
+}
+
+.materialize-textarea:focus:not([readonly]), input.input-title {
+	border-bottom: 1px solid #607d8b !important;
+	box-shadow: 0 1px 0 0 #607d8b !important;
+}
+
+/*alinhamento das coisas do footer*/
+.modal-footer {
+	margin-bottom: 0;
+	background-color: #607d8b;
+}
+
+.action {
+	font-size: 30px;
+}
+
+.back {
+	font-size: 25px;
+}
+
+.footer-input {
+	margin-top: 0;
+}
+
+.footer-input > input {
+	margin-bottom: 0;
+}
+
+.footer-input input[type=text]:focus {
+	border-bottom: 1px solid #ffffff !important;
+	box-shadow: 0 1px 0 0 #ffffff !important;
+}
+
+.action-btn {
+	margin-left: 3% !important;
+	background-color: rgba(0, 0, 0, 0.2);
+	color: white;
+	border: 1.5px solid white;
+	border-radius: 5px;
+}
