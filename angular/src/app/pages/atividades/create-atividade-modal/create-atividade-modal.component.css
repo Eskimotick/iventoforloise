@@ -1,0 +1,57 @@
+/*colorir e posicionar fixed button*/
+.fixed-action-btn.create-activity-button {
+	margin-right: 2.5%;
+    margin-bottom: 1%;
+}
+
+.btn-floating.btn-large.create-activity-button {
+	background-color:  #607d8b;
+}
+
+.modal {
+	border-radius: 5px;
+}
+
+/*para posicionar o titulo*/
+.modal-content {
+	padding-top: 0;
+}
+
+/*para posicionar o conteudo abaixo do titulo*/
+.modal-header {
+	margin-bottom: 5%;
+}
+
+.title-icon {
+	margin-right: 1.5%;
+	opacity: 0.8;
+}
+
+.title {
+	margin-bottom: 0;
+}
+
+.subtitle {
+	opacity: 0.7;
+}
+
+.content {
+	margin: 0;
+}
+
+.close {
+	position: absolute;
+	right: 1%;
+	top: 2%;
+}
+
+.topic {
+	font-size: 17px;
+	display: block;
+	margin-bottom: 2%;
+}
+
+.create-action {
+	margin-right: 2% !important;
+}
+

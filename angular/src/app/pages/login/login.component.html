@@ -1,0 +1,61 @@
+
+    <section>
+      <app-navbar></app-navbar>
+      <div class="row">
+        <div class="container">
+          <div class="row center principal-login z-depth-5">
+             <!-- principal login .............................................-->
+            <h2> Login </h2>
+            <form #login="ngForm" (ngSubmit)="onLogin(login)">
+              <div class="row">
+                  <div class="input-field col s12">
+                    <input type="email" id="email" class="validate" name="email" ngModel>
+                    <label for="email">E-mail</label>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="input-field col s12">
+                    <input id="senha" type="password" class="validate" name="password" ngModel>
+                    <label for="senha">Senha</label>
+                  </div>
+              </div>
+              <div class="row">
+                <button class="btn botao-login">Entrar</button>
+              </div>
+            </form>
+            <!-- auxiliares de login ...........................................-->
+            <div class="row aux-login">
+              <div class="input-field col s7 xs12">
+                <a class="btn-flat">Esqueceu sua senha?</a>
+              </div>
+              <div class="col s5 xs12">
+                <input id="relembrar" type="checkbox" />
+                <label for="relembrar">RELEMBRAR</label>     
+              </div>
+            </div>
+            <!-- entrar com google ou facebook .................................-->
+            <div class="row">
+              <div class="divider"></div>
+                <h3> Entrar com:  </h3>
+                <div class="row">
+                  <div class="col s6">
+                    <div class="btn login-google" routerLink="/painelUsuario">
+                      Google
+                    </div>
+                  </div>
+                  <div class="col s6">
+                    <div class="btn login-facebook" routerLink="/painelAdmin">
+                      Facebook
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <!-- cadastre-se ...................................................-->
+            <div class="row">
+              <div class="divider"></div>
+              <a class="btn-flat" routerLink="/cadastro">Novo no site? Crie sua conta!</a>
+            </div>
+        </div>
+      </div>
+    </div>
+    </section>

@@ -1,0 +1,25 @@
+<app-navadmin></app-navadmin>
+<app-sidebar></app-sidebar>
+
+<a materialize [materializeParams]="['A atividade foi movida para uma data fora do evento!', 3000, 'red darken-4']" [materializeActions]="errorUpdateToast"></a>
+
+<section class="conteudo-admin">
+	<div class="container white container-admin">
+		<div class="header">
+			<h2 class="titulo-pagina">Atividades</h2>
+		</div>
+
+		<!-- Modal de criar atividade -->
+		<app-create-atividade-modal [evento]="evento.title" [pacotes]="pacotes" [createClick]="createClick" (createAtividadeEmitter)="createAtividade($event)"></app-create-atividade-modal>
+
+		<!-- Uso do fullcalendar -->
+		<div *ngIf="calendarOptions" class="calendar-container">
+			<ng-fullcalendar #ucCalendar [options]="calendarOptions" (eventClick)="eventClick($event.detail)" (eventDrop)="updateEvent($event.detail)" (eventResize)="updateEvent($event.detail)" (dayClick)="dayClick($event.detail)">
+			</ng-fullcalendar>
+		</div>
+	</div>
+
+	<!-- Modal de atividades -->
+	<app-update-atividade-modal  [evento]="evento.title" [pacotes]="pacotes" [updateAtividade]="updateAtividade" [atividadeClick]="atividadeClick" (deleteAtividadeEmitter)="deleteAtividade($event)" (updateTitleEmitter)="updateTitle($event)"></app-update-atividade-modal>
+
+</section>

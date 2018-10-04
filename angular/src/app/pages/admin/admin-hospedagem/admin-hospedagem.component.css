@@ -1,0 +1,88 @@
+/* elementos */
+
+.row-cards-hoteis {
+  margin: 2vw;
+}
+
+.modal {
+  min-height: 70vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.modal .conteudo {
+  padding-top: 3%;
+  padding-left: 6%;
+  padding-right: 6%;
+}
+
+
+ @media screen and (min-width: 993px) {
+  .modal  {
+    top: 0 !important;
+    min-height: 100vh;
+    width: 100vw;
+  }
+  .dadosHotel {
+    border-right: 3px solid #e0e0e0;
+  }
+
+ }
+ @media screen and (min-width: 1530px) {
+  .modal {
+    min-height: 70vh;
+    min-width: 76vw;
+  }
+
+ }
+
+
+.modal .modal-content {
+  padding: 0;
+}
+
+i .material-icons {
+  padding-top: 2vh;
+  color: #424242;
+}
+
+.checkboxesPacotes {
+  margin-left: 0.8vw;
+  padding: 3%;
+}
+.checkboxesPacotes input{
+  margin-left: 0.8vw;
+}
+.checkboxesPacotes label{
+  padding-right: 0.3vw;
+}
+/*input [type="checkbox"].filled-in:checked {
+  border: 2px solid black;
+  background-color: black;
+} nao funciona :( */
+
+.mapa iframe {
+  max-height: 32vh;
+  max-width: 100%;
+
+}
+
+
+
+.header {
+  padding-top: 1.8vh;
+}
+
+/* formatação de texto */
+h4 {
+  font-family: 'Raleway';
+  font-size: 1.8em;
+
+}
+
+h5 {
+  font-family: 'Raleway';
+  text-align: center;
+  font-size: 1.3em;
+
+}

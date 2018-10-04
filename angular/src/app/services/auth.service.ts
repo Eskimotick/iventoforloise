@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 import { environment } from '../../environments/environment.prod';
 import { Usuario } from '../classes/usuario';
@@ -10,23 +12,18 @@ import { Usuario } from '../classes/usuario';
 })
 export class AuthService {
 
-  usuario = new BehaviorSubject<Usuario>(null);
-  private userSend(user: Usuario) {
-    return this.usuario.next(user);
-  }
+  constructor(public http: HttpClient, public router: Router) { }
 
-  constructor(public http: HttpClient) { }
+  login(email: string, password: string):Observable<any> {
 
-  onRegistro(form_data) {
-    this.http.post(environment.api_url + 'auth/register', { dados: form_data });
-  }
+    return this.http.post<any>(environment.api_url + 'login', {
+      'email': email,
+      'password': password
 
-  onLogin(form_data) {
-    this.http.post(environment.api_url + 'auth/login', { dados: form_data });
-  }
-
-  onLogout(form_data) {
-    this.http.post(environment.api_url + 'auth/logout', { dados: form_data });
+    }).pipe(tap(res => {
+      localStorage.setItem('token', res.data.success.token);
+      this.router.navigate(['/painelAdmin']);
+    }));
   }
 
 }

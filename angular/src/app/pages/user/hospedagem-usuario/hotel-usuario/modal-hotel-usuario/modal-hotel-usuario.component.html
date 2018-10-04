@@ -1,0 +1,109 @@
+<div id="infoHotel{{hotel.nomeHotel}}" class="modal" materialize="modal">
+  <div class="header">
+    <div class="col s11">
+      <h4>{{hotel.nomeHotel}}</h4>
+    </div>
+    <div class="col s1">
+      <i class="material-icons modal-close right">
+        close
+      </i>
+    </div>
+  </div>
+  <div class="modal-content">
+      <div class="row">
+          <div class="col l7 s12">
+            <img src="./assets/img/hoteis/hotel-5.jpg" class="responsive-img z-depth-1">
+          </div>
+          <div class="col l5 s12 dadosHotel">
+            <div class="container">
+            <div class="row">
+                <div class="card-panel grey lighten-4">
+                  <h5>
+                    <ul>
+                      <li><strong><i class="material-icons">location_on</i> Endereço:</strong> {{hotel.enderecoHotel}}</li>
+                      <li><strong><i class="material-icons">call</i>Telefone:</strong> {{hotel.telefoneHotel}}</li>
+                    </ul>
+                  </h5>
+                </div>
+            </div>
+            <div class="row">
+                <p>
+                  {{hotel.descricaoHotel}}
+                </p>
+            </div>
+          </div>
+        </div>
+      </div>
+        <div class="row">
+          <ul materialize="collapsible" class="collapsible" data-collapsible="accordion" [materializeParams]="params" [materializeActions]="actions1">
+            <li *ngFor="let tipoQuarto of quarto; let j = index">
+              <div class="collapsible-header">
+                    {{quarto[j].tipoQuarto}} <i class="material-icons">expand_more</i>
+                  <span class="new badge blue-grey lighten-1 right" data-badge-caption="vagas por quarto">
+                    {{quarto[j].CapacidadeQuarto}}
+                  </span>
+                  <span class="new badge blue-grey darken-2 right" data-badge-caption="quartos restantes">
+                    {{quarto[j].numQuarto.length}}
+                  </span>
+              </div>
+              <div class="collapsible-body">
+                <!-- tabs estavam bugadas, vão ficar desativadas por enquanto -->
+                <!--<div class="row tabs-row">
+                    <div class="col s12">
+                      <ul class="tabs"  materialize="tabs">
+                        <li class="tab col l6"><a href="#infoQuarto[j]">Informações Sobre o Quarto</a></li>
+                        <li class="tab col l6"><a href="#quartosDisponiveis[j]">Quartos Disponíveis</a></li>
+                      </ul>
+                    </div>
+                </div>-->
+                <div class="row">
+                  <h4 class="header">Informações Sobre o Quarto </h4>
+                  <div class="col l6 s12">
+                    <img src="./assets/img/hoteis/hotel-room.jpg" class="foto-quarto responsive-img">
+                  </div>
+                  <div class="col l6 s12">
+                    <div class="input-field col s6 l8">
+                      <h4 class="label">Nome/Tipo de Quarto</h4>
+                      <h5 value="Suite Standard" class="atributoQuarto">{{quarto[j].tipoQuarto}}</h5>
+                    </div>
+                    <div class="input-field col s6 l4">
+                      <h4 class="label">Vagas por Quarto</h4>
+                      <h5  value="2" class="atributoQuarto">{{quarto[j].CapacidadeQuarto}} vagas</h5>
+                    </div>
+                    <div class="input-field col s12 l12">
+                      <h4 class="label">Observações</h4>
+                      <h5  class="atributoQuarto">{{quarto[j].obsQuarto}}</h5>
+                    </div>
+                    <!--<button class="btn right" type="submit" name="action">Sair Deste Quarto e Escolher Outro</button>-->
+                  </div>
+                </div>
+                <div class="row" id="quartosDisponiveis[j]">
+                  <h4 class="header">Quartos Disponíveis </h4>
+                  <div class="container">
+                    <form>
+                      <div class="row">
+                        <div *ngFor="let numero of quarto[j].numQuarto; let i = index">
+                          <div class="col l3 m4 s6">
+                            <div class="card-panel modal-trigger grey lighten-2" href="#quarto[j]">
+                              <input name="quartos" type="radio" [id]="quarto[j].numQuarto[i]" [value]="quarto[j].numQuarto[i]" ngModel/>
+                              <label [for]="quarto[j].numQuarto[i]">Quarto {{numero}}</label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row center">
+                        <button class="btn-large" type="submit" name="action">Escolher Este Quarto</button>
+                      </div>
+                    </form>
+                  </div>
+              </div>
+            </div>
+            </li>
+          </ul>
+    </div>
+    <div class="modal-footer">
+      <div class="divider"></div>
+      <button  class="modal-close waves-effect btn-flat">Sair</button>
+      <!--<input type="submit" class="btn modal-close" value="Sim, deletar">-->
+    </div>
+</div>

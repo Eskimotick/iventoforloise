@@ -1,0 +1,77 @@
+.principal-cadastro {
+  background-color: rgba(0, 0, 0, 0.75);
+  padding: 3.2vh;
+  margin-top: 8vh;
+}
+
+.principal-cadastro .row {
+  margin-bottom: 0.3vh;
+}
+
+/* formatação de texto */
+
+h2 {
+  font-family: 'Roboto';
+  color: white;
+  font-size: 1.8em;
+  font-weight: 200;
+  text-align: center;
+  padding: 0;
+  margin: 0.3vh;
+}
+
+/* botoes */
+.botao-login {
+  width: 95%;
+  background-color: rgba(0, 0, 0, 0.2);
+  color: white;
+  border: 1.5px solid white;
+  border-radius: 5px;
+}
+.btn.botao-login:hover {
+  background-color: white;
+  color: black;
+}
+.btn-flat {
+  color: #bdbdbd;
+  padding: 0.8vh;
+  font-size: 0.8em;
+}
+
+/* forms ................................................ */
+/* checkbox */
+[type="checkbox"]+span:not(.lever) {
+  font-size: 0.8em;
+  color: #bdbdbd;
+}
+[type="checkbox"]:checked+span:not(.lever):before {
+  border-right: 2px solid white;
+  border-bottom: 2px solid white;
+}
+
+/* cor do label dos forms */
+.input-field input:focus + label, .input-field textarea:focus + label  {
+   color: white !important;
+}
+/* cor da linha do focus dos forms */
+.row .input-field input:focus, .input-field textarea:focus {
+   border-bottom: 1px solid white !important;
+   box-shadow: 0 1px 0 0 white !important
+}
+
+/* cor do input dado pelo usuário */
+input:not([type]), input[type="email" i], input[type="number" i], input[type="password" i], input[type="tel" i], input[type="url" i], input[type="text" i] {
+    color: white;
+}
+/* divider */
+.divider {
+  background-color: #424242;
+  margin: 1vw;
+  margin-bottom: 0;
+  margin-top: 0.8;
+}
+
+.mat-form-field {
+  font-weight: 300;
+  width: 100%;
+}

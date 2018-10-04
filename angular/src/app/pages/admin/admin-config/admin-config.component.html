@@ -1,0 +1,466 @@
+<app-navadmin></app-navadmin>
+<app-sidebar></app-sidebar>
+
+<section class="conteudo-admin">
+          <div class="container white container-admin">
+            <div class="header">
+              <h2 class="titulo-pagina">Configurações</h2>
+            </div>
+
+            <div class="row tabs-row">
+              <div class="col s12">
+                <ul class="tabs" materialize="tabs">
+                  <li class="tab col l6"><a href="#inscricoes">Inscrições</a></li>
+                  <!--<li class="tab col l2"><a href="#pacotes">Pacotes</a></li>-->
+                  <!--li class="tab col l3"><a href="#pagamentos">Pagamentos</a></li-->
+                  <!--<li class="tab col l2"><a href="#aparencias">Aparências</a></li>-->
+                  <!--<li class="tab col l2"><a href="#campos">Campos</a></li>-->
+                  <li class="tab col l6"><a href="#certificados">Certificados</a></li>
+                </ul>
+                <div class="divider"></div>
+              </div>
+
+
+              <div id="inscricoes" class="row">
+                <div class="col s12">
+                  <div class="container">
+                    <div class="row center">
+                      <div class="col l8 offset-l2 m8 offset-m2 s12">
+                        <div class="row">
+                          <div class="card-panel card-inscricoes z-depth-3">
+                            <div class="row center">
+                              <h3 class="green-text lighten-1">Inscrições Abertas</h3>
+                              <!--<h3 class="red-text darken-4">Inscrições Fechadas</h3>-->
+                            </div>
+                            <div class="row">
+                              <div class="divider"></div>
+                              <div class="container data-hora">
+                                <div class="col l6 m6 s6 center">
+                                  <h6>Abertura:</h6>
+                                  <h5>
+                                    DD/MM/AAAA<br>
+                                    HH:MM
+                                  </h5>
+                                </div>
+                                <div class="col l6 m6 s6">
+                                  <h6>Fechamento:</h6>
+                                  <h5>
+                                    DD/MM/AAAA<br>
+                                    HH:MM
+                                  </h5>
+                                </div>
+                              </div>
+                            </div>
+                          </div><!-- fim do card -->
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row center">
+                      <div class="col l4 offset-l2 m6 s12">
+                        <!--<div class="btn btn-large btn-abrir-inscricoes">
+                          Abrir Inscrições
+
+                        </div>-->
+                        <div class="btn btn-large btn-fechar-inscricoes">
+                          Fechar Inscrições
+
+                        </div>
+                      </div>
+                      <div class="col l4 m6 s12">
+                        <div class="btn btn-large btn-agendar-inscricoes modal-trigger" href="#agendarInscricoes" >
+                          Agendar Inscrições
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div id="agendarInscricoes" class="modal" materialize="modal">
+                <div class="modal-content">
+                  <div class="header">
+                    <div class="col s11">
+                      <h4> Agendar Inscrições</h4>
+                    </div>
+                    <div class="col s1">
+                      <i class="material-icons modal-close right">
+                        close
+                      </i>
+                    </div>
+                  </div>
+                  <div class="container conteudo">
+                    <div class="row">
+                      <h5>Abertura</h5>
+                      <div class="divider"></div>
+                      <div class="input-field col s12 l6">
+                        <i class="material-icons prefix">today</i>
+                        <input type="text" class="datepicker" value="Data de Abertura" materialize="pickadate" id="dataAbertura">
+                        <label for="dataAbertura">Data de Abertura</label>
+                      </div>
+                      <div class="input-field col s12 l6">
+                        <i class="material-icons prefix">alarm</i>
+                        <input type="text" class="timepicker" value="HH:MM" id="horaAbertura">
+                        <label for="horaAbertura">Horário de Abertura</label>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <h5>Encerramento</h5>
+                      <div class="divider"></div>
+                      <div class="input-field col s12 l6">
+                        <i class="material-icons prefix">event</i>
+                        <input type="text" class="datepicker" value="Data de Encerramento" materialize="pickadate" id="dataEncerramento">
+                        <label for="dataEncerramento">Data de Encerramento</label>
+                      </div>
+                      <div class="input-field col s12 l6">
+                        <i class="material-icons prefix">alarm</i>
+                        <input type="text" class="timepicker" value="HH:MM" id="horaEncerramento">
+                        <label for="horaEncerramento">Horário de Encerramento</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <div class="divider"></div>
+                  <a href="#!" class="modal-close waves-effect btn-flat">Cancelar</a>
+                  <input type="submit" class="btn modal-close" value="Agendar Inscrições">
+
+                </div>
+              </div>
+
+
+              <!--<div id="pacotes" class="row">
+                <div class="col s12">
+                  <div class="container">
+                    <div class="row">
+                      <div class="col l8 offset-l2 s12">
+                        <div class="row center  conteudo-tab">
+                          <button class="btn btn-large modal-trigger" href="#criaPacote">Criar Pacote </button>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div id="criaPacote" class="modal" materialize="modal">
+                      <div class="modal-content">
+                        <div class="header">
+                          <div class="col s10">
+                            <h4> Criar Pacote</h4>
+                          </div>
+                          <div class="col s2">
+                            <i class="material-icons modal-close right">
+                              close
+                            </i>
+                          </div>
+                        </div>
+                        <div class="container">
+                          <div class="row">
+
+                          </div>
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <div class="container">
+                          <input type="submit" class="btn" value="Salvar">
+                        </div>
+                        <a href="#!" class="modal-close waves-effect btn-flat">Cancelar</a>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <ul materialize="collapsible" class="collapsible">
+                        <li>
+                          <div class="collapsible-header">
+                            Pacote sem Hospedagem
+                            <i class="material-icons">
+                                expand_more
+                            </i>
+                          </div>
+                          <div class="collapsible-body">
+                            <table class="responsive-table striped">
+                              <thead>
+                                <tr>
+                                    <th>Lote</th>
+                                    <th>Descrição</th>
+                                    <th>Vagas</th>
+                                    <th>Valor</th>
+                                    <th></th>
+                                </tr>
+                              </thead>
+
+                              <tbody>
+                                <tr>
+                                  <td>1</td>
+                                  <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                    Quisque magna nibh, condimentum id pellentesque non, lacinia nec diam.
+                                  </td>
+                                  <td>80</td>
+                                  <td>R$ 150,00</td>
+                                  <td>
+                                    <a class="btn modal-trigger" href="#maisPacote">
+                                      Mais
+                                    </a>
+                                  <td>
+                                </tr>
+                                <tr>
+                                  <td>2</td>
+                                  <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                    Quisque magna nibh, condimentum id pellentesque non, lacinia nec diam.
+                                  </td>
+                                  <td>100</td>
+                                  <td>R$ 180,00</td>
+                                  <td>
+                                    <a class="btn modal-trigger" href="#maisPacote">
+                                      Mais
+                                    </a>
+                                  <td>
+                                </tr>
+                              </tbody>
+                            </table>
+
+                          </div>
+                        </li>
+                        <li>
+                          <div class="collapsible-header">
+                            Pacote com Hospedagem
+                            <i class="material-icons">
+                                expand_more
+                            </i>
+                          </div>
+                          <div class="collapsible-body">
+                            <span>... ...</span>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+
+                  </div>
+                </div>
+              </div>-->
+              <!--
+              <div id="pagamentos" class="row">
+                <div class="col s12">
+                  <div class="container">
+                    <div class="row">
+                      <div class="col l10 offset-l1 s12">
+                        <div class="card-panel card-boletos">
+                          <h4 class="center">Gerar Boletos</h4>
+
+                          <div class="row">
+                            <div class="divider"></div>
+                            <div class="input-field col s12 l10">
+                              <select materialize="material_select">
+                                <option value="" disabled selected>Selecionar Pacote</option>
+                                <option value="1">Pacote sem Hospedagem</option>
+                                <option value="2">Pacote com Hospedagem</option>
+                              </select>
+                            </div>
+                            <div class="input-field col s12 l2">
+                              <input id="vagas" type="number">
+                                <label for="vagas">Vagas:</label>
+                            </div>
+                            <div class="input-field col s12">
+                              <textarea id="descricao-boleto" class="materialize-textarea"></textarea>
+                                <label for="descricao-boleto">Descrição:</label>
+                            </div>
+                            <div class="input-field col s12 l8">
+                              <input id="valor" type="number">
+                                <label for="valor">Valor:</label>
+                            </div>
+                            <div class="input-field col s12 l4">
+                              <input  type="submit" class="btn btn-large right" value="Gerar Boleto">
+                            </div>
+
+
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <ul materialize="collapsible" class="collapsible">
+                        <li>
+                          <div class="collapsible-header">
+                            Pacote sem Hospedagem
+                            <i class="material-icons">
+                                expand_more
+                            </i>
+                          </div>
+                          <div class="collapsible-body">
+                            <span>... ...</span>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="collapsible-header">
+                            Pacote com Hospedagem
+                            <i class="material-icons">
+                                expand_more
+                            </i>
+                          </div>
+                          <div class="collapsible-body">
+                            <span>... ...</span>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+              <div id="aparencias" class="row">
+                <div class="col s12">
+                  <div class="container">
+
+                  </div>
+                </div>
+              </div>
+              <div id="campos" class="row">
+                <div class="col s12">
+                  <div class="container conteudo-tab">
+                    <div class="row center">
+                      <button class="btn btn-large modal-trigger" href="#criaCampo">Criar Campo </button>
+                    </div>
+
+                  </div>
+                </div>
+
+                <div id="criaCampo" class="modal" materialize="modal">
+                  <div class="modal-content">
+                    <div class="header">
+                      <div class="col s10">
+                        <h4> Criar Campo de Formulário</h4>
+                      </div>
+                      <div class="col s2">
+                        <i class="material-icons modal-close right">
+                          close
+                        </i>
+                      </div>
+                    </div>
+                    <div class="container">
+                      <div class="row">
+
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <div class="container">
+                      <input type="submit" class="btn" value="Salvar">
+                    </div>
+                    <a href="#!" class="modal-close waves-effect btn-flat">Cancelar</a>
+                  </div>
+                </div>
+              </div>-->
+
+              <div id="certificados" class="row">
+                <div class="row">
+                  <div class="col l10 offset-l1 m10 offset-m1 s12">
+                    <div class="row">
+                      <div class="card-panel card-certificados z-depth-3">
+                        <div class="row center">
+                          <h4>Você já pode gerar certificados</h4>
+                          <!--h4>Você ainda não possui um modelo de certificado!</h4-->
+                        </div>
+                        <div class="row">
+                          <div class="divider"></div>
+                          <div class="container conteudo-certificados">
+                            <div class="row center">
+                              <!-- card com miniatura do certificado -->
+                              <a class="modal-trigger" href="#modalCertificado">
+                                <div class="card">
+                                  <div class="card-image waves-effect waves-block waves-light">
+                                    <img class="activator" src='http://blog.visme.co/wp-content/uploads/2017/07/50-Beautiful-and-Minimalist-Presentation-Backgrounds-037.jpg'>
+                                  </div>
+                                  <div class="card-content">
+                                    <span class="card-title grey-text text-darken-4">Certificado</span>
+                                  </div>
+                                </div>
+                              </a>
+                            </div>
+
+                            <!-- modal certificados -->
+                            <div id="modalCertificado" class="modal" materialize="modal">
+                              <div class="modal-content">
+                                <div class="header">
+                                  <div class="col s10">
+                                    <h4>Certificado</h4>
+                                  </div>
+                                  <div class="col s2">
+                                    <i class="material-icons modal-close right">
+                                      close
+                                    </i>
+                                  </div>
+                                </div> 
+                                <div class="row">
+                                  <img src="http://blog.visme.co/wp-content/uploads/2017/07/50-Beautiful-and-Minimalist-Presentation-Backgrounds-037.jpg" class="responsive-image">
+
+                                </div>
+                              </div>
+                              <div class="modal-footer">
+                                <div class="container">
+                                  <input type="submit" class="modal-close btn" value="Sair">
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="row comandos">
+                              <!--div class="col l12 s12 center">
+                                <a class="btn-large modal-trigger" href="#modal-layoutCertificado">Criar modelo de Certificado</a>
+                              </div-->
+                              <div class="col l6 s12 center">
+                                <a class="btn-large modal-trigger" href="#modal-layoutCertificado">Editar Certificado</a>
+                              </div>
+                              <div class="col l6 s12 center">
+                                <button class="btn-large">Gerar Certificados</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div><!-- fim do card -->
+                    </div>
+                  </div>
+                </div>
+
+                <div id="modal-layoutCertificado" class="modal" materialize="modal">
+                  <div class="modal-content">
+                    <div class="header">
+                      <div class="col s10">
+                        <h4> Criar Modelo de Certificado</h4>
+                      </div>
+                      <div class="col s2">
+                        <i class="material-icons modal-close right">
+                          close
+                        </i>
+                      </div>
+                    </div>
+                    <div class="row conteudo-modal">
+                      <div class="row">
+                        <form action="#">
+                          <div class="file-field input-field">
+                            <div class="btn">
+                              <span>Adicionar imagem de fundo</span>
+                              <input type="file">
+                            </div>
+                            <div class="file-path-wrapper">
+                              <input class="file-path validate" type="text">
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                      <div class="row"> <!-- editor -->
+                        <quill-editor>
+
+
+                        </quill-editor>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <div class="container">
+                      <a href="#!" class="modal-close waves-effect btn-flat">Não Salvar</a>
+                      <input type="submit" class="modal-close btn" value="Salvar Certificado">
+                    </div>
+
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+</section>

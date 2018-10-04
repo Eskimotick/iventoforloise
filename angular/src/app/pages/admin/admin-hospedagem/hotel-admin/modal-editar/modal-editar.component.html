@@ -1,0 +1,45 @@
+<div id="modalEditar{{hotel.nomeHotel}}" class="modal" materialize="modal">
+  <div class="header">
+    <div class="col s11">
+      <h4>Editar Informações de {{hotel.nomeHotel}}</h4>
+    </div>
+    <div class="col s1">
+      <i class="material-icons modal-close right">
+        close
+      </i>
+    </div>
+  </div>
+  <div class="modal-content">
+    <div class="row conteudo dadosHotel">
+        <div class="col l12 s12">
+          <div class="input-field col s12 l6">
+            <input type="text" id="nomeHotel" value="{{hotel.nomeHotel}}">
+            <label for="nomeHotel">Nome do Hotel</label>
+          </div>
+          <div class="input-field col s12 l6">
+            <input type="text" id="enderecoHotel" value="{{hotel.enderecoHotel}}">
+            <label for="enderecoHotel">Endereço</label>
+          </div>
+          <div class="input-field col s12 l12">
+            <textarea id="descricaoHotel" class="materialize-textarea">"{{hotel.descricaoHotel}}"
+            </textarea>
+            <label for="descricaoHotel">Descrição</label>
+          </div>
+          <div class="col l12 s12 file-field input-field">
+            <div class="btn">
+              <span>Foto</span>
+              <input type="file" (change)="onFileSelection($event)">
+            </div>
+            <div class="file-path-wrapper">
+              <input class="file-path validate" type="text" value="foto.png">
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <div class="divider"></div>
+    <button  class="modal-close waves-effect btn-flat">Cancelar</button>
+    <input type="submit" class="btn modal-close" value="Salvar Alterações">
+  </div>
+</div>

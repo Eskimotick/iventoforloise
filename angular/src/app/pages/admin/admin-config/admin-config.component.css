@@ -1,0 +1,209 @@
+.card-inscricoes, .card-certificados {
+
+  border-radius: 5px;
+  min-height: 8vh;
+  margin-top: 8vh;
+  margin-right: 3.2vw;
+  margin-left: 3.2vw;
+  background-color: #fafafa;
+
+}
+.card-boletos, .card-pacote {
+  background-color: #fafafa;
+  padding-bottom: 0.1vh;
+  margin-top: 6vh;
+}
+
+.conteudo-tab {
+  margin-top: 3vh;
+}
+
+
+.conteudo-certificados {
+  margin-top: 4vh;
+  margin-bottom: 4vh;
+}
+
+.conteudo-certificados .card-image {
+  height: 20vh;
+  width: auto;
+}
+
+/* formatação de texto .............................................*/
+h3 {
+  font-size: 1.9em;
+  margin: 0vh;
+}
+
+h4 {
+  font-size: 1.6em;
+  margin-bottom: 0;
+  margin-top: 0;
+  font-family: 'Raleway';
+}
+
+h5 {
+  font-size: 0.95em;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-family: 'Raleway';
+}
+
+h6 {
+  font-size: 0.9em;
+  color: #424242;
+  font-family: 'Roboto';
+}
+
+#icone-status-inscricoes {
+  height: 5vh;
+  width: 5vw;
+}
+
+/* tamanho dos botoes do agendamento de inscrições */
+.btn-abrir-inscricoes, .btn-fechar-inscricoes, .btn-agendar-inscricoes {
+  width: 100%;
+  margin-bottom: 1.4vh;
+}
+
+/* botao fechar inscricoes - vermelho */
+.btn-fechar-inscricoes {
+  background-color: #b71c1c;
+}
+.btn-fechar-inscricoes:hover {
+  background-color: #d32f2f;
+}
+
+/* botao abrir inscricoes - verde */
+.btn-abrir-inscricoes {
+  background-color: #2e7d32;
+}
+.btn-abrir-inscricoes:hover {
+  background-color: #43a047;
+}
+
+/* collapsible */
+.collapsible-header {
+  background-color: #eceff1;
+  font-size: 1.2em;
+  font-family: 'Raleway';
+}
+.container .row {
+  margin-bottom: 1vh;
+}
+
+/* tabs */
+.tabs-row {
+  margin-top: 2vh;
+}
+.tabs .tab a {
+  color: #9e9e9e;
+
+}
+.tabs .tab a:hover,
+.tabs .tab a.active,
+.tabs .tab a:focus.active{
+  color: black;
+  background-color: #eceff1;
+
+}
+.tabs .indicator {
+  background-color: black;
+}
+
+/*tabelas */
+table thead {
+  background-color: #eceff1;
+}
+table tbody {
+  padding: 2vw;
+}
+
+/* select */
+.dropdown-content li>a,
+.dropdown-content li>span {
+  color: #37474f !important;
+}
+
+/* modal */
+.modal .modal-content {
+  padding: 0;
+}
+.modal .modal-content h4  {
+  padding-top: 2.5vh;
+}
+
+.modal .conteudo {
+  margin-top: 2vh;
+}
+.modal h5 {
+  font-size: 1.4em;
+  margin-top: 3vh;
+  margin-left: 2vw;
+  margin-bottom: 1vh;
+  font-weight: 500;
+}
+
+.modal .divider {
+  margin-bottom: 3vh;
+}
+
+.modal {
+  min-width: 65%;
+}
+@media (max-width: 992px){
+  .modal {
+    width: 95%;
+  }
+}
+
+#modal-layoutCertificado {
+  width: 100vw;
+  min-height: 100vh;
+  padding-bottom: 5vh;
+  top: 0% !important;
+}
+#modal-layoutCertificado .conteudo-modal {
+  margin: 2%;
+}
+
+
+
+#agendarInscricoes {
+  min-height: 78vh;
+}
+#agendarInscricoes .modal-content {
+  margin-bottom: 5vh;
+}
+#agendarInscricoes .modal-footer {
+  margin-top: 5vh;
+  margin-bottom: 0.5vh;
+}
+#agendarInscricoes .modal-footer .divider {
+  margin-bottom: 0.8vh;
+}
+#agendarInscricoes .btn {
+  margin-right: 0.5vw;
+}
+
+
+/* botoes */
+/* botao padrao - cinza azulado */
+.btn, input.btn,
+.btn .btn-large,
+ a .btn.btn-large.modal-trigger,
+.btn-floating.fab.waves-effect.waves-light,
+.btn.modal-trigger,
+.file-field input-field .btn,
+button .btn {
+  background-color: #607d8b;
+}
+/* hover - botao padrão */
+.btn:hover, input.btn:hover,
+.btn.btn-large:hover,
+.btn-floating.fab.waves-effect.waves-light:hover,
+.btn.modal-trigger:hover,
+.file-field input-field .btn:hover,
+button .btn:hover{
+  background-color: #90a4ae;
+}
