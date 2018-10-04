@@ -17,15 +17,16 @@ use App\Notifications\Atividade\UpdateAtividadePacoteNotification;
 class AdminController extends Controller
 {
 		//Função para admins inscreverem usuários.
-    public function inscreveUser($id_user, $id_ativ)
+    public function inscreveUser($cpf_user, $id_ativ)
     {
       //Pega o usuário logado.
       $user_logado = Auth::user();
       //Se for um admin pode inserir novos usuários.
       if($user_logado->admin == 1)
       {
-				//Pega o usuário passado na função
-				$user = User::findOrFail($id_user);
+				//Pega o usuário passado na função pelo cpf
+				if(!$user = User::where('cpf',$cpf_user)->first())
+				    return response()->error('Usuário não encontrado, verifique se o CPF foi digitado corretamente', 404);
 				//Pega a atividade passada na função
 				$atividade = Atividade::findOrFail($id_ativ);
 				//Pega o pacote da atividade do user a ser inscrito.
@@ -98,12 +99,13 @@ class AdminController extends Controller
 		}
  
 		//Função para admins removerem usuários de atividades.
-    public function desinscreveUser($id_user, $id_ativ)
+    public function desinscreveUser($cpf_user, $id_ativ)
     {
       //Pega o usuário logado.
       $user_logado = Auth::user();
       //Pega o usuário passado na função.
-      $user = User::findOrFail($id_user);
+        if(!$user = User::where('cpf',$cpf_user)->first())
+            return response()->error('Usuário não encontrado, verifique se o CPF foi digitado corretamente', 404);
       //Pega a atividade passada na função.
       $activity = Atividade::findOrFail($id_ativ);
       //pega a inscrição a partir do ID.

@@ -18,7 +18,11 @@ class UserResource extends JsonResource
         'Admin' => $this->admin,
         'Código de Confirmação de e-mail' => $this->confirmation_code,
         'Código de Redefinição de Senha' => $this->password_reset_code,
-        'Campos' => $this->campos
+        'Campos' => $this->campos,
+        'Quarto' => $this->quarto(),
+        'Hospedagem' => $this->hospedagem(),
+        'PossiveisQuartos' => $this->getQuartos(),
+        'PossiveisHospedagens' => $this->getHospedagens()
       ];
     }
 }

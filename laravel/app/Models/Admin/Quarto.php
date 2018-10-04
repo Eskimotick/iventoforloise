@@ -22,6 +22,9 @@ class Quarto extends Model
     public function desassociaPacotes($excluirPacotes){
         $this->pacotes()->detach($excluirPacotes);
     }
+    public function users(){
+        return $this->hasMany('App\User');
+    }
 
     public function createQuarto($request){
 

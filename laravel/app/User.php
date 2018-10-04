@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Http\Resources\Admin\QuartoResource;
 use Auth;
 use Ramsey\Uuid\Uuid;
 use Illuminate\Http\Request;
@@ -20,6 +21,7 @@ use App\Notifications\Auth\ChangeEmail\OldEmail\OldEmailConfirmedNotification;
 use App\Models\Admin\Campo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+use App\Models\Admin\Hospedagem;
 use App\Models\Admin\Lote;
 use App\Models\Admin\Quarto;
 use App\Models\Admin\Pacote;
@@ -48,6 +50,16 @@ class User extends Authenticatable
       $this->save();
     }
 
+    public function quarto(){
+        return $this->belongsTo('App\Models\Admin\Quarto');
+    }
+
+    public function hospedagem(){
+        if($quarto = Quarto::find($this->quarto->id)){
+            return Hospedagem::find($quarto->hospedagem_id);
+        }else
+            return null;
+    }
     // Função para editar dados de usuários.
     public function updateUsers($request, User $user)
     {
@@ -167,13 +179,27 @@ class User extends Authenticatable
     ### Parte de hospedagens e quartos ###
 
     public function getQuartos(){
-      $lote = Lote::find($this->lote_id);
-      $pacote = Pacote::find($lote->pacote_id);
-      // $quartos = $pacote->belongsToMany('App\Models\Admin\Quarto','pacotes_quartos');
-      $quartos = $pacote->quartos()->get();
-      
-      return $quartos;
+      if($lote = Lote::find($this->lote_id)) {
+          $pacote = Pacote::find($lote->pacote_id);
+          // $quartos = $pacote->belongsToMany('App\Models\Admin\Quarto','pacotes_quartos');
+          $quartos = $pacote->quartos()->get();
+          return $quartos;
+      } else
+          return null;
+    }
 
+    public function getHospedagens(){
+        if($lote = Lote::find($this->lote_id)){
+            $hospedagens = collect();
+            foreach($this->getQuartos() as $quarto){
+                $hospedagem = Hospedagem::find($quarto->hospedagem_id);
+                if(!$hospedagens->search($hospedagem))
+                    $hospedagens->put($hospedagem->id, $hospedagem);
+            }
+            return $hospedagens;
+        }
+        else
+            return null;
     }
 
     public function alocaUserQuarto($quartoId){

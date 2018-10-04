@@ -7,6 +7,8 @@ use App\Models\Admin\Hospedagem;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreHospedagemRequest as StoreRequest;
 use App\Http\Requests\Admin\UpdateHospedagemRequest as UpdateRequest;
+use App\Http\Resources\Admin\HospedagemResource;
+use App\Http\Resources\Admin\QuartoResource;
 
 
 class HospedagemController extends Controller
@@ -19,7 +21,7 @@ class HospedagemController extends Controller
     public function index()
     {
         $hospedagens = Hospedagem::all();
-        return response()->success($hospedagens);
+        return response()->success(HospedagemResource::collection($hospedagens));
     }
 
     /**
@@ -33,7 +35,7 @@ class HospedagemController extends Controller
         $novaHospedagem = new Hospedagem;
         $novaHospedagem->createHospedagem($request);
 
-        return response()->success($novaHospedagem);
+        return response()->success(new HospedagemResource($novaHospedagem));
     }
 
     /**
@@ -47,7 +49,7 @@ class HospedagemController extends Controller
         $hospedagem = Hospedagem::find($id);
 
         if($hospedagem){
-            return response()->success($hospedagem);
+            return response()->success(new HospedagemResource($hospedagem));
         }
         else{
             return response()->error('Hospedagem não encontrada, verifique se a mesma existe.', 400);
@@ -72,7 +74,7 @@ class HospedagemController extends Controller
                 return response()->error($resposta, 400);
             }
 
-            return response()->success($hospedagem);
+            return response()->success(new HospedagemResource($hospedagem));
 
         }
         else{
@@ -113,7 +115,7 @@ class HospedagemController extends Controller
             return response()->error('Esta hospedagem ainda não possui quartos.', 400);
         }
 
-        return response()->success($quartos);
+        return response()->success(QuartoResource::collection($quartos));
 
     }
 }
